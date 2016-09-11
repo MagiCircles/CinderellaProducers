@@ -1,0 +1,39 @@
+{% load i18n %}
+{% with card=item %}
+<div class="card {{ card.english_type }}" data-card-title="{{ card }}">
+  <div class="card-images">
+    <img src="{{ card.image_url }}" class="card-image"><img src="{{ card.image_awakened_url }}" class="card-image">
+  </div>
+  <div class="card-buttons">
+    <a href="{% if current == 'card_item' %}#cardstat{{ card.id }}{% else %}{{ card.item_url }}{% endif %}" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Card Info' %}" data-placement="bottom" data-delay="0" {% if current != 'card_item' %}data-info-ajax="/ajax/cardstat/{{ card.id }}/"{% endif %} {% if current == 'card_item' %}class="page-scroll"{% endif %}><i class="flaticon-about"></i></a>
+    <a href="#" class="info-loader" style="display: none;"><i class="flaticon-loading"></i></a>
+    {% if not card.total_owned %}
+    {% if user.is_authenticated and user.all_accounts|length != 0 %}
+    <form{% if user.all_accounts|length == 1 %} class="hidden"{% endif %} method="post" action="/ajax/addcard/{{ card.id }}/">
+      {% csrf_token %}
+      <select name="account">
+	{% for account in user.all_accounts %}
+	<option value="{{ account.id }}">{{ account }}</option>
+	{% endfor %}
+      </select>
+    </form>
+    {% endif %}
+    <a href="{% if user.is_authenticated and user.all_accounts|length != 0 %}#addCard{% elif user.is_authenticated %}/accounts/add/?next={{ current_url }}{% else %}/signup/?next={{ current_url }}{% endif %}" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Add this card to your collection' %}" data-placement="bottom"><i class="flaticon-add"></i></a>
+    <a href="#" class="addcard-loader" style="display: none;"><i class="flaticon-loading"></i></a>
+    {% elif card.total_owned == 1 %}
+    <a href="{{ card.item_url }}?collection" data-ajax="{{ card.ajax_iten_url }}?collection" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Your cards' %}" data-placement="bottom"><i class="flaticon-checked"></i></a>
+    {% else %}
+    <a href="{{ card.item_url }}?collection" data-ajax="{{ card.ajax_iten_url }}?collection" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Your cards' %}" data-placement="bottom">x{{ card.total_owned }}</a>
+    {% endif %}
+    {% if user.is_staff %}
+    <a href="/cards/edit/{{ card.id }}/" data-toggle="tooltip" data-trigger="hover" title="Staff - {% trans 'Edit' %} {% trans 'Card' %}" data-placement="bottom"><i class="flaticon-edit"></i></a>
+    {% endif %}
+  </div>
+</div>
+{% if current == 'card_item' %}
+{% if collection %}
+{% else %}
+{% include 'include/cards-stats.html' %}
+{% endif %}
+{% endif %}
+{% endwith %}

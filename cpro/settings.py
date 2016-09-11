@@ -1,0 +1,114 @@
+from django.conf import settings as django_settings
+from django.utils.translation import ugettext_lazy as _
+from web.default_settings import DEFAULT_ENABLED_COLLECTIONS, DEFAULT_ENABLED_PAGES
+from cpro import models, forms, filters, collections
+
+SITE_NAME = 'Cinderella Producers'
+SITE_URL = 'http://cinderella.pro/'
+SITE_IMAGE = 'cpro.png'
+SITE_STATIC_URL = '//localhost:{}/'.format(django_settings.DEBUG_PORT) if django_settings.DEBUG else '//i.cinderella.pro/'
+GAME_NAME = 'IDOLM@STER Cinderella Girls Starlight Stage'
+DISQUS_SHORTNAME = 'cinderellapro'
+ACCOUNT_MODEL = models.Account
+COLOR = '#4a86e8'
+
+ENABLED_COLLECTIONS = DEFAULT_ENABLED_COLLECTIONS
+
+ENABLED_COLLECTIONS['account']['add']['form_class'] = collections.getAccountForm
+ENABLED_COLLECTIONS['account']['edit']['form_class'] = forms.AccountFormAdvanced
+
+ENABLED_COLLECTIONS['account']['add']['otherbuttons_template'] = 'include/advancedButton'
+
+ENABLED_COLLECTIONS['card'] = {
+    'queryset': models.Card.objects.all(),
+    'title': _('Card'),
+    'plural_title': _('Cards'),
+    'icon': 'cards',
+    'list': {
+        'default_ordering': '-release_date',
+        'full_width': True,
+        'ajax_pagination_callback': 'updateCards',
+        'js_files': ['cards'],
+        'filter_form': forms.FilterCards,
+        'filter_queryset': filters.filterCards,
+    },
+    'item': {
+        'ajax_callback': 'updateCards',
+        'js_files': ['cards'],
+        'filter_queryset': filters.filterCards,
+    },
+    'add': {
+        'form_class': forms.CardForm,
+        'multipart': True,
+        'staff_required': True,
+    },
+    'edit': {
+        'form_class': forms.CardForm,
+        'multipart': True,
+        'staff_required': True,
+    },
+}
+
+ENABLED_COLLECTIONS['idol'] = {
+    'queryset': models.Idol.objects.all(),
+    'title': _('Idol'),
+    'plural_title': _('Idols'),
+    'icon': 'idolized',
+    'list': {
+        'default_ordering': 'name',
+    },
+    'item': {},
+    'add': {
+        'form_class': forms.IdolForm,
+        'multipart': True,
+        'staff_required': True,
+    },
+    'edit': {
+        'form_class': forms.IdolForm,
+        'multipart': True,
+        'staff_required': True,
+    },
+}
+
+ENABLED_COLLECTIONS['event'] = {
+    'queryset': models.Event.objects.all(),
+    'title': _('Event'),
+    'plural_title': _('Events'),
+    'icon': 'event',
+    'list': {
+        'default_ordering': '-end',
+    },
+    'item': {},
+    'add': {
+        'form_class': forms.EventForm,
+        'multipart': True,
+        'staff_required': True,
+    },
+    'edit': {
+        'form_class': forms.EventForm,
+        'multipart': True,
+        'staff_required': True,
+    },
+}
+
+ENABLED_PAGES = DEFAULT_ENABLED_PAGES
+
+ENABLED_PAGES['index']['custom'] = True
+
+ENABLED_PAGES['cardstat'] = {
+    'ajax': True,
+    'navbar_link': False,
+    'url_variables':  [
+        ('card', '\d+'),
+    ],
+}
+
+ENABLED_PAGES['addcard'] = {
+    'ajax': True,
+    'navbar_link': False,
+    'url_variables':  [
+        ('card', '\d+'),
+    ],
+}
+
+HASHTAGS = ['deresute', 'idolmaster']

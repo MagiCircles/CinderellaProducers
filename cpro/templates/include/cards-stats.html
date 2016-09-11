@@ -1,0 +1,110 @@
+{% load i18n %}
+{% load l10n %}
+<div id="cardstat{{ card.id }}"></div>
+<div class="card {{ card.english_type }}">
+  <div class="card-info">
+    <table class="card-basic-info">
+      <tr>
+	<td>
+	  <h4>{% trans 'Rarity' %}</h4>
+	  {{ card.rarity }}
+	</td>
+	<td>
+	  <h4>{% trans 'Idol' %}</h4>
+	  {{ card.cached_idol.name }}
+	  <a href="/idol/{{ card.idol_id }}/" target="_blank"><i class="flaticon-link"></i></a>
+	</td>
+	{% if card.release_date %}
+	<td>
+	  <h4>{% trans 'Release Date' %}</h4>
+	  {{ card.release_date }}
+	</td>
+	{% endif %}
+	{% if card.event %}
+	<td>
+	  <h4>{% trans 'Event' %}</h4>
+	  {{ card.event }}
+	</td>
+	{% endif %}
+	{% if card.title %}
+	<td>
+	  <h4>{% trans 'Title' %}</h4>
+	  {{ card.title }}
+	  {% if card.translated_title %}
+	  <small class="text-muted">
+	    {{ card.translated_title }}
+	  </small>
+	  {% endif %}
+	</td>
+	{% endif %}
+      </tr>
+    </table>
+    {% if card.has_skill or card.has_leader_skill %}
+    <table class="card-skills">
+      <tr>
+	{% if card.has_skill %}
+	<td{% if card.has_leader_skill %} width="50%"{% endif %}>
+	  <h4>{% trans 'Skill' %}: {{ card.skill }}</h4>
+	  {{ card.skill_details }}
+	</td>
+	{% endif %}
+	{% if card.has_leader_skill %}
+	<td>
+	  <h4>{% trans 'Leader Skill' %}: {{ card.leader_skill }}</h4>
+	  {{ card.leader_skill_details }}
+	</td>
+	{% endif %}
+      </tr>
+    </table>
+    {% endif %}
+    {% for awakened, stats in card.stats_percent %}
+    <div class="card-art{% if awakened %}-awakened{% endif %}" style="background-image: url('{% if awakened %}{{ card.art_awakened_url }}{% else %}{{ card.art_url }}{% endif %}');">
+      <div class="card-stats-inner">
+      <div class="card-stats" style="background-image: url('{% if awakened %}{{ card.puchi_awakened_url }}{% else %}{{ card.puchi_url }}{% endif %}');">
+	<div class="btn-group btn-group-justified" data-toggle="buttons">
+	  <label class="btn btn-inherit changeLevel">
+	    <input type="radio" name="options" autocomplete="off"> {% trans 'Level' %} <span class="level">1</span>
+	  </label>
+	  <div class="btn btn-inherit">
+	    {% trans 'Level' %} <input type="number" name="changeLevelNumber" placeholder="??" min="2" max="{% if awakened %}{{ card.max_level_awakened|add:-1 }}{% else %}{{ card.max_level|add:-1 }}{% endif %}">
+	  </div>
+	  <label class="btn btn-inherit changeLevel active">
+	    <input type="radio" name="options" autocomplete="off" checked> {% trans 'Level' %} <span class="level">{% if awakened %}{{ card.max_level_awakened }}{% else %}{{ card.max_level }}{% endif %}</span>
+	  </label>
+	</div>
+	<br>
+	{% for stat in stats %}
+	<div class="row" data-stat="{{ stat.stat }}" data-levels='{{ stat.javascript_levels|safe }}'>
+	  <div class="col-xs-2">{{ stat.name }}</div>
+	  <div class="col-xs-2 text-right stat-value">{{ stat.value_max_level }}</div>
+	  <div class="col-xs-8">
+	    <div class="progress">
+	      <div class="progress-bar progress-bar-default progress-bar-striped"
+		   role="progressbar"
+		   style="width: {% localize off %}{{ stat.percent_max_level }}{% endlocalize %}%;">
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	{% endfor %}
+	<div class="row">
+	  <div class="col-xs-4">{% trans 'Download' %}</div>
+	  <div class="col-xs-8">
+	    <div class="btn-group">
+	      {% if awakened %}
+	      <a class="btn btn-inherit btn-sm" target="_blank" href="{{ card.art_awakened_url }}"><span class="inner">{% trans  'Art' %}</span></a>
+	      <a class="btn btn-inherit btn-sm" target="_blank" href="{{ card.puchi_awakened_url }}"><span class="inner">{% trans  'Puchi' %}</span></a>
+	      <a class="btn btn-inherit btn-sm" target="_blank" href="{{ card.transparent_awakened_url }}"><span class="inner">{% trans  'Transparent' %}</span></a>
+	      {% else %}
+	      <a class="btn btn-inherit btn-sm" target="_blank" href="{{ card.art_url }}"><span class="inner">{% trans  'Art' %}</span></a>
+	      <a class="btn btn-inherit btn-sm" target="_blank" href="{{ card.puchi_url }}"><span class="inner">{% trans  'Puchi' %}</span></a>
+	      <a class="btn btn-inherit btn-sm" target="_blank" href="{{ card.transparent_url }}"><span class="inner">{% trans  'Transparent' %}</span></a>
+	      {% endif %}
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    </div>
+    {% endfor %}
+  </div>

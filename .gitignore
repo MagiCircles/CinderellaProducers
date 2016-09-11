@@ -87,3 +87,19 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# MagiCircles
+env/
+cpro_project/local_settings.py
+cpro_project/generated_settings.py
+cpro/static/bower
+cpro/static/css/style.css
+cpro/templates/pages/map.html
+collected/
+db.sqlite3
+cpro/static/uploaded/
+
+# Cinderella Producers
+cards*.json
+*~
+#*#

@@ -1,0 +1,8 @@
+
+<div class="home-wrapper" style="background-image: url('{% if awakened %}{{ card.art_awakened_url }}{% else %}{{ card.art_url }}{% endif %}');">
+  <div class="home">
+    <div class="home-inner">
+      {% include 'include/homePage.html' %}
+    </div>
+  </div>
+</div>

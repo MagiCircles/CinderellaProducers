@@ -1,0 +1,6 @@
+{% load i18n %}
+{% if advanced %}
+<a href="?simple" class="btn btn-link">{% trans 'Simple' %}</a>
+{% else %}
+<a href="?advanced" class="btn btn-link">{% trans 'Advanced' %}</a>
+{% endif %}
