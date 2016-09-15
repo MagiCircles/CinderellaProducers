@@ -60,6 +60,22 @@ class _AccountForm(FormWithRequest):
         if 'starter' in self.fields:
             self.fields['starter'].queryset = models.Card.objects.filter(pk__in=[100001, 200001, 300001])
             self.fields['starter'].initial = 100001
+        if hasattr(self, 'instance') and self.instance.pk:
+            self.previous_center_id = self.instance.center_id
+            self.previous_level = self.instance.level
+        else:
+            self.previous_center_id = None
+            self.previous_level = None
+
+    def save(self, commit=False):
+        instance = super(_AccountForm, self).save(commit=False)
+        if self.previous_center_id != instance.center_id:
+            instance.update_cache_center()
+        if self.previous_level != instance.level:
+            instance.update_cache_leaderboard()
+        if commit:
+            instance.save()
+        return instance
 
 class AccountFormSimple(_AccountForm):
     class Meta:
@@ -70,8 +86,8 @@ class AccountFormSimple(_AccountForm):
 class AccountFormAdvanced(_AccountForm):
     class Meta:
         model = models.Account
-        fields = ('nickname', 'game_id', 'level', 'accept_friend_requests', 'device', 'play_with', 'os', 'center', 'starter', 'start_date', 'producer_rank')
-        optional_fields = ('nickname', 'game_id', 'level', 'accept_friend_requests', 'device', 'play_with', 'os', 'center', 'start_date', 'producer_rank')
+        fields = ('nickname', 'game_id', 'level', 'accept_friend_requests', 'device', 'i_play_with', 'i_os', 'center', 'starter', 'start_date', 'i_producer_rank')
+        optional_fields = ('nickname', 'game_id', 'level', 'accept_friend_requests', 'device', 'i_play_with', 'i_os', 'center', 'start_date', 'i_producer_rank')
         date_fields = ('start_date', )
 
 ############################################################
@@ -112,6 +128,7 @@ class FilterCards(FormWithRequest):
     type = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.TYPE_CHOICES, required=False, label=_('Type'))
     is_event = forms.NullBooleanField(required=False, initial=None, label=_('Event'))
     is_limited = forms.NullBooleanField(required=False, initial=None, label=_('Limited'))
+    is_awakened = forms.NullBooleanField(required=False, initial=None, label=_('Awakened'))
     has_art = forms.NullBooleanField(required=False, initial=None, label=_('Art'))
     ordering = forms.ChoiceField(choices=[
         ('release_date', _('Release Date')),
@@ -133,14 +150,52 @@ class FilterCards(FormWithRequest):
 
     class Meta:
         model = models.Card
-        fields = ('search', 'i_rarity', 'type', 'is_event', 'is_limited', 'has_art', 'i_skill', 'ordering', 'reverse_order')
+        fields = ('search', 'i_rarity', 'type', 'is_event', 'is_limited', 'is_awakened', 'has_art', 'i_skill', 'ordering', 'reverse_order')
         optional_fields = ('i_skill', 'i_rarity')
 
 ############################################################
 # Owned Card
 
 class EditOwnedCardForm(FormWithRequest):
+    def __init__(self, *args, **kwargs):
+        super(EditOwnedCardForm, self).__init__(*args, **kwargs)
+        self.card = self.instance.card
+        if not self.card.has_skill:
+            del(self.fields['skill_level'])
+        if not self.card.id_awakened:
+            del(self.fields['awakened'])
+
+    def save(self, commit=False):
+        instance = super(EditOwnedCardForm, self).save(commit=False)
+        if self.card.i_rarity == models.RARITY_N and instance.star_rank > 5:
+            instance.star_rank = 5
+        if self.card.i_rarity == models.RARITY_R and instance.star_rank > 10:
+            instance.star_rank = 10
+        if self.card.i_rarity == models.RARITY_SR and instance.star_rank > 15:
+            instance.star_rank = 15
+        if commit:
+            instance.save()
+        return instance
+
     class Meta:
         model = models.OwnedCard
-        fields = ('awakened', 'max_bonded', 'max_leveled', 'star_rank', 'skill_level')
+        fields = ('awakened', 'max_bonded', 'max_leveled', 'star_rank', 'skill_level', 'obtained_date')
+        optional_fields = ('star_rank', 'skill_level', 'obtained_date')
         date_fields = ('obtained_date', )
+
+class FilterOwnedCards(FormWithRequest):
+    search = forms.CharField(required=False)
+    i_rarity = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.RARITY_CHOICES, required=False, label=_('Rarity'))
+    account = forms.IntegerField(widget=forms.HiddenInput, min_value=0, required=True)
+    type = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.TYPE_CHOICES, required=False, label=_('Type'))
+    is_event = forms.NullBooleanField(required=False, initial=None, label=_('Event'))
+    i_skill = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.SKILL_CHOICES, required=False, label=_('Skill'))
+
+    def __init__(self, *args, **kwargs):
+        super(FilterOwnedCards, self).__init__(*args, **kwargs)
+        self.fields['account'].initial = self.request.GET.get('account', 1)
+
+    class Meta:
+        model = models.Card
+        fields = ('search', 'i_rarity', 'type', 'is_event', 'i_skill')
+        optional_fields = ('i_skill', 'i_rarity')

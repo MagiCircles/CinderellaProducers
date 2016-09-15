@@ -1,0 +1,80 @@
+{% load i18n %}
+<table class="table about-table">
+  {% if account.game_id %}
+  <tr>
+    <td><i class="flaticon-id"></i></td>
+    <th>{% trans 'Game ID' %}</th>
+    <td>{{ account.game_id }}</td>
+  </tr>
+  {% endif %}
+  {% if account.accept_friend_requests %}
+  <tr>
+    <td><i class="flaticon-users"></i></td>
+    <th>{% trans 'Accept friend requests' %}</th>
+    <td>{% if account.accept_friend_requests %}{% trans 'Yes' %}{% else %}{% trans 'No' %}{% endif %}</td>
+  </tr>
+  {% endif %}
+  {% if account.i_os %}
+  <tr>
+    <td><i class="flaticon-{{ account.os }}"></i></td>
+    <th>{% trans 'Operating System' %}</th>
+    <td>{{ account.os }}</td>
+  </tr>
+  {% endif %}
+  {% if account.device %}
+  <tr>
+    <td>{% if account.i_os %}<i class="flaticon-{{ account.os }}"></i>{% endif %}</td>
+    <th>{% trans 'Device' %}</th>
+    <td>{{ account.device }}</td>
+  </tr>
+  {% endif %}
+  {% if account.i_play_with %}
+  <tr>
+    <td><i class="flaticon-{{ account.play_with_icon }}"></i></td>
+    <th>{% trans 'Play with' %}</th>
+    <td>{{ account.play_with }}</td>
+  </tr>
+  {% endif %}
+  {% if account.center_id %}
+  <tr>
+    <td>
+      <a href="{{ account.cached_center.card.item_url }}" target="_blank" data-ajax-url="{{ account.cached_center.card.ajax_item_url }}">
+	<img src="{{ account.cached_center.card.icon_url }}" alt="{{ account.cached_center.card.string }}">
+      </a>
+    </td>
+    <th>{% trans 'Center' %}</th>
+    <td>
+      <a href="{{ account.cached_center.card.item_url }}" target="_blank" data-ajax-url="{{ account.cached_center.card.ajax_item_url }}">
+	{{ account.cached_center.card.string }}
+      </a>
+    </td>
+  </tr>
+  {% endif %}
+  {% if account.starter_id %}
+  <tr>
+    <td>
+      <a href="{{ account.starter.item_url }}" target="_blank" data-ajax-url="{{ account.starter.ajax_item_url }}">
+	<img src="{{ account.starter.icon_url }}" alt="{{ account.starter }}">
+      </a>
+    </td>
+    <th>{% trans 'Starter' %}</th>
+    <td>
+      <a href="{{ account.starter.item_url }}" target="_blank" data-ajax-url="{{ account.starter.ajax_item_url }}">
+	{{ account.starter }}
+      </a>
+    </td>
+  </tr>
+  {% endif %}
+  {% if account.start_date %}
+  <tr>
+    <td><i class="flaticon-date"></i></td>
+    <th>{% trans 'Start Date' %}</th>
+    <td>{{ account.start_date }}</td>
+  </tr>
+  {% endif %}
+  <tr class="text-muted">
+    <td><i class="flaticon-date"></i></td>
+    <th>{% trans 'Creation' %}</th>
+    <td>{{ account.creation }}</td>
+  </tr>
+</table>

@@ -21,11 +21,12 @@ TYPE_CUTE = 0
 TYPE_COOL = 1
 TYPE_PASSION = 2
 
-TYPE_CHOICES = [
-    (TYPE_CUTE, _('Cute')),
-    (TYPE_COOL, _('Cool')),
-    (TYPE_PASSION, _('Passion')),
+TYPES = [
+    (TYPE_CUTE, _('Cute'), 'Cute', '#FF0173'),
+    (TYPE_COOL, _('Cool'), 'Cool', '#0E75FF'),
+    (TYPE_PASSION, _('Passion'), 'Passion', '#FFAA00'),
 ]
+TYPE_CHOICES = [(a, b) for (a, b, c, d) in TYPES]
 TYPE_DICT = dict(TYPE_CHOICES)
 
 ENGLISH_TYPE_DICT = {
@@ -270,12 +271,14 @@ PLAY_WITH = (
 )
 PLAY_WITH_CHOICES = [ (index, localized) for (index, (localized, _)) in enumerate(PLAY_WITH) ]
 PLAY_WITH_DICT = dict(PLAY_WITH_CHOICES)
-PLAY_WITH_ICONS = [ (index, icon) for (index, (_, icon)) in enumerate(PLAY_WITH) ]
+PLAY_WITH_ICONS = dict([ (index, icon) for (index, (_, icon)) in enumerate(PLAY_WITH) ])
 
 OS = [ 'iOs', 'Android' ]
 OS_CHOICES = list(enumerate(OS))
+OS_DICT = dict(OS_CHOICES)
 
 PRODUCER_RANK = [
     'E', 'D', 'C', 'B', 'A', 'S', 'SS'
 ]
 PRODUCER_RANK_CHOICES = list(enumerate(PRODUCER_RANK))
+PRODUCER_RANK_DICT = dict(PRODUCER_RANK_CHOICES)

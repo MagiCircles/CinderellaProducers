@@ -1,6 +1,7 @@
 import time
 from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
+from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings as django_settings
 from web.tools import totalDonators
 from cpro import models
@@ -12,13 +13,14 @@ def generate_settings():
 
         print 'Get the latest news'
         try:
-            current_events = models.Event.objects.get(end__lte=timezone.now())
+            current_events = models.Event.objects.filter(end__gte=timezone.now())
             latest_news = [{
                 'title': event.name,
                 'image': event.image_url,
                 'url': event.item_url,
+                    'hide_title': True,
             } for event in current_events]
-        except:
+        except ObjectDoesNotExist:
             latest_news = []
 
         print 'Get the characters'

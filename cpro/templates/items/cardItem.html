@@ -2,7 +2,7 @@
 {% with card=item %}
 <div class="card {{ card.english_type }}" data-card-title="{{ card }}">
   <div class="card-images">
-    <img src="{{ card.image_url }}" class="card-image"><img src="{{ card.image_awakened_url }}" class="card-image">
+    <img src="{{ card.image_url }}" class="card-image">{% if card.image_awakened %}<img src="{{ card.image_awakened_url }}" class="card-image">{% endif %}
   </div>
   <div class="card-buttons">
     <a href="{% if current == 'card_item' %}#cardstat{{ card.id }}{% else %}{{ card.item_url }}{% endif %}" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Card Info' %}" data-placement="bottom" data-delay="0" {% if current != 'card_item' %}data-info-ajax="/ajax/cardstat/{{ card.id }}/"{% endif %} {% if current == 'card_item' %}class="page-scroll"{% endif %}><i class="flaticon-about"></i></a>
@@ -30,7 +30,7 @@
     {% endif %}
   </div>
 </div>
-{% if current == 'card_item' %}
+{% if current != 'card_list' and current != 'card_list_ajax' %}
 {% if collection %}
 {% else %}
 {% include 'include/cards-stats.html' %}

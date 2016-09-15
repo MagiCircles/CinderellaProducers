@@ -31,3 +31,9 @@ def addcard(request, card):
     models.OwnedCard.objects.create(card=card, account=account)
     card.total_owned += 1
     return item_view(request, 'card', ENABLED_COLLECTIONS['card'], pk=card.id, item=card, ajax=True)
+
+def account_about(request, account):
+    context = {
+        'account': get_object_or_404(models.Account.objects.select_related('starter'), pk=account),
+    }
+    return render(request, 'ajax/account_about.html', context)

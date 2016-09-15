@@ -1,0 +1,23 @@
+{% load i18n %}
+{% with oc=item %}
+<div class="ownedcard">
+  <a href="{{ oc.card.item_url }}" data-ajax-url="{{ oc.card.ajax_item_url }}" data-ajax-title="{{ oc.card }}">
+    <img src="{% if oc.awakened %}{{ oc.card.icon_awakened_url }}{% else %}{{ oc.card.icon_url }}{% endif %}" alt="{{ oc.card }}">
+  </a>
+  {% if oc.is_mine %}<a href="/ownedcards/edit/{{ oc.id }}/" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Edit' %} {% trans 'Card' %}" data-ajax-title="{% trans 'Edit' %} {% trans 'Card' %}" data-placement="bottom" data-ajax-url="/ajax/ownedcards/edit/{{ oc.id }}/" data-ajax-handle-form="true" class="btn btn-link-{{ oc.card.english_type }}"><i class="flaticon-edit"></i></a>{% endif %}<span data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="{% trans 'About' %}" class="inline-block"><a href="#ownedcarddetails{{ oc.id }}" data-toggle="collapse" class="btn btn-link-{{ oc.card.english_type }}"><i class="flaticon-more"></i></a></span>
+  <br>
+  <div class="ownedcard-details collapse" id="ownedcarddetails{{ oc.id }}">
+    <br>
+    <ul class="list-group">
+      <li class="list-group-item">{% trans 'Max Leveled' %} <span class="pull-right"><i class="flaticon-{% if oc.max_leveled %}checked{% else %}delete{% endif %}"></i></span></li>
+      <li class="list-group-item">{% trans 'Max Bonded' %} <span class="pull-right"><i class="flaticon-{% if oc.max_bonded %}checked{% else %}delete{% endif %}"></i></span></li>
+      {% if oc.star_rank %}
+      <li class="list-group-item">{% trans 'Star Rank' %} <span class="pull-right">{{ oc.star_rank }}</span></li>
+      {% endif %}
+      {% if oc.skill_level %}
+      <li class="list-group-item">{% trans 'Skill Level' %} <span class="pull-right">{{ oc.skill_level }}</span></li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+{% endwith %}

@@ -1,7 +1,7 @@
 from django.conf import settings as django_settings
 from django.utils.translation import ugettext_lazy as _
 from web.default_settings import DEFAULT_ENABLED_COLLECTIONS, DEFAULT_ENABLED_PAGES
-from cpro import models, forms, filters, collections
+from cpro import models, forms, filters, collections, utils
 
 SITE_NAME = 'Cinderella Producers'
 SITE_URL = 'http://cinderella.pro/'
@@ -12,12 +12,22 @@ DISQUS_SHORTNAME = 'cinderellapro'
 ACCOUNT_MODEL = models.Account
 COLOR = '#4a86e8'
 
+GET_GLOBAL_CONTEXT = utils.globalContext
+
+TOTAL_DONATORS = getattr(django_settings, 'TOTAL_DONATORS', 2)
+LATEST_NEWS = getattr(django_settings, 'LATEST_NEWS', 2)
+
+ON_PREFERENCES_EDITED = utils.onPreferencesEdited
+
 ENABLED_COLLECTIONS = DEFAULT_ENABLED_COLLECTIONS
 
 ENABLED_COLLECTIONS['account']['add']['form_class'] = collections.getAccountForm
 ENABLED_COLLECTIONS['account']['edit']['form_class'] = forms.AccountFormAdvanced
 
 ENABLED_COLLECTIONS['account']['add']['otherbuttons_template'] = 'include/advancedButton'
+
+ENABLED_COLLECTIONS['user']['item']['extra_context'] = collections.profileGetAccountTabs
+ENABLED_COLLECTIONS['user']['item']['js_files'] = ENABLED_COLLECTIONS['user']['item'].get('js_files', []) + ['profile_account_tabs']
 
 ENABLED_COLLECTIONS['card'] = {
     'queryset': models.Card.objects.all(),
@@ -46,6 +56,27 @@ ENABLED_COLLECTIONS['card'] = {
         'form_class': forms.CardForm,
         'multipart': True,
         'staff_required': True,
+    },
+}
+
+ENABLED_COLLECTIONS['ownedcard'] = {
+    'queryset': models.OwnedCard.objects.all().select_related('card'),
+    'title': _('Card'),
+    'plural_title': _('Cards'),
+    'icon': 'album',
+    'list': {
+        'default_ordering': '-card__i_rarity,-awakened,card__idol__i_type',
+        'per_line': 6,
+        'filter_queryset': filters.filterOwnedCards,
+        'col_break': 'xs',
+        'foreach_items': collections.foreachOwnedCard,
+        'filter_form': forms.FilterOwnedCards,
+    },
+    'edit': {
+        'form_class': forms.EditOwnedCardForm,
+        'redirect_after_edit': collections.ownedCardRedirectAfter,
+        'redirect_after_delete': collections.ownedCardRedirectAfter,
+        'allow_delete': True,
     },
 }
 
@@ -111,4 +142,14 @@ ENABLED_PAGES['addcard'] = {
     ],
 }
 
+ENABLED_PAGES['account_about'] = {
+    'ajax': True,
+    'navbar_link': False,
+    'url_variables':  [
+        ('account', '\d+'),
+    ],
+}
+
 HASHTAGS = ['deresute', 'idolmaster']
+
+USER_COLORS = models.TYPES

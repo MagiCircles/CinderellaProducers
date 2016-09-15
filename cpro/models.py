@@ -34,6 +34,8 @@ class uploadItem(object):
         )
 
 def getAccountLeaderboard(account):
+    if not account.level:
+        return None
     return Account.objects.filter(level__gt=account.level).values('level').distinct().count() + 1
 
 ############################################################
@@ -122,18 +124,26 @@ class Account(ItemModel):
     collection_name = 'account'
 
     owner = models.ForeignKey(User, related_name='accounts')
-    creation = models.DateTimeField(auto_now_add=True)
+    creation = models.DateTimeField(_('Creation'), auto_now_add=True)
     level = models.PositiveIntegerField(_('Level'), null=True)
     nickname = models.CharField(_('Nickname'), max_length=100, null=True)
     game_id = models.PositiveIntegerField(_('Game ID'), null=True)
     accept_friend_requests = models.NullBooleanField('', null=True, help_text=_('Accept friend requests'))
     device = models.CharField(_('Device'), max_length=150, null=True)
-    play_with = models.PositiveIntegerField(_('Play with'), null=True, choices=PLAY_WITH_CHOICES)
-    os = models.PositiveIntegerField(_('Operating System'), choices=OS_CHOICES, default=0)
+    i_play_with = models.PositiveIntegerField(_('Play with'), null=True, choices=PLAY_WITH_CHOICES)
+    @property
+    def play_with(self): return PLAY_WITH_DICT[self.i_play_with] if self.i_play_with else None
+    @property
+    def play_with_icon(self): return PLAY_WITH_ICONS[self.i_play_with] if self.i_play_with else None
+    i_os = models.PositiveIntegerField(_('Operating System'), choices=OS_CHOICES, default=0)
+    @property
+    def os(self): return OS_DICT[self.i_os] if self.i_os else None
     center = models.ForeignKey('OwnedCard', verbose_name=_('Center'), null=True, on_delete=models.SET_NULL, related_name='centers')
     starter = models.ForeignKey('Card', verbose_name=_('Starter'), on_delete=models.SET_NULL, null=True)
     start_date = models.DateField(_('Start Date'), null=True)
-    producer_rank = models.PositiveIntegerField(_('Producer Rank'), choices=PRODUCER_RANK_CHOICES, default=0)
+    i_producer_rank = models.PositiveIntegerField(_('Producer Rank'), choices=PRODUCER_RANK_CHOICES, default=0)
+    @property
+    def producer_rank(self): return PRODUCER_RANK_DICT[self.i_producer_rank]
 
     # Cache owner
     _cache_owner_days = 20
@@ -178,7 +188,6 @@ class Account(ItemModel):
     def update_cache_leaderboard(self):
         self._cache_leaderboard_last_update = timezone.now()
         self._cache_leaderboard = getAccountLeaderboard(self)
-        self._cache_leaderboard_team = getAccountLeaderboardForTeam(self)
 
     def force_cache_leaderboard(self):
         self.update_cache_leaderboard()
@@ -189,6 +198,61 @@ class Account(ItemModel):
         if not self._cache_leaderboard_last_update or self._cache_leaderboard_last_update < timezone.now() - datetime.timedelta(days=self._cache_leaderboard_days):
             self.force_cache_leaderboard()
         return self._cache_leaderboard
+
+    # Cache center
+    _cache_center_days = 20
+    _cache_center_last_update = models.DateTimeField(null=True)
+    _cache_center_awakened = models.NullBooleanField(default=None)
+    _cache_center_card_id = models.PositiveIntegerField(null=True)
+    _cache_center_card_i_type = models.PositiveIntegerField(choices=TYPE_CHOICES, null=True)
+    _cache_center_card_icon = models.ImageField(upload_to=uploadItem('c/icon'), null=True)
+    _cache_center_card_art = models.ImageField(upload_to=uploadItem('c/art'), null=True)
+    _cache_center_card_transparent = models.ImageField(upload_to=uploadItem('c/transparent'), null=True)
+    _cache_center_card_string = models.CharField(max_length=100, null=True)
+
+    def update_cache_center(self):
+        self._cache_center_last_update = timezone.now()
+        self._cache_center_awakened = self.center.awakened
+        self._cache_center_card_id = self.center.card.id
+        self._cache_center_card_i_type = self.center.card.i_type
+        self._cache_center_card_icon = self.center.card.icon if not self.center.awakened else self.center.card.icon_awakened
+        self._cache_center_card_art = self.center.card.art if not self.center.awakened else self.center.card.art_awakened
+        self._cache_center_card_transparent = self.center.card.transparent if not self.center.awakened else self.center.card.transparent_awakened
+        self._cache_center_card_string = unicode(self.center.card)
+        print self._cache_center_card_art
+
+    def force_cache_center(self):
+        self.update_cache_center()
+        self.save()
+
+    @property
+    def cached_center(self):
+        if not self.center_id:
+            return None
+        if not self._cache_center_last_update or self._cache_center_last_update < timezone.now() - datetime.timedelta(days=self._cache_center_days):
+            self.force_cache_center()
+        return AttrDict({
+            'pk': self.center_id,
+            'id': self.center_id,
+            'card_id': self._cache_center_card_id,
+            'awakened': self._cache_center_awakened,
+            'card': AttrDict({
+                'id': self._cache_center_card_id,
+                'pk': self._cache_center_card_id,
+                'i_type': self._cache_center_card_i_type,
+                'type': TYPE_DICT[self._cache_center_card_i_type] if self._cache_center_card_i_type is not None else None,
+                'english_type': ENGLISH_TYPE_DICT[self._cache_center_card_i_type] if self._cache_center_card_i_type is not None else None,
+                'icon': self._cache_center_card_icon,
+                'icon_url': get_image_url(self._cache_center_card_icon),
+                'art': self._cache_center_card_art,
+                'art_url': get_image_url(self._cache_center_card_art),
+                'transparent': self._cache_center_card_transparent,
+                'transparent_url': get_image_url(self._cache_center_card_transparent),
+                'string': self._cache_center_card_string,
+                'item_url': u'/card/{}/{}/'.format(self._cache_center_card_id, tourldash(self._cache_center_card_string)),
+                'ajax_item_url': u'/ajax/card/{}/'.format(self._cache_center_card_id),
+            }),
+        })
 
     def __unicode__(self):
         return u'#{} Level {}'.format(self.id, self.level)
@@ -209,6 +273,8 @@ class Card(ItemModel):
     @property
     def short_rarity(self): return RARITY_SHORT_DICT[self.i_rarity]
 
+    @property
+    def i_type(self): return self.cached_idol.i_type
     @property
     def type(self): return self.cached_idol.type
 
@@ -494,15 +560,50 @@ class OwnedCard(ItemModel):
     account = models.ForeignKey(Account, related_name='ownedcards', on_delete=models.CASCADE)
     card = models.ForeignKey(Card, related_name='owned', on_delete=models.CASCADE)
     awakened = models.BooleanField(_('Awakened'), default=False)
-    max_bonded = models.BooleanField(default=False)
-    max_leveled = models.BooleanField(default=False)
+    max_bonded = models.BooleanField(_('Max Bonded'), default=False)
+    max_leveled = models.BooleanField(_('Max Leveled'), default=False)
     star_rank = models.PositiveIntegerField(_('Star Rank'), default=1, validators=[
         MinValueValidator(1),
         MaxValueValidator(20),
-        #     )models.1-20 , 5, R–10,SR –15 and SSR –20
     ])
     skill_level = models.PositiveIntegerField(_('Skill Level'), default=1, validators=[
         MinValueValidator(1),
         MaxValueValidator(10),
     ])
     obtained_date = models.DateField(_('Obtained Date'), null=True)
+
+    # Cache account + owner
+    _cache_account_days = 200
+    _cache_account_last_update = models.DateTimeField(null=True)
+    _cache_account_owner_id = models.PositiveIntegerField(null=True)
+
+    def update_cache_account(self):
+        self._cache_account_owner_id = self.account.owner_id
+
+    def force_cache_account(self):
+        self.update_cache_account()
+        self.save()
+
+    @property
+    def cached_account(self):
+        if not self._cache_account_last_update or self._cache_account_last_update < timezone.now() - datetime.timedelta(days=self._cache_account_days):
+            self.force_cache_account()
+        return AttrDict({
+            'pk': self.account_id,
+            'id': self.account_id,
+            'owner': AttrDict({
+                'id': self._cache_account_owner_id,
+                'pk': self._cache_account_owner_id,
+            }),
+        })
+
+    @property
+    def owner(self):
+        return self.cached_account.owner
+
+    @property
+    def owner_id(self):
+        return self.cached_account.owner_id
+
+    def __unicode__(self):
+        return u'#{}{}'.format(self.card_id, u'({})'.format(_('Awakened')) if self.awakened else '')
