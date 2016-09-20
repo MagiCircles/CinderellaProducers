@@ -14,7 +14,7 @@ def globalContext(request):
 def onUserEdited(request):
     accounts = models.Account.objects.filter(owner_id=request.user.id).select_related('owner', 'owner__preferences')
     for account in accounts:
-        account.force_cache()
+        account.force_cache_owner()
 
 def onPreferencesEdited(request):
     accounts = models.Account.objects.filter(owner_id=request.user.id).select_related('owner', 'owner__preferences')
