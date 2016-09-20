@@ -104,3 +104,8 @@ cards*.json
 *~
 #*#
 cpro/static/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
