@@ -1,2 +1,3 @@
 git+https://github.com/SchoolIdolTomodachi/MagiCircles.git
 tinify==1.3.0
+mysql-python
