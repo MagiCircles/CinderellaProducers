@@ -154,7 +154,9 @@
       <td><i class="flaticon-edit"></i></td>
       <th>{% trans 'Signature' %}</th>
       <td>
-	<img src="{{ idol.signature_url }}" alt="{% trans 'Signature' %}">
+	<a href="{{ idol.signature_url }}" target="_blank">
+	  <img src="{{ idol.signature_url }}" alt="{% trans 'Signature' %}">
+	</a>
       </td>
     </tr>
     {% endif %}
