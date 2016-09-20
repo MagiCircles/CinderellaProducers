@@ -1,17 +1,19 @@
 {% load i18n %}
 {% with card=item %}
-<div class="card {{ card.english_type }}" data-card-title="{{ card }}">
+{% if page == 1 and forloop.counter0 == 0 %}<div id="topcards"></div>{% endif %}
+<div class="card {{ card.english_type }}" data-card-title="{{ card }}" id="card{{ card.id }}">
   <div class="card-images">
     <img src="{{ card.image_url }}" class="card-image">{% if card.image_awakened %}<img src="{{ card.image_awakened_url }}" class="card-image">{% endif %}
   </div>
   <div class="card-buttons">
-    <a href="{% if current == 'card_item' %}#cardstat{{ card.id }}{% else %}{{ card.item_url }}{% endif %}" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Card Info' %}" data-placement="bottom" data-delay="0" {% if current != 'card_item' %}data-info-ajax="/ajax/cardstat/{{ card.id }}/"{% endif %} {% if current == 'card_item' %}class="page-scroll"{% endif %}><i class="flaticon-about"></i></a>
+    <a href="{% if current == 'card_item' and not collection %}#cardstat{{ card.id }}{% else %}{{ card.item_url }}{% endif %}" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Card Info' %}" data-placement="bottom" data-delay="0" {% if current != 'card_item' %}data-info-ajax="/ajax/cardstat/{{ card.id }}/"{% endif %} {% if current == 'card_item' %}class="page-scroll"{% endif %}><i class="flaticon-about"></i></a>
     <a href="#" class="info-loader" style="display: none;"><i class="flaticon-loading"></i></a>
     {% if not card.total_owned %}
     {% if user.is_authenticated and user.all_accounts|length != 0 %}
     <form{% if user.all_accounts|length == 1 %} class="hidden"{% endif %} method="post" action="/ajax/addcard/{{ card.id }}/">
       {% csrf_token %}
-      <select name="account">
+      <small>{% trans 'Add to' %}:</small>
+      <select name="account" class="account-select form-control">
 	{% for account in user.all_accounts %}
 	<option value="{{ account.id }}">{{ account }}</option>
 	{% endfor %}
@@ -21,17 +23,18 @@
     <a href="{% if user.is_authenticated and user.all_accounts|length != 0 %}#addCard{% elif user.is_authenticated %}/accounts/add/?next={{ current_url }}{% else %}/signup/?next={{ current_url }}{% endif %}" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Add this card to your collection' %}" data-placement="bottom"><i class="flaticon-add"></i></a>
     <a href="#" class="addcard-loader" style="display: none;"><i class="flaticon-loading"></i></a>
     {% elif card.total_owned == 1 %}
-    <a href="{{ card.item_url }}?collection" data-ajax="{{ card.ajax_iten_url }}?collection" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Your cards' %}" data-placement="bottom"><i class="flaticon-checked"></i></a>
+    <a href="{{ card.item_url }}?collection" {% if current != 'card_item' %}data-ajax-url="/ajax/cardcollection/{{ card.id }}/" data-ajax-title="{{ card }}"{% endif %} data-toggle="tooltip" data-trigger="hover" title="{% trans 'Your cards' %}" data-placement="bottom"><i class="flaticon-checked"></i></a>
     {% else %}
-    <a href="{{ card.item_url }}?collection" data-ajax="{{ card.ajax_iten_url }}?collection" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Your cards' %}" data-placement="bottom">x{{ card.total_owned }}</a>
+    <a href="{{ card.item_url }}?collection" {% if current != 'card_item' %}data-ajax-url="/ajax/cardcollection/{{ card.id }}/" data-ajax-title="{{ card }}"{% endif %} data-toggle="tooltip" data-trigger="hover" title="{% trans 'Your cards' %}" data-placement="bottom" class="total-button-wrapper"><span class="total-button">x{{ card.total_owned }}</span></a>
     {% endif %}
     {% if user.is_staff %}
     <a href="/cards/edit/{{ card.id }}/" data-toggle="tooltip" data-trigger="hover" title="Staff - {% trans 'Edit' %} {% trans 'Card' %}" data-placement="bottom"><i class="flaticon-edit"></i></a>
     {% endif %}
   </div>
 </div>
-{% if current != 'card_list' and current != 'card_list_ajax' %}
+{% if current != 'card_list' and current != 'card_list_ajax' and current != 'addcard_ajax' %}
 {% if collection %}
+{% include 'include/cards-collection.html' %}
 {% else %}
 {% include 'include/cards-stats.html' %}
 {% endif %}

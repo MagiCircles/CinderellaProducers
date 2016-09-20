@@ -1,0 +1,15 @@
+<style>{% include 'include/cssLeaderboardStatic.css' %}</style>
+<script>
+  var starters = {
+  '': '{{ static_url }}img/{{ empty_image }}',
+  {% for id, name, image in starters %}
+    '{{ id }}': '{{ image }}',
+  {% endfor %}
+    };
+  var favorite_characters = {
+  '': '{{ static_url }}img/{{ empty_image }}',
+  {% for id, name, image in favorite_characters %}
+    '{{ id }}': '{{ image }}',
+  {% endfor %}
+    };
+</script>

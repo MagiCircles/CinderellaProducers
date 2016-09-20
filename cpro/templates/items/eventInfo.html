@@ -1,0 +1,140 @@
+{% load i18n %}
+{% load tz %}
+{% load cpro_tags %}
+{% with event=item %}
+<div class="event-info">
+  <img src="{{ event.image_url }}" alt="{{ event.name }}" class="event-image img-responsive">
+  <br>
+  <div class="text-center">
+    <span class="btn-group">
+      <a href="/cards/?event={{ event.id }}" class="btn btn-lg btn-secondary" target="_blank">
+	<i class="flaticon-cards"></i>
+	{% trans 'Cards' %}
+      </a>
+      <!-- <a href="/accounts/?event={{ event.id }}" class="btn btn-lg btn-secondary" target="_blank"> -->
+      <!-- 	<i class="flaticon-contest"></i> -->
+      <!-- 	{% trans 'Ranking' %} -->
+      <!-- </a> -->
+      <a href="{{ event.item_url }}#disqus_thread" class="btn btn-lg btn-secondary"{% if current != 'event_item' %} target="_blank"{% endif %}>
+	<i class="flaticon-comments"></i>
+	{% trans 'Comments' %}
+      </a>
+      {% include 'include/share.html' with share_url=event.http_item_url share_btn_class="secondary btn-lg" share_sentence=event %}
+      {% if user.is_staff %}
+      <a href="/events/edit/{{ event.id }}/" class="btn btn-lg btn-secondary"><i class="flaticon-edit"></i></a>
+      {% endif %}
+    </span>
+  </div>
+  {% if event.is_current %}
+  <h1 id="countdown" class="text-main">
+    <script>
+      var eventcountdown = "{{ event.end|torfc2822 }}";
+      var render = function countdownRender(data) {
+      $(this.el).text(data.days + ' {% trans 'days' %}, ' + data.hours + ' {% trans 'hours' %}, ' + data.min + ' {% trans 'minutes' %}, ' + data.sec + ' {% trans 'seconds left' %}');
+      };
+    </script>
+  </h1>
+  {% else %}
+  <br>
+  {% endif %}
+  <table class="table about-table">
+    <tr>
+      <td><i class="flaticon-JP"></i></td>
+      <th>{% trans 'Name' %} ({% trans 'Japanese' %})</th>
+      <td>{{ event.name }}</td>
+    </tr>
+    {% if event.translated_name %}
+    <tr>
+      <td><i class="flaticon-world"></i></td>
+      <th>{% trans 'Name' %} ({% trans 'translated in English' %})</th>
+      <td>{{ event.translated_name }}</td>
+    </tr>
+    {% endif %}
+    <tr>
+      <td><i class="flaticon-event"></i></td>
+      <th>{% trans 'Event' %}</th>
+      <td>{{ event.kind }}</td>
+    </tr>
+    <tr>
+      <td><i class="flaticon-date"></i></td>
+      <th>{% trans 'Beginning' %}</th>
+      <td>{{ event.beginning|timezone:"Asia/Tokyo" }}</td>
+    </tr>
+    <tr>
+      <td><i class="flaticon-date"></i></td>
+      <th>{% trans 'End' %}</th>
+      <td>{{ event.end|timezone:"Asia/Tokyo" }}</td>
+    </tr>
+    {% if event.t1_rank %}
+    <tr>
+      <td><i class="flaticon-contest"></i></td>
+      <th>{% trans 'T1 Rank' %}</th>
+      <td>{{ event.t1_rank }}</td>
+    </tr>
+    {% endif %}
+    {% if event.t1_points %}
+    <tr>
+      <td><i class="flaticon-scoreup"></i></td>
+      <th>{% trans 'T1 Points' %}</th>
+      <td>{{ event.t1_points }}</td>
+    </tr>
+    {% endif %}
+    {% if event.t2_rank %}
+    <tr>
+      <td><i class="flaticon-contest"></i></td>
+      <th>{% trans 'T2 Rank' %}</th>
+      <td>{{ event.t2_rank }}</td>
+    </tr>
+    {% endif %}
+    {% if event.t2_points %}
+    <tr>
+      <td><i class="flaticon-scoreup"></i></td>
+      <th>{% trans 'T2 Points' %}</th>
+      <td>{{ event.t2_points }}</td>
+    </tr>
+    {% endif %}
+    {% if event.t3_rank %}
+    <tr>
+      <td><i class="flaticon-contest"></i></td>
+      <th>{% trans 'T3 Rank' %}</th>
+      <td>{{ event.t3_rank }}</td>
+    </tr>
+    {% endif %}
+    {% if event.t3_points %}
+    <tr>
+      <td><i class="flaticon-scoreup"></i></td>
+      <th>{% trans 'T3 Points' %}</th>
+      <td>{{ event.t3_points }}</td>
+    </tr>
+    {% endif %}
+    {% if event.t4_rank %}
+    <tr>
+      <td><i class="flaticon-contest"></i></td>
+      <th>{% trans 'T4 Rank' %}</th>
+      <td>{{ event.t4_rank }}</td>
+    </tr>
+    {% endif %}
+    {% if event.t4_points %}
+    <tr>
+      <td><i class="flaticon-scoreup"></i></td>
+      <th>{% trans 'T4 Points' %}</th>
+      <td>{{ event.t4_points }}</td>
+    </tr>
+    {% endif %}
+    {% if event.t5_rank %}
+    <tr>
+      <td><i class="flaticon-contest"></i></td>
+      <th>{% trans 'T5 Rank' %}</th>
+      <td>{{ event.t5_rank }}</td>
+    </tr>
+    {% endif %}
+    {% if event.t5_points %}
+    <tr>
+      <td><i class="flaticon-scoreup"></i></td>
+      <th>{% trans 'T5 Points' %}</th>
+      <td>{{ event.t5_points }}</td>
+    </tr>
+    {% endif %}
+  </table>
+</div>
+{% endwith %}

@@ -50,7 +50,7 @@
     </td>
   </tr>
   {% endif %}
-  {% if account.starter_id %}
+  {% if account.starter_id and account.starter_id != account.cached_center.card.id %}
   <tr>
     <td>
       <a href="{{ account.starter.item_url }}" target="_blank" data-ajax-url="{{ account.starter.ajax_item_url }}">
@@ -74,7 +74,7 @@
   {% endif %}
   <tr class="text-muted">
     <td><i class="flaticon-date"></i></td>
-    <th>{% trans 'Creation' %}</th>
+    <th>{% trans 'Join Date' %}</th>
     <td>{{ account.creation }}</td>
   </tr>
 </table>

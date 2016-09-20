@@ -46,7 +46,7 @@ class Idol(ItemModel):
 
     owner = models.ForeignKey(User, related_name='added_idols')
     name = models.CharField(string_concat(_('Name'), ' (romaji)'), max_length=100, unique=True)
-    japanese_name = models.CharField(string_concat(_('Name'), ' (Japanese)'), max_length=100, null=True)
+    japanese_name = models.CharField(string_concat(_('Name'), ' (', _('Japanese'), ')'), max_length=100, null=True)
     i_type = models.PositiveIntegerField(_('Type'), choices=TYPE_CHOICES, null=True)
     @property
     def type(self): return TYPE_DICT[self.i_type]
@@ -61,7 +61,7 @@ class Idol(ItemModel):
     def blood_type(self): return BLOOD_TYPE_DICT[self.i_blood_type] if self.i_blood_type else None
     i_writing_hand = models.PositiveIntegerField(_('Writing Hand'), choices=WRITING_HAND_CHOICES, null=True)
     @property
-    def writing_hand(self): return WRITING_HAND_DICT[self.i_writing_hand] if self.i_writing_hand else None
+    def writing_hand(self): return WRITING_HANDS_DICT[self.i_writing_hand] if self.i_writing_hand else None
     bust = models.PositiveIntegerField(_('Bust'), null=True, help_text='in cm')
     waist = models.PositiveIntegerField(_('Waist'), null=True, help_text='in cm')
     hips = models.PositiveIntegerField(_('Hips'), null=True, help_text='in cm')
@@ -78,6 +78,8 @@ class Idol(ItemModel):
     # Images
     image = models.ImageField(_('Image'), upload_to=uploadItem('i'))
     signature = models.ImageField(_('Signature'), upload_to=uploadItem('i/sign'), null=True)
+    @property
+    def signature_url(self): return get_image_url(self.signature)
 
     def __unicode__(self):
         return self.name
@@ -94,6 +96,9 @@ class Event(ItemModel):
     image = models.ImageField(_('Image'), upload_to=uploadItem('e'))
     beginning = models.DateTimeField(_('Beginning'), null=True)
     end = models.DateTimeField(_('End'), null=True)
+    i_kind = models.PositiveIntegerField(_('Kind'), default=0, choices=EVENT_KIND_CHOICES)
+    @property
+    def kind(self): return EVENT_KIND_DICT[self.i_kind]
     t1_points = models.PositiveIntegerField(_('T{} points').format(1), null=True)
     t1_rank = models.PositiveIntegerField(_('T{} rank').format(1), null=True)
     t2_points = models.PositiveIntegerField(_('T{} points').format(2), null=True)
@@ -124,7 +129,7 @@ class Account(ItemModel):
     collection_name = 'account'
 
     owner = models.ForeignKey(User, related_name='accounts')
-    creation = models.DateTimeField(_('Creation'), auto_now_add=True)
+    creation = models.DateTimeField(_('Join Date'), auto_now_add=True)
     level = models.PositiveIntegerField(_('Level'), null=True)
     nickname = models.CharField(_('Nickname'), max_length=100, null=True)
     game_id = models.PositiveIntegerField(_('Game ID'), null=True)
@@ -219,7 +224,6 @@ class Account(ItemModel):
         self._cache_center_card_art = self.center.card.art if not self.center.awakened else self.center.card.art_awakened
         self._cache_center_card_transparent = self.center.card.transparent if not self.center.awakened else self.center.card.transparent_awakened
         self._cache_center_card_string = unicode(self.center.card)
-        print self._cache_center_card_art
 
     def force_cache_center(self):
         self.update_cache_center()
@@ -255,7 +259,7 @@ class Account(ItemModel):
         })
 
     def __unicode__(self):
-        return u'#{} Level {}'.format(self.id, self.level)
+        return u'{} Lv. {}'.format(self.nickname if self.nickname else self.cached_owner.username, self.level if self.level else '??')
 
 ############################################################
 # Card
@@ -365,14 +369,14 @@ class Card(ItemModel):
     def overall_awakened_max(self):
         return self.vocal_awakened_max + self.dance_awakened_max + self.visual_awakened_max
 
-    def _value_for_level(self, fieldname, level=1, max_level=None, to_string=True):
+    def _value_for_level(self, fieldname, level=1, max_level=None, to_string=True, round_integer=True):
         if not max_level:
             max_level = self.max_level
         min = getattr(self, fieldname + '_min')
         max = getattr(self, fieldname + '_max')
         value = min + ((level - 1) / (max_level - 1)) * (max - min)
         if to_string:
-            return '{0:g}'.format(value)
+            return '{0:g}'.format(int(value) if round_integer else round(value, 2))
         return value
 
     _local_stats = None
@@ -402,6 +406,7 @@ class Card(ItemModel):
         return self._local_stats
 
     # Skill
+    max_skill_level = MAX_SKILL_LEVEL
     i_skill = models.PositiveIntegerField(_('Skill'), choices=SKILL_CHOICES, null=True)
     @property
     def skill(self): return SKILL_DICT[self.i_skill]
@@ -423,11 +428,11 @@ class Card(ItemModel):
         if self.i_skill is None:
             return None
         return (JAPANESE_SKILL_SENTENCES if japanese else SKILL_SENTENCES)[self.i_skill].format(
-            trigger_value=self.trigger_value,
-            trigger_chance=self._value_for_level('trigger_chance', level, max_level=10),
-            skill_duration=self._value_for_level('skill_duration', level, max_level=10),
-            skill_value=self.skill_value,
-            skill_value2=self.skill_value2,
+            trigger_value='{0:g}'.format(self.trigger_value),
+            trigger_chance=self._value_for_level('trigger_chance', level, max_level=MAX_SKILL_LEVEL, round_integer=False),
+            skill_duration=self._value_for_level('skill_duration', level, max_level=MAX_SKILL_LEVEL, round_integer=False),
+            skill_value='{0:g}'.format(self.skill_value),
+            skill_value2='{0:g}'.format(self.skill_value2),
         )
 
     @property
@@ -437,6 +442,16 @@ class Card(ItemModel):
     @property
     def japanese_skill_details(self):
         return self.get_skill_details(japanese=True)
+
+    @property
+    def javascript_all_skill_levels_details(self):
+        all_levels = {
+            language: {
+                unicode(level): self.get_skill_details(level=level, japanese=language == 'japanese')
+                for level in range(1, self.max_skill_level + 1)
+            } for language in ['english', 'japanese']
+        }
+        return unicode(all_levels).replace('u\'', '\'').replace('\'', '"')
 
     # Leader skill
     leader_skill_type = models.PositiveIntegerField('Leader Skill Type', choices=LEADER_SKILL_CHOICES, null=True)
@@ -471,7 +486,7 @@ class Card(ItemModel):
                 leader_skill_type=JAPANESE_LEADER_SKILL_STAT[self.leader_skill_type],
             )
         return u'{idol_type}{leader_skill_type}'.format(
-            idol_type=JAPANESE_TYPES[self.cached_idol.i_type],
+           idol_type=JAPANESE_TYPES[self.cached_idol.i_type],
             leader_skill_type=JAPANESE_LEADER_SKILL_STAT[self.leader_skill_type],
         )
 
@@ -482,7 +497,7 @@ class Card(ItemModel):
         return LEADER_SKILL_SENTENCE.format(
             leader_skill_type=TRANSLATED_LEADER_SKILL_STAT_IN_SENTENCE[self.leader_skill_type],
             idol_type=self.type if not self.leader_skill_all else TRANSLATED_LEADER_SKILL_RARITY_ALL_IN_SENTENCE[self.i_rarity],
-            leader_skill_percent=self.leader_skill_percent,
+            leader_skill_percent='{0:g}'.format(self.leader_skill_percent),
         )
 
     @property
@@ -492,7 +507,7 @@ class Card(ItemModel):
         return JAPANESE_LEADER_SKILL_SENTENCE.format(
             leader_skill_type=JAPANESE_LEADER_SKILL_STAT_IN_SENTENCE[self.leader_skill_type],
             idol_type=JAPANESE_TYPES[self.cached_idol.i_type] + u'アイドル' if not self.leader_skill_all else JAPANESE_LEADER_SKILL_RARITY_ALL_IN_SENTENCE[self.i_rarity],
-            leader_skill_percent=self.leader_skill_percent,
+            leader_skill_percent='{0:g}'.format(self.leader_skill_percent),
         )
 
     # Raw values
@@ -506,6 +521,40 @@ class Card(ItemModel):
     def awakened_or_not(self):
         return (False, True)
 
+    # Cache event
+    _cache_event_days = 20
+    _cache_event_last_update = models.DateTimeField(null=True)
+    _cache_event_name = models.CharField(max_length=100, null=True)
+    _cache_event_translated_name = models.CharField(max_length=100, null=True)
+    _cache_event_image = models.ImageField(upload_to=uploadItem('e'), null=True, blank=True)
+
+    def update_cache_event(self):
+        self._cache_event_last_update = timezone.now()
+        self._cache_event_name = self.event.name
+        self._cache_event_translated_name = self.event.translated_name
+        self._cache_event_image = self.event.image
+
+    def force_cache_event(self):
+        self.update_cache_event()
+        self.save()
+
+    @property
+    def cached_event(self):
+        if not self.event_id:
+            return None
+        if not self._cache_event_last_update or self._cache_event_last_update < timezone.now() - datetime.timedelta(days=self._cache_event_days):
+            self.force_cache_event()
+        return AttrDict({
+            'id': self.event_id,
+            'pk': self.event_id,
+            'name': self._cache_event_name,
+            'translated_name': self._cache_event_translated_name,
+            'image': self._cache_event_image,
+            'image_url': get_image_url(self._cache_event_image),
+            'item': '/event/{}/{}/'.format(self.event_id, tourldash(self._cache_event_translated_name if self._cache_event_translated_name else self._cache_event_name)),
+            'ajax_item_url': '/ajax/event/{}/'.format(self.event_id),
+        })
+
     # Cache idol
     _cache_idol_days = 20
     _cache_idol_last_update = models.DateTimeField(null=True)
@@ -514,12 +563,15 @@ class Card(ItemModel):
     _cache_idol_i_type = models.PositiveIntegerField(choices=TYPE_CHOICES, null=True)
     _cache_idol_image = models.ImageField(upload_to=uploadItem('idol'), null=True, blank=True)
 
-    def force_cache_idol(self):
+    def update_cache_idol(self):
         self._cache_idol_last_update = timezone.now()
         self._cache_idol_name = self.idol.name
         self._cache_idol_japanese_name = self.idol.japanese_name
         self._cache_idol_i_type = self.idol.i_type
         self._cache_idol_image = self.idol.image
+
+    def force_cache_idol(self):
+        self.update_cache_idol()
         self.save()
 
     @property
@@ -568,7 +620,7 @@ class OwnedCard(ItemModel):
     ])
     skill_level = models.PositiveIntegerField(_('Skill Level'), default=1, validators=[
         MinValueValidator(1),
-        MaxValueValidator(10),
+        MaxValueValidator(MAX_SKILL_LEVEL),
     ])
     obtained_date = models.DateField(_('Obtained Date'), null=True)
 
@@ -603,7 +655,7 @@ class OwnedCard(ItemModel):
 
     @property
     def owner_id(self):
-        return self.cached_account.owner_id
+        return self.cached_account.owner.id
 
     def __unicode__(self):
         return u'#{}{}'.format(self.card_id, u'({})'.format(_('Awakened')) if self.awakened else '')

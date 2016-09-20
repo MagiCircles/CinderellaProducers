@@ -1,5 +1,82 @@
+{% load i18n %}
 {% with idol=item %}
-<a href="/idols/edit/{{ idol.id }}/">
-  <h3>{{ idol }}</h3>
-</a>
+<div class="idol idol-{{ idol.english_type }}">
+  <a href="{{ idol.item_url }}" class="a-nodifference" data-ajax-url="{{ idol.ajax_item_url }}" data-ajax-title="<h3>
+      <img src='{{ static_url }}img/color/{{ idol.i_type }}.png' alt='{{ idol.type }}'>
+      {{ idol }}
+    </h3>">
+    <img src="{{ idol.image_url }}" alt="{{ idol }}" class="idol-img">
+  </a>
+  <a href="{{ idol.item_url }}" data-ajax-url="{{ idol.ajax_item_url }}">
+    <h3>
+      <img src="{{ static_url }}img/color/{{ idol.i_type }}.png" alt="{{ idol.type }}">
+      {{ idol }}
+    </h3>
+  </a>
+  {% if user.staff %}
+  <a href="/idols/t/{{ idol.id }}/">{% trans 'Edit' %} {% trans 'Idol' %}</a>
+  {% endif %}
+  {% if ordering %}
+  <table class="table">
+    {% if ordering == 'age' %}
+    <tr>
+      <td><i class="flaticon-scoreup"></i></td>
+      <th>{% trans 'Age' %}</th>
+      <td>{{ idol.age }}</td>
+    </tr>
+    {% elif ordering == 'birthday' %}
+    <tr>
+      <td><i class="flaticon-event"></i></td>
+      <th>{% trans 'Birthday' %}</th>
+      <td>{{ idol.birthday }}</td>
+    </tr>
+    {% elif ordering == 'height' %}
+    <tr>
+      <td><i class="flaticon-scoreup"></i></td>
+      <th>{% trans 'Height' %}</th>
+      <td>{{ idol.height }} cm</td>
+    </tr>
+    {% elif ordering == 'weight' %}
+    <tr>
+      <td><i class="flaticon-scoreup"></i></td>
+      <th>{% trans 'Weight' %}</th>
+      <td>{{ idol.weight }} kg</td>
+    </tr>
+    {% elif ordering == 'i_blood_type' %}
+    <tr>
+      <td><i class="flaticon-hp"></i></td>
+      <th>{% trans 'Blood Type' %}</th>
+      <td>{{ idol.blood_type }}</td>
+    </tr>
+    {% elif ordering == 'i_writing_hand' %}
+    <tr>
+      <td><i class="flaticon-fingers"></i></td>
+      <th>{% trans 'Writing Hand' %}</th>
+      <td>{{ idol.writing_hand }}</td>
+    </tr>
+    {% elif ordering == 'bust' %}
+    <tr>
+      <td><i class="flaticon-id"></i></td>
+      <th>{% trans 'Bust' %}</th>
+      <td>{{ idol.bust }} cm</td>
+    </tr>
+    {% elif ordering == 'waist' %}
+    <tr>
+      <td><i class="flaticon-id"></i></td>
+      <th>{% trans 'Waist' %}</th>
+      <td>{{ idol.waist }} cm</td>
+    </tr>
+    {% elif ordering == 'hips' %}
+    <tr>
+      <td><i class="flaticon-id"></i></td>
+      <th>{% trans 'Hips' %}</th>
+      <td>{{ idol.hips }} cm</td>
+    </tr>
+    {% endif %}
+  </table>
+  {% endif %}
+  {% if user.is_staff %}
+  <a href="/idols/edit/{{ idol.id }}/"><i class="flaticon-edit"></i></a>
+  {% endif %}
+</div>
 {% endwith %}

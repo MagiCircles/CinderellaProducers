@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import division
 import json, time, urllib2, requests, datetime
 from pprint import pprint
 from django.core.management.base import BaseCommand, CommandError
@@ -26,13 +27,26 @@ def shrunkImage(picture, filename):
     return ImageFile(img_shrunked)
 
 def downloadImageFile(url):
+    if not url:
+        return None
     img_temp = NamedTemporaryFile(delete=True)
-    req = urllib2.Request(url, headers={ 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.94 Safari/537.36' })
-    img_temp.write(urllib2.urlopen(req).read())
+    r = requests.get(url)
+    # Read the streamed image in sections
+    for block in r.iter_content(1024 * 8):
+        # If no more file then stop
+        if not block:
+            break
+        # Write image block to temporary file
+        img_temp.write(block)
     img_temp.flush()
     return ImageFile(img_temp)
 
-def downloadImage(url, tinypng=False):
+def downloadImage(url, prefix, id, tinypng=False):
+    if not url:
+        return None
+    a = models.uploadItem(prefix)(models.Card.objects.get(id=id), 'lol.png')
+    a = a.replace('cpro/static/uploaded/', 'u/')
+    return a
     downloaded = downloadImageFile(url)
     if tinypng:
         return shrunkImage(downloaded, url)
@@ -159,7 +173,7 @@ LEADER_SKILLS = {
     'skill_probability': models.LEADER_SKILL_SKILL,
 }
 
-def getIdolFromJson(owner, chara, update=False, image=True):
+def getIdolFromJson(owner, chara, update=False):
     name = chara['conventional']
     try:
         idol = models.Idol.objects.get(name=name)
@@ -187,8 +201,6 @@ def getIdolFromJson(owner, chara, update=False, image=True):
     data['i_astrological_sign'] = models.ASTROLOGICAL_SIGN_REVERSE_DICT[ASTROLOGICAL_SIGNS[chara['constellation']]]
     data['hometown'] = HOMETOWNS[chara['home_town']]
     data['CV'] = chara['voice'] if chara['voice'] else None
-    #if image:
-    #    data['image'] = downloadImage(chara['icon_image_ref'])
     idol, created = models.Idol.objects.update_or_create(name=name, defaults=data)
     return idol
 
@@ -236,21 +248,21 @@ def import_starlightdb(args):
                 except StopIteration:
                     awakened = None
                     print ' WARNING: Awakened not found'
-                data['idol'] = getIdolFromJson(owner, card['chara'], update='update' in args, image='images' in args)
+                data['idol'] = getIdolFromJson(owner, card['chara'], update='update' in args)
                 data['i_rarity'] = RARITIES[card['rarity']['rarity']]
                 data['title'] = card['title']
                 if 'images' in args:
-                    data['image'] = downloadImage(card['card_image_ref'])
-                    data['art'] = downloadImage(card['spread_image_ref'])
-                    data['transparent'] = downloadImage(card['sprite_image_ref'])
-                    data['icon'] = downloadImage(card['icon_image_ref'])
-                    data['puchi'] = downloadImage(card['icon_image_ref'].replace('icon_card', 'puchi'))
+                    data['image'] = downloadImage(card['card_image_ref'], 'c', data['id'])
+                    data['art'] = downloadImage(card['spread_image_ref'], 'c/art', data['id'])
+                    data['transparent'] = downloadImage(card['sprite_image_ref'], 'c/transparent', data['id'])
+                    data['icon'] = downloadImage(card['icon_image_ref'], 'c/icon', data['id'])
+                    data['puchi'] = downloadImage(card['icon_image_ref'].replace('icon_card', 'puchi'), 'c/puchi', data['id'])
                     if awakened:
-                        data['image_awakened'] = downloadImage(awakened['card_image_ref'])
-                        data['art_awakened'] = downloadImage(awakened['spread_image_ref'])
-                        data['transparent_awakened'] = downloadImage(awakened['sprite_image_ref'])
-                        data['icon_awakened'] = downloadImage(awakened['icon_image_ref'])
-                        data['puchi_awakened'] = downloadImage(awakened['icon_image_ref'].replace('icon_card', 'puchi'))
+                        data['image_awakened'] = downloadImage(awakened['card_image_ref'], 'c/a', data['id'])
+                        data['art_awakened'] = downloadImage(awakened['spread_image_ref'], 'c/art/a', data['id'])
+                        data['transparent_awakened'] = downloadImage(awakened['sprite_image_ref'], 'c/transparent/a', data['id'])
+                        data['icon_awakened'] = downloadImage(awakened['icon_image_ref'], 'c/icon/a', data['id'])
+                        data['puchi_awakened'] = downloadImage(awakened['icon_image_ref'].replace('icon_card', 'puchi'), 'c/puchi/a', data['id'])
                 data['hp_min'] = card['hp_min']
                 data['hp_max'] = card['hp_max']
                 data['vocal_min'] = card['vocal_min']

@@ -1,0 +1,163 @@
+{% load i18n %}
+{% with idol=item %}
+<div class="idol-info">
+  {% if current == 'idol_item' %}
+  <h3 class="text-center fontx2">{{ idol.name }}</h3>
+  {% endif %}
+  <p class="text-center">
+    <img src="{{ idol.image_url }}" alt="{{ idol.name }}" class="pull-left idol-image">
+    <span class="btn-group">
+      <a href="/cards/?idol={{ idol.id }}" class="btn btn-lg btn-{{ idol.type|default_if_none:'main' }}" target="_blank">
+	<i class="flaticon-cards"></i>
+	{% trans 'Cards' %}
+      </a>
+      <a href="/events/?idol={{ idol.id }}" class="btn btn-lg btn-{{ idol.type|default_if_none:'main' }}" target="_blank">
+	<i class="flaticon-event"></i>
+	{% trans 'Events' %}
+      </a>
+      <a href="/accounts/?favorite_character={{ idol.id }}" class="btn btn-lg btn-{{ idol.type|default_if_none:'main' }}" target="_blank">
+	<i class="flaticon-users"></i>
+	{% trans 'Fans' %}
+      </a>
+      <a href="{{ idol.item_url }}#disqus_thread" class="btn btn-lg btn-{{ idol.type|default_if_none:'main' }}"{% if current != 'idol_item' %} target="_blank"{% endif %}>
+	<i class="flaticon-comments"></i>
+	{% trans 'Comments' %}
+      </a>
+      {% include 'include/share.html' with share_url=idol.http_item_url share_btn_class=idol.english_type|add:" btn-lg" share_sentence=idol %}
+      {% if user.is_staff %}
+      <a href="/idols/edit/{{ idol.id }}/" class="btn btn-lg btn-{{ idol.type|default_if_none:'main' }}"><i class="flaticon-edit"></i></a>
+      {% endif %}
+    </span>
+  </p>
+  <br>
+  <table class="table about-table">
+    {% if idol.japanese_name %}
+    <tr>
+      <td><i class="flaticon-JP"></i></td>
+      <th>{% trans 'Name' %} ({% trans 'Japanese' %})</th>
+      <td>{{ idol.japanese_name }}</td>
+    </tr>
+    {% endif %}
+    {% if idol.i_type %}
+    <tr>
+      <td><img src="{{ static_url }}img/color/{{ idol.i_type }}.png"></td>
+      <th>{% trans 'Type' %}</th>
+      <td>{{ idol.type }}</td>
+    </tr>
+    {% endif %}
+    {% if idol.age %}
+    <tr>
+      <td><i class="flaticon-scoreup"></i></td>
+      <th>{% trans 'Age' %}</th>
+      <td>{{ idol.age }}</td>
+    </tr>
+    {% endif %}
+    {% if idol.birthday %}
+    <tr>
+      <td><i class="flaticon-event"></i></td>
+      <th>{% trans 'Birthday' %}</th>
+      <td>{{ idol.birthday }}</td>
+    </tr>
+    {% endif %}
+    {% if idol.height %}
+    <tr>
+      <td><i class="flaticon-scoreup"></i></td>
+      <th>{% trans 'Height' %}</th>
+      <td>{{ idol.height }} cm</td>
+    </tr>
+    {% endif %}
+    {% if idol.weight %}
+    <tr>
+      <td><i class="flaticon-scoreup"></i></td>
+      <th>{% trans 'Weight' %}</th>
+      <td>{{ idol.weight }} kg</td>
+    </tr>
+    {% endif %}
+    {% if idol.i_blood_type %}
+    <tr>
+      <td><i class="flaticon-hp"></i></td>
+      <th>{% trans 'Blood Type' %}</th>
+      <td>{{ idol.blood_type }}</td>
+    </tr>
+    {% endif %}
+    {% if idol.i_writing_hand %}
+    <tr>
+      <td><i class="flaticon-fingers"></i></td>
+      <th>{% trans 'Writing Hand' %}</th>
+      <td>{{ idol.writing_hand }}</td>
+    </tr>
+    {% endif %}
+    {% if idol.bust %}
+    <tr>
+      <td><i class="flaticon-id"></i></td>
+      <th>{% trans 'Bust' %}</th>
+      <td>{{ idol.bust }} cm</td>
+    </tr>
+    {% endif %}
+    {% if idol.waist %}
+    <tr>
+      <td><i class="flaticon-id"></i></td>
+      <th>{% trans 'Waist' %}</th>
+      <td>{{ idol.waist }} cm</td>
+    </tr>
+    {% endif %}
+    {% if idol.hips %}
+    <tr>
+      <td><i class="flaticon-id"></i></td>
+      <th>{% trans 'Hips' %}</th>
+      <td>{{ idol.hips }} cm</td>
+    </tr>
+    {% endif %}
+    {% if idol.i_astrological_sign %}
+    <tr>
+      <td><img src="http://i.schoolido.lu/static/astrology/{{ idol.astrological_sign }}.png" alt="{{ idol.astrological_sign }}"></td>
+      <th>{% trans 'Astrological Sign' %}</th>
+      <td>{{ idol.astrological_sign }}</td>
+    </tr>
+    {% endif %}
+    {% if idol.hometown %}
+    <tr>
+      <td><span class="glyphicon glyphicon-home" aria-hidden="true"></span></td>
+      <th>{% trans 'Hometown' %}</th>
+      <td>
+	{% if idol.romaji_hometown %}{{ idol.romaji_hometown }}<br>{% endif %}
+	{{ idol.hometown }}
+      </td>
+    </tr>
+    {% endif %}
+    {% if idol.hobbies %}
+    <tr>
+      <td><i class="flaticon-star"></i></td>
+      <th>{% trans 'Hobbies' %}</th>
+      <td>{{ idol.hobbies }}</td>
+    </tr>
+    {% endif %}
+    {% if idol.description %}
+    <tr>
+      <td><i class="flaticon-description"></i></td>
+      <th>{% trans 'Description' %}</th>
+      <td>{{ idol.description }}</td>
+    </tr>
+    {% endif %}
+    {% if idol.CV %}
+    <tr>
+      <td><i class="flaticon-profile"></i></td>
+      <th>{% trans 'CV' %}</th>
+      <td>
+	{% if idol.romaji_CV %}{{ idol.romaji_CV }}<br>{% endif %}
+	{{ idol.CV }}
+      </td>
+    </tr>
+    {% endif %}
+    {% if idol.signature %}
+    <tr>
+      <td><i class="flaticon-edit"></i></td>
+      <th>{% trans 'Signature' %}</th>
+      <td>
+	<img src="{{ idol.signature_url }}" alt="{% trans 'Signature' %}">
+      </td>
+    </tr>
+    {% endif %}
+  </table>
+</div>
+{% endwith %}

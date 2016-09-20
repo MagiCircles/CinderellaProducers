@@ -1,3 +1,10 @@
 {% with event=item %}
-<a href="/events/edit/{{ event.id }}/">{{ event }}</a>
+<div class="event">
+  <a href="{{ event.item_url }}" data-ajax-url="{{ event.ajax_item_url }}" data-ajax-title="{{ event.name }}">
+    <img src="{{ event.image_url }}" alt="{{ event.name }}" class="event-image img-responsive">
+  </a>
+  {% if user.is_staff %}
+  <a href="/events/edit/{{ event.id }}/"><i class="flaticon-edit"></i></a>
+  {% endif %}
+</div>
 {% endwith %}

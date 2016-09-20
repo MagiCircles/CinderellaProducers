@@ -6,11 +6,11 @@ from django.utils.translation import ugettext_lazy as _, string_concat
 
 DONATORS_STATUS_CHOICES = (
     ('THANKS', 'Thanks'),
-    ('SUPPORTER', _('Idol Supporter')),
-    ('LOVER', _('Idol Lover')),
-    ('AMBASSADOR', _('Idol Ambassador')),
-    ('PRODUCER', _('Idol Producer')),
-    ('DEVOTEE', _('Ultimate Idol Devotee')),
+    ('SUPPORTER', _('Skilled Producer')),
+    ('LOVER', _('Expert Producer')),
+    ('AMBASSADOR', _('Veteran Producer')),
+    ('PRODUCER', _('Ultimate Producer')),
+    ('DEVOTEE', _('Idol Master')),
 )
 DONATORS_STATUS_DICT = dict(DONATORS_STATUS_CHOICES)
 
@@ -90,6 +90,18 @@ ASTROLOGICAL_SIGN_CHOICES = list(enumerate(ASTROLOGICAL_SIGNS))
 ASTROLOGICAL_SIGN_DICT = dict(ASTROLOGICAL_SIGN_CHOICES)
 
 ############################################################
+# Event
+
+EVENT_KINDS = [
+    _('Token'),
+    _('Medley'),
+    _('Coop'),
+    _('Caravan'),
+]
+EVENT_KIND_CHOICES = list(enumerate(EVENT_KINDS))
+EVENT_KIND_DICT = dict(EVENT_KIND_CHOICES)
+
+############################################################
 # Card
 
 RARITY_N = 0
@@ -118,6 +130,8 @@ MAX_LEVELS = {
     RARITY_SR: (60, 70),
     RARITY_SSR: (80, 90),
 }
+
+MAX_SKILL_LEVEL = 10
 
 SKILL_LESSER_PERFECT_LOCK = 0
 SKILL_GREATER_PERFECT_LOCK = 1

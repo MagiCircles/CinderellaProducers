@@ -15,10 +15,11 @@ def generate_settings():
         try:
             current_events = models.Event.objects.filter(end__gte=timezone.now())
             latest_news = [{
-                'title': event.name,
-                'image': event.image_url,
-                'url': event.item_url,
+                    'title': event.name,
+                    'image': event.image_url,
+                    'url': event.item_url,
                     'hide_title': True,
+                    'ajax': event.ajax_item_url,
             } for event in current_events]
         except ObjectDoesNotExist:
             latest_news = []
@@ -30,6 +31,14 @@ def generate_settings():
             idol.name,
 	    idol.image_url,
         ) for idol in all_idols]
+
+        print 'Get the starters'
+        all_starters = models.Card.objects.filter(pk__in=[100001, 200001, 300001]).order_by('pk')
+        starters = [(
+                card.pk,
+                card.cached_idol.name,
+                card.icon_url,
+        ) for card in all_starters]
 
         print 'Get max stats'
         stats = {
@@ -61,6 +70,7 @@ import datetime\n\
 TOTAL_DONATORS = ' + unicode(total_donators) + u'\n\
 LATEST_NEWS = ' + unicode(latest_news) + u'\n\
 FAVORITE_CHARACTERS = ' + unicode(favorite_characters) + u'\n\
+STARTERS = ' + unicode(starters) + u'\n\
 MAX_STATS = ' + unicode(stats) + u'\n\
 GENERATED_DATE = datetime.datetime.fromtimestamp(' + unicode(time.time()) + u')\n\
 '

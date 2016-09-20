@@ -1,0 +1,35 @@
+{% load tools %}
+{% load i18n %}
+{% with card=item %}
+<style>{% include 'include/cssLeaderboardStatic.css' %}</style>
+<div id="collection" data-card-id="{{ card.id }}">
+  {% for account in user.all_accounts %}
+  {% include 'items/accountItem.html' with item=account account_link=True %}
+  <div class="account-collection">
+    <div class="row">
+      {% for oc in account.all_owned %}
+      {% if forloop.counter0 != 0 and forloop.counter0|mod:4 %}
+    </div><div class="row items">
+      {% endif %}
+      <div class="col-md-{% if account.all_owned|length == 1 %}6{% else %}3{% endif %}">
+	{% include 'items/ownedcardItem.html' with item=oc %}
+      </div>
+      {% endfor %}
+      <div class="col-md-{% if account.all_owned|length == 1 %}6{% elif not account.all_owned|length %}12{% else %}3{% endif %}">
+	<form method="post" action="/ajax/addcard/{{ card.id }}/?collection">
+	  {% csrf_token %}
+	  <input type="hidden" name="account" value="{{ account.id }}">
+	  <a href="#addCard" class="a-nodifference">
+	    <i class="flaticon-add"
+	       data-toggle="popover" data-placement="top" data-trigger="hover" data-delay="{'show':200,'hide':1}" data-html="true"
+	       data-content="<div class='text-center'>{% blocktrans %}Click to add {{ card }} to your collection{% endblocktrans %}</div>"
+	       ></i>
+	  </a>
+	  <i class="flaticon-loading inline-block" style="display: none"></i>
+	</form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endwith %}

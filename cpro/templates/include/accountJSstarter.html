@@ -1,0 +1,34 @@
+{% load cpro_tags %}
+<script>
+  var starters = {
+  '': '{{ static_url }}img/{{ empty_image }}',
+  {% for id, name, image in starters %}
+    '{{ id }}': '{{ image }}',
+  {% endfor %}
+  };
+{% if form.center %}
+  var centers = {
+  '': '{{ static_url }}img/{{ empty_image }}',
+  {% for oc in form.center.field.queryset %}
+    '{{ oc.id }}': '{{ oc.card.icon_url }}',
+  {% endfor %}
+  };
+{% endif %}
+{% if form.i_os %}
+  var oss = {
+  {% for value, name in form.i_os.field.choices %}
+    '{{ value }}': '<i class="flaticon-{{ name }}"></i>',
+  {% endfor %}
+  };
+{% endif %}
+{% if form.i_play_with %}
+  var play_withs = {
+  '': '<img src="{{ static_url }}img/{{ empty_image }}">',
+  {% for value, name in form.i_play_with.field.choices %}
+  {% if value != '' %}
+  '{{ value }}': '<i class="flaticon-{{ value|play_with_to_icon }}"></i> {{ name }}',
+  {% endif %}
+  {% endfor %}
+  };
+{% endif %}
+</script>

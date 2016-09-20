@@ -1,4 +1,21 @@
 {% load i18n %}
+<style>
+  #profile.jumbotron-Cute {
+  	background-image: url('{{ static_url }}img/backgrounds/background9.png');
+  }
+  #profile.jumbotron-Cool {
+  	background-image: url('{{ static_url }}img/backgrounds/background11.png');
+  }
+  #profile.jumbotron-Passion {
+  	background-image: url('{{ static_url }}img/backgrounds/background13.png');
+  }
+  #profile.jumbotron-main {
+  	background-image: url('{{ static_url }}img/backgrounds/background5.png');
+  }
+</style>
+<script>
+  var ownedcards_to_reload = [];
+</script>
 {% for account in profile_user.all_accounts %}
 <div class="profile-account {% if account.center_id %}{{ account.cached_center.card.english_type }}{% else %}None{% endif %}" data-account-id="{{ account.id }}">
   <div class="profile-header" style="background-image: url('{% if account.center_id and account.cached_center.card.art %}{{ account.cached_center.card.art_url }}{% else %}{{ static_url }}img/backgrounds/background1.png{% endif %}');">
@@ -25,6 +42,10 @@
       {% if account.owner_id == user.id %}
       <a href="/accounts/edit/{{ account.id }}/" class="btn btn-inherit">
 	<i class="flaticon-edit"></i> {% trans 'Edit' %} {% trans 'Account' %}
+      </a>
+      {% else %}
+      <a href="/reports/add/account/?id={{ account.id }}" class="a-nodifference">
+	<i class="flaticon-fingers"></i> {% trans 'Report' %}
       </a>
       {% endif %}
     </div>

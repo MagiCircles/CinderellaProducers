@@ -1,0 +1,15 @@
+  .account-Cute {
+  	background-image: url('{{ static_url }}img/backgrounds/background9.png');
+  }
+  .account-Cool {
+  	background-image: url('{{ static_url }}img/backgrounds/background11.png');
+  }
+  .account-Passion {
+  	background-image: url('{{ static_url }}img/backgrounds/background13.png');
+  }
+  .account-main {
+  	background-image: url('{{ static_url }}img/backgrounds/background5.png');
+  }
+  .account-main:hover {
+  	background-image: url('{{ static_url }}img/backgrounds/background6.png');
+  }
