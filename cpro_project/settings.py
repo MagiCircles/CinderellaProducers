@@ -78,7 +78,7 @@ if 'rds_hostname' in os.environ:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'stardustrun',
+            'NAME': 'cpro',
             'OPTIONS': {'charset': 'utf8mb4'},
             'USER': os.environ['rds_username'],
             'PASSWORD': os.environ['rds_password'],
