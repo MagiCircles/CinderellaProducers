@@ -20,7 +20,7 @@
       </select>
     </form>
     {% endif %}
-    <a href="{% if user.is_authenticated and user.all_accounts|length != 0 %}#addCard{% elif user.is_authenticated %}/accounts/add/?next={{ current_url }}{% else %}/signup/?next={{ current_url }}{% endif %}" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Add this card to your collection' %}" data-placement="bottom"><i class="flaticon-add"></i></a>
+    <a href="{% if user.is_authenticated and user.all_accounts|length != 0 %}#addCard{% elif user.is_authenticated %}/accounts/add/?next={{ card.item_url }}&next_title={{ card }}{% else %}/signup/?next={{ card.item_url }}&next_title={{ card }}{% endif %}" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Add this card to your collection' %}" data-placement="bottom"><i class="flaticon-add"></i></a>
     <a href="#" class="addcard-loader" style="display: none;"><i class="flaticon-loading"></i></a>
     {% elif card.total_owned == 1 %}
     <a href="{{ card.item_url }}?collection" {% if current != 'card_item' %}data-ajax-url="/ajax/cardcollection/{{ card.id }}/" data-ajax-title="{{ card }}"{% endif %} data-toggle="tooltip" data-trigger="hover" title="{% trans 'Your cards' %}" data-placement="bottom"><i class="flaticon-checked"></i></a>

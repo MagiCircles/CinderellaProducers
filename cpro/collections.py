@@ -77,6 +77,8 @@ def cardExtraContext(context):
 def cardsExtraContext(context):
     request = context['request']
     context['get_started'] = 'get_started' in request.GET
+    context['next'] = request.GET.get('next', None)
+    context['next_title'] = request.GET.get('next_title', None)
     if context['is_last_page']:
         context['share_sentence'] = _('Check out my collection of cards!')
 

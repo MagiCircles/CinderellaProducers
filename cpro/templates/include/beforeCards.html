@@ -24,6 +24,13 @@
       <div class="get-started-video">
 	<iframe width="100%" height="315" src="https://www.youtube.com/embed/V762DS1V4Ys?version=3&autoplay=1&controls=0&loop=1&showinfo=0&playlist=V762DS1V4Ys" frameborder="0" allowfullscreen></iframe>
       </div>
+      {% if next %}
+      <div class="text-right">
+	<a href="{{ next }}" class="btn btn-main btn-xl">
+	  {% if next_title %}{{ next_title }}{% else %}{% trans 'Next' %}{% endif %}
+	</a>
+      </div>
+      {% endif %}
     </div>
   </div>
 </div>
