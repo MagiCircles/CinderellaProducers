@@ -158,7 +158,7 @@ if 'aws_access_key_id' in os.environ:
     AWS_SES_REGION_ENDPOINT = os.environ.get('aws_ses_region_endpoint', 'email.us-east-1.amazonaws.com')
 
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    AWS_STORAGE_BUCKET_NAME = 'i.stardust.run'
+    AWS_STORAGE_BUCKET_NAME = 'i.cinderella.pro'
 
     EMAIL_BACKEND = 'django_ses.SESBackend'
     from boto.s3.connection import OrdinaryCallingFormat
