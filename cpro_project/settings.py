@@ -17,15 +17,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#yt2*mvya*ulaxd+6jtr#%ouyco*2%3ngb=u-_$44j^86g0$$3'
+SECRET_KEY = os.environ.get('django_secret_key', '#yt2*mvya*ulaxd+6jtr#%ouyco*2%3ngb=u-_$44j^86g0$$3')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.environ.get('django_debug', '1')))
 
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+if not DEBUG:
+    ALLOWED_HOSTS = os.environ.get('django_allowed_hosts', '').split(',')
 
 # Application definition
 
@@ -62,7 +64,6 @@ ROOT_URLCONF = 'cpro_project.urls'
 
 WSGI_APPLICATION = 'cpro_project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -72,6 +73,19 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+if 'rds_hostname' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'stardustrun',
+            'OPTIONS': {'charset': 'utf8mb4'},
+            'USER': os.environ['rds_username'],
+            'PASSWORD': os.environ['rds_password'],
+            'HOST': os.environ['rds_hostname'],
+            'PORT': os.environ['rds_port'],
+        }
+    }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -118,6 +132,14 @@ STATIC_UPLOADED_FILES_PREFIX = None
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_URLS_REGEX = r'^/api/.*$'
 
+TINYPNG_API_KEY = os.environ.get('tinypng_api_key', None)
+
+TOTAL_DONATORS = 0
+LATEST_NEWS = []
+FAVORITE_CHARACTERS = []
+STARTERS = []
+MAX_STATS = {'visual_awakened_max': 7089, 'dance_awakened_max': 7089, 'vocal_awakened_max': 7089, 'overall_max': 12574, 'overall_awakened_max': 15291, 'hp_max': 40, 'visual_max': 5830, 'hp_awakened_max': 42, 'dance_max': 5830, 'vocal_max': 5830}
+
 LOGIN_REDIRECT_URL = '/'
 LOG_EMAIL = 'emails-log@schoolido.lu'
 PASSWORD_EMAIL = 'password@schoolido.lu'
@@ -125,9 +147,73 @@ AWS_SES_RETURN_PATH = 'contact@schoolido.lu'
 
 MAX_WIDTH = 1200
 MAX_HEIGHT = 1200
-
 MIN_WIDTH = 300
 MIN_HEIGHT = 300
+
+if 'aws_access_key_id' in os.environ:
+    AWS_ACCESS_KEY_ID = os.environ.get('aws_access_key_id', 'your aws access key')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('aws_secret_access_key', 'your aws secret key')
+
+    AWS_SES_REGION_NAME = os.environ.get('aws_ses_region_name', 'us-east-1')
+    AWS_SES_REGION_ENDPOINT = os.environ.get('aws_ses_region_endpoint', 'email.us-east-1.amazonaws.com')
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    AWS_STORAGE_BUCKET_NAME = 'i.stardust.run'
+
+    EMAIL_BACKEND = 'django_ses.SESBackend'
+    from boto.s3.connection import OrdinaryCallingFormat
+    AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
+
+if 'django_no_log' not in os.environ:
+    DEBUG_LOG = "/var/log/django/django_debug.log" if not DEBUG else "/tmp/django_debug.log"
+
+    LOGGING = {
+        'disable_existing_loggers': False,
+        'version': 1,
+        'filters': {
+            'require_debug_false': {
+                '()': 'django.utils.log.RequireDebugFalse'
+            }
+        },
+        'handlers': {
+            'console': {
+                'class': 'logging.StreamHandler',
+                'level': 'DEBUG',
+            },
+            'log_file': {
+                'level':'DEBUG',
+                'class':'logging.handlers.RotatingFileHandler',
+                'filename': DEBUG_LOG,
+                'maxBytes': 50000,
+                'backupCount': 2,
+            },
+        },
+        'loggers': {
+            '': {
+                'handlers': ['console', 'log_file'],
+                'level': 'DEBUG',
+                'propagate': False,
+            },
+            'django': {
+                'handlers': ['console', 'log_file'],
+                'level': 'ERROR',
+                'propagate': False,
+            },
+            'django.db': {
+            },
+            'django.request': {
+                'handlers': ['console', 'log_file'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
+            'django.db.backends.sqlite3': {
+                'handlers': ['console', 'log_file'],
+                'level': 'DEBUG',
+            },
+        },
+    }
+
+from prod_generated_settings import *
 
 try:
     from generated_settings import *
