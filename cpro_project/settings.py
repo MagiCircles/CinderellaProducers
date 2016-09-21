@@ -164,55 +164,6 @@ if 'aws_access_key_id' in os.environ:
     from boto.s3.connection import OrdinaryCallingFormat
     AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
 
-if 'django_no_log' not in os.environ:
-    DEBUG_LOG = "/var/log/django/django_debug.log" if not DEBUG else "/tmp/django_debug.log"
-
-    LOGGING = {
-        'disable_existing_loggers': False,
-        'version': 1,
-        'filters': {
-            'require_debug_false': {
-                '()': 'django.utils.log.RequireDebugFalse'
-            }
-        },
-        'handlers': {
-            'console': {
-                'class': 'logging.StreamHandler',
-                'level': 'DEBUG',
-            },
-            'log_file': {
-                'level':'DEBUG',
-                'class':'logging.handlers.RotatingFileHandler',
-                'filename': DEBUG_LOG,
-                'maxBytes': 50000,
-                'backupCount': 2,
-            },
-        },
-        'loggers': {
-            '': {
-                'handlers': ['console', 'log_file'],
-                'level': 'DEBUG',
-                'propagate': False,
-            },
-            'django': {
-                'handlers': ['console', 'log_file'],
-                'level': 'ERROR',
-                'propagate': False,
-            },
-            'django.db': {
-            },
-            'django.request': {
-                'handlers': ['console', 'log_file'],
-                'level': 'DEBUG',
-                'propagate': True,
-            },
-            'django.db.backends.sqlite3': {
-                'handlers': ['console', 'log_file'],
-                'level': 'DEBUG',
-            },
-        },
-    }
-
 from prod_generated_settings import *
 
 try:

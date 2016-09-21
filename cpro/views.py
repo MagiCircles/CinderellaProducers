@@ -17,6 +17,7 @@ def index(request):
     collection['list']['before_template'] = 'include/index'
     collection['list']['extra_context'] = _index_extraContext
     collection['list']['full_width'] = True
+    del(collection['list']['filter_form'])
     return list_view(request, 'activity', collection)
 
 def cardstat(request, card):
