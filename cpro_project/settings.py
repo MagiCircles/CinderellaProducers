@@ -130,6 +130,23 @@ LOGGING = {
             },
     }
 
+import sys
+LOGGING = {
+    'handlers': {
+        'stderr': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'stream': sys.stderr,
+        }
+    },
+    'loggers': {
+        'application': {
+            'handlers': ['stderr'],
+            'level': 'INFO',
+        }
+    }
+}
+
 STATIC_URL = '/static/'
 
 SITE = 'cpro'
