@@ -132,6 +132,8 @@ LOGGING = {
 
 import sys
 LOGGING = {
+    'disable_existing_loggers': False,
+    'version': 1,
     'handlers': {
         'stderr': {
             'level': 'INFO',
