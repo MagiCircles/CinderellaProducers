@@ -52,6 +52,16 @@ DONATORS_STATUS_CHOICES = models.DONATORS_STATUS_CHOICES
 
 ENABLED_COLLECTIONS = DEFAULT_ENABLED_COLLECTIONS
 
+ACTIVITY_TAGS = [
+    New cards, Event, Live, Comedy, Anime, Not about IdolM@ster
+    ('cards', _('New Cards')),
+    ('event', _('Event')),
+    ('live', _('Live')),
+    ('comedy', _('Comedy')),
+    ('anime', _('Anime')),
+    ('unrelated', _('Not about IDOLM@STER')),
+]
+
 ENABLED_COLLECTIONS['activity']['add']['before_save'] = collections.activitiesBeforeSave
 ENABLED_COLLECTIONS['activity']['edit']['before_save'] = collections.activitiesBeforeSave
 
