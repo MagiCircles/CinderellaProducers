@@ -28,6 +28,8 @@ USER_COLORS = models.TYPES
 
 GET_GLOBAL_CONTEXT = utils.globalContext
 
+STATIC_FILES_VERSION = '2'
+
 TOTAL_DONATORS = getattr(django_settings, 'TOTAL_DONATORS', 2) + 2
 FAVORITE_CHARACTERS = getattr(django_settings, 'FAVORITE_CHARACTERS', None)
 FAVORITE_CHARACTER_TO_URL = lambda link: '/idol/{pk}/{name}/'.format(pk=link.raw_value, name=tourldash(link.value))
@@ -72,7 +74,7 @@ ENABLED_COLLECTIONS['account']['list']['before_template'] = 'include/beforeLeade
 ENABLED_COLLECTIONS['account']['list']['default_ordering'] = '-level'
 ENABLED_COLLECTIONS['account']['list']['filter_form'] = forms.FilterAccounts
 ENABLED_COLLECTIONS['account']['list']['filter_queryset'] = filters.filterAccounts
-ENABLED_COLLECTIONS['account']['list']['js_files'] = ENABLED_COLLECTIONS['account']['list'].get('js_files', []) + ['leaderboard.js']
+ENABLED_COLLECTIONS['account']['list']['js_files'] = ENABLED_COLLECTIONS['account']['list'].get('js_files', []) + ['leaderboard']
 ENABLED_COLLECTIONS['account']['list']['extra_context'] = collections.leaderboardExtraContext
 
 ENABLED_COLLECTIONS['user']['item']['extra_context'] = collections.profileGetAccountTabs
@@ -95,7 +97,7 @@ ENABLED_COLLECTIONS['card'] = {
         'extra_context': collections.cardsExtraContext,
     },
     'item': {
-        'ajax_callback': 'updateCards',
+        'ajax_callback': 'updateCardsAndOwnedCards',
         'js_files': ['cards', 'collection'],
         'filter_queryset': filters.filterCard,
         'extra_context': collections.cardExtraContext,
