@@ -8,7 +8,7 @@ from django.utils.deconstruct import deconstructible
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from web.item_model import ItemModel, get_image_url, get_http_image_url
-from web.utils import split_data, join_data, AttrDict, tourldash
+from web.utils import split_data, join_data, AttrDict, tourldash, randomString
 from web.models import User
 from cpro.model_choices import *
 
@@ -28,7 +28,7 @@ class uploadItem(object):
         return u'{static_uploaded_files_prefix}{prefix}/{id}{string}{extension}'.format(
             static_uploaded_files_prefix=django_settings.STATIC_UPLOADED_FILES_PREFIX,
             prefix=self.prefix,
-            id=instance.id,
+            id=instance.id if instance.id else randomString(6),
             string=tourldash(unicode(instance)),
             extension=extension,
         )
