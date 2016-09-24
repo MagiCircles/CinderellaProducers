@@ -130,7 +130,7 @@ ENABLED_COLLECTIONS['ownedcard'] = {
     'icon': 'album',
     'navbar_link': False,
     'list': {
-        'default_ordering': '-card__i_rarity,-awakened,card__idol__i_type',
+        'default_ordering': '-card__release_date,-card__i_rarity,-awakened,card__idol__i_type',
         'per_line': 6,
         'page_size': 48,
         'filter_queryset': filters.filterOwnedCards,
