@@ -38,7 +38,7 @@
   {% if account.center_id %}
   <tr>
     <td>
-      <a href="{{ account.cached_center.card.item_url }}" target="_blank" data-ajax-url="{{ account.cached_center.card.ajax_item_url }}">
+      <a href="{{ account.cached_center.card.item_url }}" target="_blank" data-ajax-url="{{ account.cached_center.card.ajax_item_url }}" data-ajax-title="{{ account.cached_center.card.string }}">
 	<img src="{{ account.cached_center.card.icon_url }}" alt="{{ account.cached_center.card.string }}">
       </a>
     </td>
@@ -53,7 +53,7 @@
   {% if account.starter_id and account.starter_id != account.cached_center.card.id %}
   <tr>
     <td>
-      <a href="{{ account.starter.item_url }}" target="_blank" data-ajax-url="{{ account.starter.ajax_item_url }}">
+      <a href="{{ account.starter.item_url }}" target="_blank" data-ajax-url="{{ account.starter.ajax_item_url }}" data-ajax-title="{{ account.starter }}">
 	<img src="{{ account.starter.icon_url }}" alt="{{ account.starter }}">
       </a>
     </td>
