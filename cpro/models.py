@@ -91,7 +91,7 @@ class Event(ItemModel):
     collection_name = 'event'
 
     owner = models.ForeignKey(User, related_name='added_events')
-    name = models.CharField(string_concat(_('Name'), ' (Japanese)'), max_length=100, unique=True)
+    name = models.CharField(string_concat(_('Name'), ' (Japanese)'), max_length=100)
     translated_name = models.CharField(string_concat(_('Name'), ' (translated in English)'), max_length=100, null=True)
     image = models.ImageField(_('Image'), upload_to=uploadItem('e'))
     beginning = models.DateTimeField(_('Beginning'), null=True)
