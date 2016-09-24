@@ -3,6 +3,9 @@
   <a href="{{ event.item_url }}" data-ajax-url="{{ event.ajax_item_url }}" data-ajax-title="{{ event.name }}">
     <img src="{{ event.image_url }}" alt="{{ event.name }}" class="event-image img-responsive">
   </a>
+  <a href="{{ event.item_url }}" data-ajax-url="{{ event.ajax_item_url }}" data-ajax-title="{{ event.name }}">
+    <h4>{{ event }}</h4>
+  </a>
   {% if user.is_staff %}
   <a href="/events/edit/{{ event.id }}/"><i class="flaticon-edit"></i></a>
   {% endif %}
