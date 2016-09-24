@@ -5,7 +5,7 @@ from web.default_settings import DEFAULT_ENABLED_COLLECTIONS, DEFAULT_ENABLED_PA
 from web.utils import tourldash
 from cpro import models, forms, filters, collections, utils
 
-SITE_NAME = 'Cinderella Producers'
+SITE_NAME = u'Cinderella Producers β'
 SITE_URL = 'http://cinderella.pro/'
 SITE_IMAGE = 'cpro.png'
 SITE_STATIC_URL = '//localhost:{}/'.format(django_settings.DEBUG_PORT) if django_settings.DEBUG else '//i.cinderella.pro/'
