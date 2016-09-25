@@ -22,55 +22,43 @@
     <tr>
       <td><i class="flaticon-scoreup"></i></td>
       <th>{% trans 'Age' %}</th>
-      <td>{{ idol.age }}</td>
+      <td>{{ idol.age|default_if_none:'??' }}</td>
     </tr>
     {% elif ordering == 'birthday' %}
     <tr>
       <td><i class="flaticon-event"></i></td>
       <th>{% trans 'Birthday' %}</th>
-      <td>{{ idol.birthday }}</td>
+      <td>{{ idol.birthday|default_if_none:'??' }}</td>
     </tr>
     {% elif ordering == 'height' %}
     <tr>
       <td><i class="flaticon-scoreup"></i></td>
       <th>{% trans 'Height' %}</th>
-      <td>{{ idol.height }} cm</td>
+      <td>{{ idol.height|default_if_none:'??' }} cm</td>
     </tr>
     {% elif ordering == 'weight' %}
     <tr>
       <td><i class="flaticon-scoreup"></i></td>
       <th>{% trans 'Weight' %}</th>
-      <td>{{ idol.weight }} kg</td>
-    </tr>
-    {% elif ordering == 'i_blood_type' %}
-    <tr>
-      <td><i class="flaticon-hp"></i></td>
-      <th>{% trans 'Blood Type' %}</th>
-      <td>{{ idol.blood_type }}</td>
-    </tr>
-    {% elif ordering == 'i_writing_hand' %}
-    <tr>
-      <td><i class="flaticon-fingers"></i></td>
-      <th>{% trans 'Writing Hand' %}</th>
-      <td>{{ idol.writing_hand }}</td>
+      <td>{{ idol.weight|default_if_none:'??' }} kg</td>
     </tr>
     {% elif ordering == 'bust' %}
     <tr>
       <td><i class="flaticon-id"></i></td>
       <th>{% trans 'Bust' %}</th>
-      <td>{{ idol.bust }} cm</td>
+      <td>{{ idol.bust|default_if_none:'??' }} cm</td>
     </tr>
     {% elif ordering == 'waist' %}
     <tr>
       <td><i class="flaticon-id"></i></td>
       <th>{% trans 'Waist' %}</th>
-      <td>{{ idol.waist }} cm</td>
+      <td>{{ idol.waist|default_if_none:'??' }} cm</td>
     </tr>
     {% elif ordering == 'hips' %}
     <tr>
       <td><i class="flaticon-id"></i></td>
       <th>{% trans 'Hips' %}</th>
-      <td>{{ idol.hips }} cm</td>
+      <td>{{ idol.hips|default_if_none:'??' }} cm</td>
     </tr>
     {% endif %}
   </table>
