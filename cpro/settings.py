@@ -65,6 +65,8 @@ ACTIVITY_TAGS = [
 ENABLED_COLLECTIONS['activity']['add']['before_save'] = collections.activitiesBeforeSave
 ENABLED_COLLECTIONS['activity']['edit']['before_save'] = collections.activitiesBeforeSave
 
+ENABLED_COLLECTIONS['account']['list']['distinct'] = True
+
 ENABLED_COLLECTIONS['account']['add']['form_class'] = collections.getAccountForm
 ENABLED_COLLECTIONS['account']['add']['back_to_list_button'] = False
 ENABLED_COLLECTIONS['account']['add']['after_save'] = collections.addAccountAfterSave
