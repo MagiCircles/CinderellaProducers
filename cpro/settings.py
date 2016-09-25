@@ -57,6 +57,7 @@ ACTIVITY_TAGS = [
     ('event', _('Event')),
     ('live', _('Live')),
     ('comedy', _('Comedy')),
+    ('introduction', _('Introduction')),
     ('anime', _('Anime')),
     ('unrelated', _('Not about IDOLM@STER')),
 ]
