@@ -1,10 +1,15 @@
-import random
-from django.shortcuts import render, get_object_or_404
+import random, hashlib
+from django.shortcuts import render, get_object_or_404, redirect
+from django.conf import settings as django_settings
 from web.views_collections import item_view, list_view
 from web.settings import ENABLED_COLLECTIONS
 from web.views import _index_extraContext as web_index_extraContext
+from web.forms import CreateUserForm
 from cpro import models, filters
-from web.utils import ajaxContext
+from web import models as web_models
+from django.forms.util import ErrorList
+from web.utils import ajaxContext, globalContext
+from django.contrib.auth import authenticate, login as login_action
 
 def _index_extraContext(context):
     web_index_extraContext(context)
@@ -20,6 +25,32 @@ def index(request):
     if 'filter_form' in collection['list']:
         del(collection['list']['filter_form'])
     return list_view(request, 'activity', collection)
+
+def signup(request):
+    if request.user.is_authenticated():
+        redirectToProfile(request)
+    if request.method == "POST":
+        form = CreateUserForm(request.POST, request=request)
+        if form.is_valid():
+            if hashlib.md5(form.cleaned_data['email']).hexdigest() not in django_settings.EMAILS_ALLOWED:
+                errors = form._errors.setdefault("email", ErrorList())
+                errors.append(u"Cinderella Producers is currently in beta and is only open to pre-registered emails. If you want to join when it launches, use this link: http://eepurl.com/chcC2r")
+            else:
+                new_user = models.User.objects.create_user(**form.cleaned_data)
+                user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
+                preferences = web_models.UserPreferences.objects.create(user=user, language=request.LANGUAGE_CODE)
+                login_action(request, user)
+                url = '/accounts/add/{}{}'.format(
+                    ('?next={}'.format(urlquote(request.GET['next'])) if 'next' in request.GET else ''),
+                    ('&next_title={}'.format(request.GET['next_title']) if 'next' in request.GET and 'next_title' in request.GET else ''))
+                return redirect(url)
+    else:
+        form = CreateUserForm(request=request)
+    context = globalContext(request)
+    context['form'] = form
+    context['next'] = request.GET.get('next', None)
+    context['next_title'] = request.GET.get('next_title', None)
+    return render(request, 'pages/signup.html', context)
 
 def cardstat(request, card):
     context = ajaxContext(request)
