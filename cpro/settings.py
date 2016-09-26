@@ -57,8 +57,12 @@ ACTIVITY_TAGS = [
     ('event', _('Event')),
     ('live', _('Live')),
     ('comedy', _('Comedy')),
-    ('introduction', _('Introduction')),
+    ('introduction', _('Introduce yourself')),
+    ('idols', _('Idols')),
+    ('fanart', _('Fanart')),
+    ('cosplay', _('Cosplay')),
     ('anime', _('Anime')),
+    ('community', _('Community')),
     ('unrelated', _('Not about IDOLM@STER')),
 ]
 
