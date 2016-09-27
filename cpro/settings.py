@@ -145,6 +145,7 @@ ENABLED_COLLECTIONS['ownedcard'] = {
         'foreach_items': collections.foreachOwnedCard,
         'filter_form': forms.FilterOwnedCards,
         'js_files': ['ownedcards'],
+        'ajax_pagination_callback': 'updateOwnedCards',
     },
     'edit': {
         'form_class': forms.EditOwnedCardForm,
