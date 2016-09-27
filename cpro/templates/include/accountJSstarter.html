@@ -10,7 +10,7 @@
   var centers = {
   '': '{{ static_url }}img/{{ empty_image }}',
   {% for oc in form.center.field.queryset %}
-    '{{ oc.id }}': '{{ oc.card.icon_url }}',
+    '{{ oc.id }}': '{% if oc.awakened %}{{ oc.card.icon_awakened_url }}{% else %}{{ oc.card.icon_url }}{% endif %}',
   {% endfor %}
   };
 {% endif %}
