@@ -122,6 +122,11 @@ def filterAccounts(queryset, parameters, request):
             queryset = queryset.filter(accept_friend_requests=True)
         elif parameters['accept_friend_requests'] == '3':
             queryset = queryset.filter(accept_friend_requests=False)
+    if 'ordering' in parameters:
+        if parameters['ordering'] == 'level':
+            queryset = queryset.exclude(level=0).exclude(level=None)
+        if parameters['ordering'] == 'start_date':
+            queryset = queryset.exclude(start_date=None)
     return queryset
 
 ############################################################
