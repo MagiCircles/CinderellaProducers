@@ -645,6 +645,7 @@ class OwnedCard(ItemModel):
     _cache_account_owner_id = models.PositiveIntegerField(null=True)
 
     def update_cache_account(self):
+        self._cache_account_last_update = timezone.now()
         self._cache_account_owner_id = self.account.owner_id
 
     def force_cache_account(self):
