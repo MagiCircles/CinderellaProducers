@@ -75,6 +75,8 @@ class _AccountForm(FormWithRequest):
         if hasattr(self, 'instance') and self.instance.pk:
             self.previous_center_id = self.instance.center_id
             self.previous_level = self.instance.level
+            if self.instance.starter_id:
+                self.fields['starter_id'].initial = self.instance.starter_id
         else:
             self.previous_center_id = None
             self.previous_level = None
@@ -97,6 +99,9 @@ class _AccountForm(FormWithRequest):
         instance = super(_AccountForm, self).save(commit=False)
         if 'starter_id' in self.cleaned_data and self.cleaned_data['starter_id']:
             instance.starter_id = self.cleaned_data['starter_id']
+        # Remove starter none selected
+        if 'starter_id' in self.cleaned_data and not self.cleaned_data['starter_id']:
+            instance.starter_id = None
         if self.previous_center_id != instance.center_id:
             instance.update_cache_center()
         if self.previous_level != instance.level:
