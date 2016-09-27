@@ -216,14 +216,24 @@ class Account(ItemModel):
     _cache_center_card_string = models.CharField(max_length=100, null=True)
 
     def update_cache_center(self):
-        self._cache_center_last_update = timezone.now()
-        self._cache_center_awakened = self.center.awakened
-        self._cache_center_card_id = self.center.card.id
-        self._cache_center_card_i_type = self.center.card.i_type
-        self._cache_center_card_icon = self.center.card.icon if not self.center.awakened else self.center.card.icon_awakened
-        self._cache_center_card_art = self.center.card.art if not self.center.awakened else self.center.card.art_awakened
-        self._cache_center_card_transparent = self.center.card.transparent if not self.center.awakened else self.center.card.transparent_awakened
-        self._cache_center_card_string = unicode(self.center.card)
+        if self.center_id:
+            self._cache_center_last_update = timezone.now()
+            self._cache_center_awakened = self.center.awakened
+            self._cache_center_card_id = self.center.card.id
+            self._cache_center_card_i_type = self.center.card.i_type
+            self._cache_center_card_icon = self.center.card.icon if not self.center.awakened else self.center.card.icon_awakened
+            self._cache_center_card_art = self.center.card.art if not self.center.awakened else self.center.card.art_awakened
+            self._cache_center_card_transparent = self.center.card.transparent if not self.center.awakened else self.center.card.transparent_awakened
+            self._cache_center_card_string = unicode(self.center.card)
+        elif self._cache_center_last_update:
+            self._cache_center_last_update = None
+            self._cache_center_awakened = None
+            self._cache_center_card_id = None
+            self._cache_center_card_i_type = None
+            self._cache_center_card_icon = None
+            self._cache_center_card_art = None
+            self._cache_center_card_transparent = None
+            self._cache_center_card_string = None
 
     def force_cache_center(self):
         self.update_cache_center()
@@ -529,10 +539,16 @@ class Card(ItemModel):
     _cache_event_image = models.ImageField(upload_to=uploadItem('e'), null=True, blank=True)
 
     def update_cache_event(self):
-        self._cache_event_last_update = timezone.now()
-        self._cache_event_name = self.event.name
-        self._cache_event_translated_name = self.event.translated_name
-        self._cache_event_image = self.event.image
+        if event_id:
+            self._cache_event_last_update = timezone.now()
+            self._cache_event_name = self.event.name
+            self._cache_event_translated_name = self.event.translated_name
+            self._cache_event_image = self.event.image
+        elif self._cache_event_last_update:
+            self._cache_event_last_update = None
+            self._cache_event_name = None
+            self._cache_event_translated_name = None
+            self._cache_event_image = None
 
     def force_cache_event(self):
         self.update_cache_event()
