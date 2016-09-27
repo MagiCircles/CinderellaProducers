@@ -149,6 +149,7 @@ ENABLED_COLLECTIONS['ownedcard'] = {
     },
     'edit': {
         'form_class': forms.EditOwnedCardForm,
+        'filter_queryset': lambda q, p, r: q.select_related('account'), # Used when checking if the center has been updated
         'redirect_after_edit': collections.ownedCardRedirectAfter,
         'redirect_after_delete': collections.ownedCardRedirectAfter,
         'allow_delete': True,

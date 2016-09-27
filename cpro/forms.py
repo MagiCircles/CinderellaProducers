@@ -288,6 +288,7 @@ class EditOwnedCardForm(FormWithRequest):
             del(self.fields['skill_level'])
         if not self.card.id_awakened:
             del(self.fields['awakened'])
+        self.previous_awakened = self.instance.awakened
 
     def save(self, commit=False):
         instance = super(EditOwnedCardForm, self).save(commit=False)
@@ -297,6 +298,9 @@ class EditOwnedCardForm(FormWithRequest):
             instance.star_rank = 10
         if self.card.i_rarity == models.RARITY_SR and instance.star_rank > 15:
             instance.star_rank = 15
+        if self.previous_awakened != instance.awakened and instance.account.center_id == instance.id:
+            instance.account.center = instance
+            instance.account.force_cache_center()
         if commit:
             instance.save()
         return instance
