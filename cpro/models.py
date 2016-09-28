@@ -318,6 +318,8 @@ class Card(ItemModel):
     def art_awakened_url(self): return get_image_url(self.art_awakened)
     @property
     def http_art_awakened_url(self): return get_http_image_url(self.art_awakened)
+    art_on_homepage = models.BooleanField('Show the art on the homepage of the site?', default=True, help_text='Uncheck this if the art looks weird because the idol is not in the center')
+    art_awakened_on_homepage = models.BooleanField('Show the awakened art on the homepage of the site?', default=True, help_text='Uncheck this if the awakened art looks weird because the idol is not in the center')
     transparent = models.ImageField(_('Transparent'), upload_to=uploadItem('c/transparent'))
     @property
     def transparent_url(self): return get_image_url(self.transparent)
