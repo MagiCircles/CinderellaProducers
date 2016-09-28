@@ -24,6 +24,7 @@
 	 data-ajax-title="{% trans 'Edit' %} {% trans 'Card' %}"
 	 data-ajax-url="/ajax/ownedcards/edit/{{ oc.id }}/{% if collection %}?collection{% endif %}"
 	 data-ajax-handle-form="true" data-ajax-modal-size="md"
+	 data-ajax-modal-after-form-size="lg"
 	 {% endif %}
 	 class="btn btn-{{ oc.card.english_type }}">
 	<i class="flaticon-edit"></i>
