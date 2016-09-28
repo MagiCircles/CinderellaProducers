@@ -468,7 +468,7 @@ class Card(ItemModel):
     # Leader skill
     leader_skill_type = models.PositiveIntegerField('Leader Skill Type', choices=LEADER_SKILL_CHOICES, null=True)
     leader_skill_percent = models.FloatField('Leader Skill Percent', null=True)
-    leader_skill_all = models.BooleanField(default=False)
+    leader_skill_all = models.BooleanField(default=False, help_text='Does the leader skill work on all idols or just the ones with the same type? Check for all')
 
     @property
     def has_leader_skill(self):
