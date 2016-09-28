@@ -57,6 +57,7 @@ ACTIVITY_TAGS = [
     ('event', _('Event')),
     ('live', _('Live')),
     ('comedy', _('Comedy')),
+    ('room', _('Room Decoration')),
     ('introduction', _('Introduce yourself')),
     ('idols', _('Idols')),
     ('fanart', _('Fanart')),
