@@ -140,12 +140,16 @@ class Account(ItemModel):
     device = models.CharField(_('Device'), max_length=150, null=True)
     i_play_with = models.PositiveIntegerField(_('Play with'), null=True, choices=PLAY_WITH_CHOICES)
     @property
-    def play_with(self): return PLAY_WITH_DICT[self.i_play_with] if self.i_play_with else None
+    def play_with(self): return PLAY_WITH_DICT[self.i_play_with] if self.i_play_with is not None else None
     @property
-    def play_with_icon(self): return PLAY_WITH_ICONS[self.i_play_with] if self.i_play_with else None
+    def has_play_with(self): return self.i_play_with is not None
+    @property
+    def play_with_icon(self): return PLAY_WITH_ICONS[self.i_play_with] if self.i_play_with is not None else None
     i_os = models.PositiveIntegerField(_('Operating System'), choices=OS_CHOICES, default=0)
     @property
-    def os(self): return OS_DICT[self.i_os] if self.i_os else None
+    def has_os(self): return self.i_os is not None
+    @property
+    def os(self): return OS_DICT[self.i_os] if self.i_os is not None else None
     center = models.ForeignKey('OwnedCard', verbose_name=_('Center'), null=True, on_delete=models.SET_NULL, related_name='centers')
     starter = models.ForeignKey('Card', verbose_name=_('Starter'), on_delete=models.SET_NULL, null=True)
     start_date = models.DateField(_('Start Date'), null=True)

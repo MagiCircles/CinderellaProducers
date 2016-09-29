@@ -14,7 +14,7 @@
     <td>{% if account.accept_friend_requests %}{% trans 'Yes' %}{% else %}{% trans 'No' %}{% endif %}</td>
   </tr>
   {% endif %}
-  {% if account.i_os %}
+  {% if account.has_os %}
   <tr>
     <td><i class="flaticon-{{ account.os }}"></i></td>
     <th>{% trans 'Operating System' %}</th>
@@ -28,7 +28,7 @@
     <td>{{ account.device }}</td>
   </tr>
   {% endif %}
-  {% if account.i_play_with %}
+  {% if account.has_play_with %}
   <tr>
     <td><i class="flaticon-{{ account.play_with_icon }}"></i></td>
     <th>{% trans 'Play with' %}</th>
