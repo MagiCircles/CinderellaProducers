@@ -111,7 +111,7 @@
     {% endif %}
     {% if idol.i_astrological_sign %}
     <tr>
-      <td><img src="http://i.schoolido.lu/static/astrology/{{ idol.astrological_sign }}.png" alt="{{ idol.astrological_sign }}"></td>
+      <td><img src="{{ static_url }}img/i_astrological_sign/{{ idol.i_astrological_sign }}.png" alt="{{ idol.astrological_sign }}"></td>
       <th>{% trans 'Astrological Sign' %}</th>
       <td>{{ idol.astrological_sign }}</td>
     </tr>

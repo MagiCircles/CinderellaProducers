@@ -69,6 +69,8 @@ class Idol(ItemModel):
     i_astrological_sign = models.PositiveIntegerField(_('Astrological Sign'), choices=ASTROLOGICAL_SIGN_CHOICES, null=True)
     @property
     def astrological_sign(self): return ASTROLOGICAL_SIGN_DICT[self.i_astrological_sign] if self.i_astrological_sign else None
+    @property
+    def english_astrological_sign(self): return UNTRANSLATED_ASTROLOGICAL_SIGN_DICT[self.i_astrological_sign] if self.i_astrological_sign else None
     hometown = models.CharField(_('Hometown'), help_text='In Japanese characters.', max_length=100, null=True)
     romaji_hometown = models.CharField(_('Hometown'), help_text='In romaji.', max_length=100, null=True)
     hobbies = models.CharField(_('Hobbies'), max_length=100, null=True)

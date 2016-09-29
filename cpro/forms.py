@@ -7,6 +7,7 @@ from django import forms
 from django.core.files.images import ImageFile
 from cpro.utils import shrinkImageFromData
 from cpro import models
+from cpro.django_translated import t
 
 class FormWithRequest(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -124,7 +125,7 @@ class AccountFormAdvanced(_AccountForm):
         date_fields = ('start_date', )
 
 class FilterAccounts(FormWithRequest):
-    search = forms.CharField(required=False)
+    search = forms.CharField(required=False, label=t['Search'])
     user_type = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.TYPE_CHOICES, required=False, label=_('Type'))
     center_type = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.TYPE_CHOICES, required=False, label=string_concat(_('Center'), ' - ', _('Type')))
     center_rarity = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.RARITY_CHOICES, required=False, label=string_concat(_('Center'), ' - ', _('Rarity')))
@@ -159,7 +160,7 @@ class IdolForm(FormSaveOwnerOnCreation):
         date_fields = ('birthday', )
 
 class FilterIdols(FormWithRequest):
-    search = forms.CharField(required=False)
+    search = forms.CharField(required=False, label=t['Search'])
     type = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.TYPE_CHOICES, required=False, label=_('Type'))
     ordering = forms.ChoiceField(choices=[
         ('name', _('Name')),
@@ -170,8 +171,8 @@ class FilterIdols(FormWithRequest):
         ('bust', _('Bust')),
         ('waist', _('Waist')),
         ('hips', _('Hips')),
-    ], initial='name', required=False)
-    reverse_order = forms.BooleanField(initial=False, required=False)
+    ], initial='name', required=False, label=_('Ordering'))
+    reverse_order = forms.BooleanField(initial=False, required=False, label=_('Reverse Order'))
 
     def __init__(self, *args, **kwargs):
         super(FilterIdols, self).__init__(*args, **kwargs)
@@ -203,14 +204,14 @@ class EventForm(FormSaveOwnerOnCreation):
         date_fields = ('beginning', 'end')
 
 class FilterEvents(FormWithRequest):
-    search = forms.CharField(required=False)
+    search = forms.CharField(required=False, label=t['Search'])
     ordering = forms.ChoiceField(choices=[
         ('end', _('End')),
         ('name', _('Name')),
         ('t1_points', _('T{} points').format(1)),
         ('t1_rank', _('T{} rank').format(1)),
-    ], initial='end', required=False)
-    reverse_order = forms.BooleanField(initial=True, required=False)
+    ], initial='end', required=False, label=_('Ordering'))
+    reverse_order = forms.BooleanField(initial=True, required=False, label=_('Reverse Order'))
 
     def __init__(self, *args, **kwargs):
         super(FilterEvents, self).__init__(*args, **kwargs)
@@ -248,7 +249,7 @@ class CardForm(FormSaveOwnerOnCreation):
         date_fields = ('release_date', )
 
 class FilterCards(FormWithRequest):
-    search = forms.CharField(required=False)
+    search = forms.CharField(required=False, label=t['Search'])
     type = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.TYPE_CHOICES, required=False, label=_('Type'))
     is_event = forms.NullBooleanField(required=False, initial=None, label=_('Event'))
     is_limited = forms.NullBooleanField(required=False, initial=None, label=_('Limited'))
@@ -266,8 +267,8 @@ class FilterCards(FormWithRequest):
         ('visual_awakened_max', string_concat(_('Visual'), ' (', _('Awakened'), ')')),
         ('hp_max', _('HP')),
         ('hp_awakened_max', string_concat(_('HP'), ' (', _('Awakened'), ')')),
-    ], initial='level', required=False)
-    reverse_order = forms.BooleanField(initial=True, required=False)
+    ], initial='level', required=False, label=_('Ordering'))
+    reverse_order = forms.BooleanField(initial=True, required=False, label=_('Reverse Order'))
 
     def __init__(self, *args, **kwargs):
         super(FilterCards, self).__init__(*args, **kwargs)
@@ -321,7 +322,7 @@ class EditOwnedCardForm(FormWithRequest):
         date_fields = ('obtained_date', )
 
 class FilterOwnedCards(FormWithRequest):
-    search = forms.CharField(required=False)
+    search = forms.CharField(required=False, label=t['Search'])
     i_rarity = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.RARITY_CHOICES, required=False, label=_('Rarity'))
     account = forms.IntegerField(widget=forms.HiddenInput, min_value=0, required=True)
     type = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.TYPE_CHOICES, required=False, label=_('Type'))
