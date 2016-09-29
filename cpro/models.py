@@ -189,7 +189,7 @@ class Account(ItemModel):
         })
 
     # Cache leaderboard
-    _cache_leaderboard_days = 1
+    _cache_leaderboard_hours = 12
     _cache_leaderboard_last_update = models.DateTimeField(null=True)
     _cache_leaderboard = models.PositiveIntegerField(null=True)
 
@@ -203,7 +203,7 @@ class Account(ItemModel):
 
     @property
     def cached_leaderboard(self):
-        if not self._cache_leaderboard_last_update or self._cache_leaderboard_last_update < timezone.now() - datetime.timedelta(days=self._cache_leaderboard_days):
+        if not self._cache_leaderboard_last_update or self._cache_leaderboard_last_update < timezone.now() - datetime.timedelta(hours=self._cache_leaderboard_hours):
             self.force_cache_leaderboard()
         return self._cache_leaderboard
 
