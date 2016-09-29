@@ -156,6 +156,7 @@ ENABLED_COLLECTIONS['ownedcard'] = {
         'filter_form': forms.FilterOwnedCards,
         'js_files': ['ownedcards'],
         'ajax_pagination_callback': 'updateOwnedCards',
+        'before_template': 'include/beforeOwnedCards',
     },
     'edit': {
         'form_class': forms.EditOwnedCardForm,
