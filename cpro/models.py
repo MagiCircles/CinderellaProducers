@@ -11,6 +11,7 @@ from web.item_model import ItemModel, get_image_url, get_http_image_url
 from web.utils import split_data, join_data, AttrDict, tourldash, randomString
 from web.models import User
 from cpro.model_choices import *
+from cpro.django_translated import t
 
 ############################################################
 # Utils
@@ -46,7 +47,7 @@ class Idol(ItemModel):
 
     owner = models.ForeignKey(User, related_name='added_idols')
     name = models.CharField(string_concat(_('Name'), ' (romaji)'), max_length=100, unique=True)
-    japanese_name = models.CharField(string_concat(_('Name'), ' (', _('Japanese'), ')'), max_length=100, null=True)
+    japanese_name = models.CharField(string_concat(_('Name'), ' (', t['Japanese'], ')'), max_length=100, null=True)
     i_type = models.PositiveIntegerField(_('Type'), choices=TYPE_CHOICES, null=True)
     @property
     def type(self): return TYPE_DICT[self.i_type]
@@ -91,7 +92,7 @@ class Event(ItemModel):
     collection_name = 'event'
 
     owner = models.ForeignKey(User, related_name='added_events')
-    name = models.CharField(string_concat(_('Name'), ' (Japanese)'), max_length=100)
+    name = models.CharField(string_concat(_('Name'), ' (', t['Japanese'], ')'), max_length=100)
     translated_name = models.CharField(string_concat(_('Name'), ' (translated in English)'), max_length=100, null=True)
     image = models.ImageField(_('Image'), upload_to=uploadItem('e'))
     beginning = models.DateTimeField(_('Beginning'), null=True)
@@ -298,7 +299,7 @@ class Card(ItemModel):
     release_date = models.DateField(_('Release Date'), default=datetime.date(2015, 9, 3), null=True)
     event = models.ForeignKey(Event, verbose_name=_('Event'), related_name='cards', null=True, on_delete=models.SET_NULL, blank=True)
     is_limited = models.BooleanField(_('Limited'), default=False)
-    title = models.CharField(string_concat(_('Title'), ' (Japanese)'), max_length=100, null=True)
+    title = models.CharField(string_concat(_('Title'), ' (', t['Japanese'], ')'), max_length=100, null=True)
     translated_title = models.CharField(string_concat(_('Title'), ' (translated in English)'), max_length=100, null=True, blank=True)
 
     # Images

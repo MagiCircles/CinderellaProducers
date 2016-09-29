@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load tz %}
+{% load tools %}
 {% load cpro_tags %}
 {% with event=item %}
 <div class="event-info">
@@ -40,7 +41,7 @@
   <table class="table about-table">
     <tr>
       <td><i class="flaticon-JP"></i></td>
-      <th>{% trans 'Name' %} ({% trans 'Japanese' %})</th>
+      <th>{% trans 'Name' %} ({% t 'Japanese' %})</th>
       <td>{{ event.name }}</td>
     </tr>
     {% if event.translated_name %}
@@ -68,70 +69,70 @@
     {% if event.t1_rank %}
     <tr>
       <td><i class="flaticon-contest"></i></td>
-      <th>{% trans 'T1 Rank' %}</th>
+      <th>{% trans_anon_format string='T{} Rank' arg=1 %}</th>
       <td>{{ event.t1_rank }}</td>
     </tr>
     {% endif %}
     {% if event.t1_points %}
     <tr>
       <td><i class="flaticon-scoreup"></i></td>
-      <th>{% trans 'T1 Points' %}</th>
+      <th>{% trans_anon_format string='T{} Points' arg=1 %}</th>
       <td>{{ event.t1_points }}</td>
     </tr>
     {% endif %}
     {% if event.t2_rank %}
     <tr>
       <td><i class="flaticon-contest"></i></td>
-      <th>{% trans 'T2 Rank' %}</th>
+      <th>{% trans_anon_format string='T{} Rank' arg=2 %}</th>
       <td>{{ event.t2_rank }}</td>
     </tr>
     {% endif %}
     {% if event.t2_points %}
     <tr>
       <td><i class="flaticon-scoreup"></i></td>
-      <th>{% trans 'T2 Points' %}</th>
+      <th>{% trans_anon_format string='T{} Points' arg=2 %}</th>
       <td>{{ event.t2_points }}</td>
     </tr>
     {% endif %}
     {% if event.t3_rank %}
     <tr>
       <td><i class="flaticon-contest"></i></td>
-      <th>{% trans 'T3 Rank' %}</th>
+      <th>{% trans_anon_format string='T{} Rank' arg=3 %}</th>
       <td>{{ event.t3_rank }}</td>
     </tr>
     {% endif %}
     {% if event.t3_points %}
     <tr>
       <td><i class="flaticon-scoreup"></i></td>
-      <th>{% trans 'T3 Points' %}</th>
+      <th>{% trans_anon_format string='T{} Points' arg=3 %}</th>
       <td>{{ event.t3_points }}</td>
     </tr>
     {% endif %}
     {% if event.t4_rank %}
     <tr>
       <td><i class="flaticon-contest"></i></td>
-      <th>{% trans 'T4 Rank' %}</th>
+      <th>{% trans_anon_format string='T{} Rank' arg=4 %}</th>
       <td>{{ event.t4_rank }}</td>
     </tr>
     {% endif %}
     {% if event.t4_points %}
     <tr>
       <td><i class="flaticon-scoreup"></i></td>
-      <th>{% trans 'T4 Points' %}</th>
+      <th>{% trans_anon_format string='T{} Points' arg=4 %}</th>
       <td>{{ event.t4_points }}</td>
     </tr>
     {% endif %}
     {% if event.t5_rank %}
     <tr>
       <td><i class="flaticon-contest"></i></td>
-      <th>{% trans 'T5 Rank' %}</th>
+      <th>{% trans_anon_format string='T{} Rank' arg=5 %}</th>
       <td>{{ event.t5_rank }}</td>
     </tr>
     {% endif %}
     {% if event.t5_points %}
     <tr>
       <td><i class="flaticon-scoreup"></i></td>
-      <th>{% trans 'T5 Points' %}</th>
+      <th>{% trans_anon_format string='T{} Points' arg=5 %}</th>
       <td>{{ event.t5_points }}</td>
     </tr>
     {% endif %}

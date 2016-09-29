@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load tools %}
 {% with idol=item %}
 <div class="idol-info">
   {% if current == 'idol_item' %}
@@ -34,7 +35,7 @@
     {% if idol.japanese_name %}
     <tr>
       <td><i class="flaticon-JP"></i></td>
-      <th>{% trans 'Name' %} ({% trans 'Japanese' %})</th>
+      <th>{% trans 'Name' %} ({% t 'Japanese' %})</th>
       <td>{{ idol.japanese_name }}</td>
     </tr>
     {% endif %}
