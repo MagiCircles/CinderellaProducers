@@ -167,6 +167,7 @@ LANGUAGES = (
   ('fr', _('French')),
   ('de', _('German')),
   ('pl', _('Polish')),
+  ('ja', _('Japanese')),
 )
 
 LANGUAGE_CODE = 'en'
