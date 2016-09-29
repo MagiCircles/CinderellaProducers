@@ -73,7 +73,7 @@ ACTIVITY_TAGS = [
     ('cosplay', _('Cosplay')),
     ('anime', _('Anime')),
     ('community', _('Community')),
-    ('unrelated', _('Not about IDOLM@STER')),
+    ('unrelated', _('NOT about IDOLM@STER, idols or Starlight Stage')),
 ]
 
 ENABLED_COLLECTIONS['activity']['add']['before_save'] = collections_settings.activitiesBeforeSave
