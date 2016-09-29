@@ -616,10 +616,10 @@ class Card(ItemModel):
 
     def __unicode__(self):
         if self.id:
-            return u'{rarity} {idol_name} "{title}"'.format(
+            return u'{rarity} {idol_name} {title}'.format(
                 rarity=self.short_rarity,
                 idol_name=self.cached_idol.name,
-                title=self.translated_title if self.translated_title else '',
+                title='"{}"'.format(self.translated_title) if self.translated_title else '',
             )
         return ''
 
