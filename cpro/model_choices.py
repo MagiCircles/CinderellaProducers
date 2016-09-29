@@ -185,20 +185,20 @@ SKILL_SENTENCES = {
 }
 
 JAPANESE_SKILL_SENTENCES = {
-    SKILL_LESSER_PERFECT_LOCK: _(u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、GREATをPERFECTにする'),
-    SKILL_GREATER_PERFECT_LOCK: _(u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、GREAT/NICEをPERFECTにする'),
-    SKILL_EXTREME_PERFECT_LOCK: _(u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、GREAT/NICE/BADをPERFECTにする'),
-    SKILL_COMBO_LOCK: _(u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、NICEでもCOMBOが継続する'),
-    SKILL_HEALER: _(u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、PERFECTでライフ{skill_value}回復'),
-    SKILL_LIFE_GUARD: _(u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、ライフが減少しなくなる'),
-    SKILL_COMBO_BONUS: _(u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、COMBOボーナス{skill_value}%アップ'),
-    SKILL_PERFECT_SCORE_BONUS: _(u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、PERFECTのスコア{skill_value}%アップ'),
-    SKILL_OVERLOAD: _(u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、中確率でライフを{skill_value2}消費し、間PERFECTのスコア{skill_value}%アップ、NICE/BADでもCOMBO継続'),
-    SKILL_SCORE_BOOST: _(u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、PERFECT/GREATのスコア{skill_value}%アップ'),
+    SKILL_LESSER_PERFECT_LOCK: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、GREATをPERFECTにする',
+    SKILL_GREATER_PERFECT_LOCK: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、GREAT/NICEをPERFECTにする',
+    SKILL_EXTREME_PERFECT_LOCK: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、GREAT/NICE/BADをPERFECTにする',
+    SKILL_COMBO_LOCK: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、NICEでもCOMBOが継続する',
+    SKILL_HEALER: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、PERFECTでライフ{skill_value}回復',
+    SKILL_LIFE_GUARD: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、ライフが減少しなくなる',
+    SKILL_COMBO_BONUS: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、COMBOボーナス{skill_value}%アップ',
+    SKILL_PERFECT_SCORE_BONUS: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、PERFECTのスコア{skill_value}%アップ',
+    SKILL_OVERLOAD: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、中確率でライフを{skill_value2}消費し、間PERFECTのスコア{skill_value}%アップ、NICE/BADでもCOMBO継続',
+    SKILL_SCORE_BOOST: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、PERFECT/GREATのスコア{skill_value}%アップ',
 }
 
 LEADER_SKILL_SENTENCE = _('Raises {leader_skill_type} of all {idol_type} idols by {leader_skill_percent}%.')
-JAPANESE_LEADER_SKILL_SENTENCE = _(u'{idol_type}の{leader_skill_type}{leader_skill_percent}％アップ')
+JAPANESE_LEADER_SKILL_SENTENCE = u'{idol_type}の{leader_skill_type}{leader_skill_percent}％アップ'
 
 LEADER_SKILL_ALL = 101
 LEADER_SKILL_LIFE = 102
