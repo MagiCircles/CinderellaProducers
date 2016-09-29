@@ -8,25 +8,25 @@
   <p class="text-center">
     <img src="{{ idol.image_url }}" alt="{{ idol.name }}" class="pull-left idol-image">
     <span class="btn-group">
-      <a href="/cards/?idol={{ idol.id }}" class="btn btn-lg btn-{{ idol.type|default_if_none:'main' }}" target="_blank">
+      <a href="/cards/?idol={{ idol.id }}" class="btn btn-lg btn-{{ idol.english_type|default_if_none:'main' }}" target="_blank">
 	<i class="flaticon-cards"></i>
 	{% trans 'Cards' %}
       </a>
-      <a href="/events/?idol={{ idol.id }}" class="btn btn-lg btn-{{ idol.type|default_if_none:'main' }}" target="_blank">
+      <a href="/events/?idol={{ idol.id }}" class="btn btn-lg btn-{{ idol.english_type|default_if_none:'main' }}" target="_blank">
 	<i class="flaticon-event"></i>
 	{% trans 'Events' %}
       </a>
-      <a href="/accounts/?favorite_character={{ idol.id }}" class="btn btn-lg btn-{{ idol.type|default_if_none:'main' }}" target="_blank">
+      <a href="/accounts/?favorite_character={{ idol.id }}" class="btn btn-lg btn-{{ idol.english_type|default_if_none:'main' }}" target="_blank">
 	<i class="flaticon-users"></i>
 	{% trans 'Fans' %}
       </a>
-      <a href="{{ idol.item_url }}#disqus_thread" class="btn btn-lg btn-{{ idol.type|default_if_none:'main' }}"{% if current != 'idol_item' %} target="_blank"{% endif %}>
+      <a href="{{ idol.item_url }}#disqus_thread" class="btn btn-lg btn-{{ idol.english_type|default_if_none:'main' }}"{% if current != 'idol_item' %} target="_blank"{% endif %}>
 	<i class="flaticon-comments"></i>
 	{% trans 'Comments' %}
       </a>
       {% include 'include/share.html' with share_url=idol.http_item_url share_btn_class=idol.english_type|add:" btn-lg" share_sentence=idol %}
       {% if user.is_staff %}
-      <a href="/idols/edit/{{ idol.id }}/" class="btn btn-lg btn-{{ idol.type|default_if_none:'main' }}"><i class="flaticon-edit"></i></a>
+      <a href="/idols/edit/{{ idol.id }}/" class="btn btn-lg btn-{{ idol.english_type|default_if_none:'main' }}"><i class="flaticon-edit"></i></a>
       {% endif %}
     </span>
   </p>
