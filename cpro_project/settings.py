@@ -163,7 +163,10 @@ LANGUAGES = (
   ('en', _('English')),
   ('es', _('Spanish')),
   ('ru', _('Russian')),
+  ('it', _('Italian')),
   ('fr', _('French')),
+  ('de', _('German')),
+  ('pl', _('Polish')),
 )
 
 LANGUAGE_CODE = 'en'
