@@ -104,7 +104,7 @@ ENABLED_COLLECTIONS['account']['list']['js_files'] = ENABLED_COLLECTIONS['accoun
 ENABLED_COLLECTIONS['account']['list']['extra_context'] = collections_settings.leaderboardExtraContext
 
 ENABLED_COLLECTIONS['user']['item']['extra_context'] = collections_settings.profileGetAccountTabs
-ENABLED_COLLECTIONS['user']['item']['js_files'] = ENABLED_COLLECTIONS['user']['item'].get('js_files', []) + ['profile_account_tabs']
+ENABLED_COLLECTIONS['user']['item']['js_files'] = ENABLED_COLLECTIONS['user']['item'].get('js_files', []) + ['profile_account_tabs', 'cards']
 
 ENABLED_COLLECTIONS['card'] = {
     'queryset': models.Card.objects.all(),
