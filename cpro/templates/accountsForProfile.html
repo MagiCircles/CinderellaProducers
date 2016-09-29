@@ -20,7 +20,7 @@
 <div class="profile-account {% if account.center_id %}{{ account.cached_center.card.english_type }}{% else %}None{% endif %}" data-account-id="{{ account.id }}">
   <div class="profile-header" style="background-image: url('{% if account.center_id and account.cached_center.card.art %}{{ account.cached_center.card.art_url }}{% else %}{{ static_url }}img/backgrounds/background1.png{% endif %}');">
     <div class="profile-header-character" style="background-image: {% if account.center_id and not account.cached_center.card.art %}url('{{ account.cached_center.card.transparent_url }}'){% else %}none{% endif %};"><div class="profile-level">
-      <span class="level"><span class="prefix">Lv.&nbsp;</span>{{ account.level|default_if_none:'??' }}</span>
+      <span class="level"><span class="prefix">PLv.&nbsp;</span>{{ account.level|default_if_none:'??' }}</span>
       {% if account.producer_rank %}
       <span class="producer-rank">{{ account.producer_rank }}</span>
       {% endif %}

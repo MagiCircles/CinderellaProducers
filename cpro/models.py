@@ -133,7 +133,7 @@ class Account(ItemModel):
 
     owner = models.ForeignKey(User, related_name='accounts')
     creation = models.DateTimeField(_('Join Date'), auto_now_add=True)
-    level = models.PositiveIntegerField(_('Level'), null=True)
+    level = models.PositiveIntegerField(_('Producer Level'), null=True)
     nickname = models.CharField(_('Nickname'), max_length=100, null=True)
     game_id = models.PositiveIntegerField(_('Game ID'), null=True)
     accept_friend_requests = models.NullBooleanField('', null=True, help_text=_('Accept friend requests'))
@@ -272,7 +272,7 @@ class Account(ItemModel):
         })
 
     def __unicode__(self):
-        return u'{} Lv. {}'.format(self.nickname if self.nickname else self.cached_owner.username, self.level if self.level else '??')
+        return u'{} PLv. {}'.format(self.nickname if self.nickname else self.cached_owner.username, self.level if self.level else '??')
 
 ############################################################
 # Card
