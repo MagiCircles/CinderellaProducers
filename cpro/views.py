@@ -1,6 +1,7 @@
 import random, hashlib
 from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings as django_settings
+from django.core.exceptions import PermissionDenied
 from web.views_collections import item_view, list_view
 from web.settings import ENABLED_COLLECTIONS
 from web.views import _index_extraContext as web_index_extraContext
@@ -71,6 +72,8 @@ def cardcollection(request, card):
     return item_view(request, 'card', collection, pk=card, ajax=True)
 
 def addcard(request, card):
+    if request.method != "POST":
+        raise PermissionDenied()
     collection = 'collection' in request.GET
     queryset = models.Card
     if not collection:
@@ -85,6 +88,22 @@ def addcard(request, card):
         return cardcollection(request, card.id)
     else:
         return item_view(request, 'card', ENABLED_COLLECTIONS['card'], pk=card.id, item=card, ajax=True)
+
+def favoritecard(request, card):
+    print request.method
+    if request.method != "POST":
+        raise PermissionDenied()
+    # Note: calling filterCards will add extra info need to display the card
+    card = get_object_or_404(filters.filterCards(models.Card.objects.all(), {}, request), pk=card)
+    print 'card favorited'
+    print card.favorited
+    if card.favorited:
+        models.FavoriteCard.objects.filter(card=card, owner=request.user).delete()
+        card.favorited = 0
+    else:
+        models.FavoriteCard.objects.create(card=card, owner=request.user)
+        card.favorited = 1
+    return item_view(request, 'card', ENABLED_COLLECTIONS['card'], pk=card.id, item=card, ajax=True)
 
 def account_about(request, account):
     context = ajaxContext(request)

@@ -12,7 +12,10 @@ def filterCards(queryset, parameters, request):
         if accounts_pks:
             queryset = queryset.extra(select={
                 'total_owned': 'SELECT COUNT(*) FROM cpro_ownedcard WHERE card_id = cpro_card.id AND account_id IN ({})'.format(accounts_pks),
+                'favorited': 'SELECT COUNT(*) FROM cpro_favoritecard WHERE card_id = cpro_card.id AND owner_id IN ({})'.format(request.user.id),
             })
+    if 'favorite_of' in parameters and parameters['favorite_of']:
+        queryset = queryset.filter(fans__owner_id=parameters['favorite_of'])
     if 'ids' in parameters and parameters['ids']:
         queryset = queryset.filter(id__in=parameters['ids'].split(','))
     if 'search' in parameters and parameters['search']:
@@ -143,6 +146,16 @@ def filterEvents(queryset, parameters, request):
         queryset = queryset.filter(i_kind=parameters['i_kind'])
     if 'idol' in parameters and parameters['idol']:
         queryset = queryset.filter(cards__idol=parameters['idol'])
+    return queryset
+
+############################################################
+# Owned Cards
+
+def filterFavoriteCards(queryset, parameters, request):
+    if 'owner' in parameters:
+        queryset = queryset.filter(owner_id=parameters['owner'])
+    else:
+        raise PermissionDenied()
     return queryset
 
 ############################################################

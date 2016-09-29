@@ -676,4 +676,19 @@ class OwnedCard(ItemModel):
         return self.cached_account.owner.id
 
     def __unicode__(self):
-        return u'#{}{}'.format(self.card_id, u'({})'.format(_('Awakened')) if self.awakened else '')
+        return u'#{} {}'.format(self.card_id, u'({})'.format(_('Awakened')) if self.awakened else '')
+
+############################################################
+# Favorite Card
+
+class FavoriteCard(ItemModel):
+    collection_name = 'favoritecard'
+
+    owner = models.ForeignKey(User, related_name='favoritecards')
+    card = models.ForeignKey(Card, related_name='fans', on_delete=models.CASCADE)
+
+    def __unicode__(self):
+        return u'#{}'.format(self.card_id)
+
+    class Meta:
+        unique_together = (('owner', 'card'),)

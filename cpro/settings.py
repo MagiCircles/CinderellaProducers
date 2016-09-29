@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
+from collections import OrderedDict
 from django.conf import settings as django_settings
 from django.utils.translation import ugettext_lazy as _
 from web.default_settings import DEFAULT_ENABLED_COLLECTIONS, DEFAULT_ENABLED_PAGES, DEFAULT_JAVASCRIPT_TRANSLATED_TERMS
 from web.utils import tourldash
-from cpro import models, forms, filters, collections, utils
+from cpro import models, forms, filters, collections_settings, utils
 
 SITE_NAME = u'Cinderella Producers β'
 SITE_URL = 'http://cinderella.pro/'
@@ -50,6 +51,14 @@ ON_PREFERENCES_EDITED = utils.onPreferencesEdited
 
 DONATORS_STATUS_CHOICES = models.DONATORS_STATUS_CHOICES
 
+PROFILE_EXTRA_TABS = OrderedDict([
+    ('favorites', {
+        'icon': 'star',
+        'name': _('Favorite Cards'),
+        'callback': 'loadFavoriteCards',
+    }),
+])
+
 ENABLED_COLLECTIONS = DEFAULT_ENABLED_COLLECTIONS
 
 ACTIVITY_TAGS = [
@@ -67,34 +76,34 @@ ACTIVITY_TAGS = [
     ('unrelated', _('Not about IDOLM@STER')),
 ]
 
-ENABLED_COLLECTIONS['activity']['add']['before_save'] = collections.activitiesBeforeSave
-ENABLED_COLLECTIONS['activity']['edit']['before_save'] = collections.activitiesBeforeSave
+ENABLED_COLLECTIONS['activity']['add']['before_save'] = collections_settings.activitiesBeforeSave
+ENABLED_COLLECTIONS['activity']['edit']['before_save'] = collections_settings.activitiesBeforeSave
 
 ENABLED_COLLECTIONS['account']['list']['distinct'] = True
 
-ENABLED_COLLECTIONS['account']['add']['form_class'] = collections.getAccountForm
+ENABLED_COLLECTIONS['account']['add']['form_class'] = collections_settings.getAccountForm
 ENABLED_COLLECTIONS['account']['add']['back_to_list_button'] = False
-ENABLED_COLLECTIONS['account']['add']['after_save'] = collections.addAccountAfterSave
+ENABLED_COLLECTIONS['account']['add']['after_save'] = collections_settings.addAccountAfterSave
 ENABLED_COLLECTIONS['account']['edit']['form_class'] = forms.AccountFormAdvanced
 
 ENABLED_COLLECTIONS['account']['add']['otherbuttons_template'] = 'include/advancedButton'
-ENABLED_COLLECTIONS['account']['add']['extra_context'] = collections.modAccountExtraContext
-ENABLED_COLLECTIONS['account']['edit']['extra_context'] = collections.modAccountExtraContext
+ENABLED_COLLECTIONS['account']['add']['extra_context'] = collections_settings.modAccountExtraContext
+ENABLED_COLLECTIONS['account']['edit']['extra_context'] = collections_settings.modAccountExtraContext
 ENABLED_COLLECTIONS['account']['add']['after_template'] = 'include/accountJSstarter'
 ENABLED_COLLECTIONS['account']['edit']['after_template'] = 'include/accountJSstarter'
 ENABLED_COLLECTIONS['account']['add']['js_files'] = ENABLED_COLLECTIONS['account']['add'].get('js_files', []) + ['mod_account']
 ENABLED_COLLECTIONS['account']['edit']['js_files'] = ENABLED_COLLECTIONS['account']['edit'].get('js_files', []) + ['mod_account']
 
-ENABLED_COLLECTIONS['account']['add']['redirect_after_add'] = collections.redirectAfterAddAccount
+ENABLED_COLLECTIONS['account']['add']['redirect_after_add'] = collections_settings.redirectAfterAddAccount
 
 ENABLED_COLLECTIONS['account']['list']['before_template'] = 'include/beforeLeaderboard'
 ENABLED_COLLECTIONS['account']['list']['default_ordering'] = '-level'
 ENABLED_COLLECTIONS['account']['list']['filter_form'] = forms.FilterAccounts
 ENABLED_COLLECTIONS['account']['list']['filter_queryset'] = filters.filterAccounts
 ENABLED_COLLECTIONS['account']['list']['js_files'] = ENABLED_COLLECTIONS['account']['list'].get('js_files', []) + ['leaderboard']
-ENABLED_COLLECTIONS['account']['list']['extra_context'] = collections.leaderboardExtraContext
+ENABLED_COLLECTIONS['account']['list']['extra_context'] = collections_settings.leaderboardExtraContext
 
-ENABLED_COLLECTIONS['user']['item']['extra_context'] = collections.profileGetAccountTabs
+ENABLED_COLLECTIONS['user']['item']['extra_context'] = collections_settings.profileGetAccountTabs
 ENABLED_COLLECTIONS['user']['item']['js_files'] = ENABLED_COLLECTIONS['user']['item'].get('js_files', []) + ['profile_account_tabs']
 
 ENABLED_COLLECTIONS['card'] = {
@@ -111,13 +120,13 @@ ENABLED_COLLECTIONS['card'] = {
         'filter_queryset': filters.filterCards,
         'before_template': 'include/beforeCards',
         'after_template': 'include/afterCards',
-        'extra_context': collections.cardsExtraContext,
+        'extra_context': collections_settings.cardsExtraContext,
     },
     'item': {
         'ajax_callback': 'updateCardsAndOwnedCards',
         'js_files': ['cards', 'collection'],
         'filter_queryset': filters.filterCard,
-        'extra_context': collections.cardExtraContext,
+        'extra_context': collections_settings.cardExtraContext,
     },
     'add': {
         'form_class': forms.CardForm,
@@ -143,7 +152,7 @@ ENABLED_COLLECTIONS['ownedcard'] = {
         'page_size': 48,
         'filter_queryset': filters.filterOwnedCards,
         'col_break': 'xs',
-        'foreach_items': collections.foreachOwnedCard,
+        'foreach_items': collections_settings.foreachOwnedCard,
         'filter_form': forms.FilterOwnedCards,
         'js_files': ['ownedcards'],
         'ajax_pagination_callback': 'updateOwnedCards',
@@ -151,8 +160,8 @@ ENABLED_COLLECTIONS['ownedcard'] = {
     'edit': {
         'form_class': forms.EditOwnedCardForm,
         'filter_queryset': lambda q, p, r: q.select_related('account'), # Used when checking if the center has been updated
-        'redirect_after_edit': collections.ownedCardRedirectAfter,
-        'redirect_after_delete': collections.ownedCardRedirectAfter,
+        'redirect_after_edit': collections_settings.ownedCardRedirectAfter,
+        'redirect_after_delete': collections_settings.ownedCardRedirectAfter,
         'allow_delete': True,
         'back_to_list_button': False,
         'js_files': ['edit_ownedcard'],
@@ -174,7 +183,7 @@ ENABLED_COLLECTIONS['idol'] = {
         'ajax_pagination_callback': 'ajaxModals',
         'filter_form': forms.FilterIdols,
         'filter_queryset': filters.filterIdols,
-        'extra_context': collections.idolsExtraContext,
+        'extra_context': collections_settings.idolsExtraContext,
         'js_files': ['idols'],
     },
     'item': {
@@ -221,7 +230,7 @@ ENABLED_COLLECTIONS['event'] = {
 }
 
 for name, collection in ENABLED_COLLECTIONS.items():
-    if name not in ['activity', 'ownedcard'] and 'list' in collection:
+    if name not in ['activity', 'card', 'ownedcard'] and 'list' in collection:
         collection['list']['authentication_required'] = True
 
 ENABLED_PAGES = DEFAULT_ENABLED_PAGES
@@ -246,6 +255,14 @@ ENABLED_PAGES['cardcollection'] = {
 }
 
 ENABLED_PAGES['addcard'] = {
+    'ajax': True,
+    'navbar_link': False,
+    'url_variables':  [
+        ('card', '\d+'),
+    ],
+}
+
+ENABLED_PAGES['favoritecard'] = {
     'ajax': True,
     'navbar_link': False,
     'url_variables':  [

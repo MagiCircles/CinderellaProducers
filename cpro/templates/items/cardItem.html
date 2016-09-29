@@ -10,7 +10,7 @@
     <a href="#" class="info-loader" style="display: none;"><i class="flaticon-loading"></i></a>
     {% if not card.total_owned %}
     {% if user.is_authenticated and user.all_accounts|length != 0 %}
-    <form{% if user.all_accounts|length == 1 %} class="hidden"{% endif %} method="post" action="/ajax/addcard/{{ card.id }}/">
+    <form class="form-add-card {% if user.all_accounts|length == 1 %}hidden{% endif %}" method="post" action="/ajax/addcard/{{ card.id }}/">
       {% csrf_token %}
       <small>{% trans 'Add to' %}:</small>
       <select name="account" class="account-select form-control">
@@ -27,12 +27,23 @@
     {% else %}
     <a href="{{ card.item_url }}?collection" {% if current != 'card_item' %}data-ajax-url="/ajax/cardcollection/{{ card.id }}/" data-ajax-title="{{ card }}"{% endif %} data-toggle="tooltip" data-trigger="hover" title="{% trans 'Your cards' %}" data-placement="bottom" class="total-button-wrapper"><span class="total-button">x{{ card.total_owned }}</span></a>
     {% endif %}
+    {% if user.is_authenticated and all_accounts|length != 0 %}
+    <form class="form-favorite-card hidden" action="/ajax/favoritecard/{{ card.id }}/" method="post">
+      {% csrf_token %}
+    </form>
+    {% endif %}
+    {% if card.favorited %}
+    <a href="#favoriteCard" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Remove this card from your favorites' %}" data-placement="bottom"><i class="flaticon-star"></i></a>
+    {% else %}
+    <a href="{% if user.is_authenticated and all_accounts|length != 0 %}#favoriteCard{% elif user.is_authenticated %}/accounts/add/?next={{ card.item_url }}&next_title={{ card }}{% else %}/signup/?next={{ card.item_url }}&next_title={{ card }}{% endif %}" data-toggle="tooltip" data-trigger="hover" title="{% trans 'Add this card to your favorites' %}" data-placement="bottom"><i class="flaticon-star{% if user.is_authenticated %}-empty{% endif %}"></i></a>
+    {% endif %}
+    <a href="#" class="favoritecard-loader" style="display: none;"><i class="flaticon-loading"></i></a>
     {% if user.is_staff %}
     <a href="/cards/edit/{{ card.id }}/" data-toggle="tooltip" data-trigger="hover" title="Staff - {% trans 'Edit' %} {% trans 'Card' %}" data-placement="bottom"><i class="flaticon-edit"></i></a>
     {% endif %}
   </div>
 </div>
-{% if current != 'card_list' and current != 'card_list_ajax' and current != 'addcard_ajax' %}
+{% if current != 'card_list' and current != 'card_list_ajax' and current != 'addcard_ajax' and current != 'favoritecard_ajax' %}
 {% if collection %}
 {% include 'include/cards-collection.html' %}
 {% else %}

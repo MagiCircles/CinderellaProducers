@@ -1,4 +1,4 @@
-{% if user.is_authenticated %}
+{% if user.is_authenticated and not favorite_of %}
 {% load i18n %}
 <div class="padding50 text-center cards-share">
   <h1>{% trans 'Share your cards!' %}</h1>
