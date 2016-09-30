@@ -1,0 +1,9 @@
+{% load i18n %}
+{% if idol %}
+<a href="{{ idol.item_url }}" class="a-nodifference">
+  <h2 class="text-center alert alert-{{ idol.english_type }} clearfix alert-before-list">
+    <img src="{{ idol.image_url }}" alt="{{ idol }}" class="pull-right">
+    {% blocktrans %}{{ idol }} performed in {{ total_results }} events{% endblocktrans %}
+  </h2>
+</a>
+{% endif %}
