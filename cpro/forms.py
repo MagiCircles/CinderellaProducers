@@ -162,6 +162,7 @@ class IdolForm(FormSaveOwnerOnCreation):
 class FilterIdols(FormWithRequest):
     search = forms.CharField(required=False, label=t['Search'])
     type = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.TYPE_CHOICES, required=False, label=_('Type'))
+    has_signature = forms.NullBooleanField(initial=None, required=False, label=_('Signature'))
     ordering = forms.ChoiceField(choices=[
         ('name', _('Name')),
         ('age', _('Age')),
@@ -179,7 +180,7 @@ class FilterIdols(FormWithRequest):
 
     class Meta:
         model = models.Idol
-        fields = ('search', 'ordering', 'reverse_order', 'type', 'i_blood_type', 'i_writing_hand', 'i_astrological_sign')
+        fields = ('search', 'ordering', 'reverse_order', 'type', 'i_blood_type', 'i_writing_hand', 'i_astrological_sign', 'has_signature')
         optional_fields = ('i_blood_type', 'i_writing_hand', 'i_astrological_sign')
 
 ############################################################

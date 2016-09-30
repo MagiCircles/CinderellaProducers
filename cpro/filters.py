@@ -87,6 +87,11 @@ def filterIdols(queryset, parameters, request):
         queryset = queryset.filter(i_writing_hand=parameters['i_writing_hand'])
     if 'i_astrological_sign' in parameters and parameters['i_astrological_sign']:
         queryset = queryset.filter(i_astrological_sign=parameters['i_astrological_sign'])
+    if 'has_signature' in parameters and parameters['has_signature']:
+        if parameters['has_signature'] == '2':
+            queryset = queryset.filter(signature__isnull=False).exclude(signature='')
+        elif parameters['has_signature'] == '3':
+            queryset = queryset.filter(Q(signature__isnull=True) | Q(signature=''))
     return queryset
 
 ############################################################
