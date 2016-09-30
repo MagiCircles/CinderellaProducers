@@ -392,7 +392,11 @@ class Card(ItemModel):
         if not max_level:
             max_level = self.max_level
         min = getattr(self, fieldname + '_min')
+        if not min:
+            min = 0
         max = getattr(self, fieldname + '_max')
+        if not max:
+            max = 0
         value = min + ((level - 1) / (max_level - 1)) * (max - min)
         if to_string:
             return '{0:g}'.format(int(value) if round_integer else round(value, 2))
@@ -447,11 +451,11 @@ class Card(ItemModel):
         if self.i_skill is None:
             return None
         return (JAPANESE_SKILL_SENTENCES if japanese else SKILL_SENTENCES)[self.i_skill].format(
-            trigger_value='{0:g}'.format(self.trigger_value),
+            trigger_value='{0:g}'.format(self.trigger_value if self.trigger_value else 0),
             trigger_chance=self._value_for_level('trigger_chance', level, max_level=MAX_SKILL_LEVEL, round_integer=False),
             skill_duration=self._value_for_level('skill_duration', level, max_level=MAX_SKILL_LEVEL, round_integer=False),
-            skill_value='{0:g}'.format(self.skill_value),
-            skill_value2='{0:g}'.format(self.skill_value2),
+            skill_value='{0:g}'.format(self.skill_value if self.skill_value else 0),
+            skill_value2='{0:g}'.format(self.skill_value2 if self.skill_value2 else 0),
         )
 
     @property
@@ -548,7 +552,7 @@ class Card(ItemModel):
     _cache_event_image = models.ImageField(upload_to=uploadItem('e'), null=True, blank=True)
 
     def update_cache_event(self):
-        if event_id:
+        if self.event_id:
             self._cache_event_last_update = timezone.now()
             self._cache_event_name = self.event.name
             self._cache_event_translated_name = self.event.translated_name
