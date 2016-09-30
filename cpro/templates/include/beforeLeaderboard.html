@@ -1,3 +1,4 @@
+{% load i18n %}
 <style>{% include 'include/cssLeaderboardStatic.css' %}</style>
 <script>
   var starters = {
@@ -13,3 +14,19 @@
   {% endfor %}
     };
 </script>
+{% if favorite_character_idol %}
+<a href="{{ favorite_character_idol.item_url }}" class="a-nodifference">
+  <h2 class="text-center alert alert-{{ favorite_character_idol.english_type }} clearfix alert-before-list">
+    <img src="{{ favorite_character_idol.image_url }}" alt="{{ favorite_character_idol }}" class="pull-right">
+    {% blocktrans %}{{ total_results }} producers love {{ favorite_character_idol }}{% endblocktrans %}
+  </h2>
+</a>
+{% elif own_card %}
+<a href="{{ own_card.item_url }}" class="a-nodifference">
+  <h2 class="text-center alert alert-{{ own_card.cached_idol.english_type }} clearfix alert-before-list">
+    <img src="{{ own_card.icon_url }}" alt="{{ own_card }}" class="pull-left">
+    <img src="{{ own_card.icon_awakened_url }}" alt="{{ own_card }}" class="pull-right">
+    {% blocktrans %}{{ total_results }} producers scouted {{ own_card }}{% endblocktrans %}
+  </h2>
+</a>
+{% endif %}

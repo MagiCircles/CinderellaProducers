@@ -26,9 +26,14 @@ def getAccountForm(request, context, collection):
     return formClass
 
 def leaderboardExtraContext(context):
+    request = context['request']
     context['types'] = models.TYPE_CHOICES
     context['favorite_characters'] = getattr(django_settings, 'FAVORITE_CHARACTERS', [])
     context['starters'] = getattr(django_settings, 'STARTERS', [])
+    if 'favorite_character' in request.GET and request.GET['favorite_character']:
+        context['favorite_character_idol'] = models.Idol.objects.get(id=request.GET['favorite_character'])
+    if 'own_card' in request.GET and request.GET['own_card']:
+        context['own_card'] = models.Card.objects.get(id=request.GET['own_card'])
 
 def addAccountAfterSave(request, account):
     if account.starter_id:
@@ -43,6 +48,14 @@ def modAccountExtraContext(context):
 
 def redirectAfterAddAccount(request, item, ajax):
     return '/cards/?get_started'
+
+############################################################
+# Events
+
+def eventsExtraContext(context):
+    request = context['request']
+    if 'idol' in request.GET and request.GET['idol']:
+        context['idol'] = models.Idol.objects.get(id=request.GET['idol'])
 
 ############################################################
 # Profile
@@ -82,6 +95,10 @@ def cardsExtraContext(context):
     context['favorite_of'] = request.GET.get('favorite_of', None)
     if context['is_last_page']:
         context['share_sentence'] = _('Check out my collection of cards!')
+    if 'event' in request.GET and request.GET['event']:
+        context['event'] = models.Event.objects.get(id=request.GET['event'])
+    elif 'idol' in request.GET and request.GET['idol']:
+        context['idol'] = models.Idol.objects.get(id=request.GET['idol'])
 
 ############################################################
 # Owned Card

@@ -35,3 +35,18 @@
   </div>
 </div>
 {% endif %}
+{% if event %}
+<a href="{{ event.item_url }}" class="a-nodifference">
+  <h2 class="text-center alert alert-main clearfix alert-before-list">
+    <img src="{{ event.image_url }}" alt="{{ event }}" class="pull-right">
+    {{ event }} {% trans 'Cards' %}
+  </h2>
+</a>
+{% elif idol %}
+<a href="{{ idol.item_url }}" class="a-nodifference">
+  <h2 class="text-center alert alert-{{ idol.english_type }} clearfix alert-before-list">
+    <img src="{{ idol.image_url }}" alt="{{ idol }}" class="pull-right">
+    {{ idol }} {% trans 'Cards' %}
+  </h2>
+</a>
+{% endif %}

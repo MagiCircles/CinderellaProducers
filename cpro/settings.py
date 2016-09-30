@@ -213,6 +213,8 @@ ENABLED_COLLECTIONS['event'] = {
         'per_line': 1,
         'filter_form': forms.FilterEvents,
         'filter_queryset': filters.filterEvents,
+        'extra_context': collections_settings.eventsExtraContext,
+        'before_template': 'include/beforeEvents',
     },
     'item': {
         'template': 'eventInfo',
