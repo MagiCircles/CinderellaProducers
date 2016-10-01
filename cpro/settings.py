@@ -102,6 +102,7 @@ ENABLED_COLLECTIONS['account']['list']['filter_form'] = forms.FilterAccounts
 ENABLED_COLLECTIONS['account']['list']['filter_queryset'] = filters.filterAccounts
 ENABLED_COLLECTIONS['account']['list']['js_files'] = ENABLED_COLLECTIONS['account']['list'].get('js_files', []) + ['leaderboard']
 ENABLED_COLLECTIONS['account']['list']['extra_context'] = collections_settings.leaderboardExtraContext
+ENABLED_COLLECTIONS['account']['list']['show_add_button'] = lambda request: not request.user.is_authenticated()
 
 ENABLED_COLLECTIONS['user']['item']['extra_context'] = collections_settings.profileGetAccountTabs
 ENABLED_COLLECTIONS['user']['item']['js_files'] = ENABLED_COLLECTIONS['user']['item'].get('js_files', []) + ['profile_account_tabs', 'cards']
