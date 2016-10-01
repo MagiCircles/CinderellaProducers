@@ -347,7 +347,7 @@ msgstr "Commentaires"
 #: cpro/templates/items/ownedcardItem.html:23
 #: cpro/templates/items/ownedcardItem.html:29
 msgid "Edit"
-msgstr "Modifier le/la"
+msgstr "Modifier"
 
 #. Feel free to use Twitter's word in your language.
 #: web/templates/items/profile.html:23
@@ -639,7 +639,7 @@ msgstr[1] "Tu recevras %(counter)s porte-clés personnalisés !"
 #: web/templates/items/profile.html:97 web/templates/items/profile.html:119
 #: web/templates/pages/settings.html:10 web/templates/pages/settings.html:87
 msgid "Add"
-msgstr "Ajouter un/une"
+msgstr "Ajouter"
 
 #: web/templates/pages/settings.html:10 web/templates/pages/settings.html:51
 msgid "Link"
@@ -679,7 +679,7 @@ msgstr "J'aime"
 #. Will be shown before another word. For example: "Delete account" or "Delete card". Can be changed to something else so the order works, such as "Remove" or "Removal of". A gender-neutral article may be added, such as "Delete the".
 #: web/templates/pages/settings.html:51 web/views_collections.py:320
 msgid "Delete"
-msgstr "Supprimer le/la"
+msgstr "Supprimer"
 
 #: web/forms.py:332 web/models.py:325 web/templates/items/reportItem.html:35
 msgid "Images"
@@ -802,7 +802,7 @@ msgstr "Médailles"
 #: cpro/forms.py:71 cpro/forms.py:131 cpro/models.py:148
 #: cpro/templates/ajax/account_about.html:60
 msgid "Starter"
-msgstr "Pokémon de départ"
+msgstr "Premier choix"
 
 #: cpro/forms.py:95 cpro/forms.py:314
 msgid "This date cannot be in the future."
