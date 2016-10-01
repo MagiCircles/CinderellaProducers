@@ -57,6 +57,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'web.middleware.languageFromPreferences.LanguageFromPreferenceMiddleWare',
     'web.middleware.httpredirect.HttpRedirectMiddleware',
 )
 
