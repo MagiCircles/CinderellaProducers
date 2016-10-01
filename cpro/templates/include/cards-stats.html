@@ -29,11 +29,13 @@
 	{% if card.title %}
 	<td>
 	  <h4>{% trans 'Title' %}</h4>
-	  {{ card.title }}
 	  {% if card.translated_title %}
+	  "{{ card.translated_title }}"
 	  <br><small class="text-muted">
-	    {{ card.translated_title }}
+	    {{ card.title }}
 	  </small>
+	  {% else %}
+	  {{ card.title }}
 	  {% endif %}
 	</td>
 	{% endif %}
@@ -51,8 +53,17 @@
 	{% if card.has_skill %}
 	<td{% if card.has_leader_skill %} width="50%"{% endif %}>
 	  <h4>{% trans 'Skill' %}: {{ card.skill }}</h4>
-	  <p class="skill-details">{{ card.skill_details }}</p>
-	  <p class="skill-details-jp text-muted">{{ card.japanese_skill_details }}</p>
+	  {% if card.translated_skill_name %}
+	  <strong>{{ card.translated_skill_name }}</strong><br>
+	  {% endif %}
+	  <p class="skill-details">
+	    {{ card.skill_details }}
+	  </p>
+	  {% if card.skill_name %}
+	  <strong>{{ card.skill_name }}</strong><br>
+	  {% endif %}
+	  <p class="skill-details-jp text-muted">
+	    {{ card.japanese_skill_details }}</p>
 	  <p>
 	    {% trans 'Skill Level' %} <span class="skill-level" data-max-level="{{ card.max_skill_level }}">1</span>
 	    <span class="btn-group">
