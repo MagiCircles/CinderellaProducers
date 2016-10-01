@@ -627,9 +627,9 @@ class Card(ItemModel):
             return u'{rarity} {idol_name} {title}'.format(
                 rarity=self.short_rarity,
                 idol_name=self.cached_idol.name,
-                title=u'"{}"'.format(self.translated_title) if self.translated_title else '',
+                title=u'"{}"'.format(self.translated_title) if self.translated_title else u'',
             )
-        return ''
+        return u''
 
 ############################################################
 # Owned Card
