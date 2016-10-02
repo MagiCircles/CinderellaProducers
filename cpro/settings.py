@@ -9,6 +9,7 @@ from cpro import models, forms, filters, collections_settings, utils
 SITE_NAME = u'Cinderella Producers β'
 SITE_URL = 'http://cinderella.pro/'
 SITE_IMAGE = 'cpro.png'
+EMAIL_IMAGE = 'cpro_banner.png'
 SITE_STATIC_URL = '//localhost:{}/'.format(django_settings.DEBUG_PORT) if django_settings.DEBUG else '//i.cinderella.pro/'
 #SITE_STATIC_URL = '//i.cinderella.pro/'
 GAME_NAME = 'IDOLM@STER Cinderella Girls Starlight Stage'
