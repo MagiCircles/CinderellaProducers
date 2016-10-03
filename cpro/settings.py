@@ -234,14 +234,9 @@ ENABLED_COLLECTIONS['event'] = {
     },
 }
 
-for name, collection in ENABLED_COLLECTIONS.items():
-    if name not in ['activity', 'card', 'ownedcard'] and 'list' in collection:
-        collection['list']['authentication_required'] = True
-
 ENABLED_PAGES = DEFAULT_ENABLED_PAGES
 
 ENABLED_PAGES['index']['custom'] = True
-ENABLED_PAGES['signup']['custom'] = True
 
 ENABLED_PAGES['cardstat'] = {
     'ajax': True,
