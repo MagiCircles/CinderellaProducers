@@ -6,7 +6,7 @@ from web.default_settings import DEFAULT_ENABLED_COLLECTIONS, DEFAULT_ENABLED_PA
 from web.utils import tourldash
 from cpro import models, forms, filters, collections_settings, utils
 
-SITE_NAME = u'Cinderella Producers β'
+SITE_NAME = u'Cinderella Producers'
 SITE_URL = 'http://cinderella.pro/'
 SITE_IMAGE = 'cpro.png'
 EMAIL_IMAGE = 'cpro_banner.png'
