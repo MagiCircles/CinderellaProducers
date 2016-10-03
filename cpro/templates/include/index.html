@@ -1,4 +1,3 @@
-{% load i18n %}
 <div class="home-wrapper" style="background-image: url('{% if awakened %}{{ card.art_awakened_url }}{% else %}{{ card.art_url }}{% endif %}');">
   <div class="home">
     <div class="home-inner">
@@ -6,9 +5,3 @@
     </div>
   </div>
 </div>
-<script>
-  var eventcountdown = "October 3 , 2016 01:00:00 +0000";
-  var render = function countdownRender(data) {
-  $(this.el).text('Official Launch in ' + data.days + ' {% trans 'day' %}, ' + data.hours + ' {% trans 'hours' %}, ' + data.min + ' {% trans 'minutes' %}, ' + data.sec + ' {% trans 'seconds' %}');
-  };
-</script>
