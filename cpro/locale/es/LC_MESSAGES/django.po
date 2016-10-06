@@ -21,62 +21,62 @@ msgstr "Cuenta"
 msgid "Leaderboard"
 msgstr "Tablero de puntos"
 
-#: web/default_settings.py:126
+#: web/default_settings.py:131
 msgid "Create your account to join the community and be in the leaderboard!"
 msgstr "¡Crea tu cuenta para entrar en la comunidad y estar en el tablero de puntos!"
 
-#: web/default_settings.py:146 web/default_settings.py:279
-#: web/default_settings.py:290 web/templates/items/profile.html:26
+#: web/default_settings.py:151 web/default_settings.py:284
+#: web/default_settings.py:295 web/templates/items/profile.html:26
 #: web/templates/pages/about.html:65 web/templates/pages/donate.html:154
 #: web/templates/pages/donate.html:196
 msgid "Profile"
 msgstr "Perfil"
 
-#: web/default_settings.py:147
+#: web/default_settings.py:152
 msgid "Players"
 msgstr "Jugadores"
 
-#: web/default_settings.py:169 web/default_settings.py:240
+#: web/default_settings.py:174 web/default_settings.py:245
 #: web/templates/items/activityItem.html:47
 #: web/templates/items/profile.html:119
 msgid "Activity"
 msgstr "Actividad"
 
-#: web/default_settings.py:170 web/templates/items/profile.html:75
+#: web/default_settings.py:175 web/templates/items/profile.html:75
 msgid "Activities"
 msgstr "Actividades"
 
-#: web/default_settings.py:178 web/views.py:124
+#: web/default_settings.py:183 web/views.py:124
 msgid "Share your adventures!"
 msgstr "¡Comparte tus aventuras!"
 
-#: web/default_settings.py:203
-#: web/management/commands/cron_notifications.py:25
+#: web/default_settings.py:208
+#: web/management/commands/cron_notifications.py:30
 #: web/templates/emails/notification.html:5
 #: web/templates/emails/notification.html:6
 msgid "Notification"
 msgstr "Notificación"
 
-#: web/default_settings.py:110 web/default_settings.py:204
+#: web/default_settings.py:117 web/default_settings.py:209
 msgid "Notifications"
 msgstr "Notificaciones"
 
-#: web/default_settings.py:266 web/templates/pages/login.html:4
+#: web/default_settings.py:271 web/templates/pages/login.html:4
 #: web/templates/pages/login.html.py:6 web/templates/pages/signup.html:8
 msgid "Login"
 msgstr "Iniciar Sesión"
 
-#: web/default_settings.py:272 web/templates/pages/login.html:8
+#: web/default_settings.py:277 web/templates/pages/login.html:8
 #: web/templates/pages/signup.html:4 web/templates/pages/signup.html.py:6
 msgid "Sign Up"
 msgstr "Registrarse"
 
-#: web/default_settings.py:296 web/templates/items/profile.html:28
+#: web/default_settings.py:301 web/templates/items/profile.html:28
 #: web/templates/pages/settings.html:16 web/views.py:176
 msgid "Settings"
 msgstr "Ajustes"
 
-#: web/default_settings.py:304
+#: web/default_settings.py:309
 msgid "Logout"
 msgstr "Cerrar Sesión"
 
@@ -84,8 +84,8 @@ msgstr "Cerrar Sesión"
 msgid "About"
 msgstr "Sobre nosotros"
 
-#: web/default_settings.py:331 web/templates/include/about_description.html:7
-#: web/templates/include/homePage.html:9 web/templates/pages/donate.html:7
+#: web/default_settings.py:336 web/templates/include/about_description.html:7
+#: web/templates/include/homePage.html:10 web/templates/pages/donate.html:7
 #: web/templates/pages/donate.html.py:13 web/templates/pages/donate.html:23
 msgid "Donate"
 msgstr "Donar"
@@ -96,29 +96,29 @@ msgid "Map"
 msgstr "Mapa"
 
 #. Link to the help pages that look like a wiki and help people use the site.
-#: web/default_settings.py:345 web/default_settings.py:351
+#: web/default_settings.py:350 web/default_settings.py:356
 msgid "Help"
 msgstr "Ayuda"
 
 #. The favorite color of the user. Will be used to personalize their profile.
-#: web/forms.py:120 web/models.py:63
+#: web/forms.py:135 web/models.py:63
 msgid "Color"
 msgstr "Color"
 
 #. This is about the favorite characters the user specified in their preferences.
-#: web/forms.py:153
+#: web/forms.py:168
 msgid "All your favorites must be unique"
 msgstr "Todos tus favoritos deben ser únicos"
 
-#: web/forms.py:198
+#: web/forms.py:213
 msgid "Old Password"
 msgstr "Contraseña vieja"
 
-#: web/forms.py:199
+#: web/forms.py:214
 msgid "New Password"
 msgstr "Contraseña nueva"
 
-#: web/forms.py:200
+#: web/forms.py:215
 msgid "New Password Again"
 msgstr "Escribir contraseña nueva otra vez"
 
@@ -196,7 +196,7 @@ msgid "When someone follows you."
 msgstr "Cuando alguien te sigue."
 
 #. Personal description you can write on your profile. Similar to twitter's "bio".
-#: cpro/models.py:75 cpro/templates/items/idolInfo.html:139
+#: cpro/models.py:77 cpro/templates/items/idolInfo.html:139
 msgid "Description"
 msgstr "Biografía"
 
@@ -238,21 +238,21 @@ msgid "It might take up to 24 hours to update your location on the map."
 msgstr "Puede tomar hasta 24 horas para poner tu ubicación en el mapa."
 
 #. For links. Select your platform before adding a link. Can be Facebook/Twitter/Reddit, etc.
-#: web/models.py:173
+#: web/models.py:176
 msgid "Platform"
 msgstr "Plataforma"
 
-#: web/models.py:174
+#: web/models.py:177
 msgid "Username/ID"
 msgstr "Nombre de Usuario"
 
 #. For links.
-#: web/models.py:174
+#: web/models.py:177
 msgid "Write your username only, no URL."
 msgstr "Solo escribe tu nombre de usuario, no URL."
 
 #. For links.
-#: web/forms.py:232 web/models.py:175
+#: web/forms.py:247 web/models.py:178
 msgid "How often do you tweet/stream/post about {}?"
 msgstr "¿Con qué frecuencia twiteas/haces stream/publicas de {}?"
 
@@ -260,7 +260,7 @@ msgstr "¿Con qué frecuencia twiteas/haces stream/publicas de {}?"
 msgid "Help us translate the site"
 msgstr "Ayúdanos a traducir este sitio"
 
-#: web/templates/collections/list_page.html:13
+#: web/default_settings.py:27 web/templates/collections/list_page.html:13
 msgid "No result."
 msgstr "Sin resultados."
 
@@ -272,7 +272,7 @@ msgstr "Volver a"
 #: web/templates/emails/notification.html:20
 #: web/templates/emails/notification.txt:5 web/templates/emails/report.html:29
 #: web/templates/emails/report.html:30 web/templates/emails/report.txt:8
-#: web/templates/items/notificationItem.html:21
+#: web/templates/items/notificationItem.html:22
 #: web/templates/items/reportItem.html:66
 msgid "Open"
 msgstr "Abierto"
@@ -338,7 +338,7 @@ msgstr "Más..."
 msgid "Write Comment"
 msgstr "Comentar"
 
-#: cpro/templates/include/cards-stats.html:80
+#: cpro/templates/include/cards-stats.html:91
 #: cpro/templates/items/eventInfo.html:21
 #: cpro/templates/items/idolInfo.html:25
 msgid "Comments"
@@ -368,7 +368,7 @@ msgid "Followers"
 msgstr "Seguidores"
 
 #. Feel free to use Twitter's word in your language.
-#: web/templates/include/homePage.html:55 web/templates/items/profile.html:31
+#: web/templates/include/homePage.html:56 web/templates/items/profile.html:31
 msgid "Following"
 msgstr "Siguiendo"
 
@@ -410,7 +410,7 @@ msgstr "Para sugerencias o informes de errores, os recomendamos:"
 
 #: web/templates/pages/about.html:124
 msgid "Browse the upcoming features on"
-msgstr ""
+msgstr "Sigue las características que están por venir"
 
 #: web/templates/pages/about.html:124
 msgid "our Tasks manager"
@@ -426,15 +426,15 @@ msgstr "con los detalles de qué te gustaría que implementáramos"
 
 #: web/templates/pages/about.html:160
 msgid "Franchise Credits"
-msgstr ""
+msgstr "Créditos de la Franquicia"
 
 #: web/templates/pages/about.html:170
 msgid "Icons Credits"
-msgstr ""
+msgstr "Créditos de los icons"
 
 #: web/templates/pages/about.html:41
 msgid "Staff members"
-msgstr ""
+msgstr "Miembros del Staff"
 
 #: web/templates/pages/about.html:53
 msgid "Owner"
@@ -471,15 +471,15 @@ msgstr "Asi que en Phython 2. Tambien usamos"
 
 #: web/templates/pages/about.html:183
 msgid "for the front-end of the website."
-msgstr ""
+msgstr "del frente - final de la página web."
 
 #: web/templates/pages/about.html:185
 msgid "We accept all kind of contributions, from tools to help players, statistics pages, mini-games, or even little CSS changes. Don't be shy! If you need help getting started, just contact us and we will happily take the time to teach you the basics, no matter your level."
-msgstr ""
+msgstr "Aceptamos cualquier tipo de contribución, desde herramientas para ayudar a los jugadores, páginas de estadísticas, mini-juegos, e incluso pequeños cambios en el CSS del sitio. ¡No seas tímido! Si necesitas ayuda al empezar, sólo contáctanos y tomaremos sin problema nuestro tiempo para enseñarle lo básico."
 
 #: cpro/templates/include/beforeCards.html:18
 msgid "Get Started"
-msgstr ""
+msgstr "Comenzar"
 
 #: web/templates/pages/about.html:197
 msgid "If you're a developer and you would like to get the data of the game in a convenient format, we provide a public REST API to get the game data, our users datacards, and more!"
@@ -495,20 +495,20 @@ msgstr "Donación"
 
 #: web/templates/pages/donate.html:67
 msgid "Your name, your profile picture, a link to your profile, and a link to whatever you would like to advertise (your Twitter, Tumblr, Twitch or any other website!) will be added to this page."
-msgstr ""
+msgstr "Tu nombre, tu foto de perfil, un link a tu perfil, y un link a lo que quieras anunciar (Twitter, Tumblr, Twitch o cualquier otro sitio web!) serán añadidos a esta pagina."
 
 #: web/templates/pages/donate.html:70
 msgid "Your name and a link to your profile will be added to this page."
-msgstr ""
+msgstr "Tu nombre y un link a tu perfil serán añadidos a esta pagina."
 
 #: web/templates/pages/donate.html:77
 msgid "We will send you a cool postcard signed by the 2 developers :)"
-msgstr ""
+msgstr "Te mandaremos una tarjeta postal firmada por los 2 desarrolladores!"
 
 #. The exact phrase "%(status)s" must appear somewhere in your translation. It will be replaced with the status name of the user, such as "Extreme Player". If you don't write it or write it incorrectly, the whole page will not work in your language.
 #: web/templates/pages/donate.html:84
 msgid "You're the %(status)s."
-msgstr ""
+msgstr "Tú eres el %(status)s. "
 
 #: web/templates/pages/donate.html:86
 msgid "You decide who will be the character shown by default on top of the homepage."
@@ -517,15 +517,15 @@ msgstr "Tú decides quién será el personaje que se mostrará de forma predeter
 #. The exact phrase "%(status)s" must appear somewhere in your translation. It will be replaced with the status name of the user, such as "Extreme Player". If you don't write it or write it incorrectly, the whole page will not work in your language.
 #: web/templates/pages/donate.html:94
 msgid "You're a %(status)s."
-msgstr ""
+msgstr "Tú eres un %(status)s. "
 
 #: web/templates/pages/donate.html:98
 msgid "With this special status, a lovely %(color)s heart will be displayed next to your profile picture on your profile and everywhere it appears on the website."
-msgstr ""
+msgstr "Con este estado especial, lindos corazones de color %(color)s serán mostrados al lado de tu foto de perfil, en tu perfil, y en cualquier lugar donde aparezca."
 
 #: web/templates/pages/donate.html:120
 msgid "We will discuss then implement a feature you would like to see on the website. You decide what you want, and we will make it come true!"
-msgstr ""
+msgstr "Discutiremos lo que a usted le gustaría ver en el sitio web. Usted decide lo que quiere, ¡y nosotros lo volvemos realidad!"
 
 #: web/templates/pages/donate.html:121
 msgid "Note that it has to be in the range of our abilities and in accordance with the spirit of the website ^_^"
@@ -614,13 +614,13 @@ msgstr "1 {object} coincide con tu búsqueda:"
 msgid "{total} {objects} match your search:"
 msgstr "{total} {objects} coinciden con tu búsqueda:"
 
-#: web/views_collections.py:144
+#: web/views_collections.py:148
 msgid "Become a contributor to help us fill the database"
-msgstr ""
+msgstr "Vuélvete un contribuidor para ayudarnos a completar la base de datos"
 
-#: web/views_collections.py:319
+#: web/views_collections.py:324
 msgid "You can't cancel this action afterwards."
-msgstr ""
+msgstr "No puedes anular esta acción después."
 
 #: web/templates/pages/donate.html:64
 msgid "Your name, your profile picture, a link to your profile, and a link to whatever you would like to advertise (your Twitter, Tumblr, Twitch or any other website!) will be added to the HOMEPAGE!"
@@ -648,24 +648,24 @@ msgstr "Añadir"
 msgid "Link"
 msgstr "Enlace"
 
-#: web/forms.py:261
+#: web/forms.py:276
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: web/forms.py:272 web/forms.py:302
+#: web/forms.py:287 web/forms.py:317
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: web/models.py:58 web/models.py:191
+#: web/models.py:58 web/models.py:194
 msgid "Language"
 msgstr "Idioma"
 
-#: web/models.py:189 web/models.py:324 web/templates/items/reportItem.html:30
+#: web/models.py:192 web/models.py:333 web/templates/items/reportItem.html:30
 #: web/templates/items/reportItem.html:55
 msgid "Message"
 msgstr "Mensaje"
 
-#: cpro/models.py:80 cpro/models.py:97 cpro/models.py:306 cpro/models.py:307
+#: cpro/models.py:82 cpro/models.py:99 cpro/models.py:312 cpro/models.py:313
 msgid "Image"
 msgstr "Imagen"
 
@@ -680,11 +680,11 @@ msgid "Like"
 msgstr "Me gusta"
 
 #. Will be shown before another word. For example: "Delete account" or "Delete card". Can be changed to something else so the order works, such as "Remove" or "Removal of". A gender-neutral article may be added, such as "Delete the".
-#: web/templates/pages/settings.html:51 web/views_collections.py:320
+#: web/templates/pages/settings.html:51 web/views_collections.py:325
 msgid "Delete"
 msgstr "Borrar"
 
-#: web/forms.py:332 web/models.py:325 web/templates/items/reportItem.html:35
+#: web/forms.py:347 web/models.py:334 web/templates/items/reportItem.html:35
 msgid "Images"
 msgstr "Imágenes"
 
@@ -706,7 +706,7 @@ msgstr "Reportado por:"
 
 #: web/views.py:345 web/views.py:373
 msgid "This {thing} you reported has been reviewed by a moderator and {verb}. Thank you so much for your help!"
-msgstr ""
+msgstr "Lo que reportaste ( {thing} ) ha sido revisado por un moderador y {verb}. ¡Muchas gracias por tu ayuda!"
 
 #: web/views.py:345 web/views.py:353 web/views.py:356 web/views.py:381
 msgid "edited"
@@ -718,7 +718,7 @@ msgstr "Gracias por reportar este {thing}"
 
 #: web/views.py:353 web/views.py:381
 msgid "Your {thing} has been reported, and a moderator confirmed it should be {verb}."
-msgstr ""
+msgstr "Lo que reportaste ( {thing} ) ha sido reportado, y un moderador confirmó que debería {verb}."
 
 #: web/views.py:356 web/views.py:384
 msgid "Your {thing} has been {verb}"
@@ -738,7 +738,7 @@ msgstr "Traducir del inglés a %(language)s"
 msgid "Hi"
 msgstr "Hola"
 
-#: web/forms.py:133 web/models.py:60 web/models.py:61 web/models.py:62
+#: web/forms.py:148 web/models.py:60 web/models.py:61 web/models.py:62
 #: web/views.py:91
 msgid "{nth} Favorite Character"
 msgstr "{nth} Personaje Favorito"
@@ -755,9 +755,9 @@ msgstr ""
 msgid "the company that owns {game}"
 msgstr "la empresa propietaria de {game}"
 
-#: web/views_collections.py:241
+#: web/views_collections.py:246
 msgid "Make sure the {thing} you're about to add doesn't already exist."
-msgstr ""
+msgstr "Asegúrate de que {thing} no haya sido añadido antes."
 
 #: stardustrun/collections_settings.py:79 stardustrun/forms.py:125
 #: stardustrun/models.py:52 stardustrun/templates/items/pokemonItem.html:65
@@ -802,28 +802,27 @@ msgstr "Pokédex"
 msgid "Medals"
 msgstr "Medallas"
 
-#: cpro/forms.py:71 cpro/forms.py:131 cpro/models.py:148
+#: cpro/forms.py:72 cpro/forms.py:132 cpro/models.py:154
 #: cpro/templates/ajax/account_about.html:60
 msgid "Starter"
 msgstr "Starter"
 
-#: cpro/forms.py:95 cpro/forms.py:314
+#: cpro/forms.py:96 cpro/forms.py:316
 msgid "This date cannot be in the future."
 msgstr "Esta fecha no puede ser en el futuro."
 
-#: cpro/forms.py:134 cpro/models.py:134
-#: cpro/templates/include/cards-stats.html:91
-#: cpro/templates/include/cards-stats.html:94
-#: cpro/templates/include/cards-stats.html:97
+#: cpro/forms.py:135 cpro/templates/include/cards-stats.html:102
+#: cpro/templates/include/cards-stats.html:105
+#: cpro/templates/include/cards-stats.html:108
 msgid "Level"
 msgstr "Nivel"
 
-#: cpro/forms.py:136 cpro/models.py:149
+#: cpro/forms.py:137 cpro/models.py:155
 #: cpro/templates/ajax/account_about.html:71
 msgid "Start Date"
 msgstr "Fecha de inicio"
 
-#: cpro/forms.py:135 cpro/models.py:133
+#: cpro/forms.py:136 cpro/models.py:135
 #: cpro/templates/ajax/account_about.html:77
 msgid "Join Date"
 msgstr "Fecha de unión"
@@ -958,11 +957,11 @@ msgstr "Agua"
 msgid "Fire"
 msgstr "Fuego"
 
-#: cpro/model_choices.py:113
+#: cpro/model_choices.py:116
 msgid "Normal"
 msgstr "Normal"
 
-#: cpro/models.py:135
+#: cpro/models.py:137
 msgid "Nickname"
 msgstr "Apodo"
 
@@ -984,16 +983,16 @@ msgstr "Pokémonedas Compradas"
 msgid "CP"
 msgstr "PC"
 
-#: cpro/forms.py:267 cpro/forms.py:268
+#: cpro/forms.py:269 cpro/forms.py:270
 msgid "HP"
 msgstr "PS"
 
-#: cpro/forms.py:169 cpro/models.py:59 cpro/templates/items/idolInfo.html:73
+#: cpro/forms.py:171 cpro/models.py:59 cpro/templates/items/idolInfo.html:73
 #: cpro/templates/items/idolItem.html:42
 msgid "Weight"
 msgstr "Peso"
 
-#: cpro/forms.py:168 cpro/models.py:58 cpro/templates/items/idolInfo.html:66
+#: cpro/forms.py:170 cpro/models.py:58 cpro/templates/items/idolInfo.html:66
 #: cpro/templates/items/idolItem.html:36
 msgid "Height"
 msgstr "Altura"
@@ -1089,7 +1088,7 @@ msgstr "Evoluciones"
 #: stardustrun/templates/items/pokemonFullItem.html:51
 #: stardustrun/templates/pages/ajax_pokedex.html:9
 msgid "Permalink"
-msgstr ""
+msgstr "Permaenlace"
 
 #: stardustrun/templates/items/pokemonFullItem.html:98
 #: stardustrun/templates/items/pokemonItem.html:31
@@ -1108,7 +1107,7 @@ msgstr "Cambiar a lista"
 msgid "You have {} of them in you collection. Delete them before changing this."
 msgstr "Tienes {} de estos en tu colección. Bórralos antes de cambiar esto."
 
-#: web/default_settings.py:326
+#: web/default_settings.py:331
 msgid "About the game"
 msgstr "Sobre el juego"
 
@@ -1116,7 +1115,7 @@ msgstr "Sobre el juego"
 msgid "View activities in your language only?"
 msgstr "¿Ver actividades sólo en tu idioma?"
 
-#: web/models.py:251
+#: web/models.py:254
 msgid "Check out {username}'s activity on {site}: {activity}"
 msgstr "Échale un vistazo a la actividad de {username} en {site}: {activity}"
 
@@ -1132,16 +1131,16 @@ msgstr "{site} ofrece una extensa base de datos de información sobre el juego {
 msgid "Start following players to see their activities!"
 msgstr "¡Empieza a seguir jugadores para ver sus actividades!"
 
-#: web/templates/include/homePage.html:8
+#: web/templates/include/homePage.html:9
 msgid "is crowdfunded by %(total_donators)s %(adjective)s donators"
-msgstr ""
+msgstr "es fundado colectivamente por %(total_donators)s%(adjective)s donantes!"
 
-#: web/templates/include/homePage.html:14
-#: web/templates/include/homePage.html:17
+#: web/templates/include/homePage.html:15
+#: web/templates/include/homePage.html:18
 msgid "About %(site_name)s"
 msgstr "Sobre %(site_name)s"
 
-#: cpro/model_choices.py:208
+#: cpro/model_choices.py:211
 msgid "All"
 msgstr "Todo"
 
@@ -1221,7 +1220,7 @@ msgstr "Módulo Cebo"
 
 #: stardustrun/settings.py:19
 msgid "The Pokémon GO Sharing Community"
-msgstr ""
+msgstr "La Comunidad de Pokemon GO"
 
 #: stardustrun/settings.py:29
 #: stardustrun/templates/include/pokemonsBeforeTemplate.html:6
@@ -1253,7 +1252,7 @@ msgstr "¡Vamos!"
 
 #: stardustrun/templates/include/pokemonsShareButton.html:45
 msgid "Go further"
-msgstr ""
+msgstr "Avanza"
 
 #: stardustrun/templates/include/pokemonsShareButton.html:46
 msgid "Discover everything you can do on Stardust Run"
@@ -1267,189 +1266,189 @@ msgstr "Todos los Pokémon con este ataque"
 msgid "All Attacks"
 msgstr "Todos los ataques"
 
-#: stardustrun/templates/items/attackItem.html:31
+#: cpro/templates/include/index.html:12
 msgid "seconds"
 msgstr "segundos"
 
-#: web/forms.py:307
+#: web/forms.py:322
 msgid "Last Update"
-msgstr ""
+msgstr "Ultima Actualización "
 
-#: web/forms.py:308
+#: web/forms.py:323
 msgid "Creation"
-msgstr ""
+msgstr "Creación"
 
-#: web/forms.py:309 web/forms.py:310
+#: web/forms.py:324 web/forms.py:325
 msgid "Most Popular"
-msgstr ""
+msgstr "Mas Popular"
 
-#: web/forms.py:309
+#: web/forms.py:324
 msgid "All time"
-msgstr ""
+msgstr "Todo el tiempo"
 
-#: web/forms.py:310
+#: web/forms.py:325
 msgid "This week"
-msgstr ""
+msgstr "Esta semana"
 
-#: cpro/forms.py:138
+#: cpro/forms.py:139 cpro/forms.py:175 cpro/forms.py:214 cpro/forms.py:271
 msgid "Ordering"
 msgstr ""
 
 #: web/templates/include/pagination.html:12
 msgid "View all"
-msgstr ""
+msgstr "Mirar Todo"
 
 #: web/views.py:108
 msgid "{age} years old"
-msgstr ""
+msgstr "{edad} años"
 
-#: cpro/collections_settings.py:84
+#: cpro/collections_settings.py:97
 msgid "Check out my collection of cards!"
-msgstr ""
+msgstr "Mira a mi colección de cartas!"
 
-#: cpro/forms.py:93 cpro/forms.py:312
+#: cpro/forms.py:94 cpro/forms.py:314
 msgid "The game didn't even exist at that time."
-msgstr ""
+msgstr "El juego no existia en este tiempo/"
 
-#: cpro/forms.py:128 cpro/forms.py:129 cpro/forms.py:163 cpro/forms.py:252
-#: cpro/forms.py:327 cpro/models.py:51 cpro/templates/items/idolInfo.html:45
+#: cpro/forms.py:129 cpro/forms.py:130 cpro/forms.py:164 cpro/forms.py:254
+#: cpro/forms.py:329 cpro/models.py:51 cpro/templates/items/idolInfo.html:45
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
-#: cpro/forms.py:129 cpro/forms.py:130 cpro/models.py:147
+#: cpro/forms.py:130 cpro/forms.py:131 cpro/models.py:153
 #: cpro/templates/ajax/account_about.html:45
 msgid "Center"
-msgstr ""
+msgstr "Centro"
 
-#: cpro/forms.py:130 cpro/forms.py:260 cpro/forms.py:325 cpro/models.py:285
+#: cpro/forms.py:131 cpro/forms.py:262 cpro/forms.py:327 cpro/models.py:291
 #: cpro/templates/include/cards-stats.html:18
 msgid "Rarity"
-msgstr ""
+msgstr "Rareza"
 
-#: cpro/forms.py:132
+#: cpro/forms.py:133
 msgid "Favorite Idol"
-msgstr ""
+msgstr "Idol Favorita"
 
-#: cpro/forms.py:137 cpro/models.py:150
+#: cpro/forms.py:138 cpro/models.py:156
 msgid "Producer Rank"
-msgstr ""
+msgstr "Clasificación de Productor"
 
-#: cpro/forms.py:139
+#: cpro/forms.py:140 cpro/forms.py:176 cpro/forms.py:215 cpro/forms.py:272
 msgid "Reverse Order"
-msgstr ""
+msgstr "Orden opuesto"
 
-#: cpro/forms.py:143 cpro/models.py:137
+#: cpro/forms.py:144 cpro/models.py:139
 #: cpro/templates/ajax/account_about.html:13
 msgid "Accept friend requests"
-msgstr ""
+msgstr "Acepta Solicitud de Amistad"
 
-#: cpro/forms.py:165 cpro/forms.py:209 cpro/models.py:49 cpro/models.py:50
-#: cpro/models.py:95 cpro/models.py:96 cpro/templates/items/eventInfo.html:44
+#: cpro/forms.py:167 cpro/forms.py:211 cpro/models.py:49 cpro/models.py:50
+#: cpro/models.py:97 cpro/models.py:98 cpro/templates/items/eventInfo.html:44
 #: cpro/templates/items/eventInfo.html:50
 #: cpro/templates/items/idolInfo.html:38
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
-#: cpro/forms.py:166 cpro/models.py:56 cpro/templates/items/idolInfo.html:52
+#: cpro/forms.py:168 cpro/models.py:56 cpro/templates/items/idolInfo.html:52
 #: cpro/templates/items/idolItem.html:24
 msgid "Age"
-msgstr ""
+msgstr "Edad"
 
-#: cpro/forms.py:167 cpro/models.py:57 cpro/templates/items/idolInfo.html:59
+#: cpro/forms.py:169 cpro/models.py:57 cpro/templates/items/idolInfo.html:59
 #: cpro/templates/items/idolItem.html:30
 msgid "Birthday"
-msgstr ""
+msgstr "Fecha de nacimiento"
 
-#: cpro/forms.py:170 cpro/models.py:66 cpro/templates/items/idolInfo.html:94
+#: cpro/forms.py:172 cpro/models.py:66 cpro/templates/items/idolInfo.html:94
 #: cpro/templates/items/idolItem.html:48
 msgid "Bust"
-msgstr ""
+msgstr "Busto"
 
-#: cpro/forms.py:171 cpro/models.py:67 cpro/templates/items/idolInfo.html:101
+#: cpro/forms.py:173 cpro/models.py:67 cpro/templates/items/idolInfo.html:101
 #: cpro/templates/items/idolItem.html:54
 msgid "Waist"
-msgstr ""
+msgstr "Cintura"
 
-#: cpro/forms.py:172 cpro/models.py:68 cpro/templates/items/idolInfo.html:108
+#: cpro/forms.py:174 cpro/models.py:68 cpro/templates/items/idolInfo.html:108
 #: cpro/templates/items/idolItem.html:60
 msgid "Hips"
-msgstr ""
+msgstr "Caderas"
 
-#: cpro/forms.py:188 cpro/models.py:98 cpro/templates/items/eventInfo.html:61
+#: cpro/forms.py:190 cpro/models.py:100 cpro/templates/items/eventInfo.html:61
 msgid "Beginning"
-msgstr ""
+msgstr "Comienzo"
 
-#: cpro/forms.py:189 cpro/forms.py:208 cpro/models.py:99
+#: cpro/forms.py:191 cpro/forms.py:210 cpro/models.py:101
 #: cpro/templates/items/eventInfo.html:66
 msgid "End"
-msgstr ""
+msgstr "Fin"
 
-#: cpro/forms.py:210 cpro/models.py:103 cpro/models.py:105 cpro/models.py:107
-#: cpro/models.py:109 cpro/models.py:111
+#: cpro/forms.py:212 cpro/models.py:105 cpro/models.py:107 cpro/models.py:109
+#: cpro/models.py:111 cpro/models.py:113
 msgid "T{} points"
-msgstr ""
+msgstr "T{} puntos"
 
-#: cpro/forms.py:211 cpro/models.py:104 cpro/models.py:106 cpro/models.py:108
-#: cpro/models.py:110 cpro/models.py:112
+#: cpro/forms.py:213 cpro/models.py:106 cpro/models.py:108 cpro/models.py:110
+#: cpro/models.py:112 cpro/models.py:114
 msgid "T{} rank"
 msgstr ""
 
-#: cpro/forms.py:253 cpro/forms.py:328 cpro/models.py:300 cpro/settings.py:66
-#: cpro/settings.py:208 cpro/templates/include/cards-stats.html:23
+#: cpro/forms.py:255 cpro/forms.py:330 cpro/models.py:306 cpro/settings.py:66
+#: cpro/settings.py:209 cpro/templates/include/cards-stats.html:23
 #: cpro/templates/items/eventInfo.html:56
 msgid "Event"
-msgstr ""
+msgstr "Evento"
 
-#: cpro/forms.py:254 cpro/models.py:301
+#: cpro/forms.py:256 cpro/models.py:307
 msgid "Limited"
-msgstr ""
+msgstr "Limitada"
 
-#: cpro/forms.py:255 cpro/forms.py:262 cpro/forms.py:264 cpro/forms.py:266
-#: cpro/forms.py:268 cpro/models.py:283 cpro/models.py:307 cpro/models.py:317
-#: cpro/models.py:329 cpro/models.py:339 cpro/models.py:349 cpro/models.py:358
-#: cpro/models.py:359 cpro/models.py:362 cpro/models.py:363 cpro/models.py:366
-#: cpro/models.py:367 cpro/models.py:370 cpro/models.py:371 cpro/models.py:632
-#: cpro/models.py:680
+#: cpro/forms.py:257 cpro/forms.py:264 cpro/forms.py:266 cpro/forms.py:268
+#: cpro/forms.py:270 cpro/models.py:289 cpro/models.py:313 cpro/models.py:323
+#: cpro/models.py:335 cpro/models.py:345 cpro/models.py:355 cpro/models.py:364
+#: cpro/models.py:365 cpro/models.py:368 cpro/models.py:369 cpro/models.py:372
+#: cpro/models.py:373 cpro/models.py:376 cpro/models.py:377 cpro/models.py:642
+#: cpro/models.py:690
 msgid "Awakened"
 msgstr ""
 
-#: cpro/forms.py:256 cpro/models.py:312 cpro/models.py:317
-#: cpro/templates/include/cards-stats.html:121
-#: cpro/templates/include/cards-stats.html:127
+#: cpro/forms.py:258 cpro/models.py:318 cpro/models.py:323
+#: cpro/templates/include/cards-stats.html:132
+#: cpro/templates/include/cards-stats.html:138
 msgid "Art"
-msgstr ""
+msgstr "Arte"
 
-#: cpro/forms.py:258 cpro/models.py:299
-#: cpro/templates/include/cards-stats.html:42
+#: cpro/forms.py:260 cpro/models.py:305
+#: cpro/templates/include/cards-stats.html:44
 msgid "Release Date"
-msgstr ""
+msgstr "Fecha de Lanzamiento"
 
-#: cpro/forms.py:259 cpro/models.py:282 cpro/models.py:283
+#: cpro/forms.py:261 cpro/models.py:288 cpro/models.py:289
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#: cpro/forms.py:261 cpro/forms.py:262 cpro/model_choices.py:43
-#: cpro/model_choices.py:224 cpro/model_choices.py:229 cpro/models.py:360
-#: cpro/models.py:361 cpro/models.py:362 cpro/models.py:363 cpro/models.py:413
+#: cpro/forms.py:263 cpro/forms.py:264 cpro/model_choices.py:43
+#: cpro/model_choices.py:227 cpro/model_choices.py:232 cpro/models.py:366
+#: cpro/models.py:367 cpro/models.py:368 cpro/models.py:369 cpro/models.py:423
 msgid "Vocal"
-msgstr ""
+msgstr "Vocal"
 
-#: cpro/forms.py:263 cpro/forms.py:264 cpro/model_choices.py:44
-#: cpro/model_choices.py:226 cpro/model_choices.py:229 cpro/models.py:364
-#: cpro/models.py:365 cpro/models.py:366 cpro/models.py:367 cpro/models.py:415
+#: cpro/forms.py:265 cpro/forms.py:266 cpro/model_choices.py:44
+#: cpro/model_choices.py:229 cpro/model_choices.py:232 cpro/models.py:370
+#: cpro/models.py:371 cpro/models.py:372 cpro/models.py:373 cpro/models.py:425
 msgid "Dance"
-msgstr ""
+msgstr "Danza"
 
-#: cpro/forms.py:265 cpro/forms.py:266 cpro/model_choices.py:45
-#: cpro/model_choices.py:225 cpro/model_choices.py:229 cpro/models.py:368
-#: cpro/models.py:369 cpro/models.py:370 cpro/models.py:371 cpro/models.py:414
+#: cpro/forms.py:267 cpro/forms.py:268 cpro/model_choices.py:45
+#: cpro/model_choices.py:228 cpro/model_choices.py:232 cpro/models.py:374
+#: cpro/models.py:375 cpro/models.py:376 cpro/models.py:377 cpro/models.py:424
 msgid "Visual"
-msgstr ""
+msgstr "Visual"
 
-#: cpro/forms.py:329 cpro/model_choices.py:210 cpro/model_choices.py:228
-#: cpro/models.py:423 cpro/templates/include/cards-stats.html:53
+#: cpro/forms.py:331 cpro/model_choices.py:213 cpro/model_choices.py:231
+#: cpro/models.py:433 cpro/templates/include/cards-stats.html:55
 msgid "Skill"
-msgstr ""
+msgstr "Habilidad"
 
 #: cpro/model_choices.py:9
 msgid "Skilled Producer"
@@ -1457,11 +1456,11 @@ msgstr ""
 
 #: cpro/model_choices.py:10
 msgid "Expert Producer"
-msgstr ""
+msgstr "Productor Experto"
 
 #: cpro/model_choices.py:11
 msgid "Veteran Producer"
-msgstr ""
+msgstr "Productor Veterano"
 
 #: cpro/model_choices.py:12
 msgid "Ultimate Producer"
@@ -1481,514 +1480,560 @@ msgstr ""
 
 #: cpro/model_choices.py:27
 msgid "Passion"
-msgstr ""
+msgstr "Pasión"
 
 #: cpro/model_choices.py:54
 msgid "Right"
-msgstr ""
+msgstr "Derecha"
 
 #: cpro/model_choices.py:54
 msgid "Left"
-msgstr ""
+msgstr "Izquierda"
 
 #: cpro/model_choices.py:54
 msgid "Both"
-msgstr ""
-
-#: cpro/model_choices.py:76
-msgid "Leo"
-msgstr ""
-
-#: cpro/model_choices.py:77
-msgid "Aries"
-msgstr ""
+msgstr "Ambos"
 
 #: cpro/model_choices.py:78
-msgid "Libra"
-msgstr ""
+msgid "Leo"
+msgstr "Leo"
 
 #: cpro/model_choices.py:79
-msgid "Virgo"
-msgstr ""
+msgid "Aries"
+msgstr "Aries"
 
 #: cpro/model_choices.py:80
-msgid "Scorpio"
-msgstr ""
+msgid "Libra"
+msgstr "Libra"
 
 #: cpro/model_choices.py:81
-msgid "Capricorn"
-msgstr ""
+msgid "Virgo"
+msgstr "Virgo"
 
 #: cpro/model_choices.py:82
-msgid "Pisces"
-msgstr ""
+msgid "Scorpio"
+msgstr "Escorpio"
 
 #: cpro/model_choices.py:83
-msgid "Gemini"
-msgstr ""
+msgid "Capricorn"
+msgstr "Capricornio"
 
 #: cpro/model_choices.py:84
-msgid "Cancer"
-msgstr ""
+msgid "Pisces"
+msgstr "Piscis"
 
 #: cpro/model_choices.py:85
-msgid "Sagittarius"
-msgstr ""
+msgid "Gemini"
+msgstr "Géminis"
 
 #: cpro/model_choices.py:86
-msgid "Aquarius"
-msgstr ""
+msgid "Cancer"
+msgstr "Cáncer"
 
 #: cpro/model_choices.py:87
+msgid "Sagittarius"
+msgstr "Sagitario"
+
+#: cpro/model_choices.py:88
+msgid "Aquarius"
+msgstr "Acuario"
+
+#: cpro/model_choices.py:89
 msgid "Taurus"
-msgstr ""
+msgstr "Tauro"
 
-#: cpro/model_choices.py:96
+#: cpro/model_choices.py:98
 msgid "Token"
-msgstr ""
+msgstr "Ficha"
 
-#: cpro/model_choices.py:97
+#: cpro/model_choices.py:99
 msgid "Medley"
 msgstr ""
 
-#: cpro/model_choices.py:98
+#: cpro/model_choices.py:100
 msgid "Coop"
 msgstr ""
 
-#: cpro/model_choices.py:99
+#: cpro/model_choices.py:101
 msgid "Caravan"
-msgstr ""
+msgstr "Caravana"
 
-#: cpro/model_choices.py:114
+#: cpro/model_choices.py:117
 msgid "Rare"
-msgstr ""
+msgstr "Rara"
 
-#: cpro/model_choices.py:115
+#: cpro/model_choices.py:118
 msgid "Super Rare"
-msgstr ""
+msgstr "Super Rara"
 
-#: cpro/model_choices.py:116
+#: cpro/model_choices.py:119
 msgid "Super Super Rare"
-msgstr ""
+msgstr "Super Super Rara"
 
-#: cpro/model_choices.py:148
+#: cpro/model_choices.py:151
 msgid "Lesser Perfect Lock"
 msgstr ""
 
-#: cpro/model_choices.py:149
+#: cpro/model_choices.py:152
 msgid "Greater Perfect Lock"
 msgstr ""
 
-#: cpro/model_choices.py:150
+#: cpro/model_choices.py:153
 msgid "Extreme Perfect Lock"
 msgstr ""
 
-#: cpro/model_choices.py:151
+#: cpro/model_choices.py:154
 msgid "Combo Lock"
 msgstr ""
 
-#: cpro/model_choices.py:152
+#: cpro/model_choices.py:155
 msgid "Healer"
-msgstr ""
+msgstr "Curador"
 
-#: cpro/model_choices.py:153
+#: cpro/model_choices.py:156
 msgid "Life Lock"
 msgstr ""
 
-#: cpro/model_choices.py:154
+#: cpro/model_choices.py:157
 msgid "Combo Bonus"
-msgstr ""
+msgstr "Bono de Combo"
 
-#: cpro/model_choices.py:155
+#: cpro/model_choices.py:158
 msgid "Perfect Score Bonus"
-msgstr ""
+msgstr "Bono de Puntuaje Perfecto"
 
-#: cpro/model_choices.py:156
+#: cpro/model_choices.py:159
 msgid "Overload"
 msgstr ""
 
-#: cpro/model_choices.py:157
+#: cpro/model_choices.py:160
 msgid "Score Boost"
 msgstr ""
 
-#: cpro/model_choices.py:175
-msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance of turning all Great notes into Perfect notes in the next {skill_duration} seconds."
-msgstr ""
-
-#: cpro/model_choices.py:176
-msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance of turning all Nice and Great notes into Perfect notes in the next {skill_duration} seconds."
-msgstr ""
-
-#: cpro/model_choices.py:177
-msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance of turning all Bad, Nice and Great notes into Perfect notes in the next {skill_duration} seconds."
-msgstr ""
-
 #: cpro/model_choices.py:178
-msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Nice notes will not break the combo in the next {skill_duration} seconds."
-msgstr ""
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance of turning all Great notes into Perfect notes in the next {skill_duration} seconds."
+msgstr "Cada {trigger_value} segundos, hay un {trigger_chance}% de posibilidades de que vuelva todas las notas \"Great\" en \"Perfect\" durante {skill_duration} segundos."
 
 #: cpro/model_choices.py:179
-msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will restore {skill_value} life in the next {skill_duration} seconds."
-msgstr ""
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance of turning all Nice and Great notes into Perfect notes in the next {skill_duration} seconds."
+msgstr "Cada {trigger_value} segundos, hay un {trigger_chance}% de posibilidades de que vuelva todos los \"Nice\" y \"Great\" en \"Perfect\" durante {skill_duration} segundos."
 
 #: cpro/model_choices.py:180
-msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will not lose health in the next {skill_duration} seconds."
-msgstr ""
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance of turning all Bad, Nice and Great notes into Perfect notes in the next {skill_duration} seconds."
+msgstr "Cada {trigger_value} segundos, hay un {trigger_chance}% de posibilidades de que todos los \"Bad\", \"Nice\", y \"Great\" se vuelvan \"Perfect\" durante {skill_duration} segundos."
 
 #: cpro/model_choices.py:181
-msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will gain an extra {skill_value}% combo bonus in the next {skill_duration} seconds."
-msgstr ""
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Nice notes will not break the combo in the next {skill_duration} seconds."
+msgstr "Cada {trigger_value} segundos, hay un {trigger_chance}% de posibilidades de que los \"Nice\" no rompan el combo en los siguientes {skill_duration} segundos."
 
 #: cpro/model_choices.py:182
-msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus in the next {skill_duration} seconds."
-msgstr ""
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will restore {skill_value} life in the next {skill_duration} seconds."
+msgstr "Cada {trigger_value} segundos, hay un {trigger_chance}% de posibilidad de que los \"Perfect\" restauren {skill_value} de vida en los siguientes {skill_duration} segundos "
 
 #: cpro/model_choices.py:183
-msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% bonus and Nice and Bad notes will not break your combo in the next {skill_duration} seconds, at the cost of {skill_value2} life."
-msgstr ""
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will not lose health in the next {skill_duration} seconds."
+msgstr "Cada {trigger_value} segundos, hay un {trigger_chance}% de posibilidades de que no pierdas vida en los siguientes {skill_duration} segundos"
 
 #: cpro/model_choices.py:184
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will gain an extra {skill_value}% combo bonus in the next {skill_duration} seconds."
+msgstr "Cada {trigger_value} segundos, hay un {trigger_chance}% de posibilidades de que ganes extra {skill_value}% combo bonus en los siguientes {skill_duration} segundos."
+
+#: cpro/model_choices.py:185
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus in the next {skill_duration} seconds."
+msgstr "Cada {trigger_value} segundos,hay un {trigger_chance}% de posibilidades de que los \"Perfect\" reciban {skill_value}% más de puntuación en los siguientes {skill_duration} segundos. "
+
+#: cpro/model_choices.py:186
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% bonus and Nice and Bad notes will not break your combo in the next {skill_duration} seconds, at the cost of {skill_value2} life."
+msgstr "Cada {trigger_value} segundos, hay {trigger_chance}% de posibilidades de que los \"Perfect\" reciban {skill_value}% más de puntuaje y los \"Nice\" y \"Bad\" no rompan tu combo en los siguientes {skill_duration} segundos, quitando {skill_value2} de vida."
+
+#: cpro/model_choices.py:187
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Great and Perfect notes will receive a {skill_value}% score bonus in the next {skill_duration} seconds."
-msgstr ""
+msgstr "Cada {trigger_value} segundos hay un {trigger_chance}% de posibilidades de que los \"Great\" y \"Perfect\" reciban {skill_value}% más de puntuación en los siguientes {skill_duration} segundos."
 
-#: cpro/model_choices.py:200
+#: cpro/model_choices.py:203
 msgid "Raises {leader_skill_type} of all {idol_type} idols by {leader_skill_percent}%."
-msgstr ""
+msgstr "Aumenta {leader_skill_type} de todas las {idol_type} idols en un {leader_skill_percent}%. "
 
-#: cpro/model_choices.py:209 cpro/model_choices.py:227 cpro/models.py:356
-#: cpro/models.py:357 cpro/models.py:358 cpro/models.py:359 cpro/models.py:412
+#: cpro/model_choices.py:212 cpro/model_choices.py:230 cpro/models.py:362
+#: cpro/models.py:363 cpro/models.py:364 cpro/models.py:365 cpro/models.py:422
 msgid "Life"
-msgstr ""
+msgstr "Vida"
 
-#: cpro/model_choices.py:242
+#: cpro/model_choices.py:245
 msgid "Voice"
-msgstr ""
+msgstr "Voz"
 
-#: cpro/model_choices.py:243
+#: cpro/model_choices.py:246
 msgid "Make-Up"
 msgstr ""
 
-#: cpro/model_choices.py:244
+#: cpro/model_choices.py:247
 msgid "Step"
 msgstr ""
 
-#: cpro/model_choices.py:245
+#: cpro/model_choices.py:248
 msgid "Energy"
-msgstr ""
+msgstr "Energía"
 
-#: cpro/model_choices.py:246
+#: cpro/model_choices.py:249
 msgid "Ability"
-msgstr ""
+msgstr "Habilidad"
 
-#: cpro/model_choices.py:247
+#: cpro/model_choices.py:250
 msgid "Brilliance"
 msgstr ""
 
-#: cpro/model_choices.py:262 cpro/model_choices.py:272
+#: cpro/model_choices.py:265 cpro/model_choices.py:275
 msgid "Shiny"
 msgstr ""
 
-#: cpro/model_choices.py:263 cpro/model_choices.py:273
+#: cpro/model_choices.py:266 cpro/model_choices.py:276
 msgid "Tricolor"
-msgstr ""
-
-#: cpro/model_choices.py:280
-msgid "Thumbs"
-msgstr ""
-
-#: cpro/model_choices.py:281
-msgid "All fingers"
-msgstr ""
-
-#: cpro/model_choices.py:282
-msgid "Index fingers"
-msgstr ""
+msgstr "Tricolor"
 
 #: cpro/model_choices.py:283
-msgid "One hand"
-msgstr ""
+msgid "Thumbs"
+msgstr "Pulgares"
 
 #: cpro/model_choices.py:284
+msgid "All fingers"
+msgstr "Todos los dedos"
+
+#: cpro/model_choices.py:285
+msgid "Index fingers"
+msgstr "Dedos indices"
+
+#: cpro/model_choices.py:286
+msgid "One hand"
+msgstr "Una mano"
+
+#: cpro/model_choices.py:287
 msgid "Other"
-msgstr ""
+msgstr "Otro"
 
 #: cpro/models.py:60 cpro/templates/items/idolInfo.html:80
 msgid "Blood Type"
-msgstr ""
+msgstr "Tipo de Sangre"
 
 #: cpro/models.py:63 cpro/templates/items/idolInfo.html:87
 msgid "Writing Hand"
-msgstr ""
+msgstr "Mano con la que escribe"
 
 #: cpro/models.py:69 cpro/templates/items/idolInfo.html:115
 msgid "Astrological Sign"
-msgstr ""
+msgstr "Signo Astrológico"
 
-#: cpro/models.py:72 cpro/models.py:73 cpro/templates/items/idolInfo.html:122
+#: cpro/models.py:74 cpro/models.py:75 cpro/templates/items/idolInfo.html:122
 msgid "Hometown"
 msgstr ""
 
-#: cpro/models.py:74 cpro/templates/items/idolInfo.html:132
+#: cpro/models.py:76 cpro/templates/items/idolInfo.html:132
 msgid "Hobbies"
 msgstr ""
 
-#: cpro/models.py:76 cpro/models.py:77 cpro/templates/items/idolInfo.html:146
+#: cpro/models.py:78 cpro/models.py:79 cpro/templates/items/idolInfo.html:146
 msgid "CV"
 msgstr ""
 
-#: cpro/models.py:81 cpro/templates/items/idolInfo.html:156
+#: cpro/forms.py:165 cpro/models.py:83 cpro/templates/items/idolInfo.html:156
 #: cpro/templates/items/idolInfo.html:159
 msgid "Signature"
-msgstr ""
+msgstr "Signatura"
 
-#: cpro/models.py:100
+#: cpro/models.py:102
 msgid "Kind"
 msgstr ""
 
-#: cpro/models.py:136 cpro/templates/ajax/account_about.html:6
+#: cpro/models.py:138 cpro/templates/ajax/account_about.html:6
 msgid "Game ID"
-msgstr ""
+msgstr "ID de Juego"
 
-#: cpro/models.py:138 cpro/templates/ajax/account_about.html:27
+#: cpro/models.py:140 cpro/templates/ajax/account_about.html:27
 msgid "Device"
-msgstr ""
+msgstr "Dispositivo"
 
-#: cpro/models.py:139 cpro/templates/ajax/account_about.html:34
+#: cpro/models.py:141 cpro/templates/ajax/account_about.html:34
 msgid "Play with"
-msgstr ""
+msgstr "Juega con"
 
-#: cpro/models.py:144 cpro/templates/ajax/account_about.html:20
+#: cpro/models.py:148 cpro/templates/ajax/account_about.html:20
 msgid "Operating System"
-msgstr ""
+msgstr "Sistema Operativo"
 
-#: cpro/models.py:284 cpro/settings.py:178
+#: cpro/models.py:290 cpro/settings.py:179
 #: cpro/templates/include/cards-stats.html:12
 #: cpro/templates/items/idolItem.html:17
 msgid "Idol"
-msgstr ""
+msgstr "Idolo"
 
-#: cpro/models.py:302 cpro/models.py:303
+#: cpro/models.py:308 cpro/models.py:309
 #: cpro/templates/include/cards-stats.html:31
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
-#: cpro/models.py:324 cpro/models.py:329
-#: cpro/templates/include/cards-stats.html:124
-#: cpro/templates/include/cards-stats.html:130
+#: cpro/models.py:330 cpro/models.py:335
+#: cpro/templates/include/cards-stats.html:135
+#: cpro/templates/include/cards-stats.html:141
 msgid "Transparent"
-msgstr ""
+msgstr "Transparente"
 
-#: cpro/models.py:334 cpro/models.py:339
+#: cpro/models.py:340 cpro/models.py:345
 msgid "Icon"
-msgstr ""
+msgstr "Icono"
 
-#: cpro/models.py:344 cpro/models.py:349
-#: cpro/templates/include/cards-stats.html:123
-#: cpro/templates/include/cards-stats.html:129
+#: cpro/models.py:350 cpro/models.py:355
+#: cpro/templates/include/cards-stats.html:134
+#: cpro/templates/include/cards-stats.html:140
 msgid "Puchi"
-msgstr ""
+msgstr "Puchi"
 
-#: cpro/models.py:356 cpro/models.py:358 cpro/models.py:360 cpro/models.py:362
-#: cpro/models.py:364 cpro/models.py:366 cpro/models.py:368 cpro/models.py:370
+#: cpro/models.py:362 cpro/models.py:364 cpro/models.py:366 cpro/models.py:368
+#: cpro/models.py:370 cpro/models.py:372 cpro/models.py:374 cpro/models.py:376
 msgid "Minimum"
-msgstr ""
+msgstr "Minimo"
 
-#: cpro/models.py:357 cpro/models.py:359 cpro/models.py:361 cpro/models.py:363
-#: cpro/models.py:365 cpro/models.py:367 cpro/models.py:369 cpro/models.py:371
+#: cpro/models.py:363 cpro/models.py:365 cpro/models.py:367 cpro/models.py:369
+#: cpro/models.py:371 cpro/models.py:373 cpro/models.py:375 cpro/models.py:377
 msgid "Maximum"
-msgstr ""
+msgstr "Maximo"
 
-#: cpro/models.py:416
+#: cpro/models.py:426
 msgid "Overall"
 msgstr ""
 
-#: cpro/models.py:633 cpro/templates/items/ownedcardItem.html:9
+#: cpro/models.py:643 cpro/templates/items/ownedcardItem.html:9
 msgid "Max Bonded"
 msgstr ""
 
-#: cpro/models.py:634 cpro/templates/items/ownedcardItem.html:8
+#: cpro/models.py:644 cpro/templates/items/ownedcardItem.html:8
 msgid "Max Leveled"
 msgstr ""
 
-#: cpro/models.py:635 cpro/templates/items/ownedcardItem.html:11
+#: cpro/models.py:645 cpro/templates/items/ownedcardItem.html:11
 msgid "Star Rank"
-msgstr ""
+msgstr "Rango de Estrella"
 
-#: cpro/models.py:639 cpro/templates/include/cards-stats.html:57
+#: cpro/models.py:649 cpro/templates/include/cards-stats.html:68
 #: cpro/templates/items/ownedcardItem.html:14
 msgid "Skill Level"
-msgstr ""
+msgstr "Nivel de la habilidad"
 
-#: cpro/models.py:643 cpro/templates/items/ownedcardItem.html:17
+#: cpro/models.py:653 cpro/templates/items/ownedcardItem.html:17
 msgid "Obtained Date"
-msgstr ""
+msgstr "Obtenida"
 
-#: cpro/raw.py:4 cpro/settings.py:112 cpro/settings.py:146
+#: cpro/raw.py:4 cpro/settings.py:113 cpro/settings.py:147
+#: cpro/templates/include/beforeCards.html:42
+#: cpro/templates/include/beforeCards.html:49
 #: cpro/templates/items/eventInfo.html:13
 #: cpro/templates/items/idolInfo.html:13
 msgid "Cards"
-msgstr ""
+msgstr "Cartas"
 
-#: cpro/raw.py:6 cpro/settings.py:209 cpro/templates/items/idolInfo.html:17
+#: cpro/raw.py:6 cpro/settings.py:210 cpro/templates/items/idolInfo.html:17
 msgid "Events"
-msgstr ""
+msgstr "Eventos"
 
 #: cpro/raw.py:7
 msgid "Songs"
-msgstr ""
+msgstr "Canciones"
 
 #: cpro/settings.py:37
 msgid "{nth} Favorite Idol"
-msgstr ""
+msgstr "{nth} Idol Favorita"
 
 #: cpro/settings.py:57
 msgid "Favorite Cards"
-msgstr ""
+msgstr "Cartas Favoritas"
 
 #: cpro/settings.py:65
 msgid "New Cards"
-msgstr ""
+msgstr "Cartas Nuevas"
 
 #: cpro/settings.py:67
 msgid "Live"
-msgstr ""
+msgstr "Concierto"
 
 #: cpro/settings.py:68
 msgid "Comedy"
-msgstr ""
+msgstr "Comedia"
 
 #: cpro/settings.py:69
 msgid "Room Decoration"
-msgstr ""
+msgstr "Decoracion de Sala"
 
 #: cpro/settings.py:70
 msgid "Introduce yourself"
-msgstr ""
+msgstr "Preséntese"
 
-#: cpro/settings.py:71 cpro/settings.py:179
+#: cpro/settings.py:71 cpro/settings.py:180
 msgid "Idols"
-msgstr ""
+msgstr "Idolos"
 
 #: cpro/settings.py:72
 msgid "Fanart"
-msgstr ""
+msgstr "Arté"
 
 #: cpro/settings.py:73
 msgid "Cosplay"
-msgstr ""
+msgstr "Cosplay"
 
 #: cpro/settings.py:74
 msgid "Anime"
-msgstr ""
+msgstr "Anime"
 
 #: cpro/settings.py:75
 msgid "Community"
-msgstr ""
+msgstr "Comunidad"
 
 #: cpro/settings.py:76
 msgid "NOT about IDOLM@STER, idols or Starlight Stage"
-msgstr ""
+msgstr "NO relacionado con IDOLM@STER, idols or Starlight Stage"
 
-#: cpro/settings.py:111 cpro/settings.py:145
+#: cpro/settings.py:112 cpro/settings.py:146
 #: cpro/templates/items/cardItem.html:42
 #: cpro/templates/items/ownedcardItem.html:23
 #: cpro/templates/items/ownedcardItem.html:29
 msgid "Card"
-msgstr ""
+msgstr "Carta"
 
 #: cpro/templates/ajax/account_about.html:14
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
 #: cpro/templates/ajax/account_about.html:14
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: cpro/templates/include/afterCards.html:4
 msgid "Share your cards!"
-msgstr ""
+msgstr "¡Comparte tus cartas!"
 
 #: cpro/templates/include/beforeCards.html:11
 msgid "Start sharing your beautiful collection!"
-msgstr ""
+msgstr "¡Comienza a compartir tu hermosa colección!"
 
 #: cpro/templates/include/beforeCards.html:13
 msgid "Open the game, go to Idols (\"アイドル\"), then go to Idols List (\"所属アイドル一覧\")"
-msgstr ""
+msgstr "Una vez abierto el juego, ve a Idols (\"アイドル\"), luego ve a Lista de Idols (\"所属アイドル一覧\") "
 
 #: cpro/templates/include/beforeCards.html:14
 msgid "Go through the list of cards below and click \"+\" on the ones you have to add them in your Cinderella Producers collection, then click again for more options"
-msgstr ""
+msgstr "Ve a través de la lista de cartas y presiona \"+\" para añadir la carta seleccionada a tu colección. Luego, presiona nuevamente para más opciones."
 
 #: cpro/templates/include/beforeCards.html:30
 msgid "Next"
-msgstr ""
+msgstr "Proximo"
 
 #: cpro/templates/include/cards-collection.html:25
 msgid "Click to add %(card)s to your collection"
-msgstr ""
+msgstr "Presiona para agregar %(card)s a tu colección"
 
-#: cpro/templates/include/cards-stats.html:67
+#: cpro/templates/include/cards-stats.html:78
 msgid "Leader Skill"
-msgstr ""
+msgstr "Habilidad dominante"
 
-#: cpro/templates/include/cards-stats.html:77
+#: cpro/templates/include/cards-stats.html:88
 msgid "Scouted by"
-msgstr ""
+msgstr "Conseguida por"
 
-#: cpro/templates/include/cards-stats.html:116
+#: cpro/templates/include/cards-stats.html:127
 msgid "Download"
-msgstr ""
+msgstr "Bajar"
 
 #: cpro/templates/items/cardItem.html:9
 msgid "Card Info"
-msgstr ""
+msgstr "Información"
 
 #: cpro/templates/items/cardItem.html:15
 msgid "Add to"
-msgstr ""
+msgstr "Agregar a"
 
 #: cpro/templates/items/cardItem.html:23
 msgid "Add this card to your collection"
-msgstr ""
+msgstr "Añade esta carta a tu colección"
 
 #: cpro/templates/items/cardItem.html:26 cpro/templates/items/cardItem.html:28
 msgid "Your cards"
-msgstr ""
+msgstr "Tús cartas"
 
 #: cpro/templates/items/cardItem.html:36
 msgid "Remove this card from your favorites"
-msgstr ""
+msgstr "Remueve esta carta de tus favoritos"
 
 #: cpro/templates/items/cardItem.html:38
 msgid "Add this card to your favorites"
-msgstr ""
+msgstr "Añade esta carta a tus favoritos"
 
 #: cpro/templates/items/eventInfo.html:17
 msgid "Ranking"
-msgstr ""
+msgstr "Clasificación"
 
 #: cpro/templates/items/eventInfo.html:34
 msgid "days"
-msgstr ""
+msgstr "Días"
 
-#: cpro/templates/items/eventInfo.html:34
+#: cpro/templates/include/index.html:12 cpro/templates/items/eventInfo.html:34
 msgid "hours"
-msgstr ""
+msgstr "Horas"
 
-#: cpro/templates/items/eventInfo.html:34
+#: cpro/templates/include/index.html:12 cpro/templates/items/eventInfo.html:34
 msgid "minutes"
-msgstr ""
+msgstr "Minutos"
 
 #: cpro/templates/items/eventInfo.html:34
 msgid "seconds left"
-msgstr ""
+msgstr "Segundos restantes"
 
 #: cpro/templates/items/eventInfo.html:50
 msgid "translated in English"
-msgstr ""
+msgstr "traducido en Inglés"
 
 #: cpro/templates/items/idolInfo.html:21
 msgid "Fans"
+msgstr "Fans"
+
+#: web/default_settings.py:24
+msgid "Only"
+msgstr "Solo"
+
+#: web/default_settings.py:24
+msgid "None"
+msgstr "Ninguno"
+
+#: web/default_settings.py:25
+msgid "Unknown"
+msgstr "Desconocido"
+
+#: web/default_settings.py:26
+msgid "Liked this activity"
+msgstr "Le gusto esta actividad"
+
+#: web/default_settings.py:27
+msgid "Loading"
+msgstr "Cargando"
+
+#: cpro/model_choices.py:102
+msgid "LIVE Parade"
 msgstr ""
+
+#: cpro/models.py:136
+msgid "Producer Level"
+msgstr "Nivel del productor"
+
+#: cpro/templates/include/beforeEvents.html:6
+msgid "%(idol)s performed in %(total_results)s events"
+msgstr "%(idol)s formaron parte de %(total_results)s eventos"
+
+#: cpro/templates/include/beforeLeaderboard.html:21
+msgid "%(total_results)s producers love %(favorite_character_idol)s"
+msgstr "%(total_results)s de productores aman a %(favorite_character_idol)s"
+
+#: cpro/templates/include/beforeLeaderboard.html:29
+msgid "%(total_results)s producers scouted %(own_card)s"
+msgstr "%(total_results)s de productores poseen %(own_card)s"
+
+#: cpro/templates/include/index.html:12
+msgid "day"
+msgstr "Día"
 
