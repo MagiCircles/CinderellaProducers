@@ -27,7 +27,7 @@ def dataToImageFile(data):
     image.flush()
     return ImageFile(image)
 
-def shrinkImageFromData(data, filename, resize=False):
+def shrinkImageFromData(data, filename, resize=None):
     _, extension = os.path.splitext(filename)
     extension = extension.lower()
     api_key = getattr(django_settings, 'TINYPNG_API_KEY', None)
@@ -35,7 +35,7 @@ def shrinkImageFromData(data, filename, resize=False):
         return dataToImageFile(data)
     tinify.key = api_key
     source = tinify.from_buffer(data)
-    if resize:
+    if resize == 'fit':
         image = Image.open(cStringIO.StringIO(data))
         width, height = image.size
         if width > django_settings.MAX_WIDTH:
@@ -52,6 +52,13 @@ def shrinkImageFromData(data, filename, resize=False):
             method='fit',
             width=int(width),
             height=int(height),
+        )
+    elif resize == 'cover':
+        print 'resize cover'
+        source = source.resize(
+            method='cover',
+            width=300,
+            height=300,
         )
     try:
         data = source.to_buffer()

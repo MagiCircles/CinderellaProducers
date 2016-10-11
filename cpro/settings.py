@@ -2,7 +2,7 @@
 from collections import OrderedDict
 from django.conf import settings as django_settings
 from django.utils.translation import ugettext_lazy as _
-from web.default_settings import DEFAULT_ENABLED_COLLECTIONS, DEFAULT_ENABLED_PAGES, DEFAULT_JAVASCRIPT_TRANSLATED_TERMS
+from web.default_settings import DEFAULT_ENABLED_COLLECTIONS, DEFAULT_ENABLED_PAGES, DEFAULT_JAVASCRIPT_TRANSLATED_TERMS, DEFAULT_PROFILE_EXTRA_TABS
 from web.utils import tourldash
 from cpro import models, forms, filters, collections_settings, utils
 
@@ -53,6 +53,7 @@ ON_PREFERENCES_EDITED = utils.onPreferencesEdited
 DONATORS_STATUS_CHOICES = models.DONATORS_STATUS_CHOICES
 
 PROFILE_EXTRA_TABS = OrderedDict([
+    ('badges', DEFAULT_PROFILE_EXTRA_TABS['badges']),
     ('favorites', {
         'icon': 'star',
         'name': _('Favorite Cards'),
@@ -79,6 +80,9 @@ ACTIVITY_TAGS = [
 
 ENABLED_COLLECTIONS['activity']['add']['before_save'] = collections_settings.activitiesBeforeSave
 ENABLED_COLLECTIONS['activity']['edit']['before_save'] = collections_settings.activitiesBeforeSave
+
+ENABLED_COLLECTIONS['badge']['add']['before_save'] = collections_settings.badgesBeforeSave
+ENABLED_COLLECTIONS['badge']['edit']['before_save'] = collections_settings.badgesBeforeSave
 
 ENABLED_COLLECTIONS['account']['list']['distinct'] = True
 

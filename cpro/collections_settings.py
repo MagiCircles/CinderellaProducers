@@ -11,7 +11,18 @@ def activitiesBeforeSave(request, instance, type=None):
     if instance.image:
         if instance.image and '/' not in instance.image.name:
             filename = instance.image.name
-            instance.image = shrinkImageFromData(instance.image.read(), filename, resize=True)
+            instance.image = shrinkImageFromData(instance.image.read(), filename, resize='fit')
+            instance.image.name = instance._meta.model._meta.get_field('image').upload_to(instance, filename)
+    return instance
+
+############################################################
+# Badges
+
+def badgesBeforeSave(request, instance, type=None):
+    if instance.image:
+        if instance.image and '/' not in instance.image.name:
+            filename = instance.image.name
+            instance.image = shrinkImageFromData(instance.image.read(), filename, resize='cover')
             instance.image.name = instance._meta.model._meta.get_field('image').upload_to(instance, filename)
     return instance
 
