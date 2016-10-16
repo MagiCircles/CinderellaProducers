@@ -414,7 +414,7 @@ msgstr "Sigue las características que están por venir"
 
 #: web/templates/pages/about.html:124
 msgid "our Tasks manager"
-msgstr ""
+msgstr "nuestro Administrador de tareas"
 
 #: web/templates/pages/about.html:125
 msgid "Create a new issue"
@@ -459,7 +459,7 @@ msgstr "Desarrolladores"
 
 #: web/templates/pages/about.html:181
 msgid "Our project is open-source and open for contributions. We are more than happy to accept pull-requests on GitHub!"
-msgstr ""
+msgstr "Nuestro proyecto es una fuente abierta y es abierta para contribuir. Estamos mas que felices para aceptar sugestiones en GitHub"
 
 #: web/templates/pages/about.html:183
 msgid "The website has been made using"
@@ -749,7 +749,7 @@ msgstr "La Base de Datos de {game} & Comunidad"
 
 #: web/views.py:152
 msgid "{site} is not a representative and is not associated with {game}. Its logos and images are Trademarks of {company}."
-msgstr ""
+msgstr "{site} no es representativo de, ni esta asociado con {game}. Sus logos e imágenes son marcas registradas de {company}."
 
 #: web/views.py:152
 msgid "the company that owns {game}"
