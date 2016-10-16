@@ -533,7 +533,7 @@ msgstr ""
 
 #: web/templates/pages/wiki.html:5 web/templates/pages/wiki.html.py:19
 msgid "Wiki"
-msgstr ""
+msgstr "Вики"
 
 #: web/templates/pages/login.html:9
 msgid "Forgot password?"
@@ -574,15 +574,15 @@ msgstr ""
 
 #: web/templates/items/profile.html:71 web/templates/pages/settings.html:74
 msgid "Accounts"
-msgstr ""
+msgstr "Аккаунты"
 
 #: web/templates/pages/settings.html:81
 msgid "Edit Account"
-msgstr ""
+msgstr "Редактировать аккаунт"
 
 #: web/templates/pages/settings.html:86 web/templates/pages/settings.html:95
 msgid "Back to my profile"
-msgstr ""
+msgstr "Назад к профилю"
 
 #: web/templates/pages/wiki.html:23
 msgid "Back to Wiki Home"
@@ -1961,11 +1961,11 @@ msgstr "Ваши карты"
 
 #: cpro/templates/items/cardItem.html:36
 msgid "Remove this card from your favorites"
-msgstr ""
+msgstr "Удалить карту из избранного"
 
 #: cpro/templates/items/cardItem.html:38
 msgid "Add this card to your favorites"
-msgstr ""
+msgstr "Добавить карту в избранное"
 
 #: cpro/templates/items/eventInfo.html:17
 msgid "Ranking"
