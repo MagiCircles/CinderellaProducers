@@ -21,6 +21,7 @@ msgstr "アカウント"
 msgid "Leaderboard"
 msgstr "リーダーボード"
 
+#. "アカウントを作成してコミュニティに参加しよう!"
 #: web/default_settings.py:131
 msgid "Create your account to join the community and be in the leaderboard!"
 msgstr "アカウント登録して、コミュニティーに参加するとリーダーボードに入ることができる！"
@@ -36,20 +37,22 @@ msgstr "プロフィール"
 msgid "Players"
 msgstr "プレイヤー"
 
+#. "活動" seems a bit formal and translation-ish. I think "アクティビティ" is better.
 #: web/default_settings.py:174 web/default_settings.py:245
 #: web/templates/items/activityItem.html:47
 #: web/templates/items/profile.html:119
 msgid "Activity"
-msgstr "活動"
+msgstr "アクティビティ"
 
 #: web/default_settings.py:175 web/templates/items/profile.html:75
 msgid "Activities"
-msgstr "活動"
+msgstr "アクティビティ"
 
 #: web/default_settings.py:183 web/views.py:124
 msgid "Share your adventures!"
 msgstr "プロデュースの話を共有しましょう！"
 
+#. I think "お知らせ" is more familiar
 #: web/default_settings.py:208
 #: web/management/commands/cron_notifications.py:30
 #: web/templates/emails/notification.html:5
@@ -111,6 +114,7 @@ msgstr "好きな色"
 msgid "All your favorites must be unique"
 msgstr ""
 
+#. "現在のパスワード"
 #: web/forms.py:213
 msgid "Old Password"
 msgstr "元パスワード"
@@ -119,6 +123,7 @@ msgstr "元パスワード"
 msgid "New Password"
 msgstr "新しいパスワードを入力してください"
 
+#. "新しいパスワードを再度入力してください"
 #: web/forms.py:215
 msgid "New Password Again"
 msgstr "また新しいパスワードを入力してください"
@@ -170,7 +175,7 @@ msgstr "時々"
 
 #: web/model_choices.py:85
 msgid "Often"
-msgstr "往々"
+msgstr "たまに"
 
 #: web/model_choices.py:86
 msgid "Every single day"
@@ -179,23 +184,23 @@ msgstr "毎日"
 #. Example of replacement: "db0 liked your activity: I love going to the beach!" where db0 is the user who liked your activity and "I love going to the beach!" is the content of your activity.
 #: web/model_choices.py:97
 msgid "{} liked your activity: {}."
-msgstr "{}はあなたの活動がLikeされました：{}"
+msgstr "{}があなたの活動をLikeしました：{}"
 
 #. Make sure there's as many {} in your translation than in the original sentence.
 #. Example of replacement: "db0 just followed you." where db0 is the user who follows you.
 #: web/model_choices.py:98
 msgid "{} just followed you."
-msgstr "{}がフォローしました"
+msgstr "{}があなたをフォローしました"
 
 #. For the emails settings.
 #: web/model_choices.py:104
 msgid "When someone likes your activity."
-msgstr ""
+msgstr "アクティビティがLikeされたとき"
 
 #. For the emails settings.
 #: web/model_choices.py:105
 msgid "When someone follows you."
-msgstr ""
+msgstr "フォローされたとき"
 
 #. Personal description you can write on your profile. Similar to twitter's "bio".
 #: cpro/models.py:77 cpro/templates/items/idolInfo.html:139
@@ -204,7 +209,7 @@ msgstr "説明"
 
 #: web/models.py:59
 msgid "Write whatever you want. You can add formatting and links using Markdown."
-msgstr ""
+msgstr "自由に書いてください。Markdownで整形することが出来ます"
 
 #. Your translation must be gender neutral. Example 1er/ère
 #: web/models.py:60
@@ -236,7 +241,7 @@ msgstr "自分が住んでいる街"
 
 #: web/models.py:65
 msgid "It might take up to 24 hours to update your location on the map."
-msgstr ""
+msgstr "マップ上で更新が反映されるまで最大24時間かかります"
 
 #. For links. Select your platform before adding a link. Can be Facebook/Twitter/Reddit, etc.
 #: web/models.py:176
@@ -250,24 +255,24 @@ msgstr "ユーザー名／ID"
 #. For links.
 #: web/models.py:177
 msgid "Write your username only, no URL."
-msgstr ""
+msgstr "URLなどは書かず、ユーザー名のみを書いてください"
 
 #. For links.
 #: web/forms.py:247 web/models.py:178
 msgid "How often do you tweet/stream/post about {}?"
-msgstr ""
+msgstr "{}でどの程度の頻度で投稿等をしていますか?"
 
 #: web/templates/base.html:117
 msgid "Help us translate the site"
-msgstr ""
+msgstr "翻訳に協力する"
 
 #: web/default_settings.py:27 web/templates/collections/list_page.html:13
 msgid "No result."
-msgstr ""
+msgstr "0件"
 
 #: web/templates/collections/modification_view.html:29
 msgid "Back to"
-msgstr ""
+msgstr "戻る"
 
 #: web/templates/emails/notification.html:17
 #: web/templates/emails/notification.html:20
@@ -276,7 +281,7 @@ msgstr ""
 #: web/templates/items/notificationItem.html:22
 #: web/templates/items/reportItem.html:66
 msgid "Open"
-msgstr ""
+msgstr "開く"
 
 #. Make sure the world "donating" can be added at the end of this sentence.
 #: web/templates/emails/donation_footer.html:3
@@ -288,12 +293,12 @@ msgstr ""
 #: web/templates/emails/donation_footer.html:3
 #: web/templates/pages/donate.html:22
 msgid "donating"
-msgstr ""
+msgstr "寄付"
 
 #: web/templates/emails/donation_footer.html:4
 #: web/templates/pages/donate.html:22
 msgid "This will help us cover the costs of the servers and allow us to keep it running for free and without ads."
-msgstr ""
+msgstr "無料かつ広告なしで運営するためのサーバー費として充てられます"
 
 #: web/templates/emails/notification.html:30
 #: web/templates/emails/notification.txt:7
@@ -311,23 +316,23 @@ msgstr "編集を適用"
 
 #: web/templates/include/about_description.html:2
 msgid "Nice to meet you, we are Deby and Engil!"
-msgstr ""
+msgstr "はじめまして、私たちはDeby、そしてEngilです!"
 
 #: web/templates/include/about_description.html:3
 msgid "We are two developers and casual players. We live in San Francisco, California. We come from the same computer science university and both work as software engineers in the same company we founded:"
-msgstr ""
+msgstr "私たち二人はサンフランシスコに住むカジュアルプレイヤーです。同じコンピュータ・サイエンス系の大学を出て自分たちで立ち上げた会社でソフトウェアエンジニアとして働いています。"
 
 #: web/templates/include/about_description.html:6
 msgid "Though we love our job, we don't pay ourselves and don't have any income, so any donation helps a lot and is greatly appreciated."
-msgstr ""
+msgstr "私たちはこの仕事が大好きですが自分たちに給料を払っているわけではなく、収入はありません。なので少しの寄付でも助けになりますし、とても感謝しています。"
 
 #: web/templates/include/about_description.html:10
 msgid "The heartwarming support from the community keeps motivating us to do more! We love helping the community by providing as much information as we can about the game, while keeping the website easy to use, shiny and cute ^_^"
-msgstr ""
+msgstr "皆さんの温かい支援がよりたくさんのことをやっていく気力となっています! 私たちはゲームの情報をできるだけたくさん提供すること、そして使いやすく、キラキラでかわいいサイトを作ることが大好きです。"
 
 #: web/templates/include/about_description.html:12
 msgid "We don't know how far we will go with this, but one thing we know for sure is that we are having a lot of fun doing it and sharing this adventure with you."
-msgstr ""
+msgstr "どこまでできるかわかりませんが、ただひとつ言えることは、私たちはこうして皆さんとこの冒険をシェアできることをとても楽しんでいます。"
 
 #: web/templates/include/pagination.html:17
 msgid "Load more..."
@@ -379,7 +384,7 @@ msgstr "アカウント無し"
 #: web/templates/items/profile.html:105
 msgid "%(length)s account:"
 msgid_plural "%(length)s accounts:"
-msgstr[0] ""
+msgstr[0] "%(length)sアカウント"
 
 #: web/templates/pages/about.html:29 web/templates/pages/about.html.py:79
 msgid "Contact us"
@@ -396,7 +401,7 @@ msgstr ""
 #. On a button
 #: web/templates/pages/about.html:99
 msgid "Send Email"
-msgstr ""
+msgstr "メールを送る"
 
 #: web/templates/pages/about.html:107
 msgid "You can also contact us with a private message on:"
@@ -564,7 +569,7 @@ msgstr ""
 
 #: web/templates/pages/settings.html:69
 msgid "F.A.Q."
-msgstr ""
+msgstr "よくある質問"
 
 #: web/templates/pages/settings.html:70
 msgid "Change Avatar"
@@ -643,7 +648,7 @@ msgstr "追加："
 
 #: web/templates/pages/settings.html:10 web/templates/pages/settings.html:51
 msgid "Link"
-msgstr ""
+msgstr "リンク"
 
 #: web/forms.py:276
 msgid "Confirm"
@@ -660,7 +665,7 @@ msgstr "言語"
 #: web/models.py:192 web/models.py:333 web/templates/items/reportItem.html:30
 #: web/templates/items/reportItem.html:55
 msgid "Message"
-msgstr ""
+msgstr "メッセージ"
 
 #: cpro/models.py:82 cpro/models.py:99 cpro/models.py:312 cpro/models.py:313
 msgid "Image"
@@ -1332,12 +1337,12 @@ msgstr "プロデューサーランク"
 
 #: cpro/forms.py:140 cpro/forms.py:176 cpro/forms.py:215 cpro/forms.py:272
 msgid "Reverse Order"
-msgstr ""
+msgstr "逆順"
 
 #: cpro/forms.py:144 cpro/models.py:139
 #: cpro/templates/ajax/account_about.html:13
 msgid "Accept friend requests"
-msgstr ""
+msgstr "フレンド申請の承認"
 
 #: cpro/forms.py:167 cpro/forms.py:211 cpro/models.py:49 cpro/models.py:50
 #: cpro/models.py:97 cpro/models.py:98 cpro/templates/items/eventInfo.html:44
@@ -1373,12 +1378,12 @@ msgstr "ヒップ"
 
 #: cpro/forms.py:190 cpro/models.py:100 cpro/templates/items/eventInfo.html:61
 msgid "Beginning"
-msgstr ""
+msgstr "開始"
 
 #: cpro/forms.py:191 cpro/forms.py:210 cpro/models.py:101
 #: cpro/templates/items/eventInfo.html:66
 msgid "End"
-msgstr ""
+msgstr "終了"
 
 #: cpro/forms.py:212 cpro/models.py:105 cpro/models.py:107 cpro/models.py:109
 #: cpro/models.py:111 cpro/models.py:113
@@ -1413,12 +1418,12 @@ msgstr "特訓した"
 #: cpro/templates/include/cards-stats.html:132
 #: cpro/templates/include/cards-stats.html:138
 msgid "Art"
-msgstr ""
+msgstr "イラスト"
 
 #: cpro/forms.py:260 cpro/models.py:305
 #: cpro/templates/include/cards-stats.html:44
 msgid "Release Date"
-msgstr ""
+msgstr "追加日"
 
 #: cpro/forms.py:261 cpro/models.py:288 cpro/models.py:289
 msgid "ID"
@@ -1449,11 +1454,11 @@ msgstr "特技"
 
 #: cpro/model_choices.py:9
 msgid "Skilled Producer"
-msgstr "上手プロデューサー"
+msgstr "上手なプロデューサー"
 
 #: cpro/model_choices.py:10
 msgid "Expert Producer"
-msgstr "超上手プロデューサー"
+msgstr "エキスパートプロデューサー"
 
 #: cpro/model_choices.py:11
 msgid "Veteran Producer"
@@ -1465,7 +1470,7 @@ msgstr "マスタープロデューサー"
 
 #: cpro/model_choices.py:13
 msgid "Idol Master"
-msgstr ""
+msgstr "アイドルマスター"
 
 #: cpro/model_choices.py:25
 msgid "Cute"
@@ -1493,55 +1498,55 @@ msgstr "両"
 
 #: cpro/model_choices.py:78
 msgid "Leo"
-msgstr ""
+msgstr "獅子座"
 
 #: cpro/model_choices.py:79
 msgid "Aries"
-msgstr ""
+msgstr "牡羊座"
 
 #: cpro/model_choices.py:80
 msgid "Libra"
-msgstr ""
+msgstr "天秤座"
 
 #: cpro/model_choices.py:81
 msgid "Virgo"
-msgstr ""
+msgstr "乙女座"
 
 #: cpro/model_choices.py:82
 msgid "Scorpio"
-msgstr ""
+msgstr "蠍座"
 
 #: cpro/model_choices.py:83
 msgid "Capricorn"
-msgstr ""
+msgstr "山羊座"
 
 #: cpro/model_choices.py:84
 msgid "Pisces"
-msgstr ""
+msgstr "魚座"
 
 #: cpro/model_choices.py:85
 msgid "Gemini"
-msgstr ""
+msgstr "双子座"
 
 #: cpro/model_choices.py:86
 msgid "Cancer"
-msgstr ""
+msgstr "蟹座"
 
 #: cpro/model_choices.py:87
 msgid "Sagittarius"
-msgstr ""
+msgstr "射手座"
 
 #: cpro/model_choices.py:88
 msgid "Aquarius"
-msgstr ""
+msgstr "水瓶座"
 
 #: cpro/model_choices.py:89
 msgid "Taurus"
-msgstr ""
+msgstr "牡牛座"
 
 #: cpro/model_choices.py:98
 msgid "Token"
-msgstr ""
+msgstr "アタポン形式"
 
 #: cpro/model_choices.py:99
 msgid "Medley"
@@ -1609,43 +1614,43 @@ msgstr "スコアアップ"
 
 #: cpro/model_choices.py:178
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance of turning all Great notes into Perfect notes in the next {skill_duration} seconds."
-msgstr ""
+msgstr "{trigger_value}秒毎、{trigger_chance}%で{skill_duration}秒、GREATをPERFECTにする"
 
 #: cpro/model_choices.py:179
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance of turning all Nice and Great notes into Perfect notes in the next {skill_duration} seconds."
-msgstr ""
+msgstr "{trigger_value}秒毎、{trigger_chance}%で{skill_duration}秒、GREAT/NICEをPERFECTにする"
 
 #: cpro/model_choices.py:180
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance of turning all Bad, Nice and Great notes into Perfect notes in the next {skill_duration} seconds."
-msgstr ""
+msgstr "{trigger_value}秒毎、{trigger_chance}%で{skill_duration}秒、GREAT/NICE/BADをPERFECTにする"
 
 #: cpro/model_choices.py:181
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Nice notes will not break the combo in the next {skill_duration} seconds."
-msgstr ""
+msgstr "{trigger_value}秒毎、{trigger_chance}%で{skill_duration}秒、NICEでもCOMBOが継続する"
 
 #: cpro/model_choices.py:182
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will restore {skill_value} life in the next {skill_duration} seconds."
-msgstr ""
+msgstr "{trigger_value}秒毎、{trigger_chance}%で{skill_duration}秒、PERFECTで{skill_value}ライフ回復"
 
 #: cpro/model_choices.py:183
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will not lose health in the next {skill_duration} seconds."
-msgstr ""
+msgstr "{trigger_value}秒毎、{trigger_chance}で{skill_duration}秒、ライフが減少しなくなる"
 
 #: cpro/model_choices.py:184
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will gain an extra {skill_value}% combo bonus in the next {skill_duration} seconds."
-msgstr ""
+msgstr "{trigger_value}秒毎、{trigger_chance}%で{skill_duration}秒、COMBOボーナス{skill_value}%アップ"
 
 #: cpro/model_choices.py:185
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus in the next {skill_duration} seconds."
-msgstr ""
+msgstr "{trigger_value}秒毎、{trigger_chance}%で{skill_duration}秒、PERFECTのスコア{skill_value}%アップ"
 
 #: cpro/model_choices.py:186
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% bonus and Nice and Bad notes will not break your combo in the next {skill_duration} seconds, at the cost of {skill_value2} life."
-msgstr ""
+msgstr "{trigger_value}秒毎、{trigger_chance}%でライフを{skill_value2}消費し、{skill_duration}秒PERFECTのスコア{skill_value}%アップ、NICE/BADでもCOMBO継続"
 
 #: cpro/model_choices.py:187
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Great and Perfect notes will receive a {skill_value}% score bonus in the next {skill_duration} seconds."
-msgstr ""
+msgstr "{trigger_value}秒毎、{trigger_chance}%で{skill_duration}秒、PERFECT/GREATのスコア{skill_value}%アップ"
 
 #: cpro/model_choices.py:203
 msgid "Raises {leader_skill_type} of all {idol_type} idols by {leader_skill_percent}%."
@@ -1658,55 +1663,55 @@ msgstr "ライフ"
 
 #: cpro/model_choices.py:245
 msgid "Voice"
-msgstr ""
+msgstr "ボイス"
 
 #: cpro/model_choices.py:246
 msgid "Make-Up"
-msgstr ""
+msgstr "メイク"
 
 #: cpro/model_choices.py:247
 msgid "Step"
-msgstr ""
+msgstr "ステップ"
 
 #: cpro/model_choices.py:248
 msgid "Energy"
-msgstr ""
+msgstr "エナジー"
 
 #: cpro/model_choices.py:249
 msgid "Ability"
-msgstr ""
+msgstr "アビリティ"
 
 #: cpro/model_choices.py:250
 msgid "Brilliance"
-msgstr ""
+msgstr "ブリリアンス"
 
 #: cpro/model_choices.py:265 cpro/model_choices.py:275
 msgid "Shiny"
-msgstr ""
+msgstr "シャイニー"
 
 #: cpro/model_choices.py:266 cpro/model_choices.py:276
 msgid "Tricolor"
-msgstr ""
+msgstr "トリコロール"
 
 #: cpro/model_choices.py:283
 msgid "Thumbs"
-msgstr ""
+msgstr "親指"
 
 #: cpro/model_choices.py:284
 msgid "All fingers"
-msgstr ""
+msgstr "全ての指"
 
 #: cpro/model_choices.py:285
 msgid "Index fingers"
-msgstr ""
+msgstr "人差し指"
 
 #: cpro/model_choices.py:286
 msgid "One hand"
-msgstr ""
+msgstr "片手"
 
 #: cpro/model_choices.py:287
 msgid "Other"
-msgstr ""
+msgstr "その他"
 
 #: cpro/models.py:60 cpro/templates/items/idolInfo.html:80
 msgid "Blood Type"
@@ -1726,7 +1731,7 @@ msgstr "出身地"
 
 #: cpro/models.py:76 cpro/templates/items/idolInfo.html:132
 msgid "Hobbies"
-msgstr "ホビー"
+msgstr "趣味"
 
 #: cpro/models.py:78 cpro/models.py:79 cpro/templates/items/idolInfo.html:146
 msgid "CV"
@@ -1772,7 +1777,7 @@ msgstr ""
 #: cpro/templates/include/cards-stats.html:135
 #: cpro/templates/include/cards-stats.html:141
 msgid "Transparent"
-msgstr ""
+msgstr "透過"
 
 #: cpro/models.py:340 cpro/models.py:345
 msgid "Icon"
@@ -1861,27 +1866,27 @@ msgstr ""
 
 #: cpro/settings.py:70
 msgid "Introduce yourself"
-msgstr ""
+msgstr "自己紹介"
 
 #: cpro/settings.py:71 cpro/settings.py:180
 msgid "Idols"
-msgstr ""
+msgstr "アイドル"
 
 #: cpro/settings.py:72
 msgid "Fanart"
-msgstr ""
+msgstr "ファンアート"
 
 #: cpro/settings.py:73
 msgid "Cosplay"
-msgstr ""
+msgstr "コスプレ"
 
 #: cpro/settings.py:74
 msgid "Anime"
-msgstr ""
+msgstr "アニメ"
 
 #: cpro/settings.py:75
 msgid "Community"
-msgstr ""
+msgstr "コミュニティ"
 
 #: cpro/settings.py:76
 msgid "NOT about IDOLM@STER, idols or Starlight Stage"
@@ -1912,11 +1917,11 @@ msgstr ""
 
 #: cpro/templates/include/beforeCards.html:13
 msgid "Open the game, go to Idols (\"アイドル\"), then go to Idols List (\"所属アイドル一覧\")"
-msgstr ""
+msgstr "アイドルタブの所属アイドル一覧を開きます"
 
 #: cpro/templates/include/beforeCards.html:14
 msgid "Go through the list of cards below and click \"+\" on the ones you have to add them in your Cinderella Producers collection, then click again for more options"
-msgstr ""
+msgstr "カード一覧の中からコレクションに追加するアイドルの\"+\"を押します。"
 
 #: cpro/templates/include/beforeCards.html:30
 msgid "Next"
@@ -1924,7 +1929,7 @@ msgstr "次へ"
 
 #: cpro/templates/include/cards-collection.html:25
 msgid "Click to add %(card)s to your collection"
-msgstr ""
+msgstr "クリックして%(card)sをコレクションに追加"
 
 #: cpro/templates/include/cards-stats.html:78
 msgid "Leader Skill"
@@ -1932,7 +1937,7 @@ msgstr "センター効果"
 
 #: cpro/templates/include/cards-stats.html:88
 msgid "Scouted by"
-msgstr "スカウトされたP"
+msgstr "スカウトしたP"
 
 #: cpro/templates/include/cards-stats.html:127
 msgid "Download"
@@ -1940,7 +1945,7 @@ msgstr "ダウンロード"
 
 #: cpro/templates/items/cardItem.html:9
 msgid "Card Info"
-msgstr "カード説明"
+msgstr "詳細情報"
 
 #: cpro/templates/items/cardItem.html:15
 msgid "Add to"
@@ -1952,7 +1957,7 @@ msgstr "コレクションに追加する"
 
 #: cpro/templates/items/cardItem.html:26 cpro/templates/items/cardItem.html:28
 msgid "Your cards"
-msgstr ""
+msgstr "所持カード"
 
 #: cpro/templates/items/cardItem.html:36
 msgid "Remove this card from your favorites"
@@ -2024,12 +2029,12 @@ msgstr ""
 
 #: cpro/templates/include/beforeLeaderboard.html:21
 msgid "%(total_results)s producers love %(favorite_character_idol)s"
-msgstr ""
+msgstr "%(total_results)s人のプロデューサーが%(favorite_character_idol)sをお気に入りにしています"
 
 #. "P" is the one-letter abbreviation for "Producer", Japanese players always use it when conciseness/space savings is need
 #: cpro/templates/include/beforeLeaderboard.html:29
 msgid "%(total_results)s producers scouted %(own_card)s"
-msgstr "%(total_results)s人のPは「%(own_card)s」をスカウトしました"
+msgstr "%(total_results)s人のプロデューサーが「%(own_card)s」をスカウトしました"
 
 #: cpro/templates/include/index.html:12
 msgid "day"
