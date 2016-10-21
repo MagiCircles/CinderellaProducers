@@ -2,36 +2,15 @@
 {% load tools %}
 {% with idol=item %}
 <div class="idol-info">
+  <br><br>
+  <p class="text-center">
+    <img src="{{ idol.image_url }}" alt="{{ idol.name }}" class="idol-image">
+  </p>
   {% if current == 'idol_item' %}
   <h3 class="text-center fontx2">{{ idol.name }}</h3>
   {% endif %}
-  <p class="text-center">
-    <img src="{{ idol.image_url }}" alt="{{ idol.name }}" class="pull-left idol-image">
-    <span class="btn-group">
-      <a href="/cards/?idol={{ idol.id }}" class="btn btn-lg btn-{{ idol.english_type|default_if_none:'main' }}" target="_blank">
-	<i class="flaticon-cards"></i>
-	{% trans 'Cards' %}
-      </a>
-      <a href="/events/?idol={{ idol.id }}" class="btn btn-lg btn-{{ idol.english_type|default_if_none:'main' }}" target="_blank">
-	<i class="flaticon-event"></i>
-	{% trans 'Events' %}
-      </a>
-      <a href="/accounts/?favorite_character={{ idol.id }}" class="btn btn-lg btn-{{ idol.english_type|default_if_none:'main' }}" target="_blank">
-	<i class="flaticon-users"></i>
-	{% trans 'Fans' %}
-      </a>
-      <a href="{{ idol.item_url }}#disqus_thread" class="btn btn-lg btn-{{ idol.english_type|default_if_none:'main' }}"{% if current != 'idol_item' %} target="_blank"{% endif %}>
-	<i class="flaticon-comments"></i>
-	{% trans 'Comments' %}
-      </a>
-      {% include 'include/share.html' with share_url=idol.http_item_url share_btn_class=idol.english_type|add:" btn-lg" share_sentence=idol %}
-      {% if user.is_staff %}
-      <a href="/idols/edit/{{ idol.id }}/" class="btn btn-lg btn-{{ idol.english_type|default_if_none:'main' }}"><i class="flaticon-edit"></i></a>
-      {% endif %}
-    </span>
-  </p>
   <br>
-  <table class="table about-table">
+  <table class="table about-table a-{{ idol.english_type|default_if_none:'main' }}">
     {% if idol.japanese_name %}
     <tr>
       <td><i class="flaticon-JP"></i></td>
@@ -44,6 +23,48 @@
       <td><img src="{{ static_url }}img/color/{{ idol.i_type }}.png"></td>
       <th>{% trans 'Type' %}</th>
       <td>{{ idol.type }}</td>
+    </tr>
+    {% endif %}
+    {% if idol.cached_total_cards %}
+    <tr>
+      <td><i class="flaticon-cards"></i></td>
+      <th>{% trans 'Cards' %}</th>
+      <td>
+	{{ idol.cached_total_cards }}
+	{% trans 'Cards' %}<br>
+	<a href="/cards/?idol={{ idol.id }}" target="_blank">
+	  {% trans 'View all' %}
+	  <i class="flaticon-link fontx0-8"></i>
+	</a>
+      </td>
+    </tr>
+    {% endif %}
+    {% if idol.cached_total_events %}
+    <tr>
+      <td><i class="flaticon-event"></i></td>
+      <th>{% trans 'Events' %}</th>
+      <td>
+	{{ idol.cached_total_events }}
+	{% trans 'Events' %}<br>
+	<a href="/events/?idol={{ idol.id }}" target="_blank">
+	  {% trans 'View all' %}
+	  <i class="flaticon-link fontx0-8"></i>
+	</a>
+      </td>
+    </tr>
+    {% endif %}
+    {% if idol.cached_total_fans %}
+    <tr>
+      <td><i class="flaticon-users"></i></td>
+      <th>{% trans 'Fans' %}</th>
+      <td>
+	{{ idol.cached_total_fans }}
+	{% trans 'Fans' %}<br>
+	<a href="/accounts/?favorite_character={{ idol.id }}" target="_blank">
+	  {% trans 'View all' %}
+	  <i class="flaticon-link fontx0-8"></i>
+	</a>
+      </td>
     </tr>
     {% endif %}
     {% if idol.age %}
@@ -158,6 +179,33 @@
 	<a href="{{ idol.signature_url }}" target="_blank">
 	  <img src="{{ idol.signature_url }}" alt="{% trans 'Signature' %}">
 	</a>
+      </td>
+    </tr>
+    {% endif %}
+    <tr>
+      <td><i class="flaticon-comments"></i></td>
+      <th>{% trans 'Comments' %}</th>
+      <td>
+	<a href="{{ idol.item_url }}#disqus_thread" class="btn btn-lg btn-{{ idol.english_type|default_if_none:'main' }}"{% if current != 'idol_item' %} target="_blank"{% endif %}>
+	  {% trans 'Comments' %}
+	</a>
+      </td>
+    </tr>
+    <tr>
+      <td><i class="flaticon-link"></i></td>
+      <th>{% trans 'Share' %}</th>
+      <td>
+	<span class="btn-group">
+	  {% include 'include/share.html' with share_url=idol.http_item_url share_btn_class=idol.english_type|add:" btn-lg" share_sentence=idol %}
+	</span>
+      </td>
+    </tr>
+    {% if user.is_staff %}
+    <tr>
+      <td><i class="flaticon-edit"></i></td>
+      <th>{% trans 'Edit' %}</th>
+      <td>
+	<a href="/idols/edit/{{ idol.id }}/" class="btn btn-lg btn-{{ idol.english_type|default_if_none:'main' }}"><i class="flaticon-edit"></i></a>
       </td>
     </tr>
     {% endif %}

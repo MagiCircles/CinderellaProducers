@@ -83,15 +83,46 @@
       </tr>
     </table>
     {% endif %}
-    <div class="btn-group share-buttons">
-      <a href="/accounts/?own_card={{ card.id }}" class="btn btn-{{ card.english_type }} btn-lg" target="_blank">
-	<i class="flaticon-users"></i> {% trans 'Scouted by' %}
-      </a>
+    <table class="card-basic-info">
+      <tr>
+	{% if card.cached_total_owners %}
+	<td>
+	  <h4>{% trans 'Scouted by' %}</h4>
+	  {% with total=card.cached_total_owners %}
+	  {% blocktrans count counter=total %}{{ total }} producer{% plural %}{{ total }} producers{% endblocktrans %}
+	  {% endwith %}<br>
+	  <a href="/accounts/?own_card={{ card.id }}" target="_blank">
+	    {% trans 'View all' %}
+	    <i class="flaticon-link fontx0-8"></i>
+	  </a>
+	</td>
+	{% endif %}
+	{% if card.cached_total_favorites %}
+	<td>
+	  <h4>{% trans 'Favorited by' %}</h4>
+	  {% with total=card.cached_total_favorites %}
+	  {% blocktrans count counter=total %}{{ total }} producer{% plural %}{{ total }} producers{% endblocktrans %}
+	  {% endwith %}<br>
+	  <a href="/accounts/?favorite_card={{ card.id }}" target="_blank">
+	    {% trans 'View all' %}
+	    <i class="flaticon-link fontx0-8"></i>
+	  </a>
+	</td>
+	{% endif %}
+	<td>
+	  <h4>{% trans 'Comments' %}</h4>
       <a href="{{ card.item_url }}#disqus_thread" class="btn btn-{{ card.english_type }} btn-lg"{% if current != 'current-card_item' %} target="_blank"{% endif %}>
 	<i class="flaticon-comments"></i> {% trans 'Comments' %}
       </a>
-      {% include 'include/share.html' with share_url=card.http_item_url share_btn_class=card.english_type|add:' btn-lg' share_sentence=card %}
-    </div>
+	</td>
+	<td>
+	  <h4>{% trans 'Share' %}</h4>
+	  <span class="btn-grouph">
+	    {% include 'include/share.html' with share_url=card.http_item_url share_btn_class=card.english_type|add:' btn-lg' share_sentence=card %}
+	  </span>
+	</td>
+      </tr>
+    </table>
     {% for awakened, stats in card.stats_percent %}
     <div class="card-art{% if awakened %}-awakened{% endif %}" style="background-image: url('{% if awakened %}{% if card.art_awakened %}{{ card.art_awakened_url }}{% else %}{{ static_url }}img/backgrounds/background1.png{% endif %}{% else %}{% if card.art %}{{ card.art_url }}{% else %}{{ static_url }}img/backgrounds/background0.png{% endif %}{% endif %}');">
 	<div class="cards-stats-inner-inner"{% if awakened and not card.art_awakened %} style="background-image: url('{{ card.transparent_awakened_url }}');"{% elif not awakened and not card.art %} style="background-image: url('{{ card.transparent_url }}');"{% endif %}>

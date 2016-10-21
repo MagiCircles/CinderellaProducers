@@ -185,7 +185,7 @@ ENABLED_COLLECTIONS['idol'] = {
     'plural_title': _('Idols'),
     'icon': 'idolized',
     'list': {
-        'default_ordering': 'name',
+        'default_ordering': '-_cache_total_fans',
         'per_line': 4,
         'ajax_pagination_callback': 'ajaxModals',
         'filter_form': forms.FilterIdols,

@@ -110,6 +110,8 @@ def filterAccounts(queryset, parameters, request):
                                    )
     if 'own_card' in parameters and parameters['own_card']:
         queryset = queryset.filter(ownedcards__card__id=parameters['own_card'])
+    if 'favorite_card' in parameters and parameters['favorite_card']:
+        queryset = queryset.filter(owner__favoritecards__card__id=parameters['favorite_card'])
     if 'user_type' in parameters and parameters['user_type']:
         queryset = queryset.filter(owner__preferences__color=unicode(parameters['user_type']))
     if 'game_id' in parameters and parameters['game_id']:

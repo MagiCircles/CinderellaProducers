@@ -164,6 +164,7 @@ class FilterIdols(FormWithRequest):
     type = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.TYPE_CHOICES, required=False, label=_('Type'))
     has_signature = forms.NullBooleanField(initial=None, required=False, label=_('Signature'))
     ordering = forms.ChoiceField(choices=[
+        ('-_cache_total_fans', _('Popularity')),
         ('name', _('Name')),
         ('age', _('Age')),
         ('birthday', _('Birthday')),
@@ -172,7 +173,7 @@ class FilterIdols(FormWithRequest):
         ('bust', _('Bust')),
         ('waist', _('Waist')),
         ('hips', _('Hips')),
-    ], initial='name', required=False, label=_('Ordering'))
+    ], initial='-_cache_total_fans', required=False, label=_('Ordering'))
     reverse_order = forms.BooleanField(initial=False, required=False, label=_('Reverse Order'))
 
     def __init__(self, *args, **kwargs):
@@ -260,6 +261,8 @@ class FilterCards(FormWithRequest):
         ('release_date', _('Release Date')),
         ('id', _('ID')),
         ('i_rarity', _('Rarity')),
+        ('_cache_total_owners', string_concat(_('Popularity'), ' (', _('Scouted by'), ')')),
+        ('_cache_total_favorites', string_concat(_('Popularity'), ' (', _('Favorited by'), ')')),
         ('vocal_max', _('Vocal')),
         ('vocal_awakened_max', string_concat(_('Vocal'), ' (', _('Awakened'), ')')),
         ('dance_max', _('Dance')),

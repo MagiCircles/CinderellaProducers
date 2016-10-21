@@ -7,6 +7,7 @@ from django.conf import settings as django_settings
 from django.utils.deconstruct import deconstructible
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.db.models import Q
 from web.item_model import ItemModel, get_image_url, get_http_image_url
 from web.utils import split_data, join_data, AttrDict, tourldash, randomString
 from web.models import User
@@ -84,6 +85,45 @@ class Idol(ItemModel):
     @property
     def signature_url(self): return get_image_url(self.signature)
 
+    # Cache totals
+    _cache_totals_days = 2
+    _cache_totals_last_update = models.DateTimeField(null=True)
+    _cache_total_fans = models.PositiveIntegerField(null=True)
+    _cache_total_cards = models.PositiveIntegerField(null=True)
+    _cache_total_events = models.PositiveIntegerField(null=True)
+
+    def update_cache_totals(self):
+        self._cache_totals_last_update = timezone.now()
+        self._cache_total_fans = User.objects.filter(
+            Q(preferences__favorite_character1=self.id)
+            | Q(preferences__favorite_character2=self.id)
+            | Q(preferences__favorite_character3=self.id)
+        ).count()
+        self._cache_total_cards = Card.objects.filter(idol=self).count()
+        self._cache_total_events = Event.objects.filter(cards__idol=self).count()
+
+    def force_cache_totals(self):
+        self.update_cache_totals()
+        self.save()
+
+    @property
+    def cached_total_fans(self):
+        if not self._cache_totals_last_update or self._cache_totals_last_update < timezone.now() - datetime.timedelta(hours=self._cache_totals_days):
+            self.force_cache_totals()
+        return self._cache_total_fans
+
+    @property
+    def cached_total_cards(self):
+        if not self._cache_totals_last_update or self._cache_totals_last_update < timezone.now() - datetime.timedelta(hours=self._cache_totals_days):
+            self.force_cache_totals()
+        return self._cache_total_cards
+
+    @property
+    def cached_total_events(self):
+        if not self._cache_totals_last_update or self._cache_totals_last_update < timezone.now() - datetime.timedelta(hours=self._cache_totals_days):
+            self.force_cache_totals()
+        return self._cache_total_events
+
     def __unicode__(self):
         return self.name
 
@@ -119,6 +159,25 @@ class Event(ItemModel):
                 and self.end is not None
                 and timezone.now() > self.beginning
                 and timezone.now() < self.end)
+
+    # Cache totals
+    _cache_totals_days = 2
+    _cache_totals_last_update = models.DateTimeField(null=True)
+    _cache_total_cards = models.PositiveIntegerField(null=True)
+
+    def update_cache_totals(self):
+        self._cache_totals_last_update = timezone.now()
+        self._cache_total_cards = Card.objects.filter(event=self).count()
+
+    def force_cache_totals(self):
+        self.update_cache_totals()
+        self.save()
+
+    @property
+    def cached_total_cards(self):
+        if not self._cache_totals_last_update or self._cache_totals_last_update < timezone.now() - datetime.timedelta(hours=self._cache_totals_days):
+            self.force_cache_totals()
+        return self._cache_total_cards
 
     def __unicode__(self):
         if self.translated_name:
@@ -621,6 +680,33 @@ class Card(ItemModel):
             'item_url': u'/idol/{}/{}/'.format(self.idol_id, tourldash(self._cache_idol_name)),
             'ajax_item_url': u'/ajax/idol/{}/'.format(self.idol_id),
         })
+
+    # Cache totals
+    _cache_totals_days = 2
+    _cache_totals_last_update = models.DateTimeField(null=True)
+    _cache_total_owners = models.PositiveIntegerField(null=True)
+    _cache_total_favorites = models.PositiveIntegerField(null=True)
+
+    def update_cache_totals(self):
+        self._cache_totals_last_update = timezone.now()
+        self._cache_total_owners = User.objects.filter(accounts__ownedcards__card=self).distinct().count()
+        self._cache_total_favorites = User.objects.filter(favoritecards__card=self).distinct().count()
+
+    def force_cache_totals(self):
+        self.update_cache_totals()
+        self.save()
+
+    @property
+    def cached_total_owners(self):
+        if not self._cache_totals_last_update or self._cache_totals_last_update < timezone.now() - datetime.timedelta(hours=self._cache_totals_days):
+            self.force_cache_totals()
+        return self._cache_total_owners
+
+    @property
+    def cached_total_favorites(self):
+        if not self._cache_totals_last_update or self._cache_totals_last_update < timezone.now() - datetime.timedelta(hours=self._cache_totals_days):
+            self.force_cache_totals()
+        return self._cache_total_favorites
 
     def __unicode__(self):
         if self.id:
