@@ -165,12 +165,12 @@ class Event(ItemModel):
     _cache_totals_last_update = models.DateTimeField(null=True)
     _cache_total_cards = models.PositiveIntegerField(null=True)
 
-    def update_cache_totals(self):
+    def update_cache_totals(self, pluscards=0):
         self._cache_totals_last_update = timezone.now()
-        self._cache_total_cards = Card.objects.filter(event=self).count()
+        self._cache_total_cards = Card.objects.filter(event=self).count() + pluscards
 
-    def force_cache_totals(self):
-        self.update_cache_totals()
+    def force_cache_totals(self, pluscards=0):
+        self.update_cache_totals(pluscards=pluscards)
         self.save()
 
     @property

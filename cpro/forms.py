@@ -231,15 +231,24 @@ class FilterEvents(FormWithRequest):
 class CardForm(FormSaveOwnerOnCreation):
     def __init__(self, *args, **kwargs):
         super(CardForm, self).__init__(*args, **kwargs)
+        self.previous_event_id = None
+        self.previous_event = None
+        self.previous_idol_id = None
         if hasattr(self, 'instance') and self.instance.pk:
             self.previous_idol_id = self.instance.idol_id
-        else:
-            self.previous_idol_id = None
+            if self.instance.event_id:
+                self.previous_event_id = self.instance.event_id
+                self.previous_event = self.instance.event
 
     def save(self, commit=False):
         instance = super(CardForm, self).save(commit=False)
         if self.previous_idol_id != instance.idol_id:
             instance.update_cache_idol()
+        if self.previous_event_id != instance.event_id:
+            if instance.event:
+                instance.event.force_cache_totals(pluscards=1)
+            if self.previous_event_id:
+                self.previous_event.force_cache_totals(pluscards=-1)
         if commit:
             instance.save()
         return instance
