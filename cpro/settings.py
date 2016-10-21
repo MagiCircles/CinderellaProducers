@@ -71,11 +71,12 @@ ACTIVITY_TAGS = [
     ('room', _('Room Decoration')),
     ('introduction', _('Introduce yourself')),
     ('idols', _('Idols')),
-    ('fanart', _('Fanart')),
-    ('cosplay', _('Cosplay')),
     ('anime', _('Anime')),
+    ('cosplay', _('Cosplay')),
+    ('fanart', _('Fan made')),
+    ('merch', _('Merchandise')),
     ('community', _('Community')),
-    ('unrelated', _('NOT about IDOLM@STER, idols or Starlight Stage')),
+    ('unrelated', _('Unrelated')),
 ]
 
 ENABLED_COLLECTIONS['activity']['add']['before_save'] = collections_settings.activitiesBeforeSave
