@@ -192,7 +192,9 @@ class Account(ItemModel):
 
     owner = models.ForeignKey(User, related_name='accounts')
     creation = models.DateTimeField(_('Join Date'), auto_now_add=True)
-    level = models.PositiveIntegerField(_('Producer Level'), null=True)
+    level = models.PositiveIntegerField(_('Producer Level'), null=True, validators=[
+        MaxValueValidator(300),
+    ])
     nickname = models.CharField(_('Nickname'), max_length=100, null=True)
     game_id = models.PositiveIntegerField(_('Game ID'), null=True)
     accept_friend_requests = models.NullBooleanField('', null=True, help_text=_('Accept friend requests'))
