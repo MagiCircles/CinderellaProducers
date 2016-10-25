@@ -30,7 +30,7 @@ USER_COLORS = models.TYPES
 
 GET_GLOBAL_CONTEXT = utils.globalContext
 
-STATIC_FILES_VERSION = '12'
+STATIC_FILES_VERSION = '13'
 
 TOTAL_DONATORS = getattr(django_settings, 'TOTAL_DONATORS', 2) + 2
 FAVORITE_CHARACTERS = getattr(django_settings, 'FAVORITE_CHARACTERS', None)
