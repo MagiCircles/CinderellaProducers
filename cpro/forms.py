@@ -164,7 +164,7 @@ class FilterIdols(FormWithRequest):
     type = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.TYPE_CHOICES, required=False, label=_('Type'))
     has_signature = forms.NullBooleanField(initial=None, required=False, label=_('Signature'))
     ordering = forms.ChoiceField(choices=[
-        ('-_cache_total_fans', _('Popularity')),
+        ('_cache_total_fans', _('Popularity')),
         ('name', _('Name')),
         ('age', _('Age')),
         ('birthday', _('Birthday')),
