@@ -5,7 +5,7 @@ from web.views_collections import item_view, list_view
 from web.settings import ENABLED_COLLECTIONS
 from web.views import _index_extraContext as web_index_extraContext
 from cpro import models, filters
-from web.utils import ajaxContext
+from web.utils import ajaxContext, globalContext
 
 def _index_extraContext(context):
     web_index_extraContext(context)
@@ -18,6 +18,10 @@ def _index_extraContext(context):
         context['awakened'] = random.choice([True, False]) if context['card'].id_awakened else False
 
 def index(request):
+    context = globalContext(request)
+    context['request'] = request
+    _index_extraContext(context)
+    return render(request, 'include/index.html', context)
     collection = ENABLED_COLLECTIONS['activity'].copy()
     collection['list'] = collection['list'].copy()
     collection['list']['before_template'] = 'include/index'

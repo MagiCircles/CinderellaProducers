@@ -82,6 +82,8 @@ ACTIVITY_TAGS = [
 ENABLED_COLLECTIONS['activity']['add']['before_save'] = collections_settings.activitiesBeforeSave
 ENABLED_COLLECTIONS['activity']['edit']['before_save'] = collections_settings.activitiesBeforeSave
 
+ENABLED_COLLECTIONS['activity']['enabled'] = False
+
 ENABLED_COLLECTIONS['badge']['add']['before_save'] = collections_settings.badgesBeforeSave
 ENABLED_COLLECTIONS['badge']['edit']['before_save'] = collections_settings.badgesBeforeSave
 
