@@ -1,22 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="">
-
-  <div class="collection-page-wrapper">
-    <h1 class="padding50 text-center hidden">Activities</h1>
-
-    <div class="home-wrapper" style="background-image: url('//i.cinderella.pro/u/c/art/a/300123SSR-Ichihara-Nina-Passion.png');">
-      <div class="home">
-	<div class="home-inner">
-
-
-	      {% include 'include/homePage.html' %}
-	    </div>
-	  </div>
-	</div>
+<div class="collection-page-wrapper">
+  <div class="home-wrapper" style="background-image: url('//i.cinderella.pro/u/c/art/a/300123SSR-Ichihara-Nina-Passion.png');">
+    <div class="home">
+      <div class="home-inner">
+	{% include 'include/homePage.html' %}
       </div>
     </div>
   </div>
 </div>
+{% if user.is_authenticated %}
+<p class="padding50 text-center">
+  Activities are temporarily disabled due to high traffic.<br>
+  <i>Any help to get more powerful servers is greatly appreciated. <a href="/donate/">Donate here!</a></i><br>
+  <i>If you're a developer and wish to contribute, <a href="/about/#contact">contact us</a>.</i>
+</p>
+{% endif %}
 {% endblock %}
