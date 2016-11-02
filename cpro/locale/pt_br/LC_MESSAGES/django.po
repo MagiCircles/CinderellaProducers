@@ -5,7 +5,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: MagiCircles\n"
-"Language: pt-br\n"
+"Language: pt_br\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. In the top bar of the site, when you're not connected. Will open a menu with login or sign up. Can be replaced with something else, like "Anonymous", "Visitor" or "Welcome".
@@ -2034,4 +2034,3 @@ msgstr "%(total_results)s producers scouted %(own_card)s "
 #: cpro/templates/include/index.html:12
 msgid "day"
 msgstr "dia"
-
