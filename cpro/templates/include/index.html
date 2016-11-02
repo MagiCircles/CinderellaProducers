@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="collection-page-wrapper">
-  <div class="home-wrapper" style="background-image: url('//i.cinderella.pro/u/c/art/a/300123SSR-Ichihara-Nina-Passion.png');">
+  <div class="home-wrapper" style="background-image: url('{% if awakened %}{{ card.art_awakened_url }}{% else %}{{ card.art_url }}{% endif %}');">
     <div class="home">
       <div class="home-inner">
 	{% include 'include/homePage.html' %}
