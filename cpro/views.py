@@ -10,7 +10,7 @@ from web.utils import ajaxContext, globalContext
 
 def _index_extraContext(context):
     web_index_extraContext(context)
-    context['card'] = models.Card.objects.order_by('?').filter(art__isnull=False).exclude(art='').exclude(art_on_homepage=False, art_awakened_on_homepage=False)[0]
+    context['card'] = models.Card.objects.order_by('?').filter(art__isnull=False).exclude(art='').exclude(art_on_homepage=False, art_awakened_on_homepage=False).filter(art_hd__isnull=False)[0]
     if not context['card'].art_on_homepage:
         context['awakened'] = True
     elif not context['card'].art_awakened_on_homepage:

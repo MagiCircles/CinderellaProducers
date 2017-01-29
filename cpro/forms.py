@@ -264,11 +264,12 @@ class FilterCards(FormWithRequest):
     type = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.TYPE_CHOICES, required=False, label=_('Type'))
     is_event = forms.NullBooleanField(required=False, initial=None, label=_('Event'))
     is_limited = forms.NullBooleanField(required=False, initial=None, label=_('Limited'))
-    is_awakened = forms.NullBooleanField(required=False, initial=None, label=_('Awakened'))
     has_art = forms.NullBooleanField(required=False, initial=None, label=_('Art'))
+    has_art_hd = forms.NullBooleanField(required=False, initial=None, label=string_concat(_('Art'), ' (HD)'))
     ordering = forms.ChoiceField(choices=[
         ('release_date', _('Release Date')),
         ('id', _('ID')),
+        ('idol__name', string_concat(_('Idol'), ' (', _('Name'), ')')),
         ('i_rarity', _('Rarity')),
         ('_cache_total_owners', string_concat(_('Popularity'), ' (', _('Scouted by'), ')')),
         ('_cache_total_favorites', string_concat(_('Popularity'), ' (', _('Favorited by'), ')')),
@@ -288,7 +289,7 @@ class FilterCards(FormWithRequest):
 
     class Meta:
         model = models.Card
-        fields = ('search', 'i_rarity', 'type', 'is_event', 'is_limited', 'is_awakened', 'has_art', 'i_skill', 'ordering', 'reverse_order')
+        fields = ('search', 'i_rarity', 'type', 'is_event', 'is_limited', 'has_art', 'has_art_hd', 'i_skill', 'ordering', 'reverse_order')
         optional_fields = ('i_skill', 'i_rarity')
 
 ############################################################
