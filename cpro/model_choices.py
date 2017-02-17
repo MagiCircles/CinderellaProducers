@@ -146,6 +146,8 @@ SKILL_COMBO_BONUS = 6
 SKILL_PERFECT_SCORE_BONUS = 7
 SKILL_OVERLOAD = 8
 SKILL_SCORE_BOOST = 9
+SKILL_ALL_ROUND = 10
+SKILL_CONCENTRATION = 11
 
 SKILL_CHOICES = [
     (SKILL_LESSER_PERFECT_LOCK, _('Lesser Perfect Lock')),
@@ -158,6 +160,8 @@ SKILL_CHOICES = [
     (SKILL_PERFECT_SCORE_BONUS, _('Perfect Score Bonus')),
     (SKILL_OVERLOAD, _('Overload')),
     (SKILL_SCORE_BOOST, _('Score Boost')),
+    (SKILL_ALL_ROUND, _('All Round')),
+    (SKILL_CONCENTRATION, _('Concentration')),
 ]
 SKILL_DICT = dict(SKILL_CHOICES)
 UNTRANSLATED_SKILL_CHOICES = [
@@ -171,6 +175,8 @@ UNTRANSLATED_SKILL_CHOICES = [
     (SKILL_PERFECT_SCORE_BONUS, 'Perfect Score Bonus'),
     (SKILL_OVERLOAD, 'Overload'),
     (SKILL_SCORE_BOOST, 'Score Bonus'),
+    (SKILL_ALL_ROUND, 'All Round'),
+    (SKILL_CONCENTRATION, 'Concentration'),
 ]
 SKILL_REVERSE_DICT = { value: key for (key, value) in UNTRANSLATED_SKILL_CHOICES }
 
@@ -185,6 +191,8 @@ SKILL_SENTENCES = {
     SKILL_PERFECT_SCORE_BONUS: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus in the next {skill_duration} seconds.'),
     SKILL_OVERLOAD: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% bonus and Nice and Bad notes will not break your combo in the next {skill_duration} seconds, at the cost of {skill_value2} life.'),
     SKILL_SCORE_BOOST: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Great and Perfect notes will receive a {skill_value}% score bonus in the next {skill_duration} seconds.'),
+    SKILL_ALL_ROUND: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will gain an extra {skill_value}% combo bonus and Perfect notes will restore {skill_value2} life in the next {skill_duration} seconds.'),
+    SKILL_CONCENTRATION: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus but all other notes will break your combo in the next {skill_duration} seconds.'),
 }
 
 JAPANESE_SKILL_SENTENCES = {
@@ -198,6 +206,8 @@ JAPANESE_SKILL_SENTENCES = {
     SKILL_PERFECT_SCORE_BONUS: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、PERFECTのスコア{skill_value}%アップ',
     SKILL_OVERLOAD: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、中確率でライフを{skill_value2}消費し、間PERFECTのスコア{skill_value}%アップ、NICE/BADでもCOMBO継続',
     SKILL_SCORE_BOOST: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、PERFECT/GREATのスコア{skill_value}%アップ',
+    SKILL_ALL_ROUND: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、COMBOボーナス{skill_value}%アップ、PERFECTでライフ{skill_value2}回復',
+    SKILL_CONCENTRATION: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、PERFECTのスコア{skill_value}%アップ、PERFECTのみCOMBO継続',
 }
 
 LEADER_SKILL_SENTENCE = _('Raises {leader_skill_type} of all {idol_type} idols by {leader_skill_percent}%.')
