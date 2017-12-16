@@ -503,7 +503,8 @@ class Card(ItemModel):
     max_skill_level = MAX_SKILL_LEVEL
     i_skill = models.PositiveIntegerField(_('Skill'), choices=SKILL_CHOICES, null=True)
     @property
-    def skill(self): return SKILL_DICT[self.i_skill]
+    def skill(self):
+        return unicode(SKILL_DICT[self.i_skill]).replace(u'Cute/Cool/Passion', unicode(self.type))
     trigger_value = models.FloatField('Trigger Value', null=True)
     trigger_chance_min = models.FloatField('Trigger Chance (Minimum)', null=True)
     trigger_chance_max = models.FloatField('Trigger Chance (Maximum)', null=True)
@@ -527,6 +528,7 @@ class Card(ItemModel):
             skill_duration=self._value_for_level('skill_duration', level, max_level=MAX_SKILL_LEVEL, round_integer=False),
             skill_value='{0:g}'.format(self.skill_value if self.skill_value else 0),
             skill_value2='{0:g}'.format(self.skill_value2 if self.skill_value2 else 0),
+            type=self.type,
         )
 
     @property

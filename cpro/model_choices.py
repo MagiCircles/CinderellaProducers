@@ -148,6 +148,8 @@ SKILL_OVERLOAD = 8
 SKILL_SCORE_BOOST = 9
 SKILL_ALL_ROUND = 10
 SKILL_CONCENTRATION = 11
+SKILL_SKILL_BOOST = 12
+SKILL_FOCUS = 13
 
 SKILL_CHOICES = [
     (SKILL_LESSER_PERFECT_LOCK, _('Lesser Perfect Lock')),
@@ -162,6 +164,8 @@ SKILL_CHOICES = [
     (SKILL_SCORE_BOOST, _('Score Boost')),
     (SKILL_ALL_ROUND, _('All Round')),
     (SKILL_CONCENTRATION, _('Concentration')),
+    (SKILL_SKILL_BOOST, _('Skill Boost')),
+    (SKILL_FOCUS, _('Cute/Cool/Passion Focus')),
 ]
 SKILL_DICT = dict(SKILL_CHOICES)
 UNTRANSLATED_SKILL_CHOICES = [
@@ -177,6 +181,8 @@ UNTRANSLATED_SKILL_CHOICES = [
     (SKILL_SCORE_BOOST, 'Score Bonus'),
     (SKILL_ALL_ROUND, 'All Round'),
     (SKILL_CONCENTRATION, 'Concentration'),
+    (SKILL_SKILL_BOOST, 'Skill Boost'),
+    (SKILL_FOCUS, 'Cute/Cool/Passion Focus'),
 ]
 SKILL_REVERSE_DICT = { value: key for (key, value) in UNTRANSLATED_SKILL_CHOICES }
 
@@ -193,6 +199,8 @@ SKILL_SENTENCES = {
     SKILL_SCORE_BOOST: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Great and Perfect notes will receive a {skill_value}% score bonus in the next {skill_duration} seconds.'),
     SKILL_ALL_ROUND: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will gain an extra {skill_value}% combo bonus and Perfect notes will restore {skill_value2} life in the next {skill_duration} seconds.'),
     SKILL_CONCENTRATION: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus but all other notes will break your combo in the next {skill_duration} seconds.'),
+    SKILL_SKILL_BOOST: _('For every {trigger_value} seconds, there is a {trigger_chance}% change that currently active skills will be boosted for {skill_duration} seconds'),
+    SKILL_FOCUS: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus, and you will gain an extra {skill_value2}% combo bonus, but only if you have {type} idols in your team'),
 }
 
 JAPANESE_SKILL_SENTENCES = {
@@ -208,6 +216,8 @@ JAPANESE_SKILL_SENTENCES = {
     SKILL_SCORE_BOOST: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、PERFECT/GREATのスコア{skill_value}%アップ',
     SKILL_ALL_ROUND: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、COMBOボーナス{skill_value}%アップ、PERFECTでライフ{skill_value2}回復',
     SKILL_CONCENTRATION: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、PERFECTのスコア{skill_value}%アップ、PERFECTのみCOMBO継続',
+    SKILL_SKILL_BOOST: _('For every {trigger_value} seconds, there is a {trigger_chance}% change that currently active skills will be boosted for {skill_duration} seconds'),
+    SKILL_FOCUS: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus, and you will gain an extra {skill_value2}% combo bonus, but only if you have {type} idols in your team'),
 }
 
 LEADER_SKILL_SENTENCE = _('Raises {leader_skill_type} of all {idol_type} idols by {leader_skill_percent}%.')
