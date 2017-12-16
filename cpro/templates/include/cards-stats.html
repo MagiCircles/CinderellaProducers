@@ -160,13 +160,13 @@
 	    <div class="btn-group btn-group-justified">
 	      {% if awakened %}
 	      {% if card.art_awakened %}
-	      <a class="btn btn-inherit btn-sm" target="_blank" href="{{ card.art_awakened_url }}"><span class="inner">{% trans  'Art' %}</span></a>
+	      <a class="btn btn-inherit btn-sm" target="_blank" href="{% if card.art_hd_awakened %}{{ card.art_hd_awakened_url }}{% else %}{{ card.art_awakened_url }}{% endif %}"><span class="inner">{% trans  'Art' %}</span></a>
 	      {% endif %}
 	      <a class="btn btn-inherit btn-sm" target="_blank" href="{{ card.puchi_awakened_url }}"><span class="inner">{% trans  'Puchi' %}</span></a>
 	      <a class="btn btn-inherit btn-sm" target="_blank" href="{{ card.transparent_awakened_url }}"><span class="inner">{% trans  'Transparent' %}</span></a>
 	      {% else %}
 	      {% if card.art %}
-	      <a class="btn btn-inherit btn-sm" target="_blank" href="{{ card.art_url }}"><span class="inner">{% trans  'Art' %}</span></a>
+	      <a class="btn btn-inherit btn-sm" target="_blank" href="{% if card.art_hd %}{{ card.art_hd_url }}{% else %}{{ card.art_url }}{% endif %}"><span class="inner">{% trans  'Art' %}</span></a>
 	      {% endif %}
 	      <a class="btn btn-inherit btn-sm" target="_blank" href="{{ card.puchi_url }}"><span class="inner">{% trans  'Puchi' %}</span></a>
 	      <a class="btn btn-inherit btn-sm" target="_blank" href="{{ card.transparent_url }}"><span class="inner">{% trans  'Transparent' %}</span></a>

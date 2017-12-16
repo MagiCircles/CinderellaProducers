@@ -255,8 +255,8 @@ class CardForm(FormSaveOwnerOnCreation):
 
     class Meta:
         model = models.Card
-        fields = ('id', 'id_awakened', 'idol', 'i_rarity', 'release_date', 'event', 'is_limited', 'title', 'translated_title', 'image', 'image_awakened', 'art', 'art_on_homepage', 'art_awakened', 'art_awakened_on_homepage', 'transparent', 'transparent_awakened', 'icon', 'icon_awakened', 'puchi', 'puchi_awakened', 'hp_min', 'hp_max', 'hp_awakened_min', 'hp_awakened_max', 'vocal_min', 'vocal_max', 'vocal_awakened_min', 'vocal_awakened_max', 'dance_min', 'dance_max', 'dance_awakened_min', 'dance_awakened_max', 'visual_min', 'visual_max', 'visual_awakened_min', 'visual_awakened_max', 'skill_name', 'translated_skill_name', 'i_skill', 'trigger_value', 'trigger_chance_min', 'trigger_chance_max', 'skill_duration_min', 'skill_duration_max', 'skill_value', 'skill_value2', 'leader_skill_type', 'leader_skill_percent', 'leader_skill_all')
-        optional_fields = ('id_awakened', 'release_date', 'event', 'title', 'translated_title', 'image_awakened', 'art', 'art_awakened', 'transparent', 'transparent_awakened', 'icon', 'icon_awakened', 'puchi', 'puchi_awakened', 'hp_min', 'hp_max', 'hp_awakened_min', 'hp_awakened_max', 'vocal_min', 'vocal_max', 'vocal_awakened_min', 'vocal_awakened_max', 'dance_min', 'dance_max', 'dance_awakened_min', 'dance_awakened_max', 'visual_min', 'visual_max', 'visual_awakened_min', 'visual_awakened_max', 'skill_name', 'translated_skill_name', 'i_skill', 'trigger_value', 'trigger_chance_min', 'trigger_chance_max', 'skill_duration_min', 'skill_duration_max', 'skill_value', 'skill_value2', 'leader_skill_type', 'leader_skill_percent', 'leader_skill_all')
+        fields = ('id', 'id_awakened', 'idol', 'i_rarity', 'release_date', 'event', 'is_limited', 'title', 'translated_title', 'image', 'image_awakened', 'art', 'art_hd', 'art_on_homepage', 'art_awakened',  'art_hd_awakened', 'art_awakened_on_homepage', 'transparent', 'transparent_awakened', 'icon', 'icon_awakened', 'puchi', 'puchi_awakened', 'hp_min', 'hp_max', 'hp_awakened_min', 'hp_awakened_max', 'vocal_min', 'vocal_max', 'vocal_awakened_min', 'vocal_awakened_max', 'dance_min', 'dance_max', 'dance_awakened_min', 'dance_awakened_max', 'visual_min', 'visual_max', 'visual_awakened_min', 'visual_awakened_max', 'skill_name', 'translated_skill_name', 'i_skill', 'trigger_value', 'trigger_chance_min', 'trigger_chance_max', 'skill_duration_min', 'skill_duration_max', 'skill_value', 'skill_value2', 'leader_skill_type', 'leader_skill_percent', 'leader_skill_all')
+        optional_fields = ('id_awakened', 'release_date', 'event', 'title', 'translated_title', 'image_awakened', 'art', 'art_hd', 'art_awakened', 'art_hd_awakened', 'transparent', 'transparent_awakened', 'icon', 'icon_awakened', 'puchi', 'puchi_awakened', 'hp_min', 'hp_max', 'hp_awakened_min', 'hp_awakened_max', 'vocal_min', 'vocal_max', 'vocal_awakened_min', 'vocal_awakened_max', 'dance_min', 'dance_max', 'dance_awakened_min', 'dance_awakened_max', 'visual_min', 'visual_max', 'visual_awakened_min', 'visual_awakened_max', 'skill_name', 'translated_skill_name', 'i_skill', 'trigger_value', 'trigger_chance_min', 'trigger_chance_max', 'skill_duration_min', 'skill_duration_max', 'skill_value', 'skill_value2', 'leader_skill_type', 'leader_skill_percent', 'leader_skill_all')
         date_fields = ('release_date', )
 
 class FilterCards(FormWithRequest):
@@ -264,11 +264,12 @@ class FilterCards(FormWithRequest):
     type = forms.ChoiceField(choices=BLANK_CHOICE_DASH + models.TYPE_CHOICES, required=False, label=_('Type'))
     is_event = forms.NullBooleanField(required=False, initial=None, label=_('Event'))
     is_limited = forms.NullBooleanField(required=False, initial=None, label=_('Limited'))
-    is_awakened = forms.NullBooleanField(required=False, initial=None, label=_('Awakened'))
     has_art = forms.NullBooleanField(required=False, initial=None, label=_('Art'))
+    has_art_hd = forms.NullBooleanField(required=False, initial=None, label=string_concat(_('Art'), ' (HD)'))
     ordering = forms.ChoiceField(choices=[
         ('release_date', _('Release Date')),
         ('id', _('ID')),
+        ('idol__name', string_concat(_('Idol'), ' (', _('Name'), ')')),
         ('i_rarity', _('Rarity')),
         ('_cache_total_owners', string_concat(_('Popularity'), ' (', _('Scouted by'), ')')),
         ('_cache_total_favorites', string_concat(_('Popularity'), ' (', _('Favorited by'), ')')),
@@ -288,7 +289,7 @@ class FilterCards(FormWithRequest):
 
     class Meta:
         model = models.Card
-        fields = ('search', 'i_rarity', 'type', 'is_event', 'is_limited', 'is_awakened', 'has_art', 'i_skill', 'ordering', 'reverse_order')
+        fields = ('search', 'i_rarity', 'type', 'is_event', 'is_limited', 'has_art', 'has_art_hd', 'i_skill', 'ordering', 'reverse_order')
         optional_fields = ('i_skill', 'i_rarity')
 
 ############################################################

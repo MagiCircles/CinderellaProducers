@@ -42,16 +42,16 @@ def filterCards(queryset, parameters, request):
             queryset = queryset.filter(is_limited=True)
         elif parameters['is_limited'] == '3':
             queryset = queryset.filter(is_limited=False)
-    if 'is_awakened' in parameters and parameters['is_awakened']:
-        if parameters['is_awakened'] == '2':
-            queryset = queryset.filter(id_awakened__isnull=False)
-        elif parameters['is_awakened'] == '3':
-            queryset = queryset.filter(id_awakened__isnull=True)
     if 'has_art' in parameters and parameters['has_art']:
         if parameters['has_art'] == '2':
             queryset = queryset.filter(art__isnull=False).exclude(art='')
         elif parameters['has_art'] == '3':
             queryset = queryset.filter(Q(art__isnull=True) | Q(art=''))
+    if 'has_art_hd' in parameters and parameters['has_art_hd']:
+        if parameters['has_art_hd'] == '2':
+            queryset = queryset.filter(art_hd__isnull=False).exclude(art_hd='')
+        elif parameters['has_art_hd'] == '3':
+            queryset = queryset.filter(Q(art_hd__isnull=True) | Q(art_hd=''))
     if 'i_skill' in parameters and parameters['i_skill']:
         queryset = queryset.filter(i_skill=parameters['i_skill'])
     if 'idol' in parameters and parameters['idol']:

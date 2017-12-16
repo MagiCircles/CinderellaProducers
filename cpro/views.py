@@ -1,6 +1,7 @@
 import random
 from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import PermissionDenied
+from django.utils import timezone
 from web.views_collections import item_view, list_view
 from web.settings import ENABLED_COLLECTIONS
 from web.views import _index_extraContext as web_index_extraContext
@@ -9,13 +10,21 @@ from web.utils import ajaxContext, globalContext
 
 def _index_extraContext(context):
     web_index_extraContext(context)
-    context['card'] = models.Card.objects.order_by('?').filter(art__isnull=False).exclude(art='').exclude(art_on_homepage=False, art_awakened_on_homepage=False)[0]
+    context['card'] = models.Card.objects.order_by('?').filter(art__isnull=False).exclude(art='').exclude(art_on_homepage=False, art_awakened_on_homepage=False).filter(art_hd__isnull=False)[0]
     if not context['card'].art_on_homepage:
         context['awakened'] = True
     elif not context['card'].art_awakened_on_homepage:
         context['awakened'] = False
     else:
         context['awakened'] = random.choice([True, False]) if context['card'].id_awakened else False
+    current_events = models.Event.objects.filter(end__gte=timezone.now())
+    context['latest_news'] = [{
+        'title': event.name,
+        'image': event.image_url,
+        'url': event.item_url,
+        'hide_title': True,
+        'ajax': event.ajax_item_url,
+    } for event in current_events]
 
 def index(request):
     context = globalContext(request)

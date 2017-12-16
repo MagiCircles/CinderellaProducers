@@ -28,7 +28,7 @@
     <tr>
       <td><i class="flaticon-event"></i></td>
       <th>{% trans 'Birthday' %}</th>
-      <td>{{ idol.birthday|default_if_none:'??' }}</td>
+      <td>{% if idol.birthday %}{{ idol.birthday|date:"F d" }}{% else %}??{% endif %}</td>
     </tr>
     {% elif ordering == 'height' %}
     <tr>
