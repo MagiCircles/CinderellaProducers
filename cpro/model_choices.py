@@ -198,7 +198,7 @@ SKILL_SENTENCES = {
     SKILL_OVERLOAD: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% bonus and Nice and Bad notes will not break your combo in the next {skill_duration} seconds, at the cost of {skill_value2} life.'),
     SKILL_SCORE_BOOST: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Great and Perfect notes will receive a {skill_value}% score bonus in the next {skill_duration} seconds.'),
     SKILL_ALL_ROUND: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will gain an extra {skill_value}% combo bonus and Perfect notes will restore {skill_value2} life in the next {skill_duration} seconds.'),
-    SKILL_CONCENTRATION: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus but all other notes will break your combo in the next {skill_duration} seconds.'),
+    SKILL_CONCENTRATION: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus but the timing window for Perfect notes is reduced in the next {skill_duration} seconds.'),
     SKILL_SKILL_BOOST: _('For every {trigger_value} seconds, there is a {trigger_chance}% change that currently active skills will be boosted for {skill_duration} seconds'),
     SKILL_FOCUS: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus, and you will gain an extra {skill_value2}% combo bonus, but only if you have {type} idols in your team'),
 }
@@ -215,7 +215,7 @@ JAPANESE_SKILL_SENTENCES = {
     SKILL_OVERLOAD: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、中確率でライフを{skill_value2}消費し、間PERFECTのスコア{skill_value}%アップ、NICE/BADでもCOMBO継続',
     SKILL_SCORE_BOOST: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、PERFECT/GREATのスコア{skill_value}%アップ',
     SKILL_ALL_ROUND: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、COMBOボーナス{skill_value}%アップ、PERFECTでライフ{skill_value2}回復',
-    SKILL_CONCENTRATION: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、PERFECTのスコア{skill_value}%アップ、PERFECTのみCOMBO継続',
+    SKILL_CONCENTRATION: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、高確率でわずかな間、PERFECTのスコア{skill_value}%アップ、PERFECT判定される時間が短くなる',
     SKILL_SKILL_BOOST: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌{trigger_value}秒毎、高確率でしばらくの間、他アイドルの特技効果を大アップ',
     SKILL_FOCUS: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌(キュート/クール/パッション)アイドルのみ編成時、{trigger_value}秒毎、高確率でしばらくの間、PERFECTのスコア{skill_value}%アップ、COMBOボーナス{skill_value2}%アップ',
 }
