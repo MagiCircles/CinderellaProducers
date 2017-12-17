@@ -528,7 +528,7 @@ class Card(ItemModel):
             skill_duration=self._value_for_level('skill_duration', level, max_level=MAX_SKILL_LEVEL, round_integer=False),
             skill_value='{0:g}'.format(self.skill_value if self.skill_value else 0),
             skill_value2='{0:g}'.format(self.skill_value2 if self.skill_value2 else 0),
-            type=self.type,
+            type=JAPANESE_TYPES[self.cached_idol.i_type] if japanese else self.type,
         )
 
     @property
