@@ -30,7 +30,7 @@ USER_COLORS = models.TYPES
 
 GET_GLOBAL_CONTEXT = utils.globalContext
 
-STATIC_FILES_VERSION = '14'
+STATIC_FILES_VERSION = '15'
 
 TOTAL_DONATORS = getattr(django_settings, 'TOTAL_DONATORS', 2) + 2
 FAVORITE_CHARACTERS = getattr(django_settings, 'FAVORITE_CHARACTERS', None)
@@ -82,7 +82,18 @@ ACTIVITY_TAGS = [
 ENABLED_COLLECTIONS['activity']['add']['before_save'] = collections_settings.activitiesBeforeSave
 ENABLED_COLLECTIONS['activity']['edit']['before_save'] = collections_settings.activitiesBeforeSave
 
-ENABLED_COLLECTIONS['activity']['enabled'] = False
+def filterActivitiesList(queryset, parameters, request):
+    return queryset.filter(id__gt=2600)
+
+def filterActivities(queryset, parameters, request):
+    if request.user.is_superuser:
+        return queryset
+    return filterActivitiesList(queryset, parameters, request)
+
+ENABLED_COLLECTIONS['activity']['edit']['filter_queryset'] = filterActivities
+ENABLED_COLLECTIONS['activity']['item']['filter_queryset'] = filterActivities
+ENABLED_COLLECTIONS['activity']['add']['filter_queryset'] = filterActivities
+ENABLED_COLLECTIONS['activity']['list']['filter_queryset'] = filterActivitiesList
 
 ENABLED_COLLECTIONS['badge']['add']['before_save'] = collections_settings.badgesBeforeSave
 ENABLED_COLLECTIONS['badge']['edit']['before_save'] = collections_settings.badgesBeforeSave

@@ -1,13 +1,7 @@
-{% extends 'base.html' %}
-{% block content %}
-
-<div class="collection-page-wrapper">
-  <div class="home-wrapper" style="background-image: url('{% if awakened %}{% if card.art_hd_awakened %}{{ card.art_hd_awakened_url }}{% else %}{{ card.art_awakened_url }}{% endif %}{% else %}{% if card.art_hd %}{{ card.art_hd_url }}{% else %}{{ card.art_url }}{% endif %}{% endif %}');">
-    <div class="home">
-      <div class="home-inner">
-	{% include 'include/homePage.html' %}
-      </div>
+<div class="home-wrapper" style="background-image: url('{% if awakened %}{{ card.art_awakened_url }}{% else %}{{ card.art_url }}{% endif %}');">
+  <div class="home">
+    <div class="home-inner">
+      {% include 'include/homePage.html' %}
     </div>
   </div>
 </div>
-{% endblock %}

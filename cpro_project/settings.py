@@ -217,8 +217,10 @@ if 'aws_access_key_id' in os.environ:
     from boto.s3.connection import OrdinaryCallingFormat
     AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
 
-from prod_generated_settings import *
-
+try:
+    from prod_generated_settings import *
+except ImportError, e:
+    pass
 try:
     from generated_settings import *
 except ImportError, e:
