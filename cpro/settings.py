@@ -83,6 +83,10 @@ ENABLED_COLLECTIONS['activity']['add']['before_save'] = collections_settings.act
 ENABLED_COLLECTIONS['activity']['edit']['before_save'] = collections_settings.activitiesBeforeSave
 
 def filterActivitiesList(queryset, parameters, request):
+    if request.user.is_superuser and 'force_old' in request.GET:
+        if 'owner_id' in request.GET:
+            return queryset.filter(owner_id=request.GET['owner_id'])
+        return queryset
     return queryset.filter(id__gt=2600)
 
 def filterActivities(queryset, parameters, request):

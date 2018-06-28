@@ -246,7 +246,7 @@ class Account(ItemModel):
             'id': self.owner_id,
             'username': self._cache_owner_username,
             'email': self._cache_owner_email,
-            'item_url': '/user/{}/{}/'.format(self.owner_id, self._cache_owner_username),
+            'item_url': u'/user/{}/{}/'.format(self.owner_id, self._cache_owner_username),
             'preferences': AttrDict({
                 'status': self._cache_owner_preferences_status,
                 'twitter': self._cache_owner_preferences_twitter,
@@ -653,8 +653,8 @@ class Card(ItemModel):
             'translated_name': self._cache_event_translated_name,
             'image': self._cache_event_image,
             'image_url': get_image_url(self._cache_event_image),
-            'item': '/event/{}/{}/'.format(self.event_id, tourldash(self._cache_event_translated_name if self._cache_event_translated_name else self._cache_event_name)),
-            'ajax_item_url': '/ajax/event/{}/'.format(self.event_id),
+            'item': u'/event/{}/{}/'.format(self.event_id, tourldash(self._cache_event_translated_name if self._cache_event_translated_name else self._cache_event_name)),
+            'ajax_item_url': u'/ajax/event/{}/'.format(self.event_id),
         })
 
     # Cache idol
