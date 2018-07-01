@@ -76,6 +76,7 @@ ACTIVITY_TAGS = [
     ('fanart', _('Fan made')),
     ('merch', _('Merchandise')),
     ('community', _('Community')),
+    ('PetiteIdolStudio', 'PetiteIdolStudioSummer'),
     ('unrelated', _('Unrelated')),
 ]
 
