@@ -167,9 +167,11 @@ LEADER_SKILLS = {
     'vocal': models.STAT_VOCAL,
     'visual': models.STAT_VISUAL,
     'dance': models.STAT_DANCE,
-    'all': models.LEADER_SKILL_ALL,
-    'life': models.LEADER_SKILL_LIFE,
-    'skill_probability': models.LEADER_SKILL_SKILL,
+    'all': models.LEADER_SKILL_BRILLIANCE,
+    'life': models.LEADER_SKILL_ENERGY,
+    'skill_probability': models.LEADER_SKILL_ABILITY,
+    '<missing string: 0>': models.LEADER_SKILL_CINDERELLA_CHARM,
+    # Note: no way to detect LEADER_SKILL_FORTUNE_PRESENT from LEADER_SKILL_CINDERELLA_CHARM at the moment
 }
 
 def getIdolFromJson(owner, chara, update=False):
@@ -288,12 +290,42 @@ def import_starlightdb(args):
                     data['skill_duration_min'] = card['skill']['effect_length'][0] / 100
                     data['skill_duration_max'] = card['skill']['effect_length'][1] / 100
                     data['skill_value'] = card['skill']['value'] - 100 if data['i_skill'] != models.SKILL_HEALER else card['skill']['value']
-                    data['skill_value2'] = card['skill']['skill_trigger_value']
+                    data['skill_value2'] = card['skill'][
+                        'value_2'
+                        if card['skill']['skill_type'] in [
+                                'Tricolor Synergy',
+                                'All Round',
+                                'Focus',
+                        ]
+                        else 'skill_trigger_value'
+                    ]
+                    if card['skill']['skill_type'] == 'Focus':
+                        data['skill_value2'] = data['skill_value2'] / 100
+                    data['skill_value3'] = card['skill']['value_3']
                 if 'lead_skill' in card and card['lead_skill']:
                     data['leader_skill_type'] = LEADER_SKILLS[card['lead_skill']['target_param']]
+
+                    if card['lead_skill']['target_param'] == 'life' and (
+                            card['lead_skill']['need_cute']
+                            or card['lead_skill']['need_cool']
+                            or card['lead_skill']['need_passion']
+                    ):
+                        data['leader_skill_type'] = models.LEADER_SKILL_CHEER
+
+                    if card['lead_skill']['target_param'] == 'all' and (
+                            card['lead_skill']['need_cute']
+                            or card['lead_skill']['need_cool']
+                            or card['lead_skill']['need_passion']
+                    ):
+                        data['leader_skill_type'] = models.LEADER_SKILL_PRINCESS
+
                     data['leader_skill_percent'] = card['lead_skill']['up_value']
                     if card['lead_skill']['target_attribute'] == 'all':
-                        data['leader_skill_all'] = True
+                        data['leader_skill_apply'] = models.LEADER_SKILL_APPLIES_TRICOLOR
+                        if (not card['lead_skill']['need_cute']
+                            and not card['lead_skill']['need_cool']
+                            and not card['lead_skill']['need_passion']):
+                            data['leader_skill_apply'] = models.LEADER_SKILL_APPLIES_SHINY
                 card, created = models.Card.objects.update_or_create(id=card['id'], defaults=data)
         card_ids = card_ids[10:]
         i += 1
