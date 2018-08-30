@@ -602,7 +602,7 @@ class Card(ItemModel):
                 leader_skill_type=LEADER_SKILL_RAISED_STAT[self.leader_skill_type]().lower(),
                 idol_type=self.type.lower(),
                 all_types=u'/'.join([unicode(t[1]).lower() for t in TYPE_CHOICES]),
-                leader_skill_percent='{0:g}'.format(self.leader_skill_percent),
+                leader_skill_percent='{0:g}'.format(self.leader_skill_percent if self.leader_skill_percent else 0),
             )
 
     @property
@@ -618,7 +618,7 @@ class Card(ItemModel):
                 leader_skill_type=JAPANESE_LEADER_SKILL_RAISED_STAT[self.leader_skill_type].lower(),
                 idol_type=JAPANESE_TYPES[self.i_type],
                 all_types=u'/'.join(JAPANESE_TYPES.values()),
-                leader_skill_percent='{0:g}'.format(self.leader_skill_percent),
+                leader_skill_percent='{0:g}'.format(self.leader_skill_percent if self.leader_skill_percent else 0),
             )
 
     # Raw values
