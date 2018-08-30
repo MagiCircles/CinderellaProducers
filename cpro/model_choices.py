@@ -334,8 +334,8 @@ JAPANESE_LEADER_SKILL_BASE_SENTENCE = u'{idol_type}の{leader_skill_type}{leader
 LEADER_SKILL_ONLY_TYPE_SENTENCE = _('Raises {leader_skill_type} of all {idol_type} idols by {leader_skill_percent}% when there are only {idol_type} idols on the team.')
 JAPANESE_LEADER_SKILL_ONLY_TYPE_SENTENCE = u'{idol_type}アイドルのみ編成時、{idol_type}の{leader_skill_type}{leader_skill_percent}％アップ'
 
-LEADER_SKILL_ALL_TYPES_SENTENCE = _('Raises {leader_skill_type} of all {idol_type} idols by {leader_skill_percent}% when there are {all_types} idols on the team.')
-JAPANESE_LEADER_SKILL_ALL_TYPES_SENTENCE = u'3タイプ全てのアイドル編成時、{idol_type}の{leader_skill_type}{leader_skill_percent}％アップ'
+LEADER_SKILL_ALL_TYPES_SENTENCE = _('Raises {leader_skill_type} of all idols by {leader_skill_percent}% when there are {all_types} idols on the team.')
+JAPANESE_LEADER_SKILL_ALL_TYPES_SENTENCE = u'3タイプ全てのアイドル編成時、全員の{leader_skill_type}{leader_skill_percent}％アップ'
 
 LEADER_SKILL_SENTENCES_PER_APPLIES_TO = {
     LEADER_SKILL_APPLIES_TRICOLOR: LEADER_SKILL_ALL_TYPES_SENTENCE,
