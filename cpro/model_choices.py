@@ -364,7 +364,7 @@ JAPANESE_LEADER_SKILL_SENTENCES_PER_SKILL = {
 }
 
 _ALL_APPEALS = lambda: _('{type} appeal').format(type=u'/'.join([
-    unicode(t[1]) for t in TYPE_CHOICES
+    unicode(t[1]) for t in STAT_CHOICES
 ]))
 
 LEADER_SKILL_RAISED_STAT = {

@@ -16,6 +16,7 @@ def shrunkImage(picture, filename):
     api_key = django_settings.TINYPNG_API_KEY
     if not api_key or not filename.endswith('.png'):
         return picture
+    print '      Compressing...'
     img_shrunked = NamedTemporaryFile(delete=False)
     shrink_info = shrink_file(
         picture.name,
@@ -23,6 +24,7 @@ def shrunkImage(picture, filename):
         out_filepath=img_shrunked.name
     )
     img_shrunked.flush()
+    print '      Done.'
     return ImageFile(img_shrunked)
 
 def downloadImageFile(url):
@@ -40,13 +42,14 @@ def downloadImageFile(url):
     img_temp.flush()
     return ImageFile(img_temp)
 
-def downloadImage(url, prefix, id, tinypng=False):
+def downloadImage(url, prefix, id, tinypng=True):
     if not url:
         return None
     a = models.uploadItem(prefix)(models.Card.objects.get(id=id), 'lol.png')
     a = a.replace('cpro/static/uploaded/', 'u/')
-    return a
+    print '    Downloading', url, '...'
     downloaded = downloadImageFile(url)
+    print '    Done.'
     if tinypng:
         return shrunkImage(downloaded, url)
     return downloaded
@@ -170,11 +173,14 @@ LEADER_SKILLS = {
     'all': models.LEADER_SKILL_BRILLIANCE,
     'life': models.LEADER_SKILL_ENERGY,
     'skill_probability': models.LEADER_SKILL_ABILITY,
-    '<missing string: 0>': models.LEADER_SKILL_CINDERELLA_CHARM,
-    # Note: no way to detect LEADER_SKILL_FORTUNE_PRESENT from LEADER_SKILL_CINDERELLA_CHARM at the moment
 }
 
-def getIdolFromJson(owner, chara, update=False):
+LEADER_SKILLS_BY_NAME = {
+    u'シンデレラチャーム': models.LEADER_SKILL_CINDERELLA_CHARM,
+    u'フォーチュンプレゼント': models.LEADER_SKILL_FORTUNE_PRESENT,
+}
+
+def getIdolFromJson(owner, chara, update=False, updated_idols=[]):
     name = chara['conventional']
     try:
         idol = models.Idol.objects.get(name=name)
@@ -182,6 +188,12 @@ def getIdolFromJson(owner, chara, update=False):
         idol = None
     if idol and not update:
         return idol
+    if idol:
+        if idol.id in updated_idols:
+            return idol
+        print 'Updading idol', idol, '...'
+    else:
+        print 'Adding new idol', name, '...'
     data = {
         'owner': owner,
     }
@@ -203,22 +215,43 @@ def getIdolFromJson(owner, chara, update=False):
     data['hometown'] = HOMETOWNS[chara['home_town']]
     data['CV'] = chara['voice'] if chara['voice'] else None
     idol, created = models.Idol.objects.update_or_create(name=name, defaults=data)
+    updated_idols.append(idol.id)
+    print 'Done.'
     return idol
 
-def import_starlightdb(args):
+def import_cards(args, cards=[]):
+    updated_idols = []
 
-    if 'local' in args:
-        f = open('cards.json', 'r')
-        result = json.loads(f.read())
-    else:
-        r = requests.get('https://starlight.kirara.ca/api/v1/list/card_t')
-        result = r.json()
     try:
         owner = models.User.objects.get(username='db0')
     except ObjectDoesNotExist:
         owner = models.User.objects.create(username='db0')
         preferences = UserPreferences.objects.create(user=owner)
-    card_ids = [(card['id'], card.get('evolution_id', None)) for card in result['result']]
+
+    if cards:
+        card_ids = [(int(card), int(card) + 1) for card in cards]
+    else:
+        print 'Downloading list of cards...'
+        if 'local' in args:
+            f = open('cards.json', 'r')
+            result = json.loads(f.read())
+        else:
+            r = requests.get('https://starlight.kirara.ca/api/v1/list/card_t')
+            result = r.json()
+        card_ids = [(card['id'], card.get('evolution_id', None)) for card in result['result']]
+        print len(card_ids), 'cards have been found (not including awakaning)'
+        print 'Done.'
+    if 'update' not in args and not cards:
+        # Check if already exist
+        exist = models.Card.objects.filter(id__in=dict(card_ids).keys()).values_list('id', 'id_awakened')
+        card_ids = list(set(card_ids) ^ set(exist))
+        if card_ids:
+            print 'Adding', len(card_ids), 'new cards...'
+        else:
+            print 'No new card available. Use "update" argument to update existing cards.'
+    else:
+        print 'Adding or updating', len(card_ids), 'cards...'
+
     card_ids_dict = dict(card_ids)
     i = 1
     while card_ids:
@@ -237,8 +270,14 @@ def import_starlightdb(args):
             r = requests.get(url)
             result = r.json()
         for card in result['result']:
-            print card['id']
+            if not card:
+                print 'ERROR: A card has been not found'
+                continue
             if card['id'] in card_ids_dict.keys():
+                if 'update' in args:
+                    print 'Adding or updating card', card['id'], '...'
+                else:
+                    print 'Adding card', card['id'], '...'
                 data = {
                     'owner': owner,
                 }
@@ -249,21 +288,9 @@ def import_starlightdb(args):
                 except StopIteration:
                     awakened = None
                     print ' WARNING: Awakened not found'
-                data['idol'] = getIdolFromJson(owner, card['chara'], update='update' in args)
+                data['idol'] = getIdolFromJson(owner, card['chara'], update='update' in args, updated_idols=updated_idols)
                 data['i_rarity'] = RARITIES[card['rarity']['rarity']]
                 data['title'] = card['title']
-                if 'images' in args:
-                    data['image'] = downloadImage(card['card_image_ref'], 'c', data['id'])
-                    data['art'] = downloadImage(card['spread_image_ref'], 'c/art', data['id'])
-                    data['transparent'] = downloadImage(card['sprite_image_ref'], 'c/transparent', data['id'])
-                    data['icon'] = downloadImage(card['icon_image_ref'], 'c/icon', data['id'])
-                    data['puchi'] = downloadImage(card['icon_image_ref'].replace('icon_card', 'puchi'), 'c/puchi', data['id'])
-                    if awakened:
-                        data['image_awakened'] = downloadImage(awakened['card_image_ref'], 'c/a', data['id'])
-                        data['art_awakened'] = downloadImage(awakened['spread_image_ref'], 'c/art/a', data['id'])
-                        data['transparent_awakened'] = downloadImage(awakened['sprite_image_ref'], 'c/transparent/a', data['id'])
-                        data['icon_awakened'] = downloadImage(awakened['icon_image_ref'], 'c/icon/a', data['id'])
-                        data['puchi_awakened'] = downloadImage(awakened['icon_image_ref'].replace('icon_card', 'puchi'), 'c/puchi/a', data['id'])
                 data['hp_min'] = card['hp_min']
                 data['hp_max'] = card['hp_max']
                 data['vocal_min'] = card['vocal_min']
@@ -282,7 +309,11 @@ def import_starlightdb(args):
                     data['visual_awakened_min'] =  awakened['visual_min']
                     data['visual_awakened_max'] = awakened['visual_max']
                 if 'skill' in card and card['skill']:
-                    data['i_skill'] = models.SKILL_REVERSE_DICT[card['skill']['skill_type']]
+                    skill = card['skill']['skill_type']
+                    if skill in ['Cute Focus', 'Cool Focus', 'Passion Focus']:
+                        skill = 'Cute/Cool/Passion Focus'
+                    skill = skill.replace('-', ' ')
+                    data['i_skill'] = models.SKILL_REVERSE_DICT[skill]
                     data['skill_name'] = card['skill']['skill_name']
                     data['trigger_value'] = card['skill']['condition']
                     data['trigger_chance_min'] = card['skill']['proc_chance'][0] / 100
@@ -292,18 +323,24 @@ def import_starlightdb(args):
                     data['skill_value'] = card['skill']['value'] - 100 if data['i_skill'] != models.SKILL_HEALER else card['skill']['value']
                     data['skill_value2'] = card['skill'][
                         'value_2'
-                        if card['skill']['skill_type'] in [
+                        if skill in [
                                 'Tricolor Synergy',
                                 'All Round',
-                                'Focus',
+                                'Cute/Cool/Passion Focus',
                         ]
                         else 'skill_trigger_value'
                     ]
-                    if card['skill']['skill_type'] == 'Focus':
-                        data['skill_value2'] = data['skill_value2'] / 100
+                    if skill in [
+                            'Tricolor Synergy',
+                            'Cute/Cool/Passion Focus'
+                    ]:
+                        data['skill_value2'] = data['skill_value2'] - 100
                     data['skill_value3'] = card['skill']['value_3']
                 if 'lead_skill' in card and card['lead_skill']:
-                    data['leader_skill_type'] = LEADER_SKILLS[card['lead_skill']['target_param']]
+                    if card['lead_skill']['name'] in LEADER_SKILLS_BY_NAME:
+                        data['leader_skill_type'] = LEADER_SKILLS_BY_NAME[card['lead_skill']['name']]
+                    else:
+                        data['leader_skill_type'] = LEADER_SKILLS[card['lead_skill']['target_param']]
 
                     if card['lead_skill']['target_param'] == 'life' and (
                             card['lead_skill']['need_cute']
@@ -320,22 +357,78 @@ def import_starlightdb(args):
                         data['leader_skill_type'] = models.LEADER_SKILL_PRINCESS
 
                     data['leader_skill_percent'] = card['lead_skill']['up_value']
-                    if card['lead_skill']['target_attribute'] == 'all':
+                    if (card['lead_skill']['target_attribute'] == 'all'
+                        and data['leader_skill_type'] not in models.LEADER_SKILLS_WITHOUT_PREFIX):
                         data['leader_skill_apply'] = models.LEADER_SKILL_APPLIES_TRICOLOR
                         if (not card['lead_skill']['need_cute']
                             and not card['lead_skill']['need_cool']
                             and not card['lead_skill']['need_passion']):
                             data['leader_skill_apply'] = models.LEADER_SKILL_APPLIES_SHINY
-                card, created = models.Card.objects.update_or_create(id=card['id'], defaults=data)
+                    else:
+                        data['leader_skill_apply'] = models.LEADER_SKILL_APPLIES_TYPE
+                new_card, created = models.Card.objects.update_or_create(id=card['id'], defaults=data)
+                print '  -> Card', 'added' if created else 'updated', new_card
+                if 'images' in args:
+                    print '  Adding images to card...'
+                    if not new_card.image or 'update' in args:
+                        new_card.image = downloadImage(card['card_image_ref'], 'c', new_card.id)
+                    if not new_card.art or 'update' in args:
+                        new_card.art = downloadImage(card['spread_image_ref'], 'c/art', new_card.id)
+                    if not new_card.transparent or 'update' in args:
+                        new_card.transparent = downloadImage(card['sprite_image_ref'], 'c/transparent', new_card.id)
+                    if not new_card.icon or 'update' in args:
+                        new_card.icon = downloadImage(card['icon_image_ref'], 'c/icon', new_card.id)
+                    if not new_card.puchi or 'update' in args:
+                        new_card.puchi = downloadImage(card['icon_image_ref'].replace('icon_card', 'puchi'), 'c/puchi', new_card.id)
+                    if awakened:
+                        if not new_card.image_awakened or 'update' in args:
+                            new_card.image_awakened = downloadImage(awakened['card_image_ref'], 'c/a', new_card.id)
+                        if not new_card.art_awakened or 'update' in args:
+                            new_card.art_awakened = downloadImage(awakened['spread_image_ref'], 'c/art/a', new_card.id)
+                        if not new_card.transparent_awakened or 'update' in args:
+                            new_card.transparent_awakened = downloadImage(awakened['sprite_image_ref'], 'c/transparent/a', new_card.id)
+                        if not new_card.icon_awakened or 'update' in args:
+                            new_card.icon_awakened = downloadImage(awakened['icon_image_ref'], 'c/icon/a', new_card.id)
+                        if not new_card.puchi_awakened or 'update' in args:
+                            new_card.puchi_awakened = downloadImage(awakened['icon_image_ref'].replace('icon_card', 'puchi'), 'c/puchi/a', new_card.id)
+                    print '  Done.'
+                    print '  Uploading downloaded images and saving card...'
+                    new_card.save()
+                    print '  Done.'
         card_ids = card_ids[10:]
         i += 1
-    print 'Save idols images'
-    for idol in models.Idol.objects.all():
-        idol.image = unicode(models.Card.objects.filter(idol=idol).order_by('id')[0].puchi)
-        idol.save()
+    print 'Done.'
+
+def import_starlightdb(args, cards=[]):
+
+    if 'skip_cards' not in args:
+        import_cards(args, cards)
+
+    if 'skip_idol_images' not in args:
+        print 'Saving idols images...'
+        i = 0
+        e = 0
+        for idol in models.Idol.objects.all():
+            try:
+                if not idol.image or 'update' in args:
+                    idol.image = unicode(models.Card.objects.filter(idol=idol, puchi__isnull=False).exclude(puchi='').order_by('id')[0].puchi)
+                    idol.save()
+                    print 'Idol image has been updated for', idol
+                    i += 1
+            except IndexError:
+                print 'WARNING: Idol', idol, 'does not have any card that has a puchi image, so no image has been saved.'
+                e += 1
+        print i, 'idols images updated and', e, 'errors'
+        print 'Done.'
 
 class Command(BaseCommand):
     can_import_settings = True
 
     def handle(self, *args, **options):
-        import_starlightdb(args)
+        cards = []
+        for arg in args:
+            if arg.isdigit():
+                cards.append(arg)
+            else:
+                break
+        import_starlightdb(args, cards=cards)
