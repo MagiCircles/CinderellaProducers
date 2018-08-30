@@ -29,6 +29,12 @@ TYPES = [
 TYPE_CHOICES = [(a, b) for (a, b, c, d) in TYPES]
 TYPE_DICT = dict(TYPE_CHOICES)
 
+JAPANESE_TYPES = {
+    TYPE_CUTE: u'キュート',
+    TYPE_COOL: u'クール',
+    TYPE_PASSION: u'パッション',
+}
+
 ENGLISH_TYPE_DICT = {
     TYPE_CUTE: 'Cute',
     TYPE_COOL: 'Cool',
@@ -136,6 +142,8 @@ MAX_LEVELS = {
 
 MAX_SKILL_LEVEL = 10
 
+# SKILL
+
 SKILL_LESSER_PERFECT_LOCK = 0
 SKILL_GREATER_PERFECT_LOCK = 1
 SKILL_EXTREME_PERFECT_LOCK = 2
@@ -150,6 +158,9 @@ SKILL_ALL_ROUND = 10
 SKILL_CONCENTRATION = 11
 SKILL_SKILL_BOOST = 12
 SKILL_FOCUS = 13
+SKILL_ENCORE = 14
+SKILL_SPARKLE = 15
+SKILL_TRICOLOR_SYNERGY = 16
 
 SKILL_CHOICES = [
     (SKILL_LESSER_PERFECT_LOCK, _('Lesser Perfect Lock')),
@@ -166,6 +177,9 @@ SKILL_CHOICES = [
     (SKILL_CONCENTRATION, _('Concentration')),
     (SKILL_SKILL_BOOST, _('Skill Boost')),
     (SKILL_FOCUS, _('Cute/Cool/Passion Focus')),
+    (SKILL_ENCORE, _('Encore')),
+    (SKILL_SPARKLE, _('Sparkle')),
+    (SKILL_TRICOLOR_SYNERGY, _('Tricolor Synergy')),
 ]
 SKILL_DICT = dict(SKILL_CHOICES)
 UNTRANSLATED_SKILL_CHOICES = [
@@ -183,6 +197,9 @@ UNTRANSLATED_SKILL_CHOICES = [
     (SKILL_CONCENTRATION, 'Concentration'),
     (SKILL_SKILL_BOOST, 'Skill Boost'),
     (SKILL_FOCUS, 'Cute/Cool/Passion Focus'),
+    (SKILL_ENCORE, 'Encore'),
+    (SKILL_SPARKLE, 'Sparkle'),
+    (SKILL_TRICOLOR_SYNERGY, 'Tricolor Synergy'),
 ]
 SKILL_REVERSE_DICT = { value: key for (key, value) in UNTRANSLATED_SKILL_CHOICES }
 
@@ -201,6 +218,9 @@ SKILL_SENTENCES = {
     SKILL_CONCENTRATION: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus but the timing window for Perfect notes is reduced in the next {skill_duration} seconds.'),
     SKILL_SKILL_BOOST: _('For every {trigger_value} seconds, there is a {trigger_chance}% change that currently active skills will be boosted for {skill_duration} seconds'),
     SKILL_FOCUS: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus, and you will gain an extra {skill_value2}% combo bonus, but only if you have only {type} idols in your team for {skill_duration} seconds'),
+    SKILL_ENCORE: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance to activate the previous skill again for {skill_duration} seconds.'),
+    SKILL_SPARKLE: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will gain an extra combo bonus based on your current health for {skill_duration} seconds.'),
+    SKILL_TRICOLOR_SYNERGY: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that with all three types of idols on the team, you will gain an extra {skill_value}% combo bonus, and Perfect notes will receive a {skill_value2}% score bonus plus restore {skill_value3} life, for {skill_duration} seconds.'),
 }
 
 JAPANESE_SKILL_SENTENCES = {
@@ -218,82 +238,159 @@ JAPANESE_SKILL_SENTENCES = {
     SKILL_CONCENTRATION: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌ {trigger_value}秒毎、高確率でわずかな間、PERFECTのスコア{skill_value}%アップ、PERFECT判定される時間が短くなる',
     SKILL_SKILL_BOOST: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌{trigger_value}秒毎、高確率でしばらくの間、他アイドルの特技効果を大アップ',
     SKILL_FOCUS: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌{type}アイドルのみ編成時、{trigger_value}秒毎、高確率でしばらくの間、PERFECTのスコア{skill_value}%アップ、COMBOボーナス{skill_value2}%アップ',
+    SKILL_ENCORE: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌{trigger_value}秒毎、直前に発動した他アイドルの特技効果を繰り返す',
+    SKILL_SPARKLE: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌{trigger_value}秒毎、ライフ値が多いほどCOMBOボーナスアップ',
+    SKILL_TRICOLOR_SYNERGY: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌3タイプ全てのアイドル編成時、{trigger_value}秒毎、PERFECTのスコア{skill_value}%アップ/ライフ{skill_value3}回復、COMBOボーナス{skill_value2}%アップ',
 }
 
-LEADER_SKILL_SENTENCE = _('Raises {leader_skill_type} of all {idol_type} idols by {leader_skill_percent}%.')
-JAPANESE_LEADER_SKILL_SENTENCE = u'{idol_type}の{leader_skill_type}{leader_skill_percent}％アップ'
+# LEADER SKILL
 
-LEADER_SKILL_ALL = 101
-LEADER_SKILL_LIFE = 102
-LEADER_SKILL_SKILL = 103
+# Type of skill
 
-LEADER_SKILL_CHOICES = STAT_CHOICES + [
-    (LEADER_SKILL_ALL, _('All')),
-    (LEADER_SKILL_LIFE, _('Life')),
-    (LEADER_SKILL_SKILL, _('Skill')),
+LEADER_SKILL_BRILLIANCE = 101
+LEADER_SKILL_ENERGY = 102
+LEADER_SKILL_ABILITY = 103
+LEADER_SKILL_CHEER = 104
+LEADER_SKILL_PRINCESS = 105
+LEADER_SKILL_CINDERELLA_CHARM = 106
+LEADER_SKILL_FORTUNE_PRESENT = 107
+
+LEADER_SKILL_CHOICES = [
+    (STAT_VOCAL, 'Vocal appeal [Voice]'),
+    (STAT_VISUAL, 'Visual appeal [Make-up]'),
+    (STAT_DANCE, 'Dance appeal [Step]'),
+    (LEADER_SKILL_BRILLIANCE, 'Vocal/Visual/Dance appeals [Brilliance]'),
+    (LEADER_SKILL_PRINCESS, 'Vocal/Visual/Dance appeals, when only same type in the team [Princess]'),
+    (LEADER_SKILL_ABILITY, 'Skill probability [Ability]'),
+    (LEADER_SKILL_ENERGY, 'Life [Energy]'),
+    (LEADER_SKILL_CHEER, 'Life, when only same type in the team [Cheer]'),
+    (LEADER_SKILL_CINDERELLA_CHARM, 'Fan gain, end of live [Cinderella Charm]'),
+    (LEADER_SKILL_FORTUNE_PRESENT, 'Rewards, end of live [Fortune Present]'),
 ]
 LEADER_SKILL_DICT = dict(LEADER_SKILL_CHOICES)
 
-JAPANESE_LEADER_SKILL_STAT_IN_SENTENCE = {
-    STAT_VOCAL: u'ボーカルアピール値',
-    STAT_VISUAL: u'ビジュアルアピール値',
-    STAT_DANCE: u'ダンスアピール値',
-    LEADER_SKILL_LIFE: u'ライフ',
-    LEADER_SKILL_SKILL: u'特技発動確率',
-    LEADER_SKILL_ALL: u'全アピール値',
+# Applies to
+
+LEADER_SKILL_APPLIES_TYPE = None
+LEADER_SKILL_APPLIES_TRICOLOR = 1
+LEADER_SKILL_APPLIES_SHINY = 2
+
+LEADER_SKILL_APPLIES_CHOICES = [
+    (LEADER_SKILL_APPLIES_TYPE, 'Idols of the same type [Cute/Cool/Passion]'),
+    (LEADER_SKILL_APPLIES_TRICOLOR, 'Idols of all 3 types, when all types are in the team [Tricolor]'),
+    (LEADER_SKILL_APPLIES_SHINY, 'Idols of all 3 types [Shiny]'),
+]
+
+# To get leader skill name:
+# If applies_to, concatenate suffix and prefix, otherwise, concatenate idol type and suffix
+
+LEADER_SKILL_NAME_PREFIX = {
+    LEADER_SKILL_APPLIES_TRICOLOR: _('Tricolor'),
+    LEADER_SKILL_APPLIES_SHINY: _('Shiny'),
 }
 
-TRANSLATED_LEADER_SKILL_STAT_IN_SENTENCE = {
-    STAT_VOCAL: _('Vocal'),
-    STAT_VISUAL: _('Visual'),
-    STAT_DANCE: _('Dance'),
-    LEADER_SKILL_LIFE: _('Life'),
-    LEADER_SKILL_SKILL: _('Skill'),
-    LEADER_SKILL_ALL: string_concat(_('Vocal'), '/', _('Visual'), '/', _('Dance')),
+JAPANESE_LEADER_SKILL_NAME_PREFIX = {
+    LEADER_SKILL_APPLIES_TRICOLOR: u'トリコロール・',
+    LEADER_SKILL_APPLIES_SHINY: u'シャイニー',
 }
 
-JAPANESE_LEADER_SKILL_STAT = {
-    STAT_VOCAL: u'ボイス',
-    STAT_VISUAL: u'メイク',
-    STAT_DANCE: u'ステップ',
-    LEADER_SKILL_LIFE: u'エナジー',
-    LEADER_SKILL_SKILL: u'アビリティ',
-    LEADER_SKILL_ALL: u'ブリリアンス',
-}
+LEADER_SKILLS_WITHOUT_PREFIX = [
+    LEADER_SKILL_CINDERELLA_CHARM,
+    LEADER_SKILL_FORTUNE_PRESENT,
+]
 
-TRANSLATED_LEADER_SKILL_STAT = {
+LEADER_SKILL_NAME_SUFFIX = {
     STAT_VOCAL: _('Voice'),
     STAT_VISUAL: _('Make-Up'),
     STAT_DANCE: _('Step'),
-    LEADER_SKILL_LIFE: _('Energy'),
-    LEADER_SKILL_SKILL: _('Ability'),
-    LEADER_SKILL_ALL: _('Brilliance'),
+    LEADER_SKILL_BRILLIANCE: _('Brilliance'),
+    LEADER_SKILL_PRINCESS: _('Princess'),
+    LEADER_SKILL_ABILITY: _('Ability'),
+    LEADER_SKILL_ENERGY: _('Energy'),
+    LEADER_SKILL_CHEER: _('Cheer'),
+    LEADER_SKILL_CINDERELLA_CHARM: _('Cinderella Charm'),
+    LEADER_SKILL_FORTUNE_PRESENT: _('Fortune Present'),
 }
 
-JAPANESE_TYPES = {
-    TYPE_CUTE: u'キュート',
-    TYPE_COOL: u'クール',
-    TYPE_PASSION: u'パッション',
+JAPANESE_LEADER_SKILL_NAME_SUFFIX = {
+    STAT_VOCAL: u'ボイス',
+    STAT_VISUAL: u'メイク',
+    STAT_DANCE: u'ステップ',
+    LEADER_SKILL_BRILLIANCE: u'ブリリアンス',
+    LEADER_SKILL_PRINCESS: u'プリンセス',
+    LEADER_SKILL_ABILITY: u'アビリティ',
+    LEADER_SKILL_ENERGY: u'エナジー',
+    LEADER_SKILL_CHEER: u'チアー',
+    LEADER_SKILL_CINDERELLA_CHARM: u'シンデレラチャーム',
+    LEADER_SKILL_FORTUNE_PRESENT: u'フォーチュンプレゼント',
 }
 
-JAPANESE_LEADER_SKILL_RARITY_ALL = {
-    RARITY_SR: u'シャイニー',
-    RARITY_SSR: u'トリコロール・',
+# To get sentence template:
+# Try applies_to then try type then default to LEADER_SKILL_BASE_SENTENCE
+
+LEADER_SKILL_BASE_SENTENCE = _('Raises {leader_skill_type} of all {idol_type} idols by {leader_skill_percent}%.')
+JAPANESE_LEADER_SKILL_BASE_SENTENCE = u'{idol_type}の{leader_skill_type}{leader_skill_percent}％アップ'
+
+LEADER_SKILL_ONLY_TYPE_SENTENCE = _('Raises {leader_skill_type} of all {idol_type} idols by {leader_skill_percent}% when there are only {idol_type} idols on the team.')
+JAPANESE_LEADER_SKILL_ONLY_TYPE_SENTENCE = u'{idol_type}アイドルのみ編成時、{idol_type}の{leader_skill_type}{leader_skill_percent}％アップ'
+
+LEADER_SKILL_ALL_TYPES_SENTENCE = _('Raises {leader_skill_type} of all {idol_type} idols by {leader_skill_percent}% when there are {all_types} idols on the team.')
+JAPANESE_LEADER_SKILL_ALL_TYPES_SENTENCE = u'3タイプ全てのアイドル編成時、{idol_type}の{leader_skill_type}{leader_skill_percent}％アップ'
+
+LEADER_SKILL_SENTENCES_PER_APPLIES_TO = {
+    LEADER_SKILL_APPLIES_TRICOLOR: LEADER_SKILL_ALL_TYPES_SENTENCE,
+    LEADER_SKILL_APPLIES_SHINY: LEADER_SKILL_BASE_SENTENCE,
 }
 
-TRANSLATED_LEADER_SKILL_RARITY_ALL = {
-    RARITY_SR: _('Shiny'),
-    RARITY_SSR: _('Tricolor'),
+LEADER_SKILL_SENTENCES_PER_SKILL = {
+    LEADER_SKILL_PRINCESS: LEADER_SKILL_ONLY_TYPE_SENTENCE,
+    LEADER_SKILL_CHEER: LEADER_SKILL_ONLY_TYPE_SENTENCE,
+
+    LEADER_SKILL_CINDERELLA_CHARM: _(u'Increases fan gain by {leader_skill_percent}% when you finish a live.'),
+    LEADER_SKILL_FORTUNE_PRESENT: _(u'Gives extra rewards when you finish a live.'),
 }
 
-JAPANESE_LEADER_SKILL_RARITY_ALL_IN_SENTENCE = {
-    RARITY_SR: u'全員',
-    RARITY_SSR: u'3タイプ全てのアイドル編成時、全員',
+JAPANESE_LEADER_SKILL_SENTENCES_PER_APPLIES_TO = {
+    LEADER_SKILL_APPLIES_TRICOLOR: JAPANESE_LEADER_SKILL_ALL_TYPES_SENTENCE,
+    LEADER_SKILL_APPLIES_SHINY: JAPANESE_LEADER_SKILL_BASE_SENTENCE,
 }
 
-TRANSLATED_LEADER_SKILL_RARITY_ALL_IN_SENTENCE = {
-    RARITY_SR: _('Shiny'),
-    RARITY_SSR: _('Tricolor'),
+JAPANESE_LEADER_SKILL_SENTENCES_PER_SKILL = {
+    LEADER_SKILL_PRINCESS: JAPANESE_LEADER_SKILL_ONLY_TYPE_SENTENCE,
+    LEADER_SKILL_CHEER: JAPANESE_LEADER_SKILL_ONLY_TYPE_SENTENCE,
+
+    LEADER_SKILL_CINDERELLA_CHARM: u'LIVEクリア時、獲得ファン数が{leader_skill_percent}アップ',
+    LEADER_SKILL_FORTUNE_PRESENT: u'LIVEクリア時、特別報酬を追加で獲得',
+}
+
+_ALL_APPEALS = lambda: _('{type} appeal').format(type=u'/'.join([
+    unicode(t[1]) for t in TYPE_CHOICES
+]))
+
+LEADER_SKILL_RAISED_STAT = {
+    STAT_VOCAL: lambda: _('{type} appeal').format(type=unicode(_('Vocal'))),
+    STAT_VISUAL: lambda: _('{type} appeal').format(type=unicode(_('Visual'))),
+    STAT_DANCE: lambda: _('{type} appeal').format(type=unicode(_('Dance'))),
+    LEADER_SKILL_BRILLIANCE: _ALL_APPEALS,
+    LEADER_SKILL_PRINCESS: _ALL_APPEALS,
+    LEADER_SKILL_ABILITY: lambda: _('Skill probability'),
+    LEADER_SKILL_ENERGY: lambda: _('Life'),
+    LEADER_SKILL_CHEER: lambda: _('Life'),
+    LEADER_SKILL_CINDERELLA_CHARM: lambda: '',
+    LEADER_SKILL_FORTUNE_PRESENT: lambda: '',
+}
+
+JAPANESE_LEADER_SKILL_RAISED_STAT = {
+    STAT_VOCAL: u'ボーカルアピール値',
+    STAT_VISUAL: u'ビジュアルアピール値',
+    STAT_DANCE: u'ダンスアピール値',
+    LEADER_SKILL_BRILLIANCE: u'全アピール値',
+    LEADER_SKILL_PRINCESS: u'全アピール値',
+    LEADER_SKILL_ABILITY: u'特技発動確率',
+    LEADER_SKILL_ENERGY: u'ライフ',
+    LEADER_SKILL_CHEER: u'ライフ',
+    LEADER_SKILL_CINDERELLA_CHARM: '',
+    LEADER_SKILL_FORTUNE_PRESENT: '',
 }
 
 ############################################################
@@ -306,9 +403,9 @@ PLAY_WITH = (
     (_('One hand'), 'fingers'),
     (_('Other'), 'sausage'),
 )
-PLAY_WITH_CHOICES = [ (index, localized) for (index, (localized, _)) in enumerate(PLAY_WITH) ]
+PLAY_WITH_CHOICES = [ (index, localized) for (index, (localized, _name)) in enumerate(PLAY_WITH) ]
 PLAY_WITH_DICT = dict(PLAY_WITH_CHOICES)
-PLAY_WITH_ICONS = dict([ (index, icon) for (index, (_, icon)) in enumerate(PLAY_WITH) ])
+PLAY_WITH_ICONS = dict([ (index, icon) for (index, (_name, icon)) in enumerate(PLAY_WITH) ])
 
 OS = [ 'iOs', 'Android' ]
 OS_CHOICES = list(enumerate(OS))

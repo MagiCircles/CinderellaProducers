@@ -239,6 +239,11 @@ class CardForm(FormSaveOwnerOnCreation):
             if self.instance.event_id:
                 self.previous_event_id = self.instance.event_id
                 self.previous_event = self.instance.event
+        if self.instance and self.instance.id and 'leader_skill_apply' in self.fields:
+            self.fields['leader_skill_apply'].choices = [
+                (i, u'{type} idols [{type}]'.format(type=self.instance.type) if i is None else v)
+                for i, v in self.fields['leader_skill_apply'].choices
+            ]
 
     def save(self, commit=False):
         instance = super(CardForm, self).save(commit=False)
@@ -249,14 +254,16 @@ class CardForm(FormSaveOwnerOnCreation):
                 instance.event.force_cache_totals(pluscards=1)
             if self.previous_event_id:
                 self.previous_event.force_cache_totals(pluscards=-1)
+        if self.instance.leader_skill_type in models.LEADER_SKILLS_WITHOUT_PREFIX:
+            self.instance.leader_skill_apply = None
         if commit:
             instance.save()
         return instance
 
     class Meta:
         model = models.Card
-        fields = ('id', 'id_awakened', 'idol', 'i_rarity', 'release_date', 'event', 'is_limited', 'title', 'translated_title', 'image', 'image_awakened', 'art', 'art_hd', 'art_on_homepage', 'art_awakened',  'art_hd_awakened', 'art_awakened_on_homepage', 'transparent', 'transparent_awakened', 'icon', 'icon_awakened', 'puchi', 'puchi_awakened', 'hp_min', 'hp_max', 'hp_awakened_min', 'hp_awakened_max', 'vocal_min', 'vocal_max', 'vocal_awakened_min', 'vocal_awakened_max', 'dance_min', 'dance_max', 'dance_awakened_min', 'dance_awakened_max', 'visual_min', 'visual_max', 'visual_awakened_min', 'visual_awakened_max', 'skill_name', 'translated_skill_name', 'i_skill', 'trigger_value', 'trigger_chance_min', 'trigger_chance_max', 'skill_duration_min', 'skill_duration_max', 'skill_value', 'skill_value2', 'leader_skill_type', 'leader_skill_percent', 'leader_skill_all')
-        optional_fields = ('id_awakened', 'release_date', 'event', 'title', 'translated_title', 'image_awakened', 'art', 'art_hd', 'art_awakened', 'art_hd_awakened', 'transparent', 'transparent_awakened', 'icon', 'icon_awakened', 'puchi', 'puchi_awakened', 'hp_min', 'hp_max', 'hp_awakened_min', 'hp_awakened_max', 'vocal_min', 'vocal_max', 'vocal_awakened_min', 'vocal_awakened_max', 'dance_min', 'dance_max', 'dance_awakened_min', 'dance_awakened_max', 'visual_min', 'visual_max', 'visual_awakened_min', 'visual_awakened_max', 'skill_name', 'translated_skill_name', 'i_skill', 'trigger_value', 'trigger_chance_min', 'trigger_chance_max', 'skill_duration_min', 'skill_duration_max', 'skill_value', 'skill_value2', 'leader_skill_type', 'leader_skill_percent', 'leader_skill_all')
+        fields = ('id', 'id_awakened', 'idol', 'i_rarity', 'release_date', 'event', 'is_limited', 'title', 'translated_title', 'image', 'image_awakened', 'art', 'art_hd', 'art_on_homepage', 'art_awakened',  'art_hd_awakened', 'art_awakened_on_homepage', 'transparent', 'transparent_awakened', 'icon', 'icon_awakened', 'puchi', 'puchi_awakened', 'hp_min', 'hp_max', 'hp_awakened_min', 'hp_awakened_max', 'vocal_min', 'vocal_max', 'vocal_awakened_min', 'vocal_awakened_max', 'dance_min', 'dance_max', 'dance_awakened_min', 'dance_awakened_max', 'visual_min', 'visual_max', 'visual_awakened_min', 'visual_awakened_max', 'skill_name', 'translated_skill_name', 'i_skill', 'trigger_value', 'trigger_chance_min', 'trigger_chance_max', 'skill_duration_min', 'skill_duration_max', 'skill_value', 'skill_value2', 'skill_value3', 'leader_skill_type', 'leader_skill_apply', 'leader_skill_percent')
+        optional_fields = ('id_awakened', 'release_date', 'event', 'title', 'translated_title', 'image_awakened', 'art', 'art_hd', 'art_awakened', 'art_hd_awakened', 'transparent', 'transparent_awakened', 'icon', 'icon_awakened', 'puchi', 'puchi_awakened', 'hp_min', 'hp_max', 'hp_awakened_min', 'hp_awakened_max', 'vocal_min', 'vocal_max', 'vocal_awakened_min', 'vocal_awakened_max', 'dance_min', 'dance_max', 'dance_awakened_min', 'dance_awakened_max', 'visual_min', 'visual_max', 'visual_awakened_min', 'visual_awakened_max', 'skill_name', 'translated_skill_name', 'i_skill', 'trigger_value', 'trigger_chance_min', 'trigger_chance_max', 'skill_duration_min', 'skill_duration_max', 'skill_value', 'skill_value2', 'skill_value3', 'leader_skill_type', 'leader_skill_percent', 'leader_skill_apply')
         date_fields = ('release_date', )
 
 class FilterCards(FormWithRequest):
@@ -266,6 +273,16 @@ class FilterCards(FormWithRequest):
     is_limited = forms.NullBooleanField(required=False, initial=None, label=_('Limited'))
     has_art = forms.NullBooleanField(required=False, initial=None, label=_('Art'))
     has_art_hd = forms.NullBooleanField(required=False, initial=None, label=string_concat(_('Art'), ' (HD)'))
+    leader_skill = forms.ChoiceField(required=False, initial=None, label=_('Leader Skill'), choices=(
+        BLANK_CHOICE_DASH + [
+            (u'type-{}'.format(i), models.LEADER_SKILL_NAME_SUFFIX[i])
+            for i, v in models.LEADER_SKILL_CHOICES
+        ] + [
+            (u'apply-{}'.format(i), models.LEADER_SKILL_NAME_PREFIX[i])
+            for i, v in models.LEADER_SKILL_APPLIES_CHOICES
+            if i is not None
+            ]
+    ))
     ordering = forms.ChoiceField(choices=[
         ('release_date', _('Release Date')),
         ('id', _('ID')),
@@ -284,12 +301,9 @@ class FilterCards(FormWithRequest):
     ], initial='level', required=False, label=_('Ordering'))
     reverse_order = forms.BooleanField(initial=True, required=False, label=_('Reverse Order'))
 
-    def __init__(self, *args, **kwargs):
-        super(FilterCards, self).__init__(*args, **kwargs)
-
     class Meta:
         model = models.Card
-        fields = ('search', 'i_rarity', 'type', 'is_event', 'is_limited', 'has_art', 'has_art_hd', 'i_skill', 'ordering', 'reverse_order')
+        fields = ('search', 'i_rarity', 'type', 'is_event', 'is_limited', 'has_art', 'has_art_hd', 'i_skill', 'leader_skill', 'ordering', 'reverse_order')
         optional_fields = ('i_skill', 'i_rarity')
 
 ############################################################

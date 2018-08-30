@@ -54,6 +54,12 @@ def filterCards(queryset, parameters, request):
             queryset = queryset.filter(Q(art_hd__isnull=True) | Q(art_hd=''))
     if 'i_skill' in parameters and parameters['i_skill']:
         queryset = queryset.filter(i_skill=parameters['i_skill'])
+    if 'leader_skill' in parameters and parameters['leader_skill']:
+        value = parameters['leader_skill']
+        if value.startswith('type-'):
+            queryset = queryset.filter(leader_skill_type=int(value[5:]))
+        elif value.startswith('apply-'):
+            queryset = queryset.filter(leader_skill_apply=int(value[6:]))
     if 'idol' in parameters and parameters['idol']:
         queryset = queryset.filter(idol=parameters['idol'])
     if 'event' in parameters and parameters['event']:

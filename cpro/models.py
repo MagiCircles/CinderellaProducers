@@ -512,6 +512,7 @@ class Card(ItemModel):
     skill_duration_max = models.FloatField('Skill Duration (Minimum)', null=True)
     skill_value = models.FloatField('Skill Value', null=True)
     skill_value2 = models.FloatField('Other Skill Value', null=True)
+    skill_value3 = models.FloatField('Other Skill Value', null=True)
     skill_name = models.CharField('Skill name', max_length=100, null=True)
     translated_skill_name = models.CharField('Translated skill name', max_length=100, null=True, blank=True)
 
@@ -528,6 +529,7 @@ class Card(ItemModel):
             skill_duration=self._value_for_level('skill_duration', level, max_level=MAX_SKILL_LEVEL, round_integer=False),
             skill_value='{0:g}'.format(self.skill_value if self.skill_value else 0),
             skill_value2='{0:g}'.format(self.skill_value2 if self.skill_value2 else 0),
+            skill_value3='{0:g}'.format(self.skill_value3 if self.skill_value3 else 0),
             type=JAPANESE_TYPES[self.cached_idol.i_type] if japanese else self.type,
         )
 
@@ -550,9 +552,10 @@ class Card(ItemModel):
         return unicode(all_levels).replace('u\'', '\'').replace('\'', '"')
 
     # Leader skill
-    leader_skill_type = models.PositiveIntegerField('Leader Skill Type', choices=LEADER_SKILL_CHOICES, null=True)
-    leader_skill_percent = models.FloatField('Leader Skill Percent', null=True)
-    leader_skill_all = models.BooleanField(default=False, help_text='Does the leader skill work on all idols or just the ones with the same type? Check for all')
+    leader_skill_type = models.PositiveIntegerField('Leader Skill: What kind of stat gets raised?', choices=LEADER_SKILL_CHOICES, null=True)
+    leader_skill_apply = models.PositiveIntegerField('Leader Skill: Which idols does it apply to?', choices=LEADER_SKILL_APPLIES_CHOICES, null=True)
+    leader_skill_percent = models.FloatField('Leader Skill: Percentage', null=True)
+    leader_skill_all = models.BooleanField(default=False, help_text='Does the leader skill work on all idols or just the ones with the same type? Check for all') # deprecated
 
     @property
     def has_leader_skill(self):
@@ -562,49 +565,61 @@ class Card(ItemModel):
     def leader_skill(self):
         if self.leader_skill_type is None:
             return None
-        if self.leader_skill_all:
-            return u'{all} {leader_skill_type}'.format(
-                all=TRANSLATED_LEADER_SKILL_RARITY_ALL[self.i_rarity],
-                leader_skill_type=TRANSLATED_LEADER_SKILL_STAT[self.leader_skill_type],
-            )
-        return u'{idol_type} {leader_skill_type}'.format(
-            idol_type=TYPE_DICT[self.cached_idol.i_type],
-            leader_skill_type=TRANSLATED_LEADER_SKILL_STAT[self.leader_skill_type],
+        if self.leader_skill_type in LEADER_SKILLS_WITHOUT_PREFIX:
+            return LEADER_SKILL_NAME_SUFFIX[self.leader_skill_type]
+        return u'{prefix} {suffix}'.format(
+            prefix=LEADER_SKILL_NAME_PREFIX.get(
+                self.leader_skill_apply,
+                self.type,
+            ),
+            suffix=LEADER_SKILL_NAME_SUFFIX[self.leader_skill_type],
         )
 
     @property
     def japanese_leader_skill(self):
         if self.leader_skill_type is None:
             return None
-        if self.leader_skill_all:
-            return u'{all}{leader_skill_type}'.format(
-                all=JAPANESE_LEADER_SKILL_RARITY_ALL[self.i_rarity],
-                leader_skill_type=JAPANESE_LEADER_SKILL_STAT[self.leader_skill_type],
-            )
-        return u'{idol_type}{leader_skill_type}'.format(
-           idol_type=JAPANESE_TYPES[self.cached_idol.i_type],
-            leader_skill_type=JAPANESE_LEADER_SKILL_STAT[self.leader_skill_type],
+        if self.leader_skill_type in LEADER_SKILLS_WITHOUT_PREFIX:
+            return JAPANESE_LEADER_SKILL_NAME_SUFFIX[self.leader_skill_type]
+        return u'{prefix} {suffix}'.format(
+            prefix=JAPANESE_LEADER_SKILL_NAME_PREFIX.get(
+                self.leader_skill_apply,
+                JAPANESE_TYPES[self.i_type],
+            ),
+            suffix=JAPANESE_LEADER_SKILL_NAME_SUFFIX[self.leader_skill_type],
         )
 
     @property
     def leader_skill_details(self):
         if self.leader_skill_type is None:
             return None
-        return LEADER_SKILL_SENTENCE.format(
-            leader_skill_type=TRANSLATED_LEADER_SKILL_STAT_IN_SENTENCE[self.leader_skill_type],
-            idol_type=self.type if not self.leader_skill_all else TRANSLATED_LEADER_SKILL_RARITY_ALL_IN_SENTENCE[self.i_rarity],
-            leader_skill_percent='{0:g}'.format(self.leader_skill_percent),
-        )
+        return LEADER_SKILL_SENTENCES_PER_APPLIES_TO.get(
+            self.leader_skill_apply,
+            LEADER_SKILL_SENTENCES_PER_SKILL.get(
+                self.leader_skill_type,
+                LEADER_SKILL_BASE_SENTENCE,
+            )).format(
+                leader_skill_type=LEADER_SKILL_RAISED_STAT[self.leader_skill_type]().lower(),
+                idol_type=self.type.lower(),
+                all_types=u'/'.join([unicode(t[1]).lower() for t in TYPE_CHOICES]),
+                leader_skill_percent='{0:g}'.format(self.leader_skill_percent),
+            )
 
     @property
     def japanese_leader_skill_details(self):
         if self.leader_skill_type is None:
             return None
-        return JAPANESE_LEADER_SKILL_SENTENCE.format(
-            leader_skill_type=JAPANESE_LEADER_SKILL_STAT_IN_SENTENCE[self.leader_skill_type],
-            idol_type=JAPANESE_TYPES[self.cached_idol.i_type] + u'アイドル' if not self.leader_skill_all else JAPANESE_LEADER_SKILL_RARITY_ALL_IN_SENTENCE[self.i_rarity],
-            leader_skill_percent='{0:g}'.format(self.leader_skill_percent),
-        )
+        return JAPANESE_LEADER_SKILL_SENTENCES_PER_APPLIES_TO.get(
+            self.leader_skill_apply,
+            JAPANESE_LEADER_SKILL_SENTENCES_PER_SKILL.get(
+                self.leader_skill_type,
+                JAPANESE_LEADER_SKILL_BASE_SENTENCE,
+            )).format(
+                leader_skill_type=JAPANESE_LEADER_SKILL_RAISED_STAT[self.leader_skill_type].lower(),
+                idol_type=JAPANESE_TYPES[self.i_type],
+                all_types=u'/'.join(JAPANESE_TYPES.values()),
+                leader_skill_percent='{0:g}'.format(self.leader_skill_percent),
+            )
 
     # Raw values
     @property

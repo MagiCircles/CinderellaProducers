@@ -53,12 +53,14 @@
 	{% if card.has_skill %}
 	<td{% if card.has_leader_skill %} width="50%"{% endif %}>
 	  <h4>{% trans 'Skill' %}: {{ card.skill }}</h4>
+      {% if LANGUAGE_CODE != 'ja' %}
 	  {% if card.translated_skill_name %}
 	  <strong>{{ card.translated_skill_name }}</strong><br>
 	  {% endif %}
 	  <p class="skill-details">
 	    {{ card.skill_details }}
 	  </p>
+      {% endif %}
 	  {% if card.skill_name %}
 	  <strong>{{ card.skill_name }}</strong><br>
 	  {% endif %}
@@ -75,8 +77,11 @@
 	{% endif %}
 	{% if card.has_leader_skill %}
 	<td>
-	  <h4>{% trans 'Leader Skill' %}: {{ card.leader_skill }}</h4>
-	  <p class="skill-details">{{ card.leader_skill_details }}</p>
+	  <h4>
+        {% trans 'Leader Skill' %}:
+        {% if LANGUAGE_CODE == 'ja' %}{{ card.japanese_leader_skill }}{% else %}{{ card.leader_skill }}{% endif %}
+      </h4>
+	  {% if LANGUAGE_CODE != 'ja' %}<p class="skill-details">{{ card.leader_skill_details }}</p>{% endif %}
 	  <p class="skill-details-jp text-muted">{{ card.japanese_leader_skill_details }}</p>
 	</td>
 	{% endif %}
