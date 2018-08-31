@@ -181,8 +181,21 @@ LEADER_SKILLS_BY_NAME = {
     u'フォーチュンプレゼント': models.LEADER_SKILL_FORTUNE_PRESENT,
 }
 
+IDOLS_TYPOED_NAMES = {
+    u'Oota Yu': u'Ohta Yuu',
+    u'Oohara Michiru': u'Ohara Michiru',
+    u'Ooishi Izumi': u'Ohishi Izumi',
+    u'Ootsuki Yui': u'Ohtsuki Yui',
+    u'Eto Misaki': u'Etou Misaki',
+    u'Nanba Emi': u'Namba Emi',
+    u'Asano Fuuka': u'Asano Fuka',
+    u'Cathy Graham': u'Graham Cathy',
+}
+
 def getIdolFromJson(owner, chara, update=False, updated_idols=[]):
     name = chara['conventional']
+    if name in IDOLS_TYPOED_NAMES:
+        name = IDOLS_TYPOED_NAMES[name]
     try:
         idol = models.Idol.objects.get(name=name)
     except ObjectDoesNotExist:
@@ -198,7 +211,7 @@ def getIdolFromJson(owner, chara, update=False, updated_idols=[]):
     data = {
         'owner': owner,
     }
-    data['id'] = chara['chara_id']
+    #data['id'] = chara['chara_id']
     data['japanese_name'] = chara['name']
     data['i_type'] = TYPE_STRINGS[chara['type']] if chara['type'] in TYPE_STRINGS else None
     if chara['age'] < 200:
@@ -244,8 +257,17 @@ def import_cards(args, cards=[]):
         print 'Done.'
     if 'update' not in args and not cards:
         # Check if already exist
-        exist = models.Card.objects.filter(id__in=dict(card_ids).keys()).values_list('id', 'id_awakened')
+        original_card_ids = card_ids
+        exist = [
+            (int(id), int(id_awakened))
+            for id, id_awakened in
+            models.Card.objects.filter(id__in=dict(card_ids).keys()).values_list('id', 'id_awakened')
+        ]
+        extra_in_db = models.Card.objects.exclude(id__in=dict(card_ids).keys())
+        for card in extra_in_db:
+            print 'WARNING: This card is in the database but not in the server:', (card.id, card.id_awakened), card
         card_ids = list(set(card_ids) ^ set(exist))
+        card_ids = [ids for ids in card_ids if ids in original_card_ids]
         if card_ids:
             print 'Adding', len(card_ids), 'new cards...'
         else:
