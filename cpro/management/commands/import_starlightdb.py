@@ -5,6 +5,7 @@ from pprint import pprint
 from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 from django.conf import settings as django_settings
+from django.db.models import Q
 from django.core.files.temp import NamedTemporaryFile
 from django.core.files.images import ImageFile
 from django.core.exceptions import ObjectDoesNotExist
@@ -191,7 +192,7 @@ def getIdolFromJson(owner, chara, update=False, updated_idols=[]):
     if idol:
         if idol.id in updated_idols:
             return idol
-        print 'Updading idol', idol, '...'
+        print 'Updading idol', idol.id, idol, '...'
     else:
         print 'Adding new idol', name, '...'
     data = {
@@ -367,7 +368,7 @@ def import_cards(args, cards=[]):
                     else:
                         data['leader_skill_apply'] = models.LEADER_SKILL_APPLIES_TYPE
                 new_card, created = models.Card.objects.update_or_create(id=card['id'], defaults=data)
-                print '  -> Card', 'added' if created else 'updated', new_card
+                print '  -> Card', 'added' if created else 'updated', new_card.id, new_card
                 if 'images' in args:
                     print '  Adding images to card...'
                     if not new_card.image or 'update' in args:
@@ -413,12 +414,48 @@ def import_starlightdb(args, cards=[]):
                 if not idol.image or 'update' in args:
                     idol.image = unicode(models.Card.objects.filter(idol=idol, puchi__isnull=False).exclude(puchi='').order_by('id')[0].puchi)
                     idol.save()
-                    print 'Idol image has been updated for', idol
+                    print 'Idol image has been updated for', idol.id, idol
                     i += 1
             except IndexError:
-                print 'WARNING: Idol', idol, 'does not have any card that has a puchi image, so no image has been saved.'
+                print 'WARNING: Idol', idol.id, idol, 'does not have any card that has a puchi image, so no image has been saved.'
                 e += 1
         print i, 'idols images updated and', e, 'errors'
+        print 'Done.'
+
+    if 'skip_translations' not in args:
+        print 'Getting strings that need to be translated...'
+        translated_fields = ['title', 'skill_name']
+        q = Q()
+        for field in translated_fields:
+            q |= (Q(**{ u'{}__isnull'.format(field): False }) & ~Q(**{ field: '' })
+                  & (Q(**{ u'translated_{}__isnull'.format(field): True })
+                     | Q(**{ u'translated_{}'.format(field): '' })))
+        cards_need_translations = models.Card.objects.filter(q)
+        print '  ', cards_need_translations.count(), 'cards are missing the translation of their title or skill name or both.'
+        translations = {}# term: {} for term in translated_terms }
+        # { 'hello world': { 'title': [card1, card2, ...], 'skill': [card6, ...] }, ... }
+        for card in cards_need_translations:
+            for field in translated_fields:
+                string = getattr(card, field)
+                if string and not getattr(card, u'translated_{}'.format(field)):
+                    if string not in translations:
+                        translations[string] = { field: [] for field in translated_fields }
+                    translations[string][field].append(card)
+        print '  Total fields that need translations: ', len(translations)
+        print 'Done.'
+        print 'Downloading translations...'
+        r = requests.post('https://starlight.kirara.ca/api/v1/read_tl', data=json.dumps(translations.keys()))
+        result = r.json()
+        for string, fields in translations.items():
+            if string not in result:
+                total_affected = reduce(lambda a, b: a + b, [len(c) for c in fields.values()])
+                print '  WARNING: No translation found for "', string, '" (', total_affected, 'cards fields affected)'
+                continue
+            for field, cards in fields.items():
+                for card in cards:
+                    print '  Card', card.id, card, field, string, '->', result[string]
+                    setattr(card, 'translated_{}'.format(field), result[string])
+                    card.save()
         print 'Done.'
 
 class Command(BaseCommand):
