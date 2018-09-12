@@ -350,12 +350,14 @@ def import_cards(args, cards=[]):
                                 'Tricolor Synergy',
                                 'All Round',
                                 'Cute/Cool/Passion Focus',
+                                'Focus',
                         ]
                         else 'skill_trigger_value'
                     ]
                     if skill in [
                             'Tricolor Synergy',
-                            'Cute/Cool/Passion Focus'
+                            'Cute/Cool/Passion Focus',
+                            'Focus',
                     ]:
                         data['skill_value2'] = data['skill_value2'] - 100
                     data['skill_value3'] = card['skill']['value_3']

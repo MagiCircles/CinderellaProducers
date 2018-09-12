@@ -161,6 +161,7 @@ SKILL_FOCUS = 13
 SKILL_ENCORE = 14
 SKILL_SPARKLE = 15
 SKILL_TRICOLOR_SYNERGY = 16
+SKILL_LESSER_FOCUS = 17
 
 SKILL_CHOICES = [
     (SKILL_LESSER_PERFECT_LOCK, _('Lesser Perfect Lock')),
@@ -180,6 +181,7 @@ SKILL_CHOICES = [
     (SKILL_ENCORE, _('Encore')),
     (SKILL_SPARKLE, _('Life Sparkle')),
     (SKILL_TRICOLOR_SYNERGY, _('Tricolor Synergy')),
+    (SKILL_LESSER_FOCUS, _('Focus')),
 ]
 SKILL_DICT = dict(SKILL_CHOICES)
 UNTRANSLATED_SKILL_CHOICES = [
@@ -200,6 +202,7 @@ UNTRANSLATED_SKILL_CHOICES = [
     (SKILL_ENCORE, 'Encore'),
     (SKILL_SPARKLE, 'Life Sparkle'),
     (SKILL_TRICOLOR_SYNERGY, 'Tricolor Synergy'),
+    (SKILL_LESSER_FOCUS, 'Focus'),
 ]
 SKILL_REVERSE_DICT = { value: key for (key, value) in UNTRANSLATED_SKILL_CHOICES }
 
@@ -221,6 +224,7 @@ SKILL_SENTENCES = {
     SKILL_ENCORE: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance to activate the previous skill again for {skill_duration} seconds.'),
     SKILL_SPARKLE: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will gain an extra combo bonus based on your current health for {skill_duration} seconds.'),
     SKILL_TRICOLOR_SYNERGY: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that with all three types of idols on the team, you will gain an extra {skill_value2}% combo bonus, and Perfect notes will receive a {skill_value}% score bonus plus restore {skill_value3} life, for {skill_duration} seconds.'),
+    SKILL_LESSER_FOCUS: _('For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus, and you will gain an extra {skill_value2}% combo bonus for {skill_duration} seconds'),
 }
 
 JAPANESE_SKILL_SENTENCES = {
@@ -241,6 +245,7 @@ JAPANESE_SKILL_SENTENCES = {
     SKILL_ENCORE: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌{trigger_value}秒毎、直前に発動した他アイドルの特技効果を繰り返す',
     SKILL_SPARKLE: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌{trigger_value}秒毎、ライフ値が多いほどCOMBOボーナスアップ',
     SKILL_TRICOLOR_SYNERGY: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌3タイプ全てのアイドル編成時、{trigger_value}秒毎、PERFECTのスコア{skill_value2}%アップ/ライフ{skill_value3}回復、COMBOボーナス{skill_value}%アップ',
+    SKILL_LESSER_FOCUS: u'⎾{trigger_chance}%の確率 - {skill_duration}秒⏌{trigger_value}秒毎、高確率でしばらくの間、PERFECTのスコア{skill_value}%アップ、COMBOボーナス{skill_value2}%アップ',
 }
 
 # LEADER SKILL
