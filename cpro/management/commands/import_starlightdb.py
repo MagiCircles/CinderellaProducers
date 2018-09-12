@@ -420,6 +420,9 @@ def import_cards(args, cards=[]):
                     print '  Uploading downloaded images and saving card...'
                     new_card.save()
                     print '  Done.'
+                if created:
+                    new_card.release_date = timezone.now()
+                    new_card.save()
         card_ids = card_ids[10:]
         i += 1
     print 'Done.'
