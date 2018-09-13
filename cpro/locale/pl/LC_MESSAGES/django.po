@@ -13,465 +13,376 @@ msgstr ""
 msgid "You"
 msgstr "Witaj"
 
-#: cpro/templates/accountsForProfile.html:44
+#: bang/models.py:856 bang/models.py:1085 bang/models.py:1322
+#: bang/models.py:1535 bang/models.py:1710
 msgid "Account"
 msgstr "Konto"
 
-#: stardustrun/templates/include/accountsBeforeTemplate.html:7
+#: bang/magicollections.py:1077 bang/magicollections.py:1354
+#: bang/magicollections.py:1359 bang/magicollections.py:1788
 msgid "Leaderboard"
 msgstr "Ranking"
 
-#: web/default_settings.py:131
+#: magi/magicollections.py:1467
 msgid "Create your account to join the community and be in the leaderboard!"
-msgstr "Stwórz konto aby dołączyć do społeczności i pojawić się w rankingach!"
+msgstr "Stwórz konto, aby dołączyć do społeczności i pojawić się w rankingach!"
 
-#: web/default_settings.py:151 web/default_settings.py:284
-#: web/default_settings.py:295 web/templates/items/profile.html:26
-#: web/templates/pages/about.html:65 web/templates/pages/donate.html:154
-#: web/templates/pages/donate.html:196
+#: bang/templates/pages/indexBackground.html:20
 msgid "Profile"
 msgstr "Profil"
 
-#: web/default_settings.py:152
+#: magi/magicollections.py:1583
 msgid "Players"
 msgstr "Gracze"
 
-#: web/default_settings.py:174 web/default_settings.py:245
-#: web/templates/items/activityItem.html:47
-#: web/templates/items/profile.html:119
+#: magi/magicollections.py:2147 magi/models.py:927 magi/models.py:941
 msgid "Activity"
 msgstr "Aktywność"
 
-#: web/default_settings.py:175 web/templates/items/profile.html:75
+#: magi/default_settings.py:665 magi/forms.py:895 magi/magicollections.py:2148
 msgid "Activities"
 msgstr "Aktywności"
 
-#: web/default_settings.py:183 web/views.py:124
+#: magi/magicollections.py:2283
 msgid "Share your adventures!"
 msgstr "Podziel się swoimi przygodami!"
 
-#: web/default_settings.py:208
-#: web/management/commands/cron_notifications.py:30
-#: web/templates/emails/notification.html:5
-#: web/templates/emails/notification.html:6
+#: magi/magicollections.py:2406
+#: magi/management/commands/cron_notifications.py:31
+#: magi/templates/emails/notification.html:5
+#: magi/templates/emails/notification.html:6
 msgid "Notification"
 msgstr "Powiadomienie"
 
-#: web/default_settings.py:117 web/default_settings.py:209
+#: magi/magicollections.py:2407
 msgid "Notifications"
 msgstr "Powiadomienia"
 
-#: web/default_settings.py:271 web/templates/pages/login.html:4
-#: web/templates/pages/login.html.py:6 web/templates/pages/signup.html:8
+#: magi/default_settings.py:356 magi/templates/pages/login.html:4
+#: magi/templates/pages/login.html.py:6 magi/templates/pages/signup.html:8
 msgid "Login"
-msgstr "Logowanie"
+msgstr "Zaloguj"
 
-#: web/default_settings.py:277 web/templates/pages/login.html:8
-#: web/templates/pages/signup.html:4 web/templates/pages/signup.html.py:6
+#: magi/default_settings.py:362 magi/templates/pages/login.html:8
+#: magi/templates/pages/signup.html:4 magi/templates/pages/signup.html.py:6
 msgid "Sign Up"
 msgstr "Rejestracja"
 
-#: web/default_settings.py:301 web/templates/items/profile.html:28
-#: web/templates/pages/settings.html:16 web/views.py:176
+#: magi/default_settings.py:378 magi/magicollections.py:1692
+#: magi/templates/items/profile.html:33 magi/templates/pages/settings.html:8
+#: magi/utils.py:296 magi/views.py:306 magi/views.py:309 magi/views.py:542
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: web/default_settings.py:309
+#: magi/default_settings.py:386
 msgid "Logout"
 msgstr "Wyloguj"
 
 #: cpro/raw.py:5 cpro/templates/items/ownedcardItem.html:36
 msgid "About"
-msgstr "O graczu"
+msgstr "O projekcie"
 
-#: web/default_settings.py:336 web/templates/include/about_description.html:7
-#: web/templates/include/homePage.html:10 web/templates/pages/donate.html:7
-#: web/templates/pages/donate.html.py:13 web/templates/pages/donate.html:23
+#: bang/settings.py:178
 msgid "Donate"
 msgstr "Wspomóż nas"
 
 #. Link to a map of all the players (similar to Google maps).
-#: cpro/templates/pages/map.html:1
+#: bang/templates/pages/map.html:1
 msgid "Map"
 msgstr "Mapa strony"
 
 #. Link to the help pages that look like a wiki and help people use the site.
-#: web/default_settings.py:350 web/default_settings.py:356
+#: magi/default_settings.py:426 magi/default_settings.py:432
+#: magi/templates/pages/about.html:384 magi/views.py:502
 msgid "Help"
 msgstr "Pomoc"
 
 #. The favorite color of the user. Will be used to personalize their profile.
-#: web/forms.py:135 web/models.py:63
+#: bang/forms.py:125 bang/forms.py:169 bang/models.py:217
 msgid "Color"
 msgstr "Kolor"
 
 #. This is about the favorite characters the user specified in their preferences.
-#: web/forms.py:168
+#: magi/forms.py:1021
 msgid "All your favorites must be unique"
-msgstr "Nie możesz wybrać tej samej postaci kilkakrotnie"
+msgstr "Nie możesz wybrać tej samej postaci wielokrotnie"
 
-#: web/forms.py:213
+#: magi/forms.py:1200
 msgid "Old Password"
 msgstr "Stare hasło"
 
-#: web/forms.py:214
+#: magi/forms.py:1201
 msgid "New Password"
 msgstr "Nowe hasło"
 
-#: web/forms.py:215
+#: magi/forms.py:1202
 msgid "New Password Again"
 msgstr "Powtórz nowe hasło"
 
-#: web/model_choices.py:18
+#: magi/models.py:170
 msgid "Player"
 msgstr "Gracz"
 
-#: web/model_choices.py:19
+#: magi/models.py:171
 msgid "Super Player"
 msgstr "Super gracz"
 
-#: web/model_choices.py:20
+#: magi/models.py:172
 msgid "Extreme Player"
 msgstr "Ekstremalny gracz"
 
-#: web/model_choices.py:21
+#: magi/models.py:173
 msgid "Master Player"
-msgstr "Mistrz"
+msgstr "Mistrzowski gracz"
 
-#: web/model_choices.py:22
+#: magi/models.py:174
 msgid "Ultimate Player"
 msgstr "Gracz najwyższej klasy"
 
-#: web/model_choices.py:35
-msgid "blue"
-msgstr "niebieskie"
-
-#: web/model_choices.py:36
-msgid "pink"
-msgstr "różowe"
-
-#: web/model_choices.py:37
-msgid "shiny Silver"
-msgstr "srebrne"
-
-#: web/model_choices.py:38 web/model_choices.py:39
-msgid "shiny Gold"
-msgstr "złote"
-
-#: web/model_choices.py:83
+#: magi/models.py:439
 msgid "Never"
 msgstr "Nigdy"
 
-#: web/model_choices.py:84
+#: magi/models.py:440
 msgid "Sometimes"
 msgstr "Czasami"
 
-#: web/model_choices.py:85
+#: magi/models.py:441
 msgid "Often"
 msgstr "Często"
 
-#: web/model_choices.py:86
+#: magi/models.py:442
 msgid "Every single day"
 msgstr "Każdego dnia"
 
 #. Example of replacement: "db0 liked your activity: I love going to the beach!" where db0 is the user who liked your activity and "I love going to the beach!" is the content of your activity.
-#: web/model_choices.py:97
+#: magi/models.py:925 magi/models.py:939
 msgid "{} liked your activity: {}."
 msgstr "{} polubił twoją aktywność: {}."
 
 #. Make sure there's as many {} in your translation than in the original sentence.
 #. Example of replacement: "db0 just followed you." where db0 is the user who follows you.
-#: web/model_choices.py:98
+#: magi/models.py:932
 msgid "{} just followed you."
 msgstr "{} zaczął cię obserwować."
 
 #. For the emails settings.
-#: web/model_choices.py:104
+#: magi/models.py:926
 msgid "When someone likes your activity."
 msgstr "Kiedy ktoś polubi twoją aktywność."
 
 #. For the emails settings.
-#: web/model_choices.py:105
+#: magi/models.py:933
 msgid "When someone follows you."
 msgstr "Kiedy ktoś zacznie cię obserwować."
 
 #. Personal description you can write on your profile. Similar to twitter's "bio".
-#: cpro/models.py:77 cpro/templates/items/idolInfo.html:139
+#: sukutomo/models.py:237
 msgid "Description"
 msgstr "Opis"
 
-#: web/models.py:59
-msgid "Write whatever you want. You can add formatting and links using Markdown."
-msgstr "Napisz tu cokolwiek chcesz. Możesz dodać formatowanie w języku Markdown."
-
 #. Your translation must be gender neutral. Example 1er/ère
-#: web/models.py:60
+#: bang/forms.py:340 bang/magicollections.py:489 bang/models.py:861
 msgid "1st"
 msgstr "Pierwsza"
 
 #. Your translation must be gender neutral. Example 1er/ère
-#: web/models.py:61
+#: magi/models.py:134
 msgid "2nd"
 msgstr "Druga"
 
 #. Your translation must be gender neutral. Example 1er/ère
-#: web/models.py:62
+#: magi/models.py:135
 msgid "3rd"
 msgstr "Trzecia"
 
-#: web/models.py:64
+#: magi/models.py:137
 msgid "Birthdate"
 msgstr "Data urodzin"
 
 #. Will do a google maps search and put people on the map. Can be replaced by something like "Your city" or "Address".
-#: web/models.py:65
+#: magi/models.py:140
 msgid "Location"
 msgstr "Lokalizacja"
 
-#: web/models.py:65
+#: magi/models.py:140
 msgid "The city you live in."
 msgstr "Miasto"
 
-#: web/models.py:65
+#: magi/models.py:140
 msgid "It might take up to 24 hours to update your location on the map."
 msgstr "Aktualizacja mapy może zająć do 24 godzin."
 
 #. For links. Select your platform before adding a link. Can be Facebook/Twitter/Reddit, etc.
-#: web/models.py:176
+#: magi/models.py:436
 msgid "Platform"
 msgstr "Platforma"
 
-#: web/models.py:177
+#: magi/models.py:406
 msgid "Username/ID"
 msgstr "Nazwa użytkownika/ID"
 
 #. For links.
-#: web/models.py:177
+#: magi/models.py:406
 msgid "Write your username only, no URL."
 msgstr "Wpisz tylko nazwę użytkownika bez URL."
 
 #. For links.
-#: web/forms.py:247 web/models.py:178
+#: magi/forms.py:1292
 msgid "How often do you tweet/stream/post about {}?"
 msgstr "Jak często wrzucasz tam treści związane z {}?"
 
-#: web/templates/base.html:117
+#: magi/templates/base.html:131
 msgid "Help us translate the site"
 msgstr "Pomóż nam przetłumaczyć stronę"
 
-#: web/default_settings.py:27 web/templates/collections/list_page.html:13
+#: magi/default_settings.py:21 magi/templates/collections/list_page.html:16
 msgid "No result."
-msgstr "Brak rezultatów."
+msgstr "Brak wyników."
 
-#: web/templates/collections/modification_view.html:29
-msgid "Back to"
-msgstr "Powróć"
-
-#: web/templates/emails/notification.html:17
-#: web/templates/emails/notification.html:20
-#: web/templates/emails/notification.txt:5 web/templates/emails/report.html:29
-#: web/templates/emails/report.html:30 web/templates/emails/report.txt:8
-#: web/templates/items/notificationItem.html:22
-#: web/templates/items/reportItem.html:66
-msgid "Open"
-msgstr "Otwórz"
-
-#. Make sure the world "donating" can be added at the end of this sentence.
-#: web/templates/emails/donation_footer.html:3
-#: web/templates/pages/donate.html:22
-msgid "If you like the website, please consider"
-msgstr "Jeżeli podoba ci się strona rozważ"
-
-#. Make sure you can add this word at the end of the sentence "If you like the website, please consider"
-#: web/templates/emails/donation_footer.html:3
-#: web/templates/pages/donate.html:22
-msgid "donating"
-msgstr "darowiznę"
-
-#: web/templates/emails/donation_footer.html:4
-#: web/templates/pages/donate.html:22
+#: magi/templates/emails/donation_footer.html:4
+#: magi/templates/include/donate.html:10 magi/templates/pages/settings.html:140
 msgid "This will help us cover the costs of the servers and allow us to keep it running for free and without ads."
 msgstr "Pomoże nam to pokryć koszty utrzymania serwerów i pozwoli na prowadzenie strony bez reklam."
-
-#: web/templates/emails/notification.html:30
-#: web/templates/emails/notification.txt:7
-msgid "Click here"
-msgstr "Kliknij tu"
-
-#: web/templates/emails/notification.html:30
-#: web/templates/emails/notification.txt:7
-msgid "to turn off email notifications."
-msgstr "aby wyłączyć powiadomienia mailowe."
 
 #: stardustrun/templates/include/pokedex.html:39
 msgid "Apply Changes"
 msgstr "Potwierdź zmiany"
 
-#: web/templates/include/about_description.html:2
+#: magi/templates/include/about_description.html:2
 msgid "Nice to meet you, we are Deby and Engil!"
 msgstr "Miło nam was poznać. Jesteśmy Deby i Engil!"
 
-#: web/templates/include/about_description.html:3
+#: magi/templates/include/about_description.html:3
 msgid "We are two developers and casual players. We live in San Francisco, California. We come from the same computer science university and both work as software engineers in the same company we founded:"
 msgstr "Jesteśmy dwoma programistami i luźnymi graczami. Mieszkamy w San Diego, Kaliforni. Studiowaliśmy informatykę na tym samym uniwerku, i pracujemy jako inżynierowie oprogramowania w firmie którą razem stworzyliśmy."
 
-#: web/templates/include/about_description.html:6
+#: magi/templates/include/about_description.html:6
 msgid "Though we love our job, we don't pay ourselves and don't have any income, so any donation helps a lot and is greatly appreciated."
 msgstr "Mimo że kochamy naszą robotę, nie płacimy sobie nawzajem i nie mamy przychodów, i każda darowizna jest na wagę złota i będziemy bardzo wdzięczni."
 
-#: web/templates/include/about_description.html:10
+#: magi/templates/include/about_description.html:10
 msgid "The heartwarming support from the community keeps motivating us to do more! We love helping the community by providing as much information as we can about the game, while keeping the website easy to use, shiny and cute ^_^"
 msgstr "Gorące wsparcie społeczności motywuje nas do dalszej pracy! Kochamy pomagać społeczności, dostarczając jak najwięcej możliwych informacji o grze, w postaci prostej w użyciu, błyszczącej i ślicznej strony ^_^"
 
-#: web/templates/include/about_description.html:12
+#: magi/templates/include/about_description.html:12
 msgid "We don't know how far we will go with this, but one thing we know for sure is that we are having a lot of fun doing it and sharing this adventure with you."
 msgstr "Nie wiemy jak daleko uda nam się zajść z tym wszystkim, ale jednego jesteśmy pewni, że dzielenie tej przygody z wami sprawia nam mnóstwo frajdy."
 
-#: web/templates/include/pagination.html:17
+#: magi/templates/include/pagination.html:17
+#: magi/templates/items/profile.html:63
 msgid "Load more..."
 msgstr "Załaduj więcej..."
 
-#: web/templates/items/activityItem.html:41
+#: magi/templates/items/activityItem.html:116
 msgid "Write Comment"
 msgstr "Napisz komentarz"
 
-#: cpro/templates/include/cards-stats.html:91
-#: cpro/templates/items/eventInfo.html:21
-#: cpro/templates/items/idolInfo.html:25
+#: cpro/templates/include/cards-stats.html:118
+#: cpro/templates/include/cards-stats.html:120
+#: cpro/templates/items/eventInfo.html:135
+#: cpro/templates/items/eventInfo.html:138
+#: cpro/templates/items/idolInfo.html:187
+#: cpro/templates/items/idolInfo.html:190
 msgid "Comments"
 msgstr "Komentarze"
 
 #. Will be showed before another word. For example: "Edit account" or "Edit card". Can be changed to something else so the order works, such as "Modify" or "Modification of". A gender-neutral article may be added, such as "Edit the".
 #: cpro/templates/accountsForProfile.html:44
-#: cpro/templates/items/cardItem.html:42 cpro/templates/items/idolItem.html:17
+#: cpro/templates/items/cardItem.html:42
+#: cpro/templates/items/eventInfo.html:154
+#: cpro/templates/items/idolInfo.html:206 cpro/templates/items/idolItem.html:17
 #: cpro/templates/items/ownedcardItem.html:23
 #: cpro/templates/items/ownedcardItem.html:29
 msgid "Edit"
 msgstr "Edytuj"
 
 #. Feel free to use Twitter's word in your language.
-#: web/templates/items/profile.html:23
+#: magi/magicollections.py:1704 magi/templates/items/profile.html:27
 msgid "Unfollow"
 msgstr "Przestań obserwować"
 
 #. Feel free to use Twitter's word in your language.
-#: web/templates/items/profile.html:23 web/templates/items/profile.html:26
+#: magi/forms.py:1234 magi/magicollections.py:1704
+#: magi/templates/items/profile.html:27 magi/templates/items/profile.html:31
 msgid "Follow"
 msgstr "Obserwuj"
 
 #. Feel free to use Twitter's word in your language.
-#: web/templates/items/profile.html:30
+#: magi/templates/items/profile.html:37 magi/templates/items/profile.html:39
 msgid "Followers"
 msgstr "Obserwatorzy"
 
 #. Feel free to use Twitter's word in your language.
-#: web/templates/include/homePage.html:56 web/templates/items/profile.html:31
+#: magi/default_settings.py:328 magi/forms.py:1564
+#: magi/templates/items/profile.html:43 magi/templates/items/profile.html:45
 msgid "Following"
 msgstr "Obserwuje"
 
-#: web/templates/items/profile.html:101
+#: magi/templates/items/profile.html:119
 msgid "No account."
 msgstr "Brak konta."
 
 #. The exact phrase "%(length)s" must appear somewhere in your translation. It will be replaced with a number. If you don't write it or write it incorrectly, the whole page will not work in your language.
-#: web/templates/items/profile.html:105
+#: magi/templates/items/profile.html:123
 msgid "%(length)s account:"
 msgid_plural "%(length)s accounts:"
 msgstr[0] "Konto użytkownika %(length):"
 msgstr[1] "Konta użytkownika %(length):"
 msgstr[2] ""
 
-#: web/templates/pages/about.html:29 web/templates/pages/about.html.py:79
+#: magi/templates/include/donate.html:51 magi/templates/pages/about.html:51
+#: magi/templates/pages/about.html.py:374
 msgid "Contact us"
 msgstr "Skontaktuj się z nami"
 
-#: web/templates/pages/about.html:86
-msgid "We reply faster if you send us an direct message on Twitter:"
-msgstr "Odpowiemy szybciej jeżeli wyślesz do nas bezpośrednią wiadomość na Twitterze:"
-
-#: web/templates/pages/about.html:95
-msgid "You can also contact us by email, especially if you need help with something sensitive, such as transferring your account to another user."
-msgstr "Możecie też skontaktować się z nami mailowo, szczególnie jeśli potrzebujecie pomocy z bardziej dyskretnymi sprawami, jak przekazanie konta innemu użytkownikowi."
-
-#. On a button
-#: web/templates/pages/about.html:99
-msgid "Send Email"
-msgstr "Wyślij email"
-
-#: web/templates/pages/about.html:107
-msgid "You can also contact us with a private message on:"
-msgstr "Możecie też wysłać nam prywatną wiadomość na:"
-
-#: web/templates/pages/about.html:121
-msgid "For suggestions or bug reports, we recommend you to:"
-msgstr "W przypadku sugestii lub błędów na stronie, zalecamy:"
-
-#: web/templates/pages/about.html:124
-msgid "Browse the upcoming features on"
-msgstr ""
-
-#: web/templates/pages/about.html:124
-msgid "our Tasks manager"
-msgstr ""
-
-#: web/templates/pages/about.html:125
-msgid "Create a new issue"
-msgstr ""
-
-#: web/templates/pages/about.html:125
-msgid "with the details about what you would like us to implement"
-msgstr ""
-
-#: web/templates/pages/about.html:160
+#: magi/templates/pages/about.html:446
 msgid "Franchise Credits"
 msgstr ""
 
-#: web/templates/pages/about.html:170
+#: magi/templates/pages/about.html:455
 msgid "Icons Credits"
-msgstr ""
+msgstr "Autor ikonek"
 
-#: web/templates/pages/about.html:41
+#: magi/templates/pages/about.html:82
 msgid "Staff members"
 msgstr "Członkowie zespołu"
 
-#: web/templates/pages/about.html:53
-msgid "Owner"
-msgstr "Właściciel"
-
-#: web/templates/items/reportItem.html:47
-#: web/templates/items/reportItem.html:55 web/templates/pages/about.html:55
+#: magi/forms.py:1843 magi/templates/items/profile.html:15
+#: magi/templates/items/reportItem.html:50
+#: magi/templates/items/reportItem.html:58
 msgid "Staff"
 msgstr "Zespół"
 
-#: web/templates/pages/about.html:135
+#: magi/templates/base.html:109 magi/templates/pages/about.html:420
 msgid "Check out our other websites"
 msgstr "Sprawdź nasze inne strony"
 
-#: web/templates/pages/about.html:179
+#: magi/templates/pages/about.html:466
 msgid "Contribute"
 msgstr ""
 
-#: web/templates/pages/about.html:179 web/templates/pages/about.html.py:195
+#: magi/templates/pages/about.html:466 magi/templates/pages/about.html:482
 msgid "Dev"
 msgstr "Dev"
 
-#: web/templates/pages/about.html:181
+#: magi/templates/pages/about.html:468
 msgid "Our project is open-source and open for contributions. We are more than happy to accept pull-requests on GitHub!"
 msgstr ""
 
-#: web/templates/pages/about.html:183
+#: magi/templates/pages/about.html:470
 msgid "The website has been made using"
-msgstr ""
+msgstr "Strona powstała przy użyciu"
 
-#: web/templates/pages/about.html:183
+#: magi/templates/pages/about.html:470
 msgid "so in Python 2. We also use"
 msgstr ""
 
-#: web/templates/pages/about.html:183
+#: magi/templates/pages/about.html:470
 msgid "for the front-end of the website."
 msgstr ""
 
-#: web/templates/pages/about.html:185
+#: magi/templates/pages/about.html:472
 msgid "We accept all kind of contributions, from tools to help players, statistics pages, mini-games, or even little CSS changes. Don't be shy! If you need help getting started, just contact us and we will happily take the time to teach you the basics, no matter your level."
 msgstr ""
 
@@ -479,284 +390,185 @@ msgstr ""
 msgid "Get Started"
 msgstr "Zacznij"
 
-#: web/templates/pages/about.html:197
+#: magi/templates/pages/about.html:484
 msgid "If you're a developer and you would like to get the data of the game in a convenient format, we provide a public REST API to get the game data, our users datacards, and more!"
 msgstr ""
 
-#: web/templates/pages/donate.html:24 web/templates/pages/donate.html:131
+#: magi/magicollections.py:2660 magi/templates/include/donate.html:57
 msgid "Donators"
-msgstr ""
+msgstr "Donatorzy"
 
-#: web/templates/pages/donate.html:46
-msgid "Donation"
-msgstr ""
-
-#: web/templates/pages/donate.html:67
-msgid "Your name, your profile picture, a link to your profile, and a link to whatever you would like to advertise (your Twitter, Tumblr, Twitch or any other website!) will be added to this page."
-msgstr ""
-
-#: web/templates/pages/donate.html:70
-msgid "Your name and a link to your profile will be added to this page."
-msgstr ""
-
-#: web/templates/pages/donate.html:77
-msgid "We will send you a cool postcard signed by the 2 developers :)"
-msgstr "Wyślemy ci fajną pocztówkę podpisaną przez dwóch naszych developerów :) "
-
-#. The exact phrase "%(status)s" must appear somewhere in your translation. It will be replaced with the status name of the user, such as "Extreme Player". If you don't write it or write it incorrectly, the whole page will not work in your language.
-#: web/templates/pages/donate.html:84
-msgid "You're the %(status)s."
-msgstr "%(status) to ty!"
-
-#: web/templates/pages/donate.html:86
-msgid "You decide who will be the character shown by default on top of the homepage."
-msgstr "Zdecydujesz jaka postać będzie domyślnie ukazana na górze strony głównej."
-
-#. The exact phrase "%(status)s" must appear somewhere in your translation. It will be replaced with the status name of the user, such as "Extreme Player". If you don't write it or write it incorrectly, the whole page will not work in your language.
-#: web/templates/pages/donate.html:94
-msgid "You're a %(status)s."
-msgstr "%(status) to ty!"
-
-#: web/templates/pages/donate.html:98
-msgid "With this special status, a lovely %(color)s heart will be displayed next to your profile picture on your profile and everywhere it appears on the website."
-msgstr ""
-
-#: web/templates/pages/donate.html:120
-msgid "We will discuss then implement a feature you would like to see on the website. You decide what you want, and we will make it come true!"
-msgstr ""
-
-#: web/templates/pages/donate.html:121
-msgid "Note that it has to be in the range of our abilities and in accordance with the spirit of the website ^_^"
-msgstr ""
-
-#: web/templates/pages/wiki.html:5 web/templates/pages/wiki.html.py:19
+#: magi/default_settings.py:443 magi/default_settings.py:451 magi/views.py:505
 msgid "Wiki"
 msgstr "Wiki"
 
-#: web/templates/pages/login.html:9
+#: magi/templates/pages/login.html:9 magi/templates/pages/settings.html:261
 msgid "Forgot password?"
 msgstr "Zapomniałeś hasła?"
 
-#. Customize profile, colors, location, description, etc.
-#: web/templates/pages/settings.html:8
-msgid "Customize"
-msgstr "Dostosuj"
-
-#: web/templates/pages/settings.html:12
+#: magi/forms.py:1197
 msgid "Change your password"
 msgstr "Zmień hasło"
 
-#: web/templates/pages/settings.html:14
+#: magi/forms.py:868
 msgid "Emails"
 msgstr "Maile"
 
-#: web/templates/pages/settings.html:42
+#: magi/templates/pages/settings.html:19 magi/templates/pages/settings.html:50
 msgid "Links"
 msgstr "Odnośniki"
 
-#: web/templates/pages/settings.html:64
+#: magi/templates/pages/settings.html:17 magi/templates/pages/settings.html:39
 msgid "Avatar"
-msgstr "Avatar"
+msgstr "Awatar"
 
-#: web/templates/pages/settings.html:67
+#: magi/templates/pages/settings.html:42
 msgid "To change your avatar, use Gravatar with the same email address."
-msgstr "Aby zmienić avatara użyj Gravatara przypisanego da tego samego adresu mailowego."
+msgstr "Aby zmienić awatar, użyj Gravatara przypisanego do tego samego adresu mailowego."
 
-#: web/templates/pages/settings.html:69
+#: magi/templates/pages/settings.html:45
 msgid "F.A.Q."
 msgstr "F.A.Q."
 
-#: web/templates/pages/settings.html:70
+#: magi/templates/pages/settings.html:46
 msgid "Change Avatar"
-msgstr "Zmień avatara"
+msgstr "Zmień awatar"
 
-#: web/templates/items/profile.html:71 web/templates/pages/settings.html:74
+#: magi/default_settings.py:661 magi/magicollections.py:1393
+#: magi/templates/pages/settings.html:29
 msgid "Accounts"
 msgstr "Konta"
 
-#: web/templates/pages/settings.html:81
-msgid "Edit Account"
-msgstr "Edytuj konto"
-
-#: web/templates/pages/settings.html:86 web/templates/pages/settings.html:95
-msgid "Back to my profile"
-msgstr "Powróć do profilu"
-
-#: web/templates/pages/wiki.html:23
-msgid "Back to Wiki Home"
-msgstr "Wróć na stronę główną wiki"
-
-#: web/templates/pages/wiki.html:30
-msgid "Create a new wiki page"
-msgstr "Stwórz nową stronę w wiki"
-
-#: web/templates/pages/wiki.html:31
-msgid "Edit the sidebar"
-msgstr "Edytuj pasek boczny"
-
-#: web/templates/pages/wiki.html:32 web/templates/pages/wiki.html.py:39
-msgid "Note: You need an account on GitHub to add/edit wiki pages"
-msgstr "Do edycji stron wiki wymagane jest konto GitHub"
-
-#: web/templates/pages/wiki.html:38
-msgid "Edit this wiki page"
-msgstr "Edytuj tą stronę wiki"
-
 #. Make sure {object} also appears in your sentence. Will be replaced with the corresponding values.
-#: web/views_collections.py:112
+#: magi/views_collections.py:210
 msgid "1 {object} matches your search:"
 msgstr "1 {object} spełnia kryteria wyszukiwania:"
 
 #. Make sure {total} and {object} also appear in your sentence. Will be replaced with the corresponding values.
-#: web/views_collections.py:112
+#: magi/views_collections.py:210
 msgid "{total} {objects} match your search:"
 msgstr "{total} {objects} spełniają kryteria wyszukiwania:"
 
-#: web/views_collections.py:148
+#: magi/magicollections.py:1028
 msgid "Become a contributor to help us fill the database"
 msgstr "Pomóż nam zapełnić bazę danych"
 
-#: web/views_collections.py:324
+#: magi/views.py:607 magi/views_collections.py:530
 msgid "You can't cancel this action afterwards."
-msgstr ""
+msgstr "Nie możesz potem cofnąć tej akcji,"
 
-#: web/templates/pages/donate.html:64
-msgid "Your name, your profile picture, a link to your profile, and a link to whatever you would like to advertise (your Twitter, Tumblr, Twitch or any other website!) will be added to the HOMEPAGE!"
-msgstr "Twoje imię, avatar, odnośnik do profilu lub do czegokolwiek tylko chcesz (twój Twitter, Tumblr, Twitch, lub inna strona) będą dodane do STRONY GŁÓWNEJ!"
-
-#: web/templates/pages/donate.html:105
-msgid "We will send you a T-shirt!"
-msgstr "Dostaniesz koszulkę!"
-
-#: web/templates/pages/donate.html:114
-msgid "We will send you a personalized keyring!"
-msgid_plural "We will send you %(counter)s personalized keyrings!"
-msgstr[0] "Wyślemy ci %(counter) spersonalizowany brelok! "
-msgstr[1] "Wyślemy ci %(counter) spersonalizowanych breloków! "
-msgstr[2] ""
-
-#. Will be showed before another word. For example: "Add account" or "Add card". Can be changed to something else so the order works, such as "Creation of" or "Addition of". A gender-neutral article may be added, such as "Add a".
-#: web/templates/collections/list_view.html:75
-#: web/templates/collections/list_view.html:87
-#: web/templates/items/profile.html:97 web/templates/items/profile.html:119
-#: web/templates/pages/settings.html:10 web/templates/pages/settings.html:87
-msgid "Add"
-msgstr "Dodaj"
-
-#: web/templates/pages/settings.html:10 web/templates/pages/settings.html:51
+#: magi/forms.py:1287 magi/views.py:313 magi/views.py:314
 msgid "Link"
 msgstr "Odnośnik"
 
-#: web/forms.py:276
+#: magi/forms.py:1339 magi/forms.py:1373
 msgid "Confirm"
 msgstr "Akceptuj"
 
-#: web/forms.py:287 web/forms.py:317
+#: bang/models.py:1834
 msgid "Tags"
 msgstr "Tagi"
 
-#: web/models.py:58 web/models.py:194
+#: magi/forms.py:1328 magi/models.py:128 magi/models.py:501 magi/models.py:731
+#: magi/templates/base.html:120 magi/templates/items/activityItem.html:46
 msgid "Language"
 msgstr "Język"
 
-#: web/models.py:192 web/models.py:333 web/templates/items/reportItem.html:30
-#: web/templates/items/reportItem.html:55
+#: magi/models.py:724 magi/models.py:1012 magi/models.py:1233
+#: magi/templates/items/reportItem.html:33
+#: magi/templates/items/reportItem.html:58
 msgid "Message"
 msgstr "Wiadomość"
 
-#: cpro/models.py:82 cpro/models.py:99 cpro/models.py:312 cpro/models.py:313
+#: sukutomo/models.py:123 sukutomo/models.py:253 sukutomo/models.py:276
+#: sukutomo/models.py:280 sukutomo/models.py:284 sukutomo/models.py:288
+#: sukutomo/models.py:292
 msgid "Image"
 msgstr "Obrazek"
 
-#: web/templates/items/activityItem.html:29
-#: web/templates/items/activityItem.html:31
+#: magi/forms.py:1570 magi/templates/items/activityItem.html:100
+#: magi/templates/items/activityItem.html:102
 msgid "Liked"
 msgstr "Polubione"
 
-#: web/templates/items/activityItem.html:31
-#: web/templates/items/activityItem.html:34
+#: magi/templates/items/activityItem.html:102
+#: magi/templates/items/activityItem.html:105
 msgid "Like"
 msgstr "Polub"
 
-#. Will be shown before another word. For example: "Delete account" or "Delete card". Can be changed to something else so the order works, such as "Remove" or "Removal of". A gender-neutral article may be added, such as "Delete the".
-#: web/templates/pages/settings.html:51 web/views_collections.py:325
-msgid "Delete"
-msgstr "Usuń"
-
-#: web/forms.py:347 web/models.py:334 web/templates/items/reportItem.html:35
+#: magi/forms.py:1649 magi/models.py:1013
+#: magi/templates/items/reportItem.html:38
 msgid "Images"
 msgstr "Obrazki"
 
-#: web/templates/emails/report.html:17 web/templates/emails/report.txt:5
+#: magi/templates/emails/report.html:16 magi/templates/emails/report.txt:5
+#: magi/templates/pages/settings.html:94
 msgid "Staff Message:"
-msgstr "Wiadomość od Zespołu:"
+msgstr "Wiadomość od zespołu:"
 
-#: web/templates/emails/report.html:37 web/templates/emails/report.txt:10
+#: magi/templates/emails/report.html:36 magi/templates/emails/report.txt:10
+#: magi/templates/pages/settings.html:112
 msgid "Moderated by:"
-msgstr "Moderowane przez"
+msgstr "Moderowane przez:"
 
 #: cpro/templates/accountsForProfile.html:48
 msgid "Report"
 msgstr "Zaraportuj"
 
-#: web/templates/items/reportItem.html:19
+#: magi/templates/items/reportItem.html:18
 msgid "Reported by:"
 msgstr "Zaraportowane przez:"
 
-#: web/views.py:345 web/views.py:373
+#: magi/views.py:673 magi/views.py:708
 msgid "This {thing} you reported has been reviewed by a moderator and {verb}. Thank you so much for your help!"
 msgstr ""
 
-#: web/views.py:345 web/views.py:353 web/views.py:356 web/views.py:381
+#: magi/views.py:429 magi/views.py:673 magi/views.py:684 magi/views.py:689
+#: magi/views.py:719
 msgid "edited"
 msgstr "edytowane"
 
-#: web/views.py:348 web/views.py:376
+#: magi/views.py:678 magi/views.py:713
 msgid "Thank you for reporting this {thing}"
-msgstr "Dziękujemy za zaraportowanie {thing} "
+msgstr "Dziękujemy za zaraportowanie {thing}"
 
-#: web/views.py:353 web/views.py:381
+#: magi/views.py:423 magi/views.py:684 magi/views.py:719
 msgid "Your {thing} has been reported, and a moderator confirmed it should be {verb}."
 msgstr ""
 
-#: web/views.py:356 web/views.py:384
+#: magi/views.py:689 magi/views.py:724
 msgid "Your {thing} has been {verb}"
-msgstr ""
+msgstr "Twój {thing} był {verb}"
 
-#: web/views.py:373 web/views.py:384
+#: magi/views.py:432 magi/views.py:708 magi/views.py:724
 msgid "deleted"
 msgstr "usunięte"
 
-#: web/templates/emails/report.html:22
-msgid "Translate from English to %(language)s"
-msgstr "Przetłumacz z j. Angielskiego na j. "
-
-#: web/templates/emails/notification.html:8
-#: web/templates/emails/notification.txt:1 web/templates/emails/report.html:10
-#: web/templates/emails/report.txt:1
+#: magi/templates/emails/notification.html:8
+#: magi/templates/emails/notification.txt:1 magi/templates/emails/report.html:9
+#: magi/templates/emails/report.txt:1
 msgid "Hi"
 msgstr "Cześć"
 
-#: web/forms.py:148 web/models.py:60 web/models.py:61 web/models.py:62
-#: web/views.py:91
+#: sukutomo/settings.py:49
 msgid "{nth} Favorite Character"
-msgstr "Ulubiona Postać"
+msgstr "Ulubiona postać"
 
-#: web/settings.py:75
+#: magi/settings.py:104
 msgid "The {game} Database & Community"
-msgstr ""
+msgstr "Baza danych i społeczność {game}"
 
-#: web/views.py:152
+#: magi/views.py:219
 msgid "{site} is not a representative and is not associated with {game}. Its logos and images are Trademarks of {company}."
 msgstr ""
 
-#: web/views.py:152
+#: magi/views.py:221
 msgid "the company that owns {game}"
-msgstr ""
+msgstr "firma posiadająca prawa do gry {game};"
 
-#: web/views_collections.py:246
+#: magi/views_collections.py:444
 msgid "Make sure the {thing} you're about to add doesn't already exist."
-msgstr ""
+msgstr "Upewnij się, czy {thing} już nie istnieje."
 
 #: stardustrun/collections_settings.py:79 stardustrun/forms.py:125
 #: stardustrun/models.py:52 stardustrun/templates/items/pokemonItem.html:65
@@ -765,7 +577,7 @@ msgstr "Punkty zdrowia"
 
 #: stardustrun/collections_settings.py:84 stardustrun/forms.py:126
 #: stardustrun/models.py:53 stardustrun/models.py:329
-#: stardustrun/settings.py:132
+#: stardustrun/settings.py:146
 #: stardustrun/templates/items/ownedpokemonItem.html:34
 #: stardustrun/templates/items/pokemonItem.html:69
 msgid "Attack"
@@ -795,34 +607,30 @@ msgstr "Szansa na ucieczkę"
 
 #: stardustrun/collections_settings.py:14
 msgid "Pokédex"
-msgstr "Pokédex "
+msgstr "Pokédex"
 
 #: stardustrun/collections_settings.py:15
 msgid "Medals"
 msgstr "Medale"
 
-#: cpro/forms.py:72 cpro/forms.py:132 cpro/models.py:154
+#: cpro/forms.py:72 cpro/forms.py:132 cpro/models.py:215
 #: cpro/templates/ajax/account_about.html:60
 msgid "Starter"
 msgstr "Starter"
 
-#: cpro/forms.py:96 cpro/forms.py:316
+#: cpro/forms.py:96 cpro/forms.py:343
 msgid "This date cannot be in the future."
 msgstr "Nie możesz ustawić przyszłej daty."
 
-#: cpro/forms.py:135 cpro/templates/include/cards-stats.html:102
-#: cpro/templates/include/cards-stats.html:105
-#: cpro/templates/include/cards-stats.html:108
+#: bang/forms.py:71 bang/forms.py:113 bang/forms.py:988 bang/models.py:1713
 msgid "Level"
 msgstr "Poziom"
 
-#: cpro/forms.py:137 cpro/models.py:155
-#: cpro/templates/ajax/account_about.html:71
+#: sukutomo/forms.py:12
 msgid "Start Date"
-msgstr ""
+msgstr "Data rozpoczęcia"
 
-#: cpro/forms.py:136 cpro/models.py:135
-#: cpro/templates/ajax/account_about.html:77
+#: bang/forms.py:115
 msgid "Join Date"
 msgstr "Data dołączenia"
 
@@ -845,7 +653,7 @@ msgstr "Imię Pokémona"
 #: stardustrun/forms.py:130 stardustrun/models.py:59
 #: stardustrun/templates/items/pokemonItem.html:85
 msgid "Candies needed to evolve"
-msgstr "Cukiery wymagane do wyewoluowania"
+msgstr "Cukierki wymagane do ewolucji"
 
 #: stardustrun/forms.py:131 stardustrun/models.py:60
 #: stardustrun/templates/items/pokemonItem.html:89
@@ -858,148 +666,148 @@ msgstr "Typ"
 
 #: stardustrun/model_choices.py:8
 msgid "Instinct"
-msgstr ""
+msgstr "Instinct"
 
 #: stardustrun/model_choices.py:9
 msgid "Mystic"
-msgstr ""
+msgstr "Mystic"
 
 #: stardustrun/model_choices.py:10
 msgid "Valor"
-msgstr ""
+msgstr "Valor"
 
 #: stardustrun/model_choices.py:17
 msgid "Pokémon Trainer"
-msgstr ""
+msgstr "Trener Pokémon "
 
 #: stardustrun/model_choices.py:18
 msgid "Super Pokémon Trainer"
-msgstr ""
+msgstr "Super Trener Pokémon "
 
 #: stardustrun/model_choices.py:19
 msgid "Expert Pokémon Trainer"
-msgstr ""
+msgstr "Zaawansowany Trener Pokémon "
 
 #: stardustrun/model_choices.py:20
 msgid "Pokémon Master"
-msgstr ""
+msgstr "Mistrz Pokémonów "
 
 #: stardustrun/model_choices.py:21
 msgid "Ultimate Pokémon Master"
-msgstr ""
+msgstr "Najwyższy Mistrz Pokémonów "
 
 #: stardustrun/model_choices.py:42
 msgid "Fairy"
-msgstr ""
+msgstr "Baśniowy"
 
 #: stardustrun/model_choices.py:43
 msgid "Steel"
-msgstr ""
+msgstr "Stalowy"
 
 #: stardustrun/model_choices.py:44
 msgid "Dark"
-msgstr ""
+msgstr "Mroczny"
 
 #: stardustrun/model_choices.py:45
 msgid "Dragon"
-msgstr ""
+msgstr "Smoczy"
 
 #: stardustrun/model_choices.py:46
 msgid "Ghost"
-msgstr ""
+msgstr "Duch"
 
 #: stardustrun/model_choices.py:47
 msgid "Rock"
-msgstr ""
+msgstr "Kamienny"
 
 #: stardustrun/model_choices.py:48
 msgid "Bug"
-msgstr ""
+msgstr "Robaczy"
 
 #: stardustrun/model_choices.py:49
 msgid "Psychic"
-msgstr ""
+msgstr "Psychiczny"
 
 #: stardustrun/model_choices.py:50
 msgid "Flying"
-msgstr ""
+msgstr "Latający"
 
 #: stardustrun/model_choices.py:51
 msgid "Ground"
-msgstr ""
+msgstr "Ziemny"
 
 #: stardustrun/model_choices.py:52
 msgid "Poison"
-msgstr ""
+msgstr "Trujący"
 
 #: stardustrun/model_choices.py:53
 msgid "Fighting"
-msgstr ""
+msgstr "Walczący"
 
 #: stardustrun/model_choices.py:54
 msgid "Ice"
-msgstr ""
+msgstr "Lodowy"
 
 #: stardustrun/model_choices.py:55
 msgid "Grass"
-msgstr ""
+msgstr "Trawiasty"
 
 #: stardustrun/model_choices.py:56
 msgid "Electric"
-msgstr ""
+msgstr "Elektryczny"
 
 #: stardustrun/model_choices.py:57
 msgid "Water"
-msgstr ""
+msgstr "Wodny"
 
 #: stardustrun/model_choices.py:58
 msgid "Fire"
-msgstr ""
+msgstr "Ognisty"
 
-#: cpro/model_choices.py:116
+#: bang/models.py:961 bang/models.py:1173 bang/models.py:1229
+#: bang/models.py:1230 bang/models.py:1327
 msgid "Normal"
-msgstr ""
+msgstr "Normalny"
 
-#: cpro/models.py:137
+#: cpro/models.py:198
 msgid "Nickname"
-msgstr ""
+msgstr "Pseudonim"
 
 #: stardustrun/models.py:196
 msgid "Team"
-msgstr ""
+msgstr "Drużyna"
 
 #: stardustrun/models.py:198
 msgid "When you started playing with this account."
-msgstr ""
+msgstr "Kiedy zacząłeś grać na tym koncie"
 
 #: stardustrun/models.py:199 stardustrun/templates/accountsForProfile.html:53
 msgid "Bought Pokécoins"
-msgstr ""
+msgstr "Zakupione Pokécoins"
 
 #: stardustrun/forms.py:210 stardustrun/forms.py:233 stardustrun/forms.py:266
 #: stardustrun/models.py:325
 #: stardustrun/templates/items/ownedpokemonItem.html:7
 msgid "CP"
-msgstr ""
+msgstr "CP"
 
-#: cpro/forms.py:269 cpro/forms.py:270
+#: cpro/forms.py:299 cpro/forms.py:300
 msgid "HP"
-msgstr ""
+msgstr "HP"
 
-#: cpro/forms.py:171 cpro/models.py:59 cpro/templates/items/idolInfo.html:73
+#: cpro/forms.py:172 cpro/models.py:60 cpro/templates/items/idolInfo.html:94
 #: cpro/templates/items/idolItem.html:42
 msgid "Weight"
-msgstr ""
+msgstr "Waga"
 
-#: cpro/forms.py:170 cpro/models.py:58 cpro/templates/items/idolInfo.html:66
-#: cpro/templates/items/idolItem.html:36
+#: sukutomo/forms.py:41 sukutomo/models.py:211 sukutomo/models.py:217
 msgid "Height"
-msgstr ""
+msgstr "Wzrost"
 
 #: stardustrun/models.py:330 stardustrun/templates/items/attackItem.html:12
 #: stardustrun/templates/items/ownedpokemonItem.html:36
 msgid "Special Attack"
-msgstr ""
+msgstr "Specjalny Atak"
 
 #: stardustrun/models.py:473
 #: stardustrun/templates/include/empty_pokedex.html:23
@@ -1009,85 +817,87 @@ msgstr ""
 #: stardustrun/templates/include/pokedex.html:36
 #: stardustrun/templates/items/pokemonFullItem.html:134
 msgid "Candies"
-msgstr ""
+msgstr "Cukierki"
 
 #: stardustrun/models.py:474
 #: stardustrun/templates/include/empty_pokedex.html:15
 #: stardustrun/templates/include/pokedex.html:21
 msgid "Seen"
-msgstr ""
+msgstr "Widziane"
 
 #: stardustrun/models.py:475
 #: stardustrun/templates/include/empty_pokedex.html:19
 #: stardustrun/templates/include/pokedex.html:25
 msgid "Caught"
-msgstr ""
+msgstr "Złapane"
 
 #: stardustrun/settings.py:31
 msgid "Pokémon Go is a free-to-play, location-based augmented reality game developed and published by Niantic for iOS and Android devices."
-msgstr ""
+msgstr "Pokémon Go to darmowa, oparta na lokalizacji rzczywista gra dewelopowana przez Niantic na urządzenia iOS i Android"
 
 #: stardustrun/settings.py:38
 msgid "{nth} Favorite Pokémon"
-msgstr ""
+msgstr "{nth} Ulubiony Pokémon"
 
-#: stardustrun/collections_settings.py:13 stardustrun/settings.py:92
-#: stardustrun/settings.py:93 stardustrun/settings.py:161
-#: stardustrun/settings.py:162 stardustrun/templates/items/pokemonItem.html:51
+#: stardustrun/collections_settings.py:13 stardustrun/settings.py:55
+#: stardustrun/settings.py:106 stardustrun/settings.py:107
+#: stardustrun/settings.py:175 stardustrun/settings.py:176
+#: stardustrun/templates/items/pokemonItem.html:51
 msgid "Pokémon"
-msgstr ""
+msgstr "Pokémon"
 
-#: stardustrun/settings.py:133
+#: stardustrun/settings.py:147
 #: stardustrun/templates/items/pokemonFullItem.html:48
 msgid "Attacks"
-msgstr ""
+msgstr "Ataki"
 
 #: cpro/templates/accountsForProfile.html:66
 msgid "Coming soon"
-msgstr ""
+msgstr "Wkrótce"
 
 #: cpro/templates/include/advancedButton.html:3
 msgid "Simple"
-msgstr ""
+msgstr "Proste"
 
 #: cpro/templates/include/advancedButton.html:5
 msgid "Advanced"
-msgstr ""
+msgstr "Zawaansowane"
 
 #: stardustrun/templates/include/pokemonsBeforeTemplate.html:8
 msgid "Open Pokémon GO, tap the pokéball at the bottom and tap Pokédex"
-msgstr ""
+msgstr "Otwórz Pokémon GO, naciśnij na pokéball na dole i naciśnij Pokédex\n"
+""
 
 #: cpro/templates/include/afterCards.html:7
 msgid "Check out your own profile"
-msgstr ""
+msgstr "Zobacz swój profil"
 
 #: cpro/templates/include/afterCards.html:11
 msgid "Customize it"
-msgstr ""
+msgstr "Personalizuj"
 
 #: cpro/templates/include/afterCards.html:14
 msgid "Share it on:"
-msgstr ""
+msgstr "Podziel się na:"
 
 #: stardustrun/templates/items/ownedpokemonItem.html:26
 msgid "More info"
-msgstr ""
+msgstr "Więcej informacji"
 
 #: stardustrun/templates/items/pokemonFullItem.html:42
 #: stardustrun/templates/items/pokemonFullItem.html:78
 msgid "Your Collection"
-msgstr ""
+msgstr "Twoja Kolekcja"
 
 #: stardustrun/templates/items/pokemonFullItem.html:45
 #: stardustrun/templates/items/pokemonFullItem.html:114
 msgid "Evolutions"
-msgstr ""
+msgstr "Ewolucje"
 
 #: stardustrun/templates/items/pokemonFullItem.html:51
 #: stardustrun/templates/pages/ajax_pokedex.html:9
 msgid "Permalink"
-msgstr ""
+msgstr "Permalink"
 
 #: stardustrun/templates/items/pokemonFullItem.html:98
 #: stardustrun/templates/items/pokemonItem.html:31
@@ -1096,60 +906,58 @@ msgstr ""
 
 #: stardustrun/templates/pages/ajax_pokedex.html:5
 msgid "Change to icons"
-msgstr ""
+msgstr "Zamień na ikony"
 
 #: stardustrun/templates/pages/ajax_pokedex.html:7
 msgid "Change to list"
-msgstr ""
+msgstr "Zamień na listę"
 
 #: stardustrun/views.py:134
 msgid "You have {} of them in you collection. Delete them before changing this."
-msgstr ""
+msgstr "Masz {} przedmiotów w kolekcji. Usuń je przed dokonaniem zmian."
 
-#: web/default_settings.py:331
+#: magi/default_settings.py:413
 msgid "About the game"
-msgstr ""
+msgstr "O grze"
 
-#: web/models.py:73
+#: magi/models.py:201
 msgid "View activities in your language only?"
-msgstr ""
+msgstr "Czy przełączyć na aktywność wyłącznie w twoim języku?"
 
-#: web/models.py:254
+#: magi/models.py:845
 msgid "Check out {username}'s activity on {site}: {activity}"
-msgstr ""
+msgstr "Sprawdź aktywność {username} na {site}: {activity}"
 
-#: web/settings.py:45
+#: magi/settings.py:74
 msgid "Join the community!"
-msgstr ""
+msgstr "Dołącz do społeczności!"
 
-#: web/settings.py:80
+#: magi/settings.py:109
 msgid "{site} provides an extended database of information about the game {game} and allows you to keep track of your progress in the game. You can create and customize your very own profile to share your progress and your collection to all your friends. You can also meet other players like you with the social network: read what the others are doing and share your adventures with the community. Comment, like and follow the other players to grow your network. Find players near you with the global map of all the players. And much more!"
-msgstr ""
+msgstr "{site} zawiera rozbudowaną bazę informacji na temat gry {game} i pozwala na śledzenie własnych postępów w grze. Możesz utworzyć oraz spersonalizować własny profil i udostępnić go swoim znajomym. Masz także możliwość komunikowania się z innymi graczami i śledzenia ich poczynań w społeczności, poprzez komentowanie, polubienia postów oraz śledzenie ich aktywności. Znajdź graczy ze swojej okolicy z pomocą globalnej mapy. A to nie wszystko!"
 
-#: web/templates/include/activityFollowMessage.html:4
+#: magi/templates/include/activityFollowMessage.html:4
 msgid "Start following players to see their activities!"
-msgstr ""
+msgstr "Zacznij śledzić graczy by widzieć ich aktywność!"
 
-#: web/templates/include/homePage.html:9
+#: magi/templates/include/homePage.html:11
 msgid "is crowdfunded by %(total_donators)s %(adjective)s donators"
 msgstr ""
 
-#: web/templates/include/homePage.html:15
-#: web/templates/include/homePage.html:18
+#: magi/templates/include/homePage.html:25
+#: magi/templates/include/homePage.html:28 magi/templates/pages/about.html:16
+#: magi/templates/pages/prelaunch.html:14
+#: magi/templates/pages/prelaunch.html:17
 msgid "About %(site_name)s"
-msgstr ""
+msgstr "O %(site_name)s"
 
-#: cpro/model_choices.py:211
+#: sukutomo/models.py:129
 msgid "All"
-msgstr ""
+msgstr "Wszystkie"
 
-#: web/templates/pages/about.html:22
-msgid "About the creators"
-msgstr ""
-
-#: web/views.py:127
+#: magi/magicollections.py:1935
 msgid "Check out {username}'s awesome collection!"
-msgstr ""
+msgstr "Obejrzyj kolekcję {username}!"
 
 #: stardustrun/collections_settings.py:46
 msgid "Global"
@@ -1157,49 +965,50 @@ msgstr ""
 
 #: stardustrun/collections_settings.py:64
 msgid "Check out my awesome collection of Pokémon!"
-msgstr ""
+msgstr "Obejrzyj moją kolekcję Pokémonów!"
 
 #: stardustrun/forms.py:119
 msgid "Pokémon in your collection"
-msgstr ""
+msgstr "Pokémony w Twojej kolekcji"
 
 #: stardustrun/forms.py:120
 msgid "Pokémon you've seen"
-msgstr ""
+msgstr "Pokémony, które widziałeś"
 
-#: stardustrun/forms.py:183
+#: bang/forms.py:896 bang/forms.py:897 bang/models.py:1176 bang/models.py:1235
+#: bang/models.py:1236 bang/models.py:1330
 msgid "Special"
 msgstr ""
 
 #: stardustrun/forms.py:185 stardustrun/models.py:20
 #: stardustrun/templates/items/attackItem.html:13
 msgid "Damage"
-msgstr ""
+msgstr "Obrażenia"
 
 #: stardustrun/forms.py:186 stardustrun/models.py:21
 #: stardustrun/templates/items/attackItem.html:15
 msgid "Energy Increase"
-msgstr ""
+msgstr "Wzrost Energii"
 
 #: stardustrun/forms.py:187 stardustrun/models.py:22
 #: stardustrun/templates/items/attackItem.html:16
 msgid "Critical Hit Chance"
-msgstr ""
+msgstr "Szansa na krytyczny cios"
 
 #: stardustrun/forms.py:188 stardustrun/models.py:23
 #: stardustrun/templates/items/attackItem.html:14
 msgid "Duration"
-msgstr ""
+msgstr "Czas trwania"
 
 #: stardustrun/forms.py:189 stardustrun/models.py:24
 #: stardustrun/templates/items/attackItem.html:17
 msgid "Energy Requirement"
-msgstr ""
+msgstr "Wymagana Energia"
 
 #: stardustrun/forms.py:233 stardustrun/forms.py:235 stardustrun/forms.py:237
 #: stardustrun/forms.py:239
 msgid "after evolution"
-msgstr ""
+msgstr "po ewolucji"
 
 #: stardustrun/models.py:200 stardustrun/models.py:282
 msgid "Stardust"
@@ -1225,9 +1034,9 @@ msgstr ""
 #: stardustrun/templates/include/pokemonsBeforeTemplate.html:6
 #: stardustrun/templates/include/pokemonsShareButton.html:4
 msgid "Share your Pokédex!"
-msgstr ""
+msgstr "Podziel się swoim Pokédexem!"
 
-#: stardustrun/settings.py:244 stardustrun/settings.py:251
+#: stardustrun/settings.py:258 stardustrun/settings.py:265
 #: stardustrun/templates/items/ownedpokemonItem.html:24
 #: stardustrun/templates/pages/evolve.html:6
 msgid "Evolve"
@@ -1239,7 +1048,7 @@ msgstr ""
 
 #: stardustrun/templates/include/pokemonsShareButton.html:22
 msgid "What next?"
-msgstr ""
+msgstr "Co dalej?"
 
 #: stardustrun/templates/include/pokemonsShareButton.html:24
 msgid "Click on the Pokémon that are the most important to you and edit their CP and nicknames"
@@ -1247,11 +1056,11 @@ msgstr ""
 
 #: stardustrun/templates/include/pokemonsShareButton.html:29
 msgid "Let's go!"
-msgstr ""
+msgstr "Ruszajmy!"
 
 #: stardustrun/templates/include/pokemonsShareButton.html:45
 msgid "Go further"
-msgstr ""
+msgstr "Idź dalej"
 
 #: stardustrun/templates/include/pokemonsShareButton.html:46
 msgid "Discover everything you can do on Stardust Run"
@@ -1263,64 +1072,60 @@ msgstr ""
 
 #: stardustrun/templates/items/attackItem.html:21
 msgid "All Attacks"
-msgstr ""
+msgstr "Wszystkie Ataki"
 
-#: cpro/templates/include/index.html:12
+#: stardustrun/templates/items/attackItem.html:31
 msgid "seconds"
 msgstr ""
 
-#: web/forms.py:322
-msgid "Last Update"
-msgstr ""
-
-#: web/forms.py:323
+#: bang/forms.py:537 bang/forms.py:805
 msgid "Creation"
 msgstr ""
 
-#: web/forms.py:324 web/forms.py:325
+#: magi/forms.py:1525 magi/forms.py:1526
 msgid "Most Popular"
 msgstr ""
 
-#: web/forms.py:324
+#: magi/forms.py:1525
 msgid "All time"
 msgstr ""
 
-#: web/forms.py:325
+#: magi/forms.py:1526
 msgid "This week"
 msgstr ""
 
-#: cpro/forms.py:139 cpro/forms.py:175 cpro/forms.py:214 cpro/forms.py:271
+#: cpro/forms.py:139 cpro/forms.py:176 cpro/forms.py:215 cpro/forms.py:301
 msgid "Ordering"
-msgstr ""
+msgstr "Kolejność wyświetlania"
 
-#: web/templates/include/pagination.html:12
+#: cpro/templates/include/cards-stats.html:100
+#: cpro/templates/include/cards-stats.html:112
+#: cpro/templates/items/eventInfo.html:47 cpro/templates/items/idolInfo.html:36
+#: cpro/templates/items/idolInfo.html:50 cpro/templates/items/idolInfo.html:64
 msgid "View all"
 msgstr "Zobacz wszystkie"
 
-#: web/views.py:108
+#: sukutomo/magicollections.py:161
 msgid "{age} years old"
 msgstr "lat"
 
-#: cpro/collections_settings.py:97
+#: cpro/collections_settings.py:108 cpro/magicollections.py:226
 msgid "Check out my collection of cards!"
 msgstr "Obejrzyj moją kolekcję! "
 
-#: cpro/forms.py:94 cpro/forms.py:314
+#: cpro/forms.py:94 cpro/forms.py:341
 msgid "The game didn't even exist at that time."
 msgstr "Gra jeszcze wtedy nie istniała. "
 
-#: cpro/forms.py:129 cpro/forms.py:130 cpro/forms.py:164 cpro/forms.py:254
-#: cpro/forms.py:329 cpro/models.py:51 cpro/templates/items/idolInfo.html:45
+#: bang/forms.py:953
 msgid "Type"
 msgstr "Typ"
 
-#: cpro/forms.py:130 cpro/forms.py:131 cpro/models.py:153
-#: cpro/templates/ajax/account_about.html:45
+#: bang/magicollections.py:89 bang/models.py:80
 msgid "Center"
 msgstr "Centrum "
 
-#: cpro/forms.py:131 cpro/forms.py:262 cpro/forms.py:327 cpro/models.py:291
-#: cpro/templates/include/cards-stats.html:18
+#: bang/forms.py:250 bang/forms.py:368 bang/forms.py:1151 bang/models.py:330
 msgid "Rarity"
 msgstr "Rzadkość"
 
@@ -1328,130 +1133,126 @@ msgstr "Rzadkość"
 msgid "Favorite Idol"
 msgstr "Ulubiona idolka "
 
-#: cpro/forms.py:138 cpro/models.py:156
+#: cpro/forms.py:138 cpro/models.py:217
 msgid "Producer Rank"
 msgstr "Poziom Producenta"
 
-#: cpro/forms.py:140 cpro/forms.py:176 cpro/forms.py:215 cpro/forms.py:272
+#: cpro/forms.py:140 cpro/forms.py:177 cpro/forms.py:216 cpro/forms.py:302
 msgid "Reverse Order"
-msgstr "Odwrotna kolejność"
+msgstr "Odwrócona kolejność"
 
-#: cpro/forms.py:144 cpro/models.py:139
-#: cpro/templates/ajax/account_about.html:13
+#: sukutomo/models.py:40
 msgid "Accept friend requests"
 msgstr "Akceptuje zaproszenia do przyjaciół"
 
-#: cpro/forms.py:167 cpro/forms.py:211 cpro/models.py:49 cpro/models.py:50
-#: cpro/models.py:97 cpro/models.py:98 cpro/templates/items/eventInfo.html:44
-#: cpro/templates/items/eventInfo.html:50
-#: cpro/templates/items/idolInfo.html:38
+#: sukutomo/forms.py:36 sukutomo/forms.py:37 sukutomo/models.py:111
+#: sukutomo/models.py:122
 msgid "Name"
 msgstr "Imię "
 
-#: cpro/forms.py:168 cpro/models.py:56 cpro/templates/items/idolInfo.html:52
-#: cpro/templates/items/idolItem.html:24
+#: sukutomo/forms.py:40 sukutomo/models.py:179
 msgid "Age"
 msgstr "Wiek"
 
-#: cpro/forms.py:169 cpro/models.py:57 cpro/templates/items/idolInfo.html:59
-#: cpro/templates/items/idolItem.html:30
+#: sukutomo/forms.py:39 sukutomo/models.py:180
 msgid "Birthday"
 msgstr "Urodziny"
 
-#: cpro/forms.py:172 cpro/models.py:66 cpro/templates/items/idolInfo.html:94
-#: cpro/templates/items/idolItem.html:48
+#: sukutomo/forms.py:42 sukutomo/models.py:212 sukutomo/models.py:218
 msgid "Bust"
 msgstr "Biust "
 
-#: cpro/forms.py:173 cpro/models.py:67 cpro/templates/items/idolInfo.html:101
-#: cpro/templates/items/idolItem.html:54
+#: sukutomo/forms.py:43 sukutomo/models.py:213 sukutomo/models.py:219
 msgid "Waist"
 msgstr "Talia"
 
-#: cpro/forms.py:174 cpro/models.py:68 cpro/templates/items/idolInfo.html:108
-#: cpro/templates/items/idolItem.html:60
+#: sukutomo/forms.py:44 sukutomo/models.py:214 sukutomo/models.py:220
 msgid "Hips"
 msgstr "Biodra"
 
-#: cpro/forms.py:190 cpro/models.py:100 cpro/templates/items/eventInfo.html:61
+#: sukutomo/forms.py:53 sukutomo/forms.py:56 sukutomo/forms.py:59
+#: sukutomo/forms.py:62 sukutomo/forms.py:65 sukutomo/models.py:277
+#: sukutomo/models.py:281 sukutomo/models.py:285 sukutomo/models.py:289
+#: sukutomo/models.py:293
 msgid "Beginning"
 msgstr "Początek"
 
-#: cpro/forms.py:191 cpro/forms.py:210 cpro/models.py:101
-#: cpro/templates/items/eventInfo.html:66
+#: sukutomo/forms.py:54 sukutomo/forms.py:57 sukutomo/forms.py:60
+#: sukutomo/forms.py:63 sukutomo/forms.py:66 sukutomo/models.py:278
+#: sukutomo/models.py:282 sukutomo/models.py:286 sukutomo/models.py:290
+#: sukutomo/models.py:294
 msgid "End"
 msgstr "Koniec"
 
-#: cpro/forms.py:212 cpro/models.py:105 cpro/models.py:107 cpro/models.py:109
-#: cpro/models.py:111 cpro/models.py:113
+#: cpro/forms.py:213 cpro/models.py:145 cpro/models.py:147 cpro/models.py:149
+#: cpro/models.py:151 cpro/models.py:153
 msgid "T{} points"
 msgstr "T{} w punktach"
 
-#: cpro/forms.py:213 cpro/models.py:106 cpro/models.py:108 cpro/models.py:110
-#: cpro/models.py:112 cpro/models.py:114
+#: cpro/forms.py:214 cpro/models.py:146 cpro/models.py:148 cpro/models.py:150
+#: cpro/models.py:152 cpro/models.py:154
 msgid "T{} rank"
 msgstr "T{} w rankingu"
 
-#: cpro/forms.py:255 cpro/forms.py:330 cpro/models.py:306 cpro/settings.py:66
-#: cpro/settings.py:209 cpro/templates/include/cards-stats.html:23
-#: cpro/templates/items/eventInfo.html:56
+#: sukutomo/magicollections.py:222
 msgid "Event"
 msgstr "Event"
 
-#: cpro/forms.py:256 cpro/models.py:307
+#: bang/forms.py:306 bang/forms.py:654 bang/magicollections.py:1617
+#: bang/models.py:1403
 msgid "Limited"
 msgstr "Limitowana"
 
-#: cpro/forms.py:257 cpro/forms.py:264 cpro/forms.py:266 cpro/forms.py:268
-#: cpro/forms.py:270 cpro/models.py:289 cpro/models.py:313 cpro/models.py:323
-#: cpro/models.py:335 cpro/models.py:345 cpro/models.py:355 cpro/models.py:364
-#: cpro/models.py:365 cpro/models.py:368 cpro/models.py:369 cpro/models.py:372
-#: cpro/models.py:373 cpro/models.py:376 cpro/models.py:377 cpro/models.py:642
-#: cpro/models.py:690
+#: cpro/forms.py:294 cpro/forms.py:296 cpro/forms.py:298 cpro/forms.py:300
+#: cpro/models.py:350 cpro/models.py:374 cpro/models.py:384 cpro/models.py:394
+#: cpro/models.py:406 cpro/models.py:416 cpro/models.py:426 cpro/models.py:435
+#: cpro/models.py:436 cpro/models.py:439 cpro/models.py:440 cpro/models.py:443
+#: cpro/models.py:444 cpro/models.py:447 cpro/models.py:448 cpro/models.py:757
+#: cpro/models.py:805
 msgid "Awakened"
-msgstr "Przemieniona "
+msgstr "Przemieniona"
 
-#: cpro/forms.py:258 cpro/models.py:318 cpro/models.py:323
-#: cpro/templates/include/cards-stats.html:132
-#: cpro/templates/include/cards-stats.html:138
+#: bang/magicollections.py:733 bang/magicollections.py:830
+#: bang/magicollections.py:837 bang/magicollections.py:893
+#: bang/magicollections.py:894 bang/models.py:581 bang/models.py:587
 msgid "Art"
 msgstr "Art"
 
-#: cpro/forms.py:260 cpro/models.py:305
+#: cpro/forms.py:287 cpro/models.py:366
 #: cpro/templates/include/cards-stats.html:44
 msgid "Release Date"
-msgstr "Data wydania "
+msgstr "Data wydania"
 
-#: cpro/forms.py:261 cpro/models.py:288 cpro/models.py:289
+#: bang/forms.py:245 bang/magicollections.py:681 bang/models.py:320
 msgid "ID"
 msgstr "ID"
 
-#: cpro/forms.py:263 cpro/forms.py:264 cpro/model_choices.py:43
-#: cpro/model_choices.py:227 cpro/model_choices.py:232 cpro/models.py:366
-#: cpro/models.py:367 cpro/models.py:368 cpro/models.py:369 cpro/models.py:423
+#: cpro/forms.py:293 cpro/forms.py:294 cpro/model_choices.py:49
+#: cpro/model_choices.py:376 cpro/models.py:437 cpro/models.py:438
+#: cpro/models.py:439 cpro/models.py:440 cpro/models.py:494
 msgid "Vocal"
 msgstr "Wokal"
 
-#: cpro/forms.py:265 cpro/forms.py:266 cpro/model_choices.py:44
-#: cpro/model_choices.py:229 cpro/model_choices.py:232 cpro/models.py:370
-#: cpro/models.py:371 cpro/models.py:372 cpro/models.py:373 cpro/models.py:425
+#: cpro/forms.py:295 cpro/forms.py:296 cpro/model_choices.py:50
+#: cpro/model_choices.py:378 cpro/models.py:441 cpro/models.py:442
+#: cpro/models.py:443 cpro/models.py:444 cpro/models.py:496
 msgid "Dance"
 msgstr "Taniec"
 
-#: cpro/forms.py:267 cpro/forms.py:268 cpro/model_choices.py:45
-#: cpro/model_choices.py:228 cpro/model_choices.py:232 cpro/models.py:374
-#: cpro/models.py:375 cpro/models.py:376 cpro/models.py:377 cpro/models.py:424
+#: bang/forms.py:256 bang/forms.py:257 bang/magicollections.py:969
+#: bang/models.py:605 bang/models.py:606 bang/models.py:607 bang/models.py:676
+#: bang/models.py:1646
 msgid "Visual"
 msgstr "Wygląd"
 
-#: cpro/forms.py:331 cpro/model_choices.py:213 cpro/model_choices.py:231
-#: cpro/models.py:433 cpro/templates/include/cards-stats.html:55
+#: bang/forms.py:375 bang/forms.py:1185 bang/magicollections.py:481
+#: bang/magicollections.py:701 bang/magicollections.py:971 bang/models.py:472
 msgid "Skill"
 msgstr "Umiejętność"
 
 #: cpro/model_choices.py:9
 msgid "Skilled Producer"
-msgstr "Zdolny Producent "
+msgstr "Zdolny Producent"
 
 #: cpro/model_choices.py:10
 msgid "Expert Producer"
@@ -1467,436 +1268,429 @@ msgstr "Najwyższej Klasy Producent"
 
 #: cpro/model_choices.py:13
 msgid "Idol Master"
-msgstr "Mistrz Idolek "
+msgstr "Mistrz Idolek"
 
 #: cpro/model_choices.py:25
 msgid "Cute"
 msgstr "Cute"
 
-#: cpro/model_choices.py:26
+#: sukutomo/models.py:128
 msgid "Cool"
 msgstr "Cool"
 
 #: cpro/model_choices.py:27
 msgid "Passion"
-msgstr "Passion "
+msgstr "Passion"
 
-#: cpro/model_choices.py:54
+#: cpro/model_choices.py:60
 msgid "Right"
 msgstr "Prawa"
 
-#: cpro/model_choices.py:54
+#: cpro/model_choices.py:60
 msgid "Left"
 msgstr "Lewa"
 
-#: cpro/model_choices.py:54
+#: cpro/model_choices.py:60
 msgid "Both"
-msgstr "Obie "
+msgstr "Obie"
 
-#: cpro/model_choices.py:78
+#: sukutomo/models.py:183
 msgid "Leo"
 msgstr "Lew"
 
-#: cpro/model_choices.py:79
+#: sukutomo/models.py:184
 msgid "Aries"
 msgstr "Baran"
 
-#: cpro/model_choices.py:80
+#: sukutomo/models.py:185
 msgid "Libra"
 msgstr "Waga"
 
-#: cpro/model_choices.py:81
+#: sukutomo/models.py:186
 msgid "Virgo"
 msgstr "Panna"
 
-#: cpro/model_choices.py:82
+#: sukutomo/models.py:187
 msgid "Scorpio"
 msgstr "Skorpion"
 
-#: cpro/model_choices.py:83
+#: sukutomo/models.py:188
 msgid "Capricorn"
 msgstr "Koziorożec"
 
-#: cpro/model_choices.py:84
+#: sukutomo/models.py:189
 msgid "Pisces"
 msgstr "Ryby"
 
-#: cpro/model_choices.py:85
+#: sukutomo/models.py:190
 msgid "Gemini"
 msgstr "Bliźnięta"
 
-#: cpro/model_choices.py:86
+#: sukutomo/models.py:191
 msgid "Cancer"
 msgstr "Rak"
 
-#: cpro/model_choices.py:87
+#: sukutomo/models.py:192
 msgid "Sagittarius"
 msgstr "Strzelec"
 
-#: cpro/model_choices.py:88
+#: sukutomo/models.py:193
 msgid "Aquarius"
 msgstr "Wodnik"
 
-#: cpro/model_choices.py:89
+#: sukutomo/models.py:194
 msgid "Taurus"
 msgstr "Byk"
 
-#: cpro/model_choices.py:98
+#: sukutomo/models.py:256
 msgid "Token"
 msgstr "Żeton"
 
-#: cpro/model_choices.py:99
+#: cpro/model_choices.py:105
 msgid "Medley"
 msgstr "Składanka"
 
-#: cpro/model_choices.py:100
+#: cpro/model_choices.py:106
 msgid "Coop"
-msgstr "Co-op "
+msgstr "Co-op"
 
-#: cpro/model_choices.py:101
+#: cpro/model_choices.py:107
 msgid "Caravan"
 msgstr "Caravan"
 
-#: cpro/model_choices.py:117
+#: cpro/model_choices.py:123
 msgid "Rare"
-msgstr "Rzadka "
+msgstr "Rzadka"
 
-#: cpro/model_choices.py:118
+#: cpro/model_choices.py:124
 msgid "Super Rare"
-msgstr "Super Rzadka "
+msgstr "Super Rzadka"
 
-#: cpro/model_choices.py:119
+#: cpro/model_choices.py:125
 msgid "Super Super Rare"
-msgstr "Super Super Rzadka "
+msgstr "Super Super Rzadka"
 
-#: cpro/model_choices.py:151
+#: cpro/model_choices.py:167
 #, fuzzy
 msgid "Lesser Perfect Lock"
-msgstr "Pomniejsza Blokada Perfekcji"
+msgstr "Mniejszy Perfect Lock"
 
-#: cpro/model_choices.py:152
+#: cpro/model_choices.py:168
 #, fuzzy
 msgid "Greater Perfect Lock"
-msgstr "Większa Blokada Perfekcji"
+msgstr "Większy Perfect Lock"
 
-#: cpro/model_choices.py:153
+#: cpro/model_choices.py:169
 #, fuzzy
 msgid "Extreme Perfect Lock"
-msgstr "Ekstremalna Blokada Perfekcji"
+msgstr "Extreme Perfect Lock"
 
-#: cpro/model_choices.py:154
+#: cpro/model_choices.py:170
 msgid "Combo Lock"
-msgstr "Blokada Combo"
+msgstr "Zabezpieczenie Combo"
 
-#: cpro/model_choices.py:155
+#: cpro/model_choices.py:171
 msgid "Healer"
 msgstr "Uzdrowicielka"
 
-#: cpro/model_choices.py:156
+#: cpro/model_choices.py:172
 msgid "Life Lock"
-msgstr "Blokada Życia"
+msgstr "Zabezpieczenie Życia"
 
-#: cpro/model_choices.py:157
+#: cpro/model_choices.py:173
 msgid "Combo Bonus"
 msgstr "Bonus Combo"
 
-#: cpro/model_choices.py:158
+#: cpro/model_choices.py:174
 #, fuzzy
 msgid "Perfect Score Bonus"
-msgstr "Bonus Perfekcyjnego Wyniku"
+msgstr "Bonus perfekcyjnego wyniku"
 
-#: cpro/model_choices.py:159
+#: cpro/model_choices.py:175
 msgid "Overload"
-msgstr "Przeładowanie "
+msgstr "Przeładowanie"
 
-#: cpro/model_choices.py:160
+#: cpro/model_choices.py:176
 msgid "Score Boost"
 msgstr "Zwiększenie Wyniku"
 
-#: cpro/model_choices.py:178
+#: cpro/model_choices.py:210
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance of turning all Great notes into Perfect notes in the next {skill_duration} seconds."
-msgstr "Na każde {trigger_value} sekund jest {trigger_chance}% szans na zamienienie wszystkich Great w Perfect w ciągu następnych {skill_duration} sekund."
+msgstr "Na każde {trigger_value} sekund jest {trigger_chance}% szans na zamienienie wszystkich nut Great w Perfect przez najbliższe {skill_duration} sekund."
 
-#: cpro/model_choices.py:179
+#: cpro/model_choices.py:211
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance of turning all Nice and Great notes into Perfect notes in the next {skill_duration} seconds."
-msgstr ""
+msgstr "Na każde {trigger_value} sekund jest {trigger_chance}% szans na zamienienie wszystkich nadchodzących nut Nice i Great w Perfect przez najbliższe {skill_duration} sekund."
 
-#: cpro/model_choices.py:180
+#: cpro/model_choices.py:212
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance of turning all Bad, Nice and Great notes into Perfect notes in the next {skill_duration} seconds."
-msgstr ""
+msgstr "Na każde {trigger_value} sekund jest {trigger_chance}% szans na zamienienie wszystkich nut Bad, Nice i Great w Perfect przez najbliższe {skill_duration} sekund."
 
-#: cpro/model_choices.py:181
+#: cpro/model_choices.py:213
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Nice notes will not break the combo in the next {skill_duration} seconds."
-msgstr ""
+msgstr "Na każde {trigger_value} sekund jest {trigger_chance}% szans na to, że nuty Nice nie zniszczą combo przez najbliższe {skill_duration} sekund."
 
-#: cpro/model_choices.py:182
+#: cpro/model_choices.py:214
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will restore {skill_value} life in the next {skill_duration} seconds."
-msgstr "Co {trigger_value} sekund masz {trigger_chance}% szansy, że perfekcyjne nuty będą odzyskiwać {skill_value} życia przez następne {skill_duration} sekund. "
+msgstr "Co {trigger_value} sekund jest {trigger_chance}% szansy, że nuty Perfect odzyskają {skill_value} życia przez najbliższe {skill_duration} sekund. "
 
-#: cpro/model_choices.py:183
+#: cpro/model_choices.py:215
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will not lose health in the next {skill_duration} seconds."
 msgstr "Co {trigger_value} sekund masz {trigger_chance}% szansy, że nie stracisz życia przez następne {skill_duration} sekund. "
 
-#: cpro/model_choices.py:184
+#: cpro/model_choices.py:216
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will gain an extra {skill_value}% combo bonus in the next {skill_duration} seconds."
 msgstr "Co {trigger_value} sekund masz {trigger_chance}% szansy, że otrzymasz dodatkowy {skill_value}% combo bonus na następne {skill_duration} sekund. "
 
-#: cpro/model_choices.py:185
+#: cpro/model_choices.py:217
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus in the next {skill_duration} seconds."
-msgstr ""
+msgstr "Na każde {trigger_value} sekund jest {trigger_chance}% szans, że kolejne nuty Perfect otrzymywają {skill_value}% bonusowych punktów przez najbliższe {skill_duration} sekund."
 
-#: cpro/model_choices.py:186
+#: cpro/model_choices.py:218
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% bonus and Nice and Bad notes will not break your combo in the next {skill_duration} seconds, at the cost of {skill_value2} life."
-msgstr ""
+msgstr "Na każde {trigger_value} sekund jest {trigger_chance}% szans, że kolejne nuty Perfect otrzymają {skill_value}% bonusowych punktów, a Nice i Bad nie zniszczą combo przez najbliższe {skill_duration} sekund kosztem {skill_value2} życia."
 
-#: cpro/model_choices.py:187
+#: cpro/model_choices.py:219
 msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Great and Perfect notes will receive a {skill_value}% score bonus in the next {skill_duration} seconds."
-msgstr ""
+msgstr "Na każde {trigger_value} sekund jest {trigger_chance}% szans, że kolejne nuty Great i Perfect otrzymają {skill_value}% bonusowych punktów przez najbliższe {skill_duration} sekund."
 
-#: cpro/model_choices.py:203
+#: cpro/model_choices.py:336
 msgid "Raises {leader_skill_type} of all {idol_type} idols by {leader_skill_percent}%."
-msgstr "Zwiększa {leader_skill_type} wszystkich {idol_type} idolek o {leader_skill_percent}%. "
+msgstr "Zwiększa {leader_skill_type} wszystkich {idol_type} idolek o {leader_skill_percent}%."
 
-#: cpro/model_choices.py:212 cpro/model_choices.py:230 cpro/models.py:362
-#: cpro/models.py:363 cpro/models.py:364 cpro/models.py:365 cpro/models.py:422
+#: cpro/model_choices.py:382 cpro/model_choices.py:383 cpro/models.py:433
+#: cpro/models.py:434 cpro/models.py:435 cpro/models.py:436 cpro/models.py:493
 msgid "Life"
-msgstr "Witalność "
+msgstr "Życie"
 
-#: cpro/model_choices.py:245
+#: cpro/model_choices.py:308
 msgid "Voice"
 msgstr "Głos "
 
-#: cpro/model_choices.py:246
+#: cpro/model_choices.py:309
 msgid "Make-Up"
 msgstr "Make-up"
 
-#: cpro/model_choices.py:247
+#: cpro/model_choices.py:310
 msgid "Step"
 msgstr "Krok"
 
-#: cpro/model_choices.py:248
+#: cpro/model_choices.py:314
 msgid "Energy"
 msgstr "Energia "
 
-#: cpro/model_choices.py:249
+#: cpro/model_choices.py:313
 msgid "Ability"
 msgstr "Umiejętność"
 
-#: cpro/model_choices.py:250
+#: cpro/model_choices.py:311
 msgid "Brilliance"
 msgstr "Blask "
 
-#: cpro/model_choices.py:265 cpro/model_choices.py:275
+#: cpro/model_choices.py:294
 msgid "Shiny"
 msgstr ""
 
-#: cpro/model_choices.py:266 cpro/model_choices.py:276
+#: cpro/model_choices.py:293
 msgid "Tricolor"
 msgstr "Tricolor"
 
-#: cpro/model_choices.py:283
+#: sukutomo/models.py:54
 msgid "Thumbs"
 msgstr "Kciukami "
 
-#: cpro/model_choices.py:284
+#: sukutomo/models.py:58
 msgid "All fingers"
 msgstr "Wszystkimi palcami"
 
-#: cpro/model_choices.py:285
+#: sukutomo/models.py:62
 msgid "Index fingers"
 msgstr "Palcami wskazującymi "
 
-#: cpro/model_choices.py:286
+#: sukutomo/models.py:66
 msgid "One hand"
 msgstr "Jedną dłonią"
 
-#: cpro/model_choices.py:287
+#: sukutomo/models.py:70
 msgid "Other"
 msgstr "Inne"
 
-#: cpro/models.py:60 cpro/templates/items/idolInfo.html:80
+#: cpro/models.py:61 cpro/templates/items/idolInfo.html:101
 msgid "Blood Type"
 msgstr "Grupa krwi "
 
-#: cpro/models.py:63 cpro/templates/items/idolInfo.html:87
+#: cpro/models.py:64 cpro/templates/items/idolInfo.html:108
 msgid "Writing Hand"
 msgstr "Dominująca ręka "
 
-#: cpro/models.py:69 cpro/templates/items/idolInfo.html:115
+#: bang/models.py:249
 msgid "Astrological Sign"
 msgstr "Znak zodiaku "
 
-#: cpro/models.py:74 cpro/models.py:75 cpro/templates/items/idolInfo.html:122
+#: cpro/models.py:75 cpro/models.py:76 cpro/templates/items/idolInfo.html:143
 msgid "Hometown"
 msgstr "Rodzime miasto "
 
-#: cpro/models.py:76 cpro/templates/items/idolInfo.html:132
+#: sukutomo/models.py:222
 msgid "Hobbies"
 msgstr "Zainteresowania "
 
-#: cpro/models.py:78 cpro/models.py:79 cpro/templates/items/idolInfo.html:146
+#: bang/magicollections.py:336 bang/models.py:220 bang/models.py:221
 msgid "CV"
-msgstr "CV"
+msgstr "Aktor głosowy"
 
-#: cpro/forms.py:165 cpro/models.py:83 cpro/templates/items/idolInfo.html:156
-#: cpro/templates/items/idolInfo.html:159
+#: cpro/forms.py:165 cpro/models.py:84 cpro/templates/items/idolInfo.html:177
+#: cpro/templates/items/idolInfo.html:180
 msgid "Signature"
 msgstr "Podpis "
 
-#: cpro/models.py:102
+#: cpro/models.py:142
 msgid "Kind"
 msgstr "Rodzaj"
 
-#: cpro/models.py:138 cpro/templates/ajax/account_about.html:6
+#: cpro/models.py:199 cpro/templates/ajax/account_about.html:6
 msgid "Game ID"
 msgstr "Game ID "
 
-#: cpro/models.py:140 cpro/templates/ajax/account_about.html:27
+#: sukutomo/models.py:41
 msgid "Device"
-msgstr "Urządzenie "
+msgstr "Urządzenie"
 
-#: cpro/models.py:141 cpro/templates/ajax/account_about.html:34
+#: sukutomo/models.py:76
 msgid "Play with"
 msgstr "Gra"
 
-#: cpro/models.py:148 cpro/templates/ajax/account_about.html:20
+#: sukutomo/models.py:82
 msgid "Operating System"
-msgstr "System operacyjny "
+msgstr "System operacyjny"
 
-#: cpro/models.py:290 cpro/settings.py:179
-#: cpro/templates/include/cards-stats.html:12
-#: cpro/templates/items/idolItem.html:17
+#: sukutomo/magicollections.py:94
 msgid "Idol"
 msgstr "Idolka"
 
-#: cpro/models.py:308 cpro/models.py:309
-#: cpro/templates/include/cards-stats.html:31
+#: sukutomo/forms.py:82 sukutomo/models.py:249
 msgid "Title"
 msgstr "Tytuł "
 
-#: cpro/models.py:330 cpro/models.py:335
-#: cpro/templates/include/cards-stats.html:135
-#: cpro/templates/include/cards-stats.html:141
+#: bang/magicollections.py:733 bang/magicollections.py:830
+#: bang/magicollections.py:838 bang/magicollections.py:895 bang/models.py:592
+#: bang/models.py:596
 msgid "Transparent"
 msgstr "Przeźroczyste"
 
-#: cpro/models.py:340 cpro/models.py:345
+#: bang/magicollections.py:733 bang/models.py:563 bang/models.py:565
 msgid "Icon"
 msgstr "Ikona"
 
-#: cpro/models.py:350 cpro/models.py:355
-#: cpro/templates/include/cards-stats.html:134
-#: cpro/templates/include/cards-stats.html:140
+#: cpro/models.py:421 cpro/models.py:426
+#: cpro/templates/include/cards-stats.html:170
+#: cpro/templates/include/cards-stats.html:176
 msgid "Puchi"
 msgstr "Puchi "
 
-#: cpro/models.py:362 cpro/models.py:364 cpro/models.py:366 cpro/models.py:368
-#: cpro/models.py:370 cpro/models.py:372 cpro/models.py:374 cpro/models.py:376
+#: bang/models.py:599 bang/models.py:602 bang/models.py:605
 msgid "Minimum"
 msgstr "Minimum"
 
-#: cpro/models.py:363 cpro/models.py:365 cpro/models.py:367 cpro/models.py:369
-#: cpro/models.py:371 cpro/models.py:373 cpro/models.py:375 cpro/models.py:377
+#: bang/magicollections.py:926 bang/magicollections.py:933 bang/models.py:600
+#: bang/models.py:601 bang/models.py:603 bang/models.py:604 bang/models.py:606
+#: bang/models.py:607
 msgid "Maximum"
 msgstr "Maksimum "
 
-#: cpro/models.py:426
+#: bang/forms.py:258 bang/forms.py:259 bang/magicollections.py:926
+#: bang/magicollections.py:933 bang/magicollections.py:970 bang/models.py:677
 msgid "Overall"
 msgstr "Ogólnie"
 
-#: cpro/models.py:643 cpro/templates/items/ownedcardItem.html:9
+#: cpro/models.py:758 cpro/templates/items/ownedcardItem.html:9
 msgid "Max Bonded"
 msgstr "Maksymalna Więź"
 
-#: cpro/models.py:644 cpro/templates/items/ownedcardItem.html:8
+#: bang/models.py:860
 msgid "Max Leveled"
 msgstr "Maksymalny Poziom"
 
-#: cpro/models.py:645 cpro/templates/items/ownedcardItem.html:11
+#: cpro/models.py:760 cpro/templates/items/ownedcardItem.html:11
 msgid "Star Rank"
 msgstr "Stopień Gwiazdy"
 
-#: cpro/models.py:649 cpro/templates/include/cards-stats.html:68
+#: cpro/models.py:764 cpro/templates/include/cards-stats.html:70
 #: cpro/templates/items/ownedcardItem.html:14
 msgid "Skill Level"
 msgstr "Poziom Umiejętności"
 
-#: cpro/models.py:653 cpro/templates/items/ownedcardItem.html:17
+#: cpro/models.py:768 cpro/templates/items/ownedcardItem.html:17
 msgid "Obtained Date"
 msgstr "Zdobyta"
 
-#: cpro/raw.py:4 cpro/settings.py:113 cpro/settings.py:147
-#: cpro/templates/include/beforeCards.html:42
-#: cpro/templates/include/beforeCards.html:49
-#: cpro/templates/items/eventInfo.html:13
-#: cpro/templates/items/idolInfo.html:13
+#: bang/forms.py:246 bang/forms.py:247 bang/forms.py:1204
+#: bang/magicollections.py:393 bang/magicollections.py:435
+#: bang/magicollections.py:619 bang/magicollections.py:1311
+#: bang/magicollections.py:1593 bang/models.py:266 bang/models.py:816
+#: bang/models.py:817 bang/settings.py:89
+#: bang/templates/pages/indexBackground.html:21
 msgid "Cards"
 msgstr "Karty"
 
-#: cpro/raw.py:6 cpro/settings.py:210 cpro/templates/items/idolInfo.html:17
+#: sukutomo/magicollections.py:223
 msgid "Events"
 msgstr "Eventy"
 
-#: cpro/raw.py:7
+#: bang/magicollections.py:1751 bang/magicollections.py:1878
+#: bang/settings.py:92
 msgid "Songs"
-msgstr "Piosenki "
+msgstr "Utwory"
 
-#: cpro/settings.py:37
+#: cpro/settings.py:38
 msgid "{nth} Favorite Idol"
 msgstr "{nth} ulubiona idolka"
 
-#: cpro/settings.py:57
+#: cpro/settings.py:59
 msgid "Favorite Cards"
 msgstr "Ulubione karty"
 
-#: cpro/settings.py:65
-msgid "New Cards"
-msgstr "Nowe karty "
-
 #: cpro/settings.py:67
-msgid "Live"
-msgstr "Live "
+msgid "New Cards"
+msgstr "Nowe karty"
 
-#: cpro/settings.py:68
+#: bang/models.py:1856
+msgid "Live"
+msgstr "Live"
+
+#: bang/settings.py:87
 msgid "Comedy"
 msgstr "Komedie "
 
-#: cpro/settings.py:69
+#: cpro/settings.py:71
 msgid "Room Decoration"
 msgstr "Dekoracje Pokoju"
 
-#: cpro/settings.py:70
+#: bang/settings.py:93
 msgid "Introduce yourself"
 msgstr "Przedstaw się "
 
-#: cpro/settings.py:71 cpro/settings.py:180
+#: sukutomo/magicollections.py:95
 msgid "Idols"
 msgstr "Idolki"
 
-#: cpro/settings.py:72
-msgid "Fanart"
-msgstr "Fanart"
-
-#: cpro/settings.py:73
+#: bang/settings.py:97
 msgid "Cosplay"
 msgstr "Cosplay"
 
-#: cpro/settings.py:74
+#: bang/settings.py:96
 msgid "Anime"
 msgstr "Anime "
 
-#: cpro/settings.py:75
+#: bang/settings.py:100 bang/settings.py:229
 msgid "Community"
 msgstr "Społeczność "
 
-#: cpro/settings.py:76
-msgid "NOT about IDOLM@STER, idols or Starlight Stage"
-msgstr ""
-
-#: cpro/settings.py:112 cpro/settings.py:146
-#: cpro/templates/items/cardItem.html:42
-#: cpro/templates/items/ownedcardItem.html:23
-#: cpro/templates/items/ownedcardItem.html:29
+#: bang/magicollections.py:389 bang/magicollections.py:434
+#: bang/magicollections.py:618 bang/magicollections.py:1123
+#: bang/magicollections.py:1131 bang/magicollections.py:2431
+#: bang/magicollections.py:2487 bang/magicollections.py:2492 bang/models.py:857
+#: bang/models.py:919 bang/models.py:1906
 msgid "Card"
 msgstr "Karta"
 
@@ -1910,7 +1704,7 @@ msgstr "Nie"
 
 #: cpro/templates/include/afterCards.html:4
 msgid "Share your cards!"
-msgstr "Podziel się swoimi kartami! "
+msgstr "Podziel się swoimi kartami!"
 
 #: cpro/templates/include/beforeCards.html:11
 msgid "Start sharing your beautiful collection!"
@@ -1918,12 +1712,11 @@ msgstr "Zacznij dzielić się swoją piękną kolekcją! "
 
 #: cpro/templates/include/beforeCards.html:13
 msgid "Open the game, go to Idols (\"アイドル\"), then go to Idols List (\"所属アイドル一覧\")"
-msgstr "Otwórz grę, kliknij Idolki (\"アイドル\"), po czym przejdź do Listy Idolek (\"所属アイドル一覧\") \n"
-""
+msgstr "Otwórz grę, kliknij Idolki (\"アイドル\"), po czym przejdź do Listy Idolek (\"所属アイドル一覧\")"
 
 #: cpro/templates/include/beforeCards.html:14
 msgid "Go through the list of cards below and click \"+\" on the ones you have to add them in your Cinderella Producers collection, then click again for more options"
-msgstr ""
+msgstr "Kliknij ''+'' przy kartach, które posiadasz, aby dodać je do swojej kolekcji Cinderella Producers, potem możesz kliknąć ponownie, aby rozwinąć więcej opcji"
 
 #: cpro/templates/include/beforeCards.html:30
 msgid "Next"
@@ -1933,25 +1726,25 @@ msgstr "Następnie"
 msgid "Click to add %(card)s to your collection"
 msgstr "Kliknij aby dodać %(card) do swojej kolekcji"
 
-#: cpro/templates/include/cards-stats.html:78
+#: cpro/forms.py:276 cpro/templates/include/cards-stats.html:81
 msgid "Leader Skill"
-msgstr "Umiejętność Liderki "
+msgstr "Umiejętność Liderki"
 
-#: cpro/templates/include/cards-stats.html:88
+#: cpro/forms.py:291 cpro/templates/include/cards-stats.html:95
 msgid "Scouted by"
 msgstr "Posiadana przez"
 
-#: cpro/templates/include/cards-stats.html:127
+#: cpro/templates/include/cards-stats.html:163
 msgid "Download"
 msgstr "Pobierz"
 
 #: cpro/templates/items/cardItem.html:9
 msgid "Card Info"
-msgstr "Dane Karty "
+msgstr "Dane karty"
 
 #: cpro/templates/items/cardItem.html:15
 msgid "Add to"
-msgstr "Dodaj do "
+msgstr "Dodaj do"
 
 #: cpro/templates/items/cardItem.html:23
 msgid "Add this card to your collection"
@@ -1969,75 +1762,1849 @@ msgstr "Usuń tę kartę ze swoich ulubionych "
 msgid "Add this card to your favorites"
 msgstr "Dodaj tę kartę do swoich ulubionych "
 
-#: cpro/templates/items/eventInfo.html:17
-msgid "Ranking"
-msgstr "Ranking "
-
-#: cpro/templates/items/eventInfo.html:34
-msgid "days"
-msgstr "dni"
-
-#: cpro/templates/include/index.html:12 cpro/templates/items/eventInfo.html:34
-msgid "hours"
-msgstr "godziny"
-
-#: cpro/templates/include/index.html:12 cpro/templates/items/eventInfo.html:34
-msgid "minutes"
-msgstr "minuty"
-
-#: cpro/templates/items/eventInfo.html:34
-msgid "seconds left"
-msgstr "sekundy do końca"
-
-#: cpro/templates/items/eventInfo.html:50
-msgid "translated in English"
-msgstr "przetłumaczone na angielski"
-
-#: cpro/templates/items/idolInfo.html:21
+#: bang/models.py:267
 msgid "Fans"
-msgstr "Fani "
+msgstr "Fani"
 
-#: web/default_settings.py:24
+#: magi/forms.py:1564 magi/forms.py:1570 magi/utils.py:393
 msgid "Only"
 msgstr "Tylko"
 
-#: web/default_settings.py:24
+#: magi/utils.py:396
 msgid "None"
 msgstr ""
 
-#: web/default_settings.py:25
-msgid "Unknown"
-msgstr ""
-
-#: web/default_settings.py:26
+#: magi/templates/items/activityItem.html:111
 msgid "Liked this activity"
 msgstr "Polubił tą aktywność "
 
-#: web/default_settings.py:27
+#: magi/default_settings.py:21
 msgid "Loading"
 msgstr "Ładowanie "
 
-#: cpro/model_choices.py:102
+#: cpro/model_choices.py:108
 msgid "LIVE Parade"
 msgstr "LIVE Parade "
 
-#: cpro/models.py:136
+#: cpro/models.py:195
 msgid "Producer Level"
 msgstr "Poziom Producenta "
 
 #: cpro/templates/include/beforeEvents.html:6
 msgid "%(idol)s performed in %(total_results)s events"
+msgstr "%(idol) wystąpiło podczas %(total_results)s eventów"
+
+#: cpro/templates/include/beforeLeaderboard.html:29
+msgid "%(total_results)s producers scouted %(own_card)s"
+msgstr "%(total_results) producentów wylosowało %(own_card)"
+
+#: magi/magicollections.py:2455 magi/magicollections.py:2565
+msgid "Badge"
+msgstr ""
+
+#: magi/default_settings.py:670 magi/magicollections.py:2456
+msgid "Badges"
+msgstr "Odznaki"
+
+#: magi/models.py:1144
+msgid "Bronze"
+msgstr "Brąz"
+
+#: magi/models.py:1145
+msgid "Silver"
+msgstr "Srebro"
+
+#: magi/models.py:1146
+msgid "Gold"
+msgstr "Złoto"
+
+#: magi/templates/include/homePage.html:17
+#: magi/templates/include/homePage.html:19
+msgid "%(percent)s%% funded"
+msgstr ""
+
+#: magi/templates/items/badgeInfo.html:12
+msgid "Granted by"
+msgstr ""
+
+#: magi/templates/items/donateItem.html:15
+msgid "No donation yet"
+msgstr ""
+
+#: bang/views.py:58
+msgid "Learn more"
+msgstr "Dowiedz się więcej"
+
+#: bang/forms.py:164 bang/forms.py:246 bang/forms.py:247 bang/forms.py:484
+#: bang/forms.py:888
+msgid "Popularity"
+msgstr "Popularność"
+
+#: cpro/forms.py:292 cpro/templates/include/cards-stats.html:107
+msgid "Favorited by"
+msgstr "Ulubiona"
+
+#: bang/settings.py:98
+msgid "Fan made"
+msgstr "Fanowskie prace"
+
+#: bang/settings.py:99
+msgid "Merchandise"
+msgstr ""
+
+#: cpro/settings.py:79
+msgid "Unrelated"
+msgstr "Niepowiązane"
+
+#: cpro/templates/include/cards-stats.html:97
+#: cpro/templates/include/cards-stats.html:109
+msgid "%(total)s producer"
+msgid_plural "%(total)s producers"
+msgstr[0] "%(total)s producent"
+msgstr[1] "%(total)s producentów"
+msgstr[2] ""
+
+#: cpro/templates/include/cards-stats.html:124
+#: cpro/templates/items/eventInfo.html:144
+#: cpro/templates/items/idolInfo.html:196
+msgid "Share"
+msgstr "Udostępnij"
+
+#: magi/default_settings.py:23
+msgid "Local time"
+msgstr "Czas lokalny"
+
+#: bang/magicollections.py:2492
+msgid "Open {thing}"
+msgstr ""
+
+#: magi/forms.py:493
+msgid "Reverse order"
+msgstr "Odwrócona kolejność"
+
+#: magi/forms.py:1648 magi/models.py:1011
+#: magi/templates/items/reportItem.html:29
+msgid "Reason"
+msgstr "Powód"
+
+#: magi/item_model.py:621 magi/magicollections.py:918
+#: magi/magicollections.py:964
+msgid "Edit {thing}"
+msgstr "Edytuj {thing}"
+
+#: magi/item_model.py:624 magi/magicollections.py:848 magi/views.py:314
+msgid "Delete {thing}"
+msgstr "Usuń {thing}"
+
+#: magi/item_model.py:627 magi/models.py:81
+msgid "Report {thing}"
+msgstr "Zgłoś {thing}"
+
+#: magi/forms.py:1287 magi/magicollections.py:960 magi/views.py:313
+#: magi/views.py:400
+msgid "Add {thing}"
+msgstr "Dodaj {thing}"
+
+#: magi/magicollections.py:2639
+msgid "Only submit a report if there is a problem with this specific {thing}. If it's about something else, your report will be ignored. For example, don't report an account or a profile if there is a problem with an activity. Look for \"Report\" buttons on the following to report individually:"
+msgstr ""
+
+#: magi/models.py:738
+msgid "Only post official artworks, artworks you own, or fan artworks that are approved by the artist and credited."
+msgstr ""
+
+#: magi/models.py:1177
+msgid "{month} Donator"
+msgstr ""
+
+#: magi/models.py:1183
+msgid "{donation_platform} supporter of {site_name} who donated to help cover the server costs"
+msgstr ""
+
+#: magi/raw.py:7
+msgid "lovely"
+msgstr ""
+
+#: magi/raw.py:8
+msgid "awesome"
+msgstr "super"
+
+#: magi/raw.py:9
+msgid "incredible"
+msgstr "niesamowite"
+
+#: magi/raw.py:10
+msgid "adorable"
+msgstr "urocze"
+
+#: magi/raw.py:11
+msgid "generous"
+msgstr "hojny"
+
+#: magi/raw.py:12
+msgid "idols-addicted"
+msgstr "uzależniony od idolek"
+
+#: magi/raw.py:13
+msgid "friendly"
+msgstr "przyjazny"
+
+#: magi/raw.py:14
+msgid "kind"
+msgstr "miły"
+
+#: magi/raw.py:15
+msgid "warmhearted"
+msgstr "dobroduszny"
+
+#: magi/raw.py:16
+msgid "nice"
+msgstr "dobry"
+
+#: magi/templates/emails/donation_footer.html:3
+#: magi/templates/include/donate.html:10 magi/templates/pages/settings.html:140
+msgid "If you like the website, please consider donating"
+msgstr "Jeśli lubisz tę stronę, rozważ jej wsparcie"
+
+#: magi/templates/emails/notification.html:30
+#: magi/templates/emails/notification.txt:7
+msgid "Click here to turn off email notifications."
+msgstr "Kliknij tutaj, aby wyłączyć powiadomienia email."
+
+#: magi/templates/emails/report.html:21
+#: magi/templates/items/activityItem.html:39
+#: magi/templates/pages/settings.html:107
+msgid "Translate from %(from_language)s to %(to_language)s"
+msgstr "Przetłumacz z %(from_language) na %(to_language)"
+
+#: magi/templates/items/profile.html:28
+msgid "follows you"
+msgstr "Obserwuje cię"
+
+#: magi/views.py:300 magi/views.py:989
+msgid "Successfully edited!"
+msgstr "Edycja zakończona pomyślnie!"
+
+#: stardustrun/forms.py:84
+msgid "The game didn't even existed at that time."
+msgstr "Gra wtedy nawet nie istniała."
+
+#: sukutomo/magicollections.py:281
+msgid "Countdown"
+msgstr "Odliczanie"
+
+#: sukutomo/magicollections.py:284
+msgid "{time} left"
+msgstr "Pozostało {time}"
+
+#: sukutomo/magicollections.py:284
+msgid "Starts in {time}"
+msgstr "Zaczyna się o {time}"
+
+#: bang/forms.py:38 bang/forms.py:248 bang/forms.py:249 bang/forms.py:659
+#: bang/forms.py:959 bang/forms.py:1045 bang/forms.py:1166
+#: bang/magicollections.py:41 bang/magicollections.py:73
+#: bang/magicollections.py:285 bang/magicollections.py:544
+#: bang/magicollections.py:567 bang/magicollections.py:2440 bang/models.py:321
+#: bang/models.py:1637 bang/models.py:1905
+msgid "Member"
+msgstr "Członkini"
+
+#: bang/forms.py:38 bang/forms.py:163 bang/forms.py:1148 bang/forms.py:1179
+#: bang/magicollections.py:352 bang/magicollections.py:544
+#: bang/magicollections.py:1839 bang/magicollections.py:2209
+#: bang/magicollections.py:2281 bang/magicollections.py:2449 bang/models.py:201
+#: bang/models.py:1190 bang/models.py:1192 bang/models.py:1194
+#: bang/models.py:1627 bang/models.py:1822
+msgid "Band"
+msgstr "Zespół"
+
+#: sukutomo/models.py:132
+msgid "Attribute"
+msgstr "Atrybut"
+
+#: bang/forms.py:252 bang/forms.py:253 bang/magicollections.py:967
+#: bang/models.py:599 bang/models.py:600 bang/models.py:601 bang/models.py:674
+#: bang/models.py:1644
+msgid "Performance"
+msgstr "Wykonanie"
+
+#: bang/forms.py:253 bang/forms.py:255 bang/forms.py:257 bang/forms.py:259
+#: bang/magicollections.py:894 bang/magicollections.py:933
+#: bang/magicollections.py:980 bang/models.py:565 bang/models.py:587
+#: bang/models.py:596 bang/models.py:601 bang/models.py:604 bang/models.py:607
+#: bang/models.py:858
+msgid "Trained"
+msgstr "Trenowana"
+
+#: bang/forms.py:254 bang/forms.py:255 bang/magicollections.py:968
+#: bang/models.py:602 bang/models.py:603 bang/models.py:604 bang/models.py:675
+#: bang/models.py:1645
+msgid "Technique"
+msgstr "Technika"
+
+#: bang/magicollections.py:286 bang/magicollections.py:2387 bang/models.py:1824
+msgid "Members"
+msgstr "Członkowie"
+
+#: bang/models.py:209
+msgid "First"
+msgstr "Pierwsza"
+
+#: bang/models.py:210
+msgid "Second"
+msgstr "Druga"
+
+#: bang/models.py:334 bang/settings.py:135
+msgid "Power"
+msgstr "Moc"
+
+#: sukutomo/models.py:127
+msgid "Pure"
+msgstr "Czystość"
+
+#: bang/models.py:346 bang/settings.py:138
+msgid "Happy"
+msgstr "Szczęście"
+
+#: bang/models.py:378
+#, fuzzy
+msgid "Score up"
+msgstr "Podniesienie punktów"
+
+#: bang/models.py:406
+#, fuzzy
+msgid "Life recovery"
+msgstr "Przywrócenie życia"
+
+#: bang/models.py:422
+#, fuzzy
+msgid "Perfect lock"
+msgstr "Perfect Lock"
+
+#: sukutomo/forms.py:38 sukutomo/models.py:168
+msgid "School"
+msgstr "Szkoła"
+
+#: bang/models.py:213
+msgid "School Year"
+msgstr "Klasa"
+
+#: bang/models.py:227 bang/models.py:229
+msgid "Liked food"
+msgstr "Lubiane jedzenie"
+
+#: bang/models.py:231 bang/models.py:233
+msgid "Disliked food"
+msgstr "Nielubiane jedzenie"
+
+#: bang/magicollections.py:465 bang/magicollections.py:2250 bang/models.py:654
+#: bang/models.py:655 bang/models.py:658 bang/models.py:1731
+msgid "Level {level}"
+msgstr "Level {level}"
+
+#: bang/settings.py:84
+msgid "{nth} Favorite Member"
+msgstr "{nth} Ulubiona członkini"
+
+#: cpro/templates/items/eventInfo.html:14
+msgid "days"
+msgstr "dni"
+
+#: cpro/templates/items/eventInfo.html:14
+msgid "hours"
+msgstr "godzin"
+
+#: cpro/templates/items/eventInfo.html:14
+msgid "minutes"
+msgstr "minut"
+
+#: bang/forms.py:61 bang/forms.py:119
+msgid "Favorite Member"
+msgstr "Ulubiona członkini"
+
+#: bang/magicollections.py:341 bang/models.py:1838
+msgid "Source"
+msgstr "Źródło"
+
+#: bang/forms.py:950 bang/models.py:253 bang/models.py:255 bang/models.py:1633
+#: bang/models.py:1635
+msgid "Instrument"
+msgstr "Instrument muzyczny"
+
+#: magi/magicollections.py:415
+msgid "Collected {thing}"
+msgstr "Skolekcjonowane {thing}"
+
+#: bang/magicollections.py:810 bang/models.py:459 bang/models.py:460
+#: bang/models.py:462
+msgid "Skill name"
+msgstr "Nazwa umiejętności"
+
+#: bang/forms.py:340 bang/magicollections.py:489 bang/models.py:861
+msgid "{nth} episode"
+msgstr "{nth} epizod"
+
+#: bang/models.py:862
+msgid "Memorial episode"
+msgstr "Epizod pamiątkowy"
+
+#: magi/abstract_models.py:131
+msgid "Join date"
+msgstr "Data dołączenia"
+
+#: magi/abstract_models.py:132
+msgid "Give a nickname to your account to easily differentiate it from your other accounts when you're managing them."
+msgstr "Nadaj pseudonim łatwy do rozróżnienia dla innych użytkowników."
+
+#: magi/abstract_models.py:133
+msgid "Start date"
+msgstr "Data rozpoczęcia"
+
+#: magi/abstract_models.py:136 magi/forms.py:968 magi/models.py:139
+#: magi/models.py:160
+msgid "Default tab"
+msgstr "Domyślna zakładka"
+
+#: magi/views.py:215
+msgid "Email"
+msgstr "Email"
+
+#: magi/forms.py:268 magi/forms.py:277 magi/forms.py:286
+msgid "You've added a lot of {things}, lately. Try to wait a little bit before adding more."
+msgstr ""
+
+#: magi/forms.py:293
+msgid "You already have {total} {things}. You can only add up to {max} {things}."
+msgstr ""
+
+#: magi/forms.py:495
+msgid "View"
+msgstr "Podgląd"
+
+#: magi/forms.py:765
+msgid "Please provide an updated screenshot of your in-game profile to prove your level."
+msgstr ""
+
+#: magi/utils.py:985 magi/utils.py:989
+msgid "You may use Markdown formatting."
+msgstr "Możesz używać formatowania Markdown."
+
+#. Example: Adding to your account db0
+#. Adding to your card Kotori
+#: magi/magicollections.py:331
+msgid "Adding to your {thing} {name}"
+msgstr ""
+
+#: magi/magicollections.py:423
+msgid "Add to your {thing}"
+msgstr "Dodaj do {thing}"
+
+#: magi/magicollections.py:438
+msgid "Quick edit"
+msgstr "Szybka edycja"
+
+#: magi/magicollections.py:1498
+msgid "Leaderboard position"
+msgstr "Pozycja w tabeli"
+
+#: magi/templates/pages/about.html:382
+msgid "Need help?"
+msgstr "Potrzebujesz pomocy?"
+
+#: magi/templates/pages/about.html:383
+msgid "Find answers to your questions"
+msgstr "Znajdź odpowiedź na pytanie"
+
+#: magi/templates/pages/about.html:387
+msgid "Share a suggestion or a bug"
+msgstr "Zgłoś sugestię lub błąd"
+
+#: magi/templates/pages/about.html:389
+msgid "Fill our feedback form:"
+msgstr "Wypełnij arkusz zgłoszeniowy"
+
+#: magi/templates/pages/about.html:390
+msgid "Feedback form"
+msgstr "Arkusz zgłoszeniowy"
+
+#: magi/templates/pages/about.html:392
+msgid "Create a ticket in our bug tracker:"
+msgstr "Utwórz bilet w wykrywaczu błędów:"
+
+#: magi/templates/pages/about.html:393
+msgid "Bug tracker"
+msgstr "Wykrywacz błędów"
+
+#: magi/templates/include/donate.html:50 magi/templates/pages/about.html:397
+msgid "Alternatively..."
+msgstr "Ewentualnie..."
+
+#: magi/templates/pages/about.html:398
+msgid "The staff team is available on:"
+msgstr "Zespół dostępny na:"
+
+#: magi/utils.py:418
+msgid "Select {}"
+msgstr "Wybierz {}"
+
+#: magi/utils.py:840
+msgid "This date has to be in the future."
+msgstr "Wybrana data musi być przyszła."
+
+#: magi/views.py:300 magi/views.py:995
+msgid "Successfully added!"
+msgstr "Dodano pomyślnie!"
+
+#: magi/views.py:1001
+msgid "Successfully deleted!"
+msgstr "Usunięto pomyślnie!"
+
+#. This word used in tab title makes no sense in Polish so I made it empty.
+#: magi/views_collections.py:254
+msgid "{things} list"
+msgstr " "
+
+#: cpro/model_choices.py:177
+msgid "All Round"
+msgstr ""
+
+#: cpro/model_choices.py:178
+msgid "Concentration"
+msgstr ""
+
+#: cpro/model_choices.py:179
+msgid "Skill Boost"
+msgstr ""
+
+#: cpro/model_choices.py:180
+msgid "Cute/Cool/Passion Focus"
+msgstr ""
+
+#: cpro/model_choices.py:220
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will gain an extra {skill_value}% combo bonus and Perfect notes will restore {skill_value2} life in the next {skill_duration} seconds."
+msgstr "Na każde {trigger_value} sekund jest {trigger_chance}% szans otrzymania dodatkowych {skill_value}% bonusa do combo, oraz nuty Perfect przywrócą życie {skill_value2} przez najbliższe {skill_duration} sekund."
+
+#: cpro/model_choices.py:221
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus but the timing window for Perfect notes is reduced in the next {skill_duration} seconds."
+msgstr ""
+
+#: cpro/model_choices.py:222
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% change that currently active skills will be boosted for {skill_duration} seconds"
+msgstr ""
+
+#: cpro/model_choices.py:223
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus, and you will gain an extra {skill_value2}% combo bonus, but only if you have only {type} idols in your team for {skill_duration} seconds"
 msgstr ""
 
 #: cpro/templates/include/beforeLeaderboard.html:21
 msgid "%(total_results)s producers love %(favorite_character_idol)s"
 msgstr ""
 
-#: cpro/templates/include/beforeLeaderboard.html:29
-msgid "%(total_results)s producers scouted %(own_card)s"
+#: cpro/templates/items/eventInfo.html:14
+msgid "seconds left"
+msgstr "pozostało sekund"
+
+#: cpro/templates/items/eventInfo.html:30
+msgid "translated in English"
+msgstr "tłumaczenie na angielski"
+
+#: bang/forms.py:85 bang/magicollections.py:121
+msgid "Total {item} bought"
 msgstr ""
 
-#: cpro/templates/include/index.html:12
-msgid "day"
-msgstr "dzień "
+#: bang/forms.py:85 bang/magicollections.py:121
+msgid "Star gems"
+msgstr ""
+
+#: sukutomo/models.py:38
+msgid "Friend ID"
+msgstr "Friend ID"
+
+#: bang/forms.py:302
+msgid "Promo"
+msgstr ""
+
+#: bang/forms.py:244 bang/forms.py:886 bang/models.py:370 bang/models.py:1221
+msgid "Release date"
+msgstr "Data wydania"
+
+#: bang/forms.py:298
+msgid "Origin"
+msgstr ""
+
+#: bang/forms.py:301 bang/magicollections.py:725 bang/magicollections.py:1287
+#: bang/magicollections.py:1455 bang/magicollections.py:1456
+#: bang/models.py:1470
+msgid "Gacha"
+msgstr "Gacha"
+
+#: sukutomo/forms.py:85 sukutomo/models.py:274
+msgid "Server availability"
+msgstr "Dostępność na serwerze"
+
+#: bang/forms.py:390 bang/forms.py:391 bang/forms.py:481 bang/forms.py:566
+#: bang/forms.py:567 bang/forms.py:636 bang/models.py:91 bang/models.py:1008
+#: bang/models.py:1009 bang/models.py:1010 bang/models.py:1012
+#: bang/models.py:1410 bang/models.py:1411 bang/models.py:1412
+#: bang/models.py:1758
+msgid "English version"
+msgstr "Wersja angielska"
+
+#: sukutomo/forms.py:59 sukutomo/forms.py:60 sukutomo/forms.py:79
+#: sukutomo/models.py:31 sukutomo/models.py:284 sukutomo/models.py:285
+#: sukutomo/models.py:286
+msgid "Taiwanese version"
+msgstr "Wersja tajwańska"
+
+#: sukutomo/forms.py:62 sukutomo/forms.py:63 sukutomo/forms.py:80
+#: sukutomo/models.py:29 sukutomo/models.py:288 sukutomo/models.py:289
+#: sukutomo/models.py:290
+msgid "Korean version"
+msgstr "Wersja koreańska"
+
+#: sukutomo/forms.py:77 sukutomo/forms.py:78 sukutomo/forms.py:79
+#: sukutomo/forms.py:80 sukutomo/forms.py:81
+msgid "Date"
+msgstr ""
+
+#: sukutomo/forms.py:53 sukutomo/forms.py:54 sukutomo/forms.py:77
+#: sukutomo/models.py:27 sukutomo/models.py:276 sukutomo/models.py:277
+#: sukutomo/models.py:278
+msgid "Japanese version"
+msgstr "Wersja japońska"
+
+#: bang/forms.py:889 bang/models.py:169 bang/models.py:1197
+msgid "Romaji"
+msgstr "romaji"
+
+#: bang/forms.py:890 bang/models.py:1213
+msgid "Length"
+msgstr "Czas trwania"
+
+#: bang/forms.py:891
+msgid "BPM"
+msgstr "BPM"
+
+#: bang/forms.py:892 bang/forms.py:893 bang/models.py:1174 bang/models.py:1231
+#: bang/models.py:1232 bang/models.py:1328
+msgid "Hard"
+msgstr "Hard"
+
+#: bang/forms.py:892 bang/forms.py:894 bang/forms.py:896 bang/models.py:1227
+#: bang/models.py:1229 bang/models.py:1231 bang/models.py:1233
+#: bang/models.py:1235
+msgid "Notes"
+msgstr "Nuty"
+
+#: bang/forms.py:893 bang/forms.py:895 bang/forms.py:897 bang/models.py:1228
+#: bang/models.py:1230 bang/models.py:1232 bang/models.py:1234
+#: bang/models.py:1236 bang/models.py:1333
+msgid "Difficulty"
+msgstr "Poziom trudności"
+
+#: bang/forms.py:894 bang/forms.py:895 bang/models.py:1175 bang/models.py:1233
+#: bang/models.py:1234 bang/models.py:1329
+msgid "Expert"
+msgstr "Expert"
+
+#: bang/forms.py:900 bang/magicollections.py:1923
+msgid "Cover"
+msgstr ""
+
+#: bang/magicollections.py:125
+msgid "~{}円 spent (~${})"
+msgstr ""
+
+#: bang/magicollections.py:287 bang/settings.py:94
+#: bang/templates/pages/indexBackground.html:22
+msgid "Characters"
+msgstr "Postacie"
+
+#: bang/magicollections.py:389
+msgid "Favorite {thing}"
+msgstr "Ulubiony {thing}"
+
+#: bang/forms.py:247 bang/magicollections.py:393 bang/models.py:816
+msgid "Favorite {things}"
+msgstr "Ulubione {things}"
+
+#: bang/magicollections.py:756 bang/magicollections.py:759
+#: bang/magicollections.py:892 bang/models.py:621
+msgid "Chibi"
+msgstr "Chibi"
+
+#: bang/magicollections.py:878
+msgid "Icons"
+msgstr "Ikony"
+
+#: bang/magicollections.py:878 bang/settings.py:153
+msgid "Quick add"
+msgstr "Szybkie dodawanie"
+
+#: bang/magicollections.py:880
+msgid "Statistics"
+msgstr "Statystyki"
+
+#: bang/magicollections.py:979
+msgid "Min"
+msgstr "Min."
+
+#: bang/magicollections.py:979
+msgid "Max"
+msgstr "Maks."
+
+#: bang/magicollections.py:1033
+msgid "Participated event"
+msgstr ""
+
+#: bang/forms.py:484 bang/magicollections.py:1034 bang/models.py:1064
+msgid "Participated events"
+msgstr ""
+
+#: bang/magicollections.py:1299
+msgid "Boost Members"
+msgstr ""
+
+#: bang/magicollections.py:1325
+msgid "Gift song"
+msgstr "Utwór podarunkowy"
+
+#: bang/forms.py:652 bang/magicollections.py:1614
+msgid "Gacha type"
+msgstr "Rodzaj Gacha"
+
+#: bang/forms.py:653 bang/magicollections.py:1619
+msgid "Permanent"
+msgstr "Trwałe"
+
+#: bang/magicollections.py:1749
+msgid "Played song"
+msgstr "Zagrany utwór"
+
+#: bang/forms.py:888 bang/magicollections.py:1750 bang/models.py:1301
+msgid "Played songs"
+msgstr "Zagrane utwory"
+
+#: bang/magicollections.py:1802 bang/magicollections.py:1877
+#: bang/magicollections.py:1919 bang/models.py:1323
+msgid "Song"
+msgstr "Utwór"
+
+#: bang/forms.py:299 bang/magicollections.py:1923
+msgid "Original"
+msgstr ""
+
+#: bang/magicollections.py:1986
+msgid "{} notes"
+msgstr "{} nut"
+
+#: bang/magicollections.py:2005
+msgid "Songwriters"
+msgstr "Artyści utworu"
+
+#: sukutomo/models.py:35
+msgid "Version"
+msgstr "Wersja"
+
+#: sukutomo/models.py:41
+msgid "The model of your device. Example: Nexus 5, iPhone 4, iPad 2, ..."
+msgstr "Model urządzenia. Np.: Nexus 5, iPhone 4, iPad 2..."
+
+#: bang/forms.py:812 bang/models.py:155 bang/models.py:1098 bang/models.py:1341
+msgid "Screenshot"
+msgstr "Zrzut ekranu"
+
+#: bang/models.py:155
+msgid "In-game profile screenshot"
+msgstr "Zrzut profilu z gry"
+
+#: bang/models.py:211
+msgid "Junior Third"
+msgstr "Trzecia"
+
+#: bang/models.py:371
+msgid "Promo card"
+msgstr ""
+
+#: bang/models.py:385
+msgid "For the next {duration} seconds, score of all notes boosted by +{percentage}%"
+msgstr "Na najbliższe {duration} sekund wynik dla wszystkich nut zostanie podniesiony o {percentage}%"
+
+#: bang/models.py:402
+msgid "and boosts score of all notes by {percentage}% for the next {duration} seconds"
+msgstr ""
+
+#: bang/models.py:413
+msgid "Restores life by {stamina}"
+msgstr "Przywraca życie o {stamina}"
+
+#: bang/models.py:418
+msgid "and restores life by {stamina}"
+msgstr "i przywraca życie o {stamina}"
+
+#: bang/models.py:429
+msgid "All {note_type} notes turn into PERFECT notes"
+msgstr "Zamiana wszystkich nut {note_type} w nuty PERFECT"
+
+#: bang/models.py:434
+msgid "and turn all {note_type} notes turn into PERFECT notes for the next {duration} seconds"
+msgstr "oraz zamiana wszystkich nut {note_type} w nuty PERFECT przez najbliższe {duration} sekund"
+
+#: bang/models.py:859
+msgid "Prefer untrained card image"
+msgstr "Preferuj grafikę z niewytrenowaną kartą"
+
+#: bang/models.py:863
+msgid "Skill level"
+msgstr "Poziom umiejętności"
+
+#: bang/models.py:962
+msgid "Challenge Live"
+msgstr ""
+
+#: bang/models.py:964
+msgid "Live Trial"
+msgstr ""
+
+#: sukutomo/models.py:264
+msgid "Event type"
+msgstr "Rodzaj eventu"
+
+#: bang/forms.py:539 bang/forms.py:806 bang/models.py:1088 bang/models.py:1109
+#: bang/models.py:1336 bang/models.py:1360
+msgid "Score"
+msgstr "Wynik"
+
+#: bang/forms.py:538 bang/models.py:1089
+msgid "Ranking"
+msgstr "Ranking"
+
+#: bang/forms.py:540 bang/models.py:1091 bang/models.py:1114
+msgid "Song score"
+msgstr "Wynik utworu"
+
+#: bang/forms.py:541 bang/models.py:1092 bang/models.py:1119
+msgid "Song ranking"
+msgstr "Ranking utworu"
+
+#: bang/models.py:1094 bang/models.py:1124
+msgid "Trial master completed"
+msgstr ""
+
+#: bang/models.py:1095 bang/models.py:1129
+msgid "Trial master EX completed"
+msgstr ""
+
+#: bang/models.py:1172 bang/models.py:1227 bang/models.py:1228
+#: bang/models.py:1326
+msgid "Easy"
+msgstr "Easy"
+
+#: bang/models.py:1180 bang/models.py:1223
+msgid "Composer"
+msgstr "Kompozytor"
+
+#: bang/models.py:1181 bang/models.py:1224
+msgid "Lyricist"
+msgstr "Tekściarz"
+
+#: bang/models.py:1182 bang/models.py:1225
+msgid "Arranger"
+msgstr "Aranżer"
+
+#: bang/models.py:1198
+msgid "Translation"
+msgstr "Tłumaczenie"
+
+#: bang/models.py:1212
+msgid "Preview"
+msgstr "Podgląd"
+
+#: bang/models.py:1219
+msgid "Cover song"
+msgstr "Cover"
+
+#: bang/models.py:1220
+msgid "Beats per minute"
+msgstr "Uderzeń na minutę"
+
+#: bang/models.py:1240 bang/models.py:1241
+msgid "Gift"
+msgstr "Podarunek"
+
+#: bang/models.py:1245 bang/models.py:1246
+msgid "Purchase at CiRCLE"
+msgstr "Do nabycia w CiRCLE"
+
+#: bang/models.py:1250
+msgid "Complete story"
+msgstr "Ukończenie story"
+
+#: bang/models.py:1251
+msgid "Complete {story_type} story, chapter {chapter}"
+msgstr "Ukończenie {story_type} story, rozdział {chapter}"
+
+#: bang/models.py:1255 bang/models.py:1256
+msgid "Complete Tutorial"
+msgstr ""
+
+#: bang/models.py:1260 bang/models.py:1261
+msgid "Initially available"
+msgstr ""
+
+#: bang/models.py:1265 bang/models.py:1266
+msgid "Event gift"
+msgstr "Prezent eventu"
+
+#: bang/models.py:1277
+msgid "How to unlock?"
+msgstr "Metoda obdlokowania"
+
+#: bang/models.py:1337 bang/models.py:1365
+msgid "Full combo"
+msgstr "Full combo"
+
+#. Name of a license, so it's unlikely you need to translate unless your language uses a different set of characters (Chinese, Japanese, Korean, Russian, etc.)
+#: bang/settings.py:54 bang/settings.py:122 bang/settings.py:216
+msgid "BanG Dream!"
+msgstr "BanG Dream!"
+
+#. Name of a license, so it's unlikely you need to translate unless your language uses a different set of characters (Chinese, Japanese, Korean, Russian, etc.)
+#: bang/settings.py:54 bang/settings.py:221
+msgid "Girls Band Party"
+msgstr "Girls Band Party"
+
+#: bang/settings.py:185 bang/views.py:55 bang/views.py:56
+msgid "Team builder"
+msgstr ""
+
+#: sukutomo/models.py:38
+msgid "You can find your friend id by going to the \"Friends\" section from the home, then \"ID Search\". Players will be able to send you friend requests or messages using this number."
+msgstr ""
+
+#: sukutomo/models.py:39
+msgid "Should your friend ID be visible to other players?"
+msgstr "Czy chcesz ujawnić innym graczom swoje ID?"
+
+#: sukutomo/models.py:42
+msgid "Love gems"
+msgstr ""
+
+#: sukutomo/models.py:42 sukutomo/models.py:43 sukutomo/models.py:44
+#: sukutomo/models.py:45 sukutomo/models.py:46
+msgid "Number of {} you currently have in your account."
+msgstr ""
+
+#: sukutomo/models.py:42 sukutomo/models.py:43 sukutomo/models.py:44
+#: sukutomo/models.py:45 sukutomo/models.py:46
+msgid "This field is completely optional, it's here to help you manage your accounts."
+msgstr ""
+
+#: sukutomo/models.py:43
+msgid "Friend Points"
+msgstr ""
+
+#: sukutomo/models.py:47
+msgid "Total love gems bought"
+msgstr "Całkowita ilość kupionych Love Gemów"
+
+#: sukutomo/models.py:47
+msgid "You can calculate that number in \"Other\" then \"Purchase History\"."
+msgstr "Możesz obliczyć numer w zakładce \"Purchase History\" znajdującej się w menu \"Other\"."
+
+#: sukutomo/models.py:48
+msgid "Should your items be visible to other players?"
+msgstr "Czy chcesz ujawnić innym graczom swoje przedmioty?"
+
+#: sukutomo/models.py:126
+msgid "Smile"
+msgstr ""
+
+#: sukutomo/models.py:141 sukutomo/models.py:271
+msgid "Unit"
+msgstr ""
+
+#: sukutomo/magicollections.py:74 sukutomo/models.py:154
+msgid "Subunit"
+msgstr ""
+
+#: sukutomo/models.py:197
+msgid "Astrological sign"
+msgstr "Znak zodiaku"
+
+#: sukutomo/models.py:227 sukutomo/models.py:230
+msgid "Favorite food"
+msgstr "Ulubione jedzenie"
+
+#: sukutomo/models.py:232
+msgid "Least favorite food"
+msgstr "Nielubiane jedzenie"
+
+#: sukutomo/settings.py:21
+msgid "Idol Supporter"
+msgstr ""
+
+#: sukutomo/settings.py:22
+msgid "Idol Lover"
+msgstr ""
+
+#: sukutomo/settings.py:23
+msgid "Idol Ambassador"
+msgstr ""
+
+#: sukutomo/settings.py:24
+msgid "Idol Producer"
+msgstr ""
+
+#: sukutomo/settings.py:25
+msgid "Ultimate Idol Devotee"
+msgstr ""
+
+#: bang/forms.py:246 bang/models.py:817
+msgid "Collected {things}"
+msgstr ""
+
+#: bang/models.py:387
+msgid "For the next {duration} seconds, score of PERFECT notes boosted by +{percentage}%"
+msgstr "Podniesienie wyniku nut PERFECT o +{percentage}% przez następne {duration} sekund"
+
+#: bang/magicollections.py:1229 bang/magicollections.py:1375 bang/models.py:977
+#: bang/models.py:1012 bang/models.py:1019 bang/models.py:1026
+msgid "Rare stamp"
+msgstr ""
+
+#: bang/magicollections.py:1346 bang/models.py:982 bang/models.py:984
+msgid "Stamp translation"
+msgstr ""
+
+#: bang/models.py:1040
+msgid "Boost attribute"
+msgstr ""
+
+#: bang/forms.py:489 bang/magicollections.py:1150 bang/models.py:1043
+msgid "Boost members"
+msgstr ""
+
+#: magi/default_settings.py:55 magi/default_settings.py:72
+msgid "Manager"
+msgstr ""
+
+#: magi/default_settings.py:78
+msgid "Team manager"
+msgstr ""
+
+#: magi/default_settings.py:90
+msgid "Finance manager"
+msgstr ""
+
+#: magi/default_settings.py:102 magi/default_settings.py:109
+msgid "Database maintainer"
+msgstr ""
+
+#: magi/default_settings.py:119 magi/default_settings.py:133
+msgid "Community manager"
+msgstr ""
+
+#: magi/default_settings.py:127
+msgid "Posted {total} news"
+msgstr ""
+
+#: magi/default_settings.py:133
+msgid "Twitter"
+msgstr ""
+
+#: magi/default_settings.py:142
+msgid "External communication"
+msgstr ""
+
+#: magi/default_settings.py:148
+msgid "Support"
+msgstr ""
+
+#: magi/default_settings.py:161 magi/default_settings.py:178
+#: magi/default_settings.py:230
+msgid "Moderator"
+msgstr ""
+
+#: magi/default_settings.py:161
+msgid "Active"
+msgstr ""
+
+#: magi/default_settings.py:172
+msgid "Submitted {total} reports"
+msgstr ""
+
+#: magi/default_settings.py:178
+msgid "Decisive"
+msgstr ""
+
+#: magi/default_settings.py:194
+msgid "Edited or deleted {total} reported items"
+msgstr ""
+
+#: magi/default_settings.py:200
+msgid "Community entertainer"
+msgstr ""
+
+#: magi/default_settings.py:218
+msgid "Organized and posted about {total} community events"
+msgstr ""
+
+#: magi/default_settings.py:224
+msgid "Backup staff"
+msgstr ""
+
+#: magi/default_settings.py:239
+msgid "Translator"
+msgstr ""
+
+#: magi/default_settings.py:250
+msgid "Graphic designer"
+msgstr ""
+
+#: magi/default_settings.py:256
+msgid "Artist"
+msgstr ""
+
+#: magi/default_settings.py:262
+msgid "Developer"
+msgstr ""
+
+#: magi/default_settings.py:269
+msgid "System administrator"
+msgstr ""
+
+#: magi/forms.py:940 magi/magicollections.py:2361
+msgid "You are not allowed to see activities with the tag \"{tag}\"."
+msgstr ""
+
+#: magi/magicollections.py:918
+msgid "Translations"
+msgstr ""
+
+#: magi/magicollections.py:1654 magi/magicollections.py:2901 magi/views.py:549
+msgid "Block {username}"
+msgstr ""
+
+#: magi/magicollections.py:2377
+msgid "You can change which tags you would like to see or hide in your settings."
+msgstr ""
+
+#: magi/models.py:138
+msgid "Display your birthdate year"
+msgstr ""
+
+#: magi/models.py:208
+msgid "Roles"
+msgstr ""
+
+#: magi/models.py:236
+msgid "Hide tags"
+msgstr ""
+
+#: magi/models.py:571
+msgid "hobbies"
+msgstr ""
+
+#: magi/templates/pages/about.html:40
+msgid "About us"
+msgstr ""
+
+#: magi/templates/pages/prelaunch.html:21
+msgid "Pre-register"
+msgstr ""
+
+#: magi/forms.py:952
+msgid "Security"
+msgstr ""
+
+#: magi/magicollections.py:2940 magi/views.py:410 magi/views.py:547
+#: magi/views_collections.py:91 magi/views_collections.py:365
+msgid "You blocked {username}."
+msgstr ""
+
+#: magi/magicollections.py:2941 magi/views.py:411 magi/views.py:549
+#: magi/views_collections.py:92 magi/views_collections.py:366
+msgid "Unblock {username}"
+msgstr ""
+
+#: magi/views.py:553
+msgid "Are you sure you want to block {username}? You will not be able to see any content created by {username}."
+msgstr ""
+
+#: magi/views.py:553
+msgid "Are you sure you want to unblock {username}?"
+msgstr ""
+
+#: magi/views_collections.py:90 magi/views_collections.py:364
+msgid "this user"
+msgstr ""
+
+#: bang/forms.py:282
+msgid "Include cameos"
+msgstr ""
+
+#: bang/magicollections.py:766 bang/models.py:624
+msgid "Cameos"
+msgstr ""
+
+#: bang/models.py:372
+msgid "Original card"
+msgstr ""
+
+#: bang/settings.py:107
+msgid "Community event"
+msgstr ""
+
+#: bang/settings.py:122
+msgid "Not about %(game)s"
+msgstr ""
+
+#: bang/settings.py:125
+msgid "NSFW"
+msgstr ""
+
+#: bang/settings.py:127
+msgid "You need to be over 18 years old."
+msgstr ""
+
+#: bang/settings.py:127
+msgid "You can change your birthdate in your settings."
+msgstr ""
+
+#: sukutomo/magicollections.py:137
+msgid "Measurements"
+msgstr ""
+
+#: sukutomo/models.py:157
+msgid "Chitose Bridge High School"
+msgstr ""
+
+#: sukutomo/models.py:158
+msgid "Seiran High School"
+msgstr ""
+
+#: sukutomo/models.py:159
+msgid "Shinonome Academy"
+msgstr ""
+
+#: sukutomo/models.py:160
+msgid "Shion Girls' Academy"
+msgstr ""
+
+#: sukutomo/models.py:161
+msgid "Touou Academy"
+msgstr ""
+
+#: sukutomo/models.py:162
+msgid "Y.G. International Academy"
+msgstr ""
+
+#: sukutomo/models.py:163
+msgid "Nijigasaki High School"
+msgstr ""
+
+#: sukutomo/models.py:164
+msgid "Uranohoshi Girls' High School"
+msgstr ""
+
+#: sukutomo/models.py:165
+msgid "Otonokizaka Academy"
+msgstr ""
+
+#: sukutomo/models.py:177
+msgid "School year"
+msgstr ""
+
+#: sukutomo/models.py:208
+msgid "Blood type"
+msgstr ""
+
+#: sukutomo/models.py:172 sukutomo/models.py:173 sukutomo/models.py:174
+msgid "{nth} year"
+msgstr ""
+
+#: magi/templates/pages/about.html:299
+msgid "Contributors"
+msgstr ""
+
+#: bang/magicollections.py:789
+msgid "View model"
+msgstr ""
+
+#: bang/templates/include/costumeTopIllustration.html:11
+msgid "Controls"
+msgstr ""
+
+#: bang/models.py:1878 bang/templates/include/costumeTopIllustration.html:20
+msgctxt "BanPa model viewer"
+msgid "Model"
+msgstr ""
+
+#. Translators: Label for a checkbox. Limited space, so please try to keep it short.
+#: bang/templates/include/costumeTopIllustration.html:24
+msgctxt "BanPa model viewer"
+msgid "Breathe"
+msgstr ""
+
+#. Translators: Label for a checkbox. Limited space, so please try to keep it short.
+#: bang/templates/include/costumeTopIllustration.html:27
+msgctxt "BanPa model viewer"
+msgid "Blink"
+msgstr ""
+
+#. Translators: Label for a checkbox. Limited space, so please try to keep it short.
+#: bang/templates/include/costumeTopIllustration.html:30
+msgctxt "BanPa model viewer"
+msgid "Sway"
+msgstr ""
+
+#. Translators: Label for a list of choices. Limited space, so please try to keep it short.
+#: bang/templates/include/costumeTopIllustration.html:36
+msgctxt "BanPa model viewer"
+msgid "Action"
+msgstr ""
+
+#. Translators: Label for a checkbox. Limited space, so please try to keep it short.
+#: bang/templates/include/costumeTopIllustration.html:39
+msgctxt "BanPa model viewer"
+msgid "Loop"
+msgstr ""
+
+#. Translators: Label for a list of choices. Limited space, so please try to keep it short.
+#: bang/templates/include/costumeTopIllustration.html:45
+msgctxt "BanPa model viewer"
+msgid "Expression"
+msgstr ""
+
+#. Translators: Button label.
+#: bang/templates/include/costumeTopIllustration.html:52
+msgctxt "BanPa model viewer"
+msgid "Screenshot"
+msgstr ""
+
+#. Translators: Button label. This is supposed to be a continuation of "Screenshot".
+#: bang/templates/include/costumeTopIllustration.html:54
+msgctxt "BanPa model viewer"
+msgid "(with background)"
+msgstr ""
+
+#: bang/models.py:1338 bang/models.py:1370
+msgid "All perfect"
+msgstr ""
+
+#: bang/settings.py:119
+msgid "Thank you Yurishii"
+msgstr ""
+
+#. Refers to the "hot feed" of activities on the homepage (don't translate literally!)
+#: magi/default_settings.py:313 magi/forms.py:1523
+msgid "Hot"
+msgstr ""
+
+#: bang/forms.py:1188
+msgid "How often do you hit PERFECT notes?"
+msgstr ""
+
+#: bang/forms.py:1196
+msgid "How often is your life above 900?"
+msgstr ""
+
+#: bang/magicollections.py:780 bang/magicollections.py:786
+#: bang/magicollections.py:2468 bang/magicollections.py:2498
+msgid "Costume"
+msgstr ""
+
+#: bang/magicollections.py:2036 bang/magicollections.py:2067
+#: bang/models.py:1536
+msgid "Item"
+msgstr ""
+
+#: bang/magicollections.py:2037 bang/magicollections.py:2068 bang/views.py:36
+msgid "Items"
+msgstr ""
+
+#: bang/magicollections.py:2121 bang/models.py:1618
+msgid "Area"
+msgstr ""
+
+#: bang/magicollections.py:2122
+#: bang/templates/include/galleryBackButtons.html:6
+msgid "Areas"
+msgstr ""
+
+#: bang/magicollections.py:2139
+msgid "See all"
+msgstr ""
+
+#: bang/magicollections.py:2140 bang/settings.py:193 bang/settings.py:199
+#: bang/templates/include/galleryBackButtons.html:11 bang/views.py:20
+msgid "Gallery"
+msgstr ""
+
+#: bang/magicollections.py:2163 bang/magicollections.py:2218
+#: bang/models.py:1711
+msgid "Area item"
+msgstr ""
+
+#: bang/magicollections.py:2164 bang/magicollections.py:2219
+#: bang/models.py:1659 bang/views.py:31
+msgid "Area items"
+msgstr ""
+
+#: bang/magicollections.py:2324
+msgid "Asset"
+msgstr ""
+
+#: bang/magicollections.py:2325
+msgid "Assets"
+msgstr ""
+
+#: bang/magicollections.py:2469 bang/models.py:268
+msgid "Costumes"
+msgstr ""
+
+#: bang/models.py:1538
+msgid "Quantity"
+msgstr ""
+
+#: bang/models.py:1588
+msgid "Poster"
+msgstr ""
+
+#: bang/models.py:1593
+msgid "Flyer"
+msgstr ""
+
+#: bang/models.py:1598
+msgid "Food"
+msgstr ""
+
+#: bang/models.py:1602
+msgid "Decoration"
+msgstr ""
+
+#. affected_members can be a band "Afterglow" or an attribute "Happy"
+#. affected_stat = Technique / Performance / ...
+#: bang/models.py:1688
+msgid "{affected_members} members get +{effect_value} {affected_stat} points if life is above {life}"
+msgstr ""
+
+#. affected_members can be a band "Afterglow" or an attribute "Happy"
+#. affected_stat = Technique / Performance / ...
+#: bang/models.py:1690
+msgid "{affected_members} members get +{effect_value} {affected_stat} points"
+msgstr ""
+
+#: bang/models.py:1782
+msgid "Comics"
+msgstr ""
+
+#: bang/models.py:1787
+msgid "Backgrounds"
+msgstr ""
+
+#: bang/models.py:1792
+msgid "Stamps"
+msgstr ""
+
+#: bang/models.py:1797
+msgid "Titles"
+msgstr ""
+
+#: bang/models.py:1802
+msgid "Interface"
+msgstr ""
+
+#: bang/models.py:1827
+msgid "Outdoor"
+msgstr ""
+
+#: bang/models.py:1828
+msgid "Indoor"
+msgstr ""
+
+#: bang/models.py:1830
+msgid "Stage"
+msgstr ""
+
+#: bang/models.py:1831
+msgid "Home"
+msgstr ""
+
+#: bang/models.py:1832
+msgid "Dating spot"
+msgstr ""
+
+#: bang/models.py:1860
+msgid "Costume type"
+msgstr ""
+
+#: bang/settings.py:115
+msgid "Change My Mind Challenge"
+msgstr ""
+
+#: sukutomo/forms.py:56 sukutomo/forms.py:57 sukutomo/forms.py:78
+#: sukutomo/models.py:28 sukutomo/models.py:280 sukutomo/models.py:281
+#: sukutomo/models.py:282
+msgid "Worldwide version"
+msgstr ""
+
+#: sukutomo/forms.py:65 sukutomo/forms.py:66 sukutomo/forms.py:81
+#: sukutomo/models.py:30 sukutomo/models.py:292 sukutomo/models.py:293
+#: sukutomo/models.py:294
+msgid "Chinese version"
+msgstr ""
+
+#: sukutomo/models.py:257
+msgid "Score Match"
+msgstr ""
+
+#: sukutomo/models.py:258
+msgid "Medley Festival"
+msgstr ""
+
+#: sukutomo/models.py:259
+msgid "Challenge Festival"
+msgstr ""
+
+#: sukutomo/models.py:260
+msgid "Adventure Stroll"
+msgstr ""
+
+#: sukutomo/models.py:261
+msgid "Friendly Match"
+msgstr ""
+
+#: bang/models.py:388
+msgid "For the next {duration} seconds, if life is {stamina} or above, score boosted by +{percentage}%, otherwise, score boosted by +{alt_percentage}%"
+msgstr ""
+
+#: bang/magicollections.py:2085
+msgid "Edit your {thing}"
+msgstr ""
+
+#: magi/views.py:605
+msgid "If you delete this {thing} ({instance}), the following will automatically be deleted as well:"
+msgstr ""
+
+#: magi/views.py:606
+msgid "Are you sure you want to delete this {thing} ({instance})?"
+msgstr ""
+
+#: stardustrun/settings.py:56
+msgid "Medal"
+msgstr ""
+
+#: stardustrun/settings.py:57
+msgid "Gym"
+msgstr ""
+
+#: bang/management/commands/generate_settings.py:36
+msgid "Happy Birthday"
+msgstr "Wszystkiego Najlepszego"
+
+#: bang/models.py:215
+msgid "Classroom"
+msgstr ""
+
+#: bang/models.py:1807
+msgid "Official art"
+msgstr ""
+
+#: bang/utils.py:93
+msgid "Rerun"
+msgstr ""
+
+#: magi/default_settings.py:24
+msgid "Copied"
+msgstr ""
+
+#: magi/default_settings.py:24 magi/templates/items/activityItem.html:26
+msgid "Archived"
+msgstr ""
+
+#: magi/default_settings.py:24
+msgid "Unarchived"
+msgstr ""
+
+#: magi/default_settings.py:307 magi/forms.py:1556
+#: magi/templates/items/activityItem.html:14
+msgid "Popular"
+msgstr ""
+
+#: magi/default_settings.py:320
+msgid "New"
+msgstr ""
+
+#: bang/settings.py:103
+msgid "Staff picks"
+msgstr ""
+
+#: magi/forms.py:963
+msgid "Customize profile"
+msgstr ""
+
+#: magi/forms.py:1559
+msgid "Hide archived activities"
+msgstr ""
+
+#: magi/magicollections.py:2211
+msgid "Unarchive"
+msgstr ""
+
+#: magi/magicollections.py:2220 magi/magicollections.py:2222
+msgid "Archive"
+msgstr ""
+
+#: magi/magicollections.py:2225 magi/templates/pages/settings.html:70
+#: magi/templates/pages/settings.html:139
+msgid "Premium feature"
+msgstr ""
+
+#: magi/magicollections.py:2320
+msgid "You might be the first person who sees these activities!"
+msgstr ""
+
+#: magi/magicollections.py:2321
+msgid "If you see anything that doesn't follow our rules, please help us by reporting it."
+msgstr ""
+
+#: magi/models.py:166
+msgid "Post activities in {language}"
+msgstr ""
+
+#: magi/models.py:192 magi/views.py:400
+msgid "Custom link"
+msgstr ""
+
+#: magi/models.py:940
+msgid "When someone likes an activity you archived."
+msgstr ""
+
+#: magi/templates/pages/settings.html:13
+msgid "Preferences"
+msgstr ""
+
+#: magi/templates/pages/settings.html:15
+msgid "More"
+msgstr ""
+
+#. Name of a license, so it's unlikely you need to translate unless your language uses a different set of characters (Chinese, Japanese, Korean, Russian, etc.)
+#: magi/raw.py:40
+msgid "Utano☆Princesama"
+msgstr ""
+
+#. Name of a license, so it's unlikely you need to translate unless your language uses a different set of characters (Chinese, Japanese, Korean, Russian, etc.)
+#: magi/raw.py:40
+msgid "Shining Live"
+msgstr ""
+
+#: magi/templates/include/donate.html:27
+msgid "Can't use Patreon?"
+msgstr ""
+
+#: magi/templates/items/donateItem.html:19
+msgid "Goal"
+msgstr ""
+
+#: magi/templates/items/donateItem.html:21
+msgid "Total spent"
+msgstr ""
+
+#: cpro/model_choices.py:181
+msgid "Encore"
+msgstr ""
+
+#: cpro/model_choices.py:182
+msgid "Life Sparkle"
+msgstr ""
+
+#: cpro/model_choices.py:183
+msgid "Tricolor Synergy"
+msgstr ""
+
+#: cpro/model_choices.py:224
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance to activate the previous skill again for {skill_duration} seconds."
+msgstr ""
+
+#: cpro/model_choices.py:225
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that you will gain an extra combo bonus based on your current health for {skill_duration} seconds."
+msgstr ""
+
+#: cpro/model_choices.py:226
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that with all three types of idols on the team, you will gain an extra {skill_value2}% combo bonus, and Perfect notes will receive a {skill_value}% score bonus plus restore {skill_value3} life, for {skill_duration} seconds."
+msgstr ""
+
+#: cpro/model_choices.py:312
+msgid "Princess"
+msgstr ""
+
+#: cpro/model_choices.py:315
+msgid "Cheer"
+msgstr ""
+
+#: cpro/model_choices.py:316
+msgid "Cinderella Charm"
+msgstr ""
+
+#: cpro/model_choices.py:317
+msgid "Fortune Present"
+msgstr ""
+
+#: cpro/model_choices.py:339
+msgid "Raises {leader_skill_type} of all {idol_type} idols by {leader_skill_percent}% when there are only {idol_type} idols on the team."
+msgstr ""
+
+#: cpro/model_choices.py:342
+msgid "Raises {leader_skill_type} of all idols by {leader_skill_percent}% when there are {all_types} idols on the team."
+msgstr ""
+
+#: cpro/model_choices.py:354
+msgid "Increases fan gain by {leader_skill_percent}% when you finish a live."
+msgstr ""
+
+#: cpro/model_choices.py:355
+msgid "Gives extra rewards when you finish a live."
+msgstr ""
+
+#: cpro/model_choices.py:371 cpro/model_choices.py:376
+#: cpro/model_choices.py:377 cpro/model_choices.py:378
+msgid "{type} appeal"
+msgstr ""
+
+#: cpro/model_choices.py:381
+msgid "Skill probability"
+msgstr ""
+
+#: bang/forms.py:500 bang/forms.py:671
+msgid "Status"
+msgstr ""
+
+#: bang/forms.py:501 bang/forms.py:672
+msgid "Past"
+msgstr ""
+
+#: bang/forms.py:502 bang/forms.py:673
+msgid "Current"
+msgstr ""
+
+#: bang/forms.py:503 bang/forms.py:674
+msgid "Future"
+msgstr ""
+
+#: bang/settings.py:88
+msgid "Meme"
+msgstr ""
+
+#: bang/settings.py:90
+msgid "Scouting"
+msgstr ""
+
+#: bang/settings.py:96
+msgid "Manga"
+msgstr ""
+
+#: bang/settings.py:101
+msgid "Question"
+msgstr ""
+
+#: bang/settings.py:123
+msgid "Swearing"
+msgstr ""
+
+#: magi/default_settings.py:25
+msgid "End of new messages"
+msgstr ""
+
+#: magi/magicollections.py:1637 magi/magicollections.py:2792
+msgid "Private messages"
+msgstr ""
+
+#: magi/magicollections.py:1675 magi/magicollections.py:2803
+msgid "Send a message"
+msgstr ""
+
+#: magi/magicollections.py:2791 magi/models.py:948
+msgid "Private message"
+msgstr ""
+
+#: magi/magicollections.py:2800 magi/magicollections.py:2953
+#: magi/magicollections.py:3006 magi/magicollections.py:3007
+msgid "Inbox"
+msgstr ""
+
+#: magi/magicollections.py:2953 magi/views.py:316 magi/views.py:496
+#: magi/views_collections.py:45
+msgid "Back to {page_name}"
+msgstr "Powróć do {page_name}"
+
+#: magi/magicollections.py:3009
+msgid "You are not allowed to send private messages."
+msgstr ""
+
+#: magi/magicollections.py:3010
+msgid "Take some time to play around {site_name} to unlock this feature!"
+msgstr ""
+
+#: magi/models.py:244
+msgid "Anyone"
+msgstr ""
+
+#: magi/models.py:245
+msgid "Only people I follow"
+msgstr ""
+
+#: magi/models.py:246
+msgid "Nobody"
+msgstr ""
+
+#: magi/models.py:248
+msgid "Who is allowed to send you private messages?"
+msgstr ""
+
+#: magi/models.py:946
+msgid "You have a new private message from {}."
+msgstr ""
+
+#: magi/models.py:947
+msgid "When someone sends you a private message."
+msgstr ""
+
+#: magi/templates/base.html:247
+msgid "Close"
+msgstr ""
+
+#: magi/templates/base.html:251
+msgid "Remind me later"
+msgstr ""
+
+#: magi/templates/base.html:255
+msgid "Don't show this again"
+msgstr ""
+
+#: magi/utils.py:292
+msgid "Your email address is invalid."
+msgstr ""
+
+#: magi/utils.py:293
+msgid "Some features might not work properly."
+msgstr ""
+
+#: magi/views.py:497
+msgid "Wiki home"
+msgstr ""
+
+#: cpro/model_choices.py:184
+msgid "Focus"
+msgstr ""
+
+#: cpro/model_choices.py:227
+msgid "For every {trigger_value} seconds, there is a {trigger_chance}% chance that Perfect notes will receive a {skill_value}% score bonus, and you will gain an extra {skill_value2}% combo bonus for {skill_duration} seconds"
+msgstr ""
+
+#: bang/models.py:963
+msgid "VS Live"
+msgstr ""
 
