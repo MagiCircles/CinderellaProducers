@@ -77,6 +77,7 @@ ACTIVITY_TAGS = [
     ('merch', _('Merchandise')),
     ('community', _('Community')),
     ('unrelated', _('Unrelated')),
+    ('AR Idol Date', 'AR Idol Date'),
 ]
 
 ENABLED_COLLECTIONS['activity']['add']['before_save'] = collections_settings.activitiesBeforeSave
