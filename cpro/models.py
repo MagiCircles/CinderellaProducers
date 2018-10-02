@@ -193,7 +193,7 @@ class Account(ItemModel):
     owner = models.ForeignKey(User, related_name='accounts')
     creation = models.DateTimeField(_('Join Date'), auto_now_add=True)
     level = models.PositiveIntegerField(_('Producer Level'), null=True, validators=[
-        MaxValueValidator(300),
+        MaxValueValidator(500),
     ])
     nickname = models.CharField(_('Nickname'), max_length=100, null=True)
     game_id = models.PositiveIntegerField(_('Game ID'), null=True)
