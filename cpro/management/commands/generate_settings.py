@@ -53,16 +53,20 @@ def generate_settings():
                 'overall_max_': None,
                 'overall_awakened_max_': None,
         }
-        for stat in stats.keys():
-            max_stats = models.Card.objects.all().extra(select={
-                    'overall_max_': 'vocal_max + dance_max + visual_max',
-                    'overall_awakened_max_': 'vocal_awakened_max + dance_awakened_max + visual_awakened_max',
-            }).order_by('-' + stat)[0]
-            stats[stat] = getattr(max_stats, stat)
-        stats['overall_max'] = stats['overall_max_']
-        del(stats['overall_max_'])
-        stats['overall_awakened_max'] = stats['overall_awakened_max_']
-        del(stats['overall_awakened_max_'])
+
+        try:
+            for stat in stats.keys():
+                max_stats = models.Card.objects.all().extra(select={
+                        'overall_max_': 'vocal_max + dance_max + visual_max',
+                        'overall_awakened_max_': 'vocal_awakened_max + dance_awakened_max + visual_awakened_max',
+                }).order_by('-' + stat)[0]
+                stats[stat] = getattr(max_stats, stat)
+            stats['overall_max'] = stats['overall_max_']
+            del(stats['overall_max_'])
+            stats['overall_awakened_max'] = stats['overall_awakened_max_']
+            del(stats['overall_awakened_max_'])
+        except IndexError:
+            pass
 
         print 'Save generated settings'
         s = u'\
