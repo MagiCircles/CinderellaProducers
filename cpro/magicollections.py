@@ -40,12 +40,14 @@ class AccountCollection(_AccountCollection):
         filter_queryset  = filters.filterAccounts
         # TODO: Not sure how to handle the ENABLED_COLLECTIONS here
         js_files         = ENABLED_COLLECTIONS['account']['list'].get('js_files', []) + ['leaderboard']
+        # TODO: Not sure if this lambda works
         show_add_button  = lambda request: not request.user.is_authenticated()
 
 ############################################################
 # Activity Collection
 
 class ActivityCollection(_ActivityCollection):
+    # TODO: Not sure if this is ported properly since it's directly taken from the old `settings.py` file
     ACTIVITY_TAGS = [
         ('cards', _('New Cards')),
         ('event', _('Event')),
@@ -63,6 +65,7 @@ class ActivityCollection(_ActivityCollection):
         ('AR Idol Date', 'AR Idol Date'),
     ]
 
+    # TODO: Not sure if this is ported properly since it's directly taken from the old `settings.py` file
     def filterActivitiesList(queryset, parameters, request):
         if request.user.is_superuser and 'force_old' in request.GET:
             if 'owner_id' in request.GET:
@@ -70,11 +73,11 @@ class ActivityCollection(_ActivityCollection):
             return queryset
         return queryset.filter(id__gt=2600)
 
+    # TODO: Not sure if this is ported properly since it's directly taken from the old `settings.py` file
     def filterActivities(queryset, parameters, request):
         if request.user.is_superuser:
             return queryset
         return filterActivitiesList(queryset, parameters, request)
-
 
     class AddView(_ActivityCollection.AddView):
         before_save     = collections_settings.activitiesBeforeSave
@@ -87,9 +90,11 @@ class ActivityCollection(_ActivityCollection):
         filter_queryset = filterActivities
 
     class ItemView(_ActivityCollection.ItemView):
+        # TODO: Replaced by get_queryset
         filter_queryset = filterActivities
 
     class ListView(_ActivityCollection.ListView):
+        # TODO: Replaced by get_queryset
         filter_queryset = filterActivitiesList
 
 ############################################################
@@ -217,7 +222,7 @@ class OwnedCardCollection(MagiCollection):
     class EditView(MagiCollection.EditView):
         allow_delete          = True
         back_to_list_button   = False
-        # TODO: Replaced by get_queryset
+        # TODO: Replaced by get_queryset, not sure if this lambda works
         filter_queryset       = lambda q, p, r: q.select_related('account')
         form_class            = forms.EditOwnedCardForm,
         js_files              = ['edit_ownedcard']
