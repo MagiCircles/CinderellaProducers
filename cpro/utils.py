@@ -1,14 +1,14 @@
 from __future__ import division
 import tinify, cStringIO, os
 from PIL import Image
-from web.utils import globalContext as web_globalContext
+from magi.utils import globalContext as magi_globalContext
 from django.conf import settings as django_settings
 from django.core.files.temp import NamedTemporaryFile
 from django.core.files.images import ImageFile
 from cpro import raw, models
 
 def globalContext(request):
-    context = web_globalContext(request)
+    context = magi_globalContext(request)
     return context
 
 def onUserEdited(request):

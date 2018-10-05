@@ -72,7 +72,7 @@ def eventsExtraContext(context):
 # Profile
 
 def profileGetAccountTabs(context):
-    from web.views import profileExtraContext
+    from magi.views import profileExtraContext
     profileExtraContext(context)
     request = context['request']
     for account in context['item'].all_accounts:

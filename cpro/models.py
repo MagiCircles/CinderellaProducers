@@ -8,9 +8,9 @@ from django.utils.deconstruct import deconstructible
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models import Q
-from web.item_model import ItemModel, get_image_url, get_http_image_url
-from web.utils import split_data, join_data, AttrDict, tourldash, randomString
-from web.models import User
+from magi.item_model import ItemModel, get_image_url, get_http_image_url
+from magi.utils import split_data, join_data, AttrDict, tourldash, randomString
+from magi.models import User
 from cpro.model_choices import *
 from cpro.django_translated import t
 

@@ -2,8 +2,8 @@
 from collections import OrderedDict
 from django.conf import settings as django_settings
 from django.utils.translation import ugettext_lazy as _
-from web.default_settings import DEFAULT_ENABLED_COLLECTIONS, DEFAULT_ENABLED_PAGES, DEFAULT_JAVASCRIPT_TRANSLATED_TERMS, DEFAULT_PROFILE_EXTRA_TABS
-from web.utils import tourldash
+from magi.default_settings import DEFAULT_ENABLED_COLLECTIONS, DEFAULT_ENABLED_PAGES, DEFAULT_JAVASCRIPT_TRANSLATED_TERMS, DEFAULT_PROFILE_EXTRA_TABS
+from magi.utils import tourldash
 from cpro import models, forms, filters, collections_settings, utils
 
 SITE_NAME = u'Cinderella Producers'

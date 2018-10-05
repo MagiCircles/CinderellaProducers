@@ -10,7 +10,7 @@ from django.core.files.temp import NamedTemporaryFile
 from django.core.files.images import ImageFile
 from django.core.exceptions import ObjectDoesNotExist
 from tinypng import shrink_file
-from web.models import UserPreferences
+from magi.models import UserPreferences
 from cpro import models
 
 def shrunkImage(picture, filename):

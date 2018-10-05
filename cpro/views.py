@@ -2,15 +2,15 @@ import random
 from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import PermissionDenied
 from django.utils import timezone
-from web.views_collections import item_view, list_view
-from web.settings import ENABLED_COLLECTIONS
-from web.views import _index_extraContext as web_index_extraContext
+from magi.views_collections import item_view, list_view
+from magi.settings import ENABLED_COLLECTIONS
+from magi.views import _index_extraContext as magi_index_extraContext
 from cpro.settings import LATEST_NEWS
 from cpro import models, filters
-from web.utils import ajaxContext, globalContext
+from magi.utils import ajaxContext, globalContext
 
 def _index_extraContext(context):
-    web_index_extraContext(context)
+    magi_index_extraContext(context)
     context['card'] = models.Card.objects.order_by('?').filter(art__isnull=False).exclude(art='').exclude(art_on_homepage=False, art_awakened_on_homepage=False).filter(art_hd__isnull=False)[0]
     if not context['card'].art_on_homepage:
         context['awakened'] = True

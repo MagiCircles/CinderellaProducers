@@ -1,5 +1,5 @@
 {# optional variables: account_link #}
-{% load web_tags %}
+{% load magi_tags %}
 {% with account=item %}
 <br>
 <div class="leaderboard-account account-{% if account.center_id %}{{ account.cached_center.card.english_type|default_if_none:"main" }}{% else %}main{% endif %}" style="">
