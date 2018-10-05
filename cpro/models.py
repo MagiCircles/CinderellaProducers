@@ -8,7 +8,7 @@ from django.utils.deconstruct import deconstructible
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models import Q
-from magi.item_model import ItemModel, get_image_url, get_http_image_url
+from magi.item_model import MagiModel, get_image_url, get_http_image_url
 from magi.utils import split_data, join_data, AttrDict, tourldash, randomString
 from magi.models import User
 from cpro.model_choices import *
@@ -43,7 +43,7 @@ def getAccountLeaderboard(account):
 ############################################################
 # Idol
 
-class Idol(ItemModel):
+class Idol(MagiModel):
     collection_name = 'idol'
 
     owner = models.ForeignKey(User, related_name='added_idols')
@@ -130,7 +130,7 @@ class Idol(ItemModel):
 ############################################################
 # Event
 
-class Event(ItemModel):
+class Event(MagiModel):
     collection_name = 'event'
 
     owner = models.ForeignKey(User, related_name='added_events')
@@ -187,7 +187,7 @@ class Event(ItemModel):
 ############################################################
 # Account
 
-class Account(ItemModel):
+class Account(MagiModel):
     collection_name = 'account'
 
     owner = models.ForeignKey(User, related_name='accounts')
@@ -342,7 +342,7 @@ class Account(ItemModel):
 ############################################################
 # Card
 
-class Card(ItemModel):
+class Card(MagiModel):
     collection_name = 'card'
 
     owner = models.ForeignKey(User, related_name='added_cards')
@@ -749,7 +749,7 @@ class Card(ItemModel):
 ############################################################
 # Owned Card
 
-class OwnedCard(ItemModel):
+class OwnedCard(MagiModel):
     collection_name = 'ownedcard'
 
     account = models.ForeignKey(Account, related_name='ownedcards', on_delete=models.CASCADE)
@@ -807,7 +807,7 @@ class OwnedCard(ItemModel):
 ############################################################
 # Favorite Card
 
-class FavoriteCard(ItemModel):
+class FavoriteCard(MagiModel):
     collection_name = 'favoritecard'
 
     owner = models.ForeignKey(User, related_name='favoritecards')
