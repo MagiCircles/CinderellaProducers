@@ -1,8 +1,13 @@
 {# optional variables: account_link #}
-{% load web_tags %}
+{% load magi_tags %}
 {% with account=item %}
 <br>
-<div class="leaderboard-account account-{% if account.center_id %}{{ account.cached_center.card.english_type|default_if_none:"main" }}{% else %}main{% endif %}" style="">
+<div class="leaderboard-account account-{% if account.center_id %}{{ account.cached_center_card.type|default_if_none:"main" }}{% else %}main{% endif %}"
+     style="background-image: url('{{ account.background_url }}');"
+     {% if not account.center_id %}
+     onMouseOver="this.style.backgroundImage = 'url(\'{{ account.light_background_url }}\')'"
+     onMouseOut="this.style.backgroundImage = 'url(\'{{ account.background_url }}\')'"
+     {% endif %}>
   <a href="{{ account.owner.item_url }}{% if account_link %}#{{ account.id }}{% endif %}">
     <div class="row">
       <div class="col-md-2 col-xs-4 avatar-{{ account.owner.preferences.css_color }}">{% include 'include/avatar.html' with av_user=account.owner av_size=30 av_image_size=100 av_fixed=True %}</div>
@@ -10,7 +15,7 @@
       <div class="col-md-2 col-xs-8"><h3 class="text-right"><span class="prefix">PLv.</span>&nbsp;{{ account.level|default_if_none:"??" }}</h3></div>
       <div class="col-md-2 col-xs-4 text-right">
 	{% if account.center_id %}
-	<img src="{{ account.cached_center.card.icon_url }}" alt="{{ account.cached_center.card.string }}" width="100" class="center">
+	<img src="{{ account.cached_center_card.icon_url }}" alt="{{ account.cached_center_card.unicode }}" width="100" class="center">
 	{% else %}
 	<img src="{{ static_url }}img/cinderella.png" alt="Cinderella" width="100" class="center">
 	{% endif %}

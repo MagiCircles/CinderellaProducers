@@ -1,7 +1,6 @@
 {% load tools %}
 {% load i18n %}
 {% with card=item %}
-<style>{% include 'include/cssLeaderboardStatic.css' %}</style>
 <div id="collection" data-card-id="{{ card.id }}">
   {% for account in user.all_accounts %}
   {% include 'items/accountItem.html' with item=account account_link=True %}

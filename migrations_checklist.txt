@@ -1,0 +1,42 @@
+- https://github.com/MagiCircles/MagiCircles/wiki/Migrate-from-MagiCircles1-to-MagiCircles2
+    - Rename your SQL tables from web to magi
+
+
+
+ Migration files
+ ----------------
+
+- Rename translation terms:
+    - _('Producer Level') -> Producer level
+    - Producer Rank -> Producer rank
+    - Operating System -> Operating system
+
+- Make sure the following fields are renamed and not deleted/added:
+
+        migrations.RenameField(
+            model_name='card',
+            old_name='art_hd',
+            new_name='_2x_art',
+        ),
+        migrations.RenameField(
+            model_name='card',
+            old_name='art_hd_awakened',
+            new_name='_2x_art_awakened',
+        ),
+        migrations.RenameField(
+            model_name='account',
+            old_name='game_id',
+            new_name='friend_id',
+        ),
+        migrations.RenameField(
+            model_name='card',
+            old_name='leader_skill_type',
+            new_name='i_leader_skill',
+        ),
+        migrations.RenameField(
+            model_name='card',
+            old_name='leader_skill_apply',
+            new_name='i_leader_skill_apply',
+        ),
+
+- Call force_update_cache() on all caches that don't auto update

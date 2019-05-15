@@ -10,7 +10,8 @@ from django.core.files.temp import NamedTemporaryFile
 from django.core.files.images import ImageFile
 from django.core.exceptions import ObjectDoesNotExist
 from tinypng import shrink_file
-from web.models import UserPreferences
+from magi import urls # unused, required to load RAW_CONTEXT
+from magi.models import UserPreferences
 from cpro import models
 
 def shrunkImage(picture, filename):
@@ -18,6 +19,7 @@ def shrunkImage(picture, filename):
     if not api_key or not filename.endswith('.png'):
         return picture
     print '      Compressing...'
+    # todo, don't compress
     img_shrunked = NamedTemporaryFile(delete=False)
     shrink_info = shrink_file(
         picture.name,
@@ -56,9 +58,9 @@ def downloadImage(url, prefix, id, tinypng=True):
     return downloaded
 
 TYPE_STRINGS = {
-    'cute': models.TYPE_CUTE,
-    'cool': models.TYPE_COOL,
-    'passion': models.TYPE_PASSION,
+    'cute': models.Idol.get_i('type', 'Cute'),
+    'cool': models.Idol.get_i('type', 'Cool'),
+    'passion': models.Idol.get_i('type', 'Passion'),
 }
 
 BLOOD_TYPES = {
@@ -157,14 +159,14 @@ HOMETOWNS = {
 }
 
 RARITIES = {
-    1: models.RARITY_N,
-    2: models.RARITY_N,
-    3: models.RARITY_R,
-    4: models.RARITY_R,
-    5: models.RARITY_SR,
-    6: models.RARITY_SR,
-    7: models.RARITY_SSR,
-    8: models.RARITY_SSR,
+    1: models.Card.get_i('rarity', 'N'),
+    2: models.Card.get_i('rarity', 'N'),
+    3: models.Card.get_i('rarity', 'R'),
+    4: models.Card.get_i('rarity', 'R'),
+    5: models.Card.get_i('rarity', 'SR'),
+    6: models.Card.get_i('rarity', 'SR'),
+    7: models.Card.get_i('rarity', 'SSR'),
+    8: models.Card.get_i('rarity', 'SSR'),
 }
 
 LEADER_SKILLS = {
@@ -220,12 +222,12 @@ def getIdolFromJson(owner, chara, update=False, updated_idols=[]):
     data['height'] = chara['height']
     if chara['weight'] < 200:
         data['weight'] = chara['weight']
-    data['i_blood_type'] = models.BLOOD_TYPE_REVERSE_DICT[BLOOD_TYPES[chara['blood_type']]]
-    data['i_writing_hand'] = models.WRITING_HANDS_REVERSE_DICT[WRITING_HANDS[chara['hand']]]
+    data['i_blood_type'] = models.Idol.get_i('blood_type', BLOOD_TYPES[chara['blood_type']])
+    data['i_writing_hand'] = models.Idol.get_i('writing_hand', WRITING_HANDS[chara['hand']])
     data['bust'] = chara['body_size_1']
     data['waist'] = chara['body_size_2']
     data['hips'] = chara['body_size_3']
-    data['i_astrological_sign'] = models.ASTROLOGICAL_SIGN_REVERSE_DICT[ASTROLOGICAL_SIGNS[chara['constellation']]]
+    data['i_astrological_sign'] = models.Idol.get_i('astrological_sign', ASTROLOGICAL_SIGNS[chara['constellation']])
     data['hometown'] = HOMETOWNS[chara['home_town']]
     data['CV'] = chara['voice'] if chara['voice'] else None
     idol, created = models.Idol.objects.update_or_create(name=name, defaults=data)
@@ -336,14 +338,18 @@ def import_cards(args, cards=[]):
                     if skill in ['Cute Focus', 'Cool Focus', 'Passion Focus']:
                         skill = 'Cute/Cool/Passion Focus'
                     skill = skill.replace('-', ' ')
-                    data['i_skill'] = models.SKILL_REVERSE_DICT[skill]
+                    data['i_skill'] = models.Card.get_i('skill', skill)
                     data['skill_name'] = card['skill']['skill_name']
                     data['trigger_value'] = card['skill']['condition']
                     data['trigger_chance_min'] = card['skill']['proc_chance'][0] / 100
                     data['trigger_chance_max'] = card['skill']['proc_chance'][1] / 100
                     data['skill_duration_min'] = card['skill']['effect_length'][0] / 100
                     data['skill_duration_max'] = card['skill']['effect_length'][1] / 100
-                    data['skill_value'] = card['skill']['value'] - 100 if data['i_skill'] != models.SKILL_HEALER else card['skill']['value']
+                    data['skill_value'] = (
+                        card['skill']['value'] - 100
+                        if 'skill' != 'Healer'
+                        else card['skill']['value']
+                    )
                     data['skill_value2'] = card['skill'][
                         'value_2'
                         if skill in [

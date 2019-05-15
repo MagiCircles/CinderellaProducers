@@ -2,12 +2,12 @@ import random
 from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import PermissionDenied
 from django.utils import timezone
-from web.views_collections import item_view, list_view
-from web.settings import ENABLED_COLLECTIONS
-from web.views import _index_extraContext as web_index_extraContext
+#from web.views_collections import item_view, list_view
+#from web.settings import ENABLED_COLLECTIONS
+#from web.views import _index_extraContext as web_index_extraContext
 from cpro.settings import LATEST_NEWS
 from cpro import models, filters
-from web.utils import ajaxContext, globalContext
+#from web.utils import ajaxContext, globalContext
 
 def _index_extraContext(context):
     web_index_extraContext(context)
@@ -21,6 +21,8 @@ def _index_extraContext(context):
     context['latest_news'] = LATEST_NEWS
 
 def index(request):
+    return list_view(request, 'activity', collection)
+    # todo
     collection = ENABLED_COLLECTIONS['activity'].copy()
     collection['list'] = collection['list'].copy()
     collection['list']['before_template'] = 'include/index'
