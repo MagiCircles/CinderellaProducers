@@ -154,6 +154,7 @@ HOMETOWNS = {
     60: u'ニューヨーク',
     61: u'徳島',
     62: u'グリーンランド',
+    63: u'やさしい世界',
 }
 
 RARITIES = {
@@ -226,7 +227,9 @@ def getIdolFromJson(owner, chara, update=False, updated_idols=[]):
     data['waist'] = chara['body_size_2']
     data['hips'] = chara['body_size_3']
     data['i_astrological_sign'] = models.ASTROLOGICAL_SIGN_REVERSE_DICT[ASTROLOGICAL_SIGNS[chara['constellation']]]
-    data['hometown'] = HOMETOWNS[chara['home_town']]
+    data['hometown'] = HOMETOWNS.get(chara['home_town'], None)
+    if not data['hometown']:
+        print '!!!! Unknown hometown', name
     data['CV'] = chara['voice'] if chara['voice'] else None
     idol, created = models.Idol.objects.update_or_create(name=name, defaults=data)
     updated_idols.append(idol.id)
@@ -335,8 +338,11 @@ def import_cards(args, cards=[]):
                     skill = card['skill']['skill_type']
                     if skill in ['Cute Focus', 'Cool Focus', 'Passion Focus']:
                         skill = 'Cute/Cool/Passion Focus'
+                    if skill == 'Perfect Score Bonus' and card['skill'].get('value_2', 0):
+                        skill = 'Hold + Perfect Score Bonus'
                     skill = skill.replace('-', ' ')
-                    data['i_skill'] = models.SKILL_REVERSE_DICT[skill]
+
+                    data['i_skill'] = models.SKILL_REVERSE_DICT.get(skill, 0)
                     data['skill_name'] = card['skill']['skill_name']
                     data['trigger_value'] = card['skill']['condition']
                     data['trigger_chance_min'] = card['skill']['proc_chance'][0] / 100
@@ -351,6 +357,7 @@ def import_cards(args, cards=[]):
                                 'All Round',
                                 'Cute/Cool/Passion Focus',
                                 'Focus',
+                                'Hold + Perfect Score Bonus',
                         ]
                         else 'skill_trigger_value'
                     ]
@@ -358,6 +365,7 @@ def import_cards(args, cards=[]):
                             'Tricolor Synergy',
                             'Cute/Cool/Passion Focus',
                             'Focus',
+                            'Hold + Perfect Score Bonus',
                     ]:
                         data['skill_value2'] = data['skill_value2'] - 100
                     data['skill_value3'] = card['skill']['value_3']
@@ -365,7 +373,10 @@ def import_cards(args, cards=[]):
                     if card['lead_skill']['name'] in LEADER_SKILLS_BY_NAME:
                         data['leader_skill_type'] = LEADER_SKILLS_BY_NAME[card['lead_skill']['name']]
                     else:
-                        data['leader_skill_type'] = LEADER_SKILLS[card['lead_skill']['target_param']]
+                        try:
+                            data['leader_skill_type'] = LEADER_SKILLS[card['lead_skill']['target_param']]
+                        except KeyError:
+                            data['leader_skill_type'] = None
 
                     if card['lead_skill']['target_param'] == 'life' and (
                             card['lead_skill']['need_cute']
