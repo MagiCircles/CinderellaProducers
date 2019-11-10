@@ -106,6 +106,7 @@ EVENT_KINDS = [
     _('Coop'),
     _('Caravan'),
     _('LIVE Parade'),
+    _('LIVE Carnival'),
 ]
 EVENT_KIND_CHOICES = list(enumerate(EVENT_KINDS))
 EVENT_KIND_DICT = dict(EVENT_KIND_CHOICES)
