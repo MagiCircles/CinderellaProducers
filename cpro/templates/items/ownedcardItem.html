@@ -5,8 +5,8 @@
      >
   <div class="hidden">
     <table class='table'>
-      <tr><th>{% trans 'Max Leveled' %}</th><td><i class='flaticon-{% if oc.max_leveled %}checked text-success{% else %}delete text-danger{% endif %}'></i></td></tr>
-      <tr><th>{% trans 'Max Bonded' %}</th><td><i class='flaticon-{% if oc.max_bonded %}checked text-success{% else %}delete text-danger{% endif %}'></i></td></tr>
+      <tr><th>{% trans 'Max leveled' %}</th><td><i class='flaticon-{% if oc.max_leveled %}checked text-success{% else %}delete text-danger{% endif %}'></i></td></tr>
+      <tr><th>{% trans 'Max bonded' %}</th><td><i class='flaticon-{% if oc.max_bonded %}checked text-success{% else %}delete text-danger{% endif %}'></i></td></tr>
       {% if oc.star_rank %}
       <tr><th>{% trans 'Star Rank' %}</th><td>{{ oc.star_rank }}</td></tr>
       {% endif %}

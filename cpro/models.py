@@ -755,8 +755,8 @@ class OwnedCard(ItemModel):
     account = models.ForeignKey(Account, related_name='ownedcards', on_delete=models.CASCADE)
     card = models.ForeignKey(Card, related_name='owned', on_delete=models.CASCADE)
     awakened = models.BooleanField(_('Awakened'), default=False)
-    max_bonded = models.BooleanField(_('Max Bonded'), default=False)
-    max_leveled = models.BooleanField(_('Max Leveled'), default=False)
+    max_bonded = models.BooleanField(_('Max bonded'), default=False)
+    max_leveled = models.BooleanField(_('Max leveled'), default=False)
     star_rank = models.PositiveIntegerField(_('Star Rank'), default=1, validators=[
         MinValueValidator(1),
         MaxValueValidator(20),

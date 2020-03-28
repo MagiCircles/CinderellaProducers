@@ -122,8 +122,8 @@ RARITY_SSR = 3
 RARITY_CHOICES = [
     (RARITY_N, _('Normal')),
     (RARITY_R, _('Rare')),
-    (RARITY_SR, _('Super Rare')),
-    (RARITY_SSR, _('Super Super Rare')),
+    (RARITY_SR, _('Super rare')),
+    (RARITY_SSR, _('Super super rare')),
 ]
 RARITY_DICT = dict(RARITY_CHOICES)
 
