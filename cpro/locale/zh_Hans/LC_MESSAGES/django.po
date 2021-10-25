@@ -3460,7 +3460,7 @@ msgstr "命运的赠礼"
 #: cpro/model_choices.py:345
 #, fuzzy
 msgid "Raises {leader_skill_type} of all {idol_type} idols by {leader_skill_percent}% when there are only {idol_type} idols on the team."
-msgstr "仅当 {type}成员在队伍中时，提升所有{idol_type}属性的成员{leader_skill_type}值至{leader_skill_percent}%。"
+msgstr "仅当 {idol_type}成员在队伍中时，提升所有{idol_type}属性的成员{leader_skill_type}值至{leader_skill_percent}%。"
 
 #: cpro/model_choices.py:348
 #, fuzzy
